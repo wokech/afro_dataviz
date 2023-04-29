@@ -22,8 +22,8 @@ library(zoo)
 
 # 1) Load the required data
 
-suburbs <- read_excel("Hass Suburbs Combined 2015-2022.xlsx")
-satellite <- read_excel("Hass Satellite Combined 2015-2022.xlsx")
+suburbs <- read_excel("sub_pro_3_hass_land_prices/processed_tables/Hass Suburbs Combined 2015-2022.xlsx")
+satellite <- read_excel("sub_pro_3_hass_land_prices/processed_tables/Hass Satellite Combined 2015-2022.xlsx")
 
 
 # 2) Clean the data
@@ -111,4 +111,6 @@ all_data_avg_price %>%
   theme_classic() + 
   scale_y_continuous(labels = scales::comma) 
 
+## NOTES: ADD AN INTERACTIVE PLOT USING GGIRAPH
+## LAND PRICES IN KAJIADO...
 
