@@ -53,6 +53,23 @@ malaria_death_clean_eac <- malaria_death_clean %>%
            "Burundi", "Rwanda", "South Sudan", 
            "Democratic Republic of Congo"))
 
+## For Flourish pivot the data
+
+malaria_death_clean_eac_wide <- malaria_death_clean_eac %>%
+    pivot_wider(names_from = year, values_from = death_rate)
+
+flags <- c("https://public.flourish.studio/country-flags/svg/bi.svg",
+           "https://public.flourish.studio/country-flags/svg/cd.svg",
+           "https://public.flourish.studio/country-flags/svg/ke.svg",
+           "https://public.flourish.studio/country-flags/svg/rw.svg",
+           "https://public.flourish.studio/country-flags/svg/ss.svg",
+           "https://public.flourish.studio/country-flags/svg/tz.svg",
+           "https://public.flourish.studio/country-flags/svg/ug.svg")
+
+malaria_death_clean_eac_wide$flags <- flags
+
+write.csv(malaria_death_clean_eac_wide, file = "sub_pro_7_malaria_owid/processed_tables/malaria_death_rates_wide_fluorish.csv")
+
 # Get the EAC malaria mean death rates
 
 
