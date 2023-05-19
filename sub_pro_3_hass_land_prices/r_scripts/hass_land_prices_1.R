@@ -19,12 +19,15 @@ library(treemapify)
 library(ggrepel)
 library(janitor)
 library(zoo)
+#install.packages("here")
+library(here)
+#install.packages("xlsx")
+library(xlsx)
 
 # 1) Load the required data
 
-suburbs <- read_excel("sub_pro_3_hass_land_prices/processed_tables/Hass Suburbs Combined 2015-2022.xlsx")
-satellite <- read_excel("sub_pro_3_hass_land_prices/processed_tables/Hass Satellite Combined 2015-2022.xlsx")
-
+suburbs <- read_excel("C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/processed_tables/Hass Suburbs Combined 2015-2022.xlsx")
+satellite <- read_excel("C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/processed_tables/Hass Satellite Combined 2015-2022.xlsx")
 
 # 2) Clean the data
 
@@ -45,16 +48,32 @@ all_data$x25th_percentile <- as.numeric(all_data$x25th_percentile)
 all_data$x75th_percentile <- as.numeric(all_data$x75th_percentile)
 all_data$quarter_year <- as.yearqtr(as.numeric(all_data$quarter_year))
 
+# For the plot
 all_data_avg_price <- all_data %>%
   select(location, quarter_year, average_price)
 
 all_data_percentile_price <- all_data %>%
   select(location, quarter_year, x25th_percentile, x75th_percentile)
 
+# For the data table
+all_data_avg_price_data <- all_data %>%
+  select(Location = location, Year = year, Quarter = quarter, Price = average_price)
+
 str(all_data_avg_price)
 str(all_data_percentile_price)
+str(all_data_avg_price_data)
+
+# Store the dataset
+
+write.xlsx(all_data_avg_price, "C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/my_app/data/all_data_avg_price.xlsx")
+write.xlsx(all_data_avg_price_data, "C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/my_app/data/all_data_avg_price_data.xlsx")
+
+saveRDS(all_data_avg_price, "C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/my_app/data/all_data_avg_price.rds")
+saveRDS(all_data_avg_price_data, "C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/my_app/data/all_data_avg_price_data.rds")
 
 # 3) Plot  the data / EDA
+
+# use max to figure out groupings by average price
 
 max <- all_data_avg_price %>% 
   group_by(location) %>%
@@ -107,10 +126,45 @@ all_data_avg_price %>%
 all_data_avg_price %>%
   filter(location %in% location_6) %>%
   ggplot(aes(quarter_year, average_price, color = location)) +
-  geom_line() +
+  geom_line(size=2) +
   theme_classic() + 
-  scale_y_continuous(labels = scales::comma) 
+  scale_y_continuous(labels = scales::comma) +
+  labs(color = "Location") +
+  theme(legend.position="bottom",
+        legend.title = element_text(size = 14),
+        legend.text = element_text(size = 14),
+        legend.background = element_rect(fill = "azure2"),
+        panel.grid.major.x=element_blank(),
+        panel.grid.minor.x=element_blank(),
+        panel.grid.minor.y=element_blank(),
+        axis.text.x = element_text(size = 14),
+        axis.text.y = element_text(size = 10),
+        axis.title.x = element_text(size=16),
+        axis.title.y = element_text(size=16),
+        plot.title = element_text(size = 24, face = "bold"),
+        plot.subtitle = element_text(size = 18),
+        plot.background = element_rect(fill = "azure2", color = "azure2"),
+        panel.background = element_rect(fill = "azure2", color = "azure2"))
 
-## NOTES: ADD AN INTERACTIVE PLOT USING GGIRAPH
-## LAND PRICES IN KAJIADO...
+### TESTS FOR THE APP ###
 
+land_price <- readRDS("C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/my_app/data/all_data_avg_price.rds")
+land_price_data <- readRDS("C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/my_app/data/all_data_avg_price_data.rds")
+
+land_price %>%
+  group_by(location) %>%
+  filter(quarter_year == max(quarter_year))
+
+
+### Suburbs and Satellite Towns
+
+## Suburbs
+choices = c("Donholm", "Gigiri", "Karen", "Kileleshwa", "Kilimani", "Kitisuru",     
+            "Langata", "Lavington", "Loresho", "Muthaiga", "Nyari", "Parklands",    
+            "Ridgeways", "Riverside", "Runda", "Spring Valley", "Upperhill", 
+            "Westlands", "Eastleigh")
+
+## Satellite
+choices = c("Athi River", "Juja", "Kiambu", "Kiserian",     
+            "Kitengela", "Limuru", "Mlolongo", "Ngong", "Ongata Rongai",    
+            "Ruaka", "Ruiru", "Syokimau", "Thika", "Tigoni")
