@@ -23,11 +23,13 @@ library(zoo)
 library(here)
 #install.packages("xlsx")
 library(xlsx)
+library(leaflet)
 
 # 1) Load the required data
 
 suburbs <- read_excel("C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/processed_tables/Hass Suburbs Combined 2015-2022.xlsx")
 satellite <- read_excel("C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/processed_tables/Hass Satellite Combined 2015-2022.xlsx")
+locations <- read_excel("C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/processed_tables/all_data_locations.xlsx")
 
 # 2) Clean the data
 
@@ -50,16 +52,16 @@ all_data$quarter_year <- as.yearqtr(as.numeric(all_data$quarter_year))
 
 # For the plot
 all_data_avg_price <- all_data %>%
-  select(location, quarter_year, average_price)
+  select(location, quarter_year, year, quarter, average_price)
 
 all_data_percentile_price <- all_data %>%
   select(location, quarter_year, x25th_percentile, x75th_percentile)
 
 # For the data table
 all_data_avg_price_data <- all_data %>%
-  select(Location = location, Year = year, Quarter = quarter, Price = average_price)
+  select(Location = location, Year = year, Quarter = quarter, "Average Price (KShs)" = average_price)
 
-str(all_data_avg_price)
+str(all_data_avg_price$"Year + Quarter")
 str(all_data_percentile_price)
 str(all_data_avg_price_data)
 
@@ -67,9 +69,11 @@ str(all_data_avg_price_data)
 
 write.xlsx(all_data_avg_price, "C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/my_app/data/all_data_avg_price.xlsx")
 write.xlsx(all_data_avg_price_data, "C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/my_app/data/all_data_avg_price_data.xlsx")
+write.xlsx(locations, "C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/my_app/data/all_data_locations.xlsx")
 
 saveRDS(all_data_avg_price, "C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/my_app/data/all_data_avg_price.rds")
 saveRDS(all_data_avg_price_data, "C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/my_app/data/all_data_avg_price_data.rds")
+saveRDS(locations, "C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/my_app/data/all_data_locations.rds")
 
 # 3) Plot  the data / EDA
 
@@ -168,3 +172,8 @@ choices = c("Donholm", "Gigiri", "Karen", "Kileleshwa", "Kilimani", "Kitisuru",
 choices = c("Athi River", "Juja", "Kiambu", "Kiserian",     
             "Kitengela", "Limuru", "Mlolongo", "Ngong", "Ongata Rongai",    
             "Ruaka", "Ruiru", "Syokimau", "Thika", "Tigoni")
+
+all_data_avg_price_data %>%
+  filter(Year == 2015)
+
+
