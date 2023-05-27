@@ -67,13 +67,13 @@ str(all_data_avg_price_data)
 
 # Store the dataset
 
-write.xlsx(all_data_avg_price, "C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/my_app/data/all_data_avg_price.xlsx")
-write.xlsx(all_data_avg_price_data, "C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/my_app/data/all_data_avg_price_data.xlsx")
-write.xlsx(locations, "C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/my_app/data/all_data_locations.xlsx")
+write.xlsx(all_data_avg_price, "C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/hass_land_price_app/all_data_avg_price.xlsx")
+write.xlsx(all_data_avg_price_data, "C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/hass_land_price_app/all_data_avg_price_data.xlsx")
+write.xlsx(locations, "C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/hass_land_price_app/all_data_locations.xlsx")
 
-saveRDS(all_data_avg_price, "C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/my_app/data/all_data_avg_price.rds")
-saveRDS(all_data_avg_price_data, "C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/my_app/data/all_data_avg_price_data.rds")
-saveRDS(locations, "C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/my_app/data/all_data_locations.rds")
+saveRDS(all_data_avg_price, "C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/hass_land_price_app/all_data_avg_price.rds")
+saveRDS(all_data_avg_price_data, "C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/hass_land_price_app/all_data_avg_price_data.rds")
+saveRDS(locations, "C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/hass_land_price_app/all_data_locations.rds")
 
 # 3) Plot  the data / EDA
 
@@ -152,8 +152,8 @@ all_data_avg_price %>%
 
 ### TESTS FOR THE APP ###
 
-land_price <- readRDS("C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/my_app/data/all_data_avg_price.rds")
-land_price_data <- readRDS("C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/my_app/data/all_data_avg_price_data.rds")
+land_price <- readRDS("C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/hass_land_price_app/all_data_avg_price.rds")
+land_price_data <- readRDS("C:/R_Files/afrodataviz/sub_pro_3_hass_land_prices/hass_land_price_app/all_data_avg_price_data.rds")
 
 land_price %>%
   group_by(location) %>%

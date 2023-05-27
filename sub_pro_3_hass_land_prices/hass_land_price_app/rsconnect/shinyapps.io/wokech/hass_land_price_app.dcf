@@ -1,0 +1,13 @@
+name: hass_land_price_app
+title:
+username:
+account: wokech
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 9197736
+bundleId: 7270852
+url: https://wokech.shinyapps.io/hass_land_price_app/
+when: 1685188133.20576
+lastSyncTime: 1685188133.20578
+asMultiple: FALSE
+asStatic: FALSE

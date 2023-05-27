@@ -4,6 +4,9 @@
 ## Example
 ## https://www.infoworld.com/article/3633448/easy-racing-bar-charts-in-r-with-ddplot.html
 
+## Flag SVGs for the flourish website
+## https://flagicons.lipis.dev/
+
 # 1) Load the packages required for the maps
 
 # Solve package loading issues with options(timeout = 600) 
@@ -70,8 +73,37 @@ malaria_death_clean_eac_wide$flags <- flags
 
 write.csv(malaria_death_clean_eac_wide, file = "sub_pro_7_malaria_owid/processed_tables/malaria_death_rates_wide_fluorish.csv")
 
-# Get the EAC malaria mean death rates
+# Get the ECOWAS malaria death rates
 
+malaria_death_clean_ecowas <- malaria_death_clean %>%
+  filter(country %in% c("Benin", "Burkina Faso", "Cape Verde", "Cote d'Ivoire", "Gambia", 
+                        "Ghana", "Guinea", "Guinea-Bissau", "Liberia", "Mali", "Niger", 
+                        "Nigeria", "Senegal", "Sierra Leone", "Togo"))
+
+## For Flourish pivot the data
+
+malaria_death_clean_ecowas_wide <- malaria_death_clean_ecowas %>%
+  pivot_wider(names_from = year, values_from = death_rate)
+
+flags <- c("https://public.flourish.studio/country-flags/svg/bj.svg",
+           "https://public.flourish.studio/country-flags/svg/bf.svg",
+           "https://public.flourish.studio/country-flags/svg/cv.svg",
+           "https://public.flourish.studio/country-flags/svg/ci.svg",
+           "https://public.flourish.studio/country-flags/svg/gm.svg",
+           "https://public.flourish.studio/country-flags/svg/gh.svg",
+           "https://public.flourish.studio/country-flags/svg/gn.svg",
+           "https://public.flourish.studio/country-flags/svg/gw.svg",
+           "https://public.flourish.studio/country-flags/svg/lr.svg",
+           "https://public.flourish.studio/country-flags/svg/ml.svg",
+           "https://public.flourish.studio/country-flags/svg/ne.svg",
+           "https://public.flourish.studio/country-flags/svg/ng.svg",
+           "https://public.flourish.studio/country-flags/svg/sn.svg",
+           "https://public.flourish.studio/country-flags/svg/sl.svg",
+           "https://public.flourish.studio/country-flags/svg/tg.svg")
+
+malaria_death_clean_ecowas_wide$flags <- flags
+
+write.csv(malaria_death_clean_ecowas_wide, file = "sub_pro_7_malaria_owid/processed_tables/malaria_death_rates_ecowas_wide_fluorish.csv")
 
 # 3) Draw the plots
 
