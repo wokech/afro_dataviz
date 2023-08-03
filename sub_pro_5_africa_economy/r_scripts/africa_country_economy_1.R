@@ -1,0 +1,65 @@
+# An analysis of African countries by GDP
+
+## Include an explanation of data and a map....
+
+# (A) Load the required libraries
+
+library(tidyverse)
+library(rvest)
+library(stringr)
+library(janitor)
+library(gghighlight)
+library(readr)
+
+# (B) Get the data from Wikipedia
+
+link <- "https://en.wikipedia.org/wiki/List_of_African_countries_by_GDP_(nominal)"
+africa_country <- link %>%
+  read_html("[class='wikitable sortable']") %>% 
+  html_table(fill = TRUE)
+
+africa_country_GDP <- africa_country[[1]]
+
+# (C) Clean the data, fix columns and county labels
+
+africa_country_GDP_clean <- africa_country_GDP %>%
+  clean_names() %>%
+  filter(country != "Total") 
+
+
+# parsing out the number is very critical as a simple conversion using 
+# as._____() will not work
+
+str(africa_country_GDP_clean)
+
+africa_country_GDP_clean$nominal_gdp_billion_us_8_9 <- parse_number(africa_country_GDP_clean$nominal_gdp_billion_us_8_9)
+africa_country_GDP_clean$per_capita_us_8_9 <- parse_number(africa_country_GDP_clean$per_capita_us_8_9)
+
+str(africa_country_GDP_clean)
+
+# Plot 1
+
+ggplot(africa_country_GDP_clean, aes(reorder(country, +nominal_gdp_billion_us_8_9), nominal_gdp_billion_us_8_9, fill = country)) +
+  geom_bar(stat = "identity") + coord_flip() +
+  gghighlight(max(nominal_gdp_billion_us_8_9) > 160) + 
+  scale_fill_brewer(palette="OrRd") +
+  labs(x = "Country",
+       y = "GDP (billions of US$)",
+       title = "",
+       subtitle = "",
+       caption = "") +
+  theme_classic() +
+  scale_y_continuous(labels = comma) +
+  theme(axis.title.x =element_text(size = 20),
+        axis.title.y =element_text(size = 20),
+        axis.text.x = element_text(size = 15),
+        axis.text.y = element_text(size = 10),
+        plot.title = element_text(family="Helvetica", face="bold", size = 20),
+        plot.subtitle = element_text(family="Helvetica", face="bold", size = 15),
+        plot.caption = element_text(family = "Helvetica",size = 12, face = "bold"),
+        plot.background = element_rect(fill = "azure2", colour = "azure2"),
+        panel.background = element_rect(fill = "azure2", colour = "azure2"),
+        legend.title = element_blank(),
+        legend.position = "none") 
+
+
