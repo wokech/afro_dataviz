@@ -27,6 +27,19 @@ library(ggpol)
 #install.packages("ggparliament")
 library(ggparliament)
 
+# To export the images
+# camcorder::gg_record()
+
+library(camcorder)
+
+gg_record(
+  dir = 'sub_pro_4_national_assembly/images',
+  width = 12,
+  height = 12 * 9 / 16,
+  dpi = 300,
+  bg = 'white'
+)
+
 # 2) Load the required datasets
 
 parl_mps <- read_excel("sub_pro_4_national_assembly/processed_tables/Parliament_Sep_2022.xlsx")

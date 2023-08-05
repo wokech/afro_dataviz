@@ -14,6 +14,19 @@ library(readr)
 library(ggthemes)
 library(scales)
 
+# To export the images
+# camcorder::gg_record()
+
+library(camcorder)
+
+gg_record(
+  dir = 'sub_pro_5_africa_economy/images',
+  width = 12,
+  height = 12 * 9 / 16,
+  dpi = 300,
+  bg = 'white'
+)
+
 # (B) Get the data from Wikipedia
 
 link <- "https://en.wikipedia.org/wiki/List_of_regions_of_Tanzania_by_GDP"
