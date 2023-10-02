@@ -90,7 +90,7 @@ server <- function(input, output) {
     ggplot(na.omit(location_df_1()), aes(quarter_year, average_price)) +
       geom_line(aes(color = location), size = 1) +
       geom_point(aes(color = location), size = 2) +
-      theme_minimal() + 
+      theme_classic() + 
       scale_y_continuous(labels = scales::comma) +
       scale_x_continuous(breaks = scales::pretty_breaks(n = 10)) +
       labs(x = "Year",
@@ -103,7 +103,7 @@ server <- function(input, output) {
             panel.grid.major.x=element_blank(),
             panel.grid.minor.x=element_blank(),
             panel.grid.minor.y=element_blank(),
-            axis.text.x = element_text(size = 12),
+            axis.text.x = element_text(size = 12, angle = 45),
             axis.text.y = element_text(size = 12),
             axis.title.x = element_text(size = 15),
             axis.title.y = element_text(size = 15),
@@ -119,7 +119,7 @@ server <- function(input, output) {
     ggplot(na.omit(location_df_2()), aes(quarter_year, average_price)) +
       geom_line(aes(color = location), size = 1) +
       geom_point(aes(color = location), size = 2) +
-      theme_minimal() + 
+      theme_classic() + 
       scale_y_continuous(labels = scales::comma) +
       scale_x_continuous(breaks = scales::pretty_breaks(n = 10)) +
       labs(x = "Year",
@@ -132,7 +132,7 @@ server <- function(input, output) {
             panel.grid.major.x=element_blank(),
             panel.grid.minor.x=element_blank(),
             panel.grid.minor.y=element_blank(),
-            axis.text.x = element_text(size = 12),
+            axis.text.x = element_text(size = 12, angle = 45),
             axis.text.y = element_text(size = 12),
             axis.title.x = element_text(size = 15),
             axis.title.y = element_text(size = 15),

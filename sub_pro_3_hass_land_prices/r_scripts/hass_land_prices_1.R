@@ -174,6 +174,6 @@ choices = c("Athi River", "Juja", "Kiambu", "Kiserian",
             "Ruaka", "Ruiru", "Syokimau", "Thika", "Tigoni")
 
 all_data_avg_price_data %>%
-  filter(Year == 2015)
+  filter(Year == 2023)
 
 
