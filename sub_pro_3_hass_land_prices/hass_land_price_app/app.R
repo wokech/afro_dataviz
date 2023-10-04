@@ -88,7 +88,7 @@ server <- function(input, output) {
   
   output$landprice_linePlot_1 <- renderPlotly({ 
     ggplot(na.omit(location_df_1()), aes(quarter_year, average_price)) +
-      geom_line(aes(color = location), size = 1) +
+      geom_line(aes(color = location), linewidth = 1) +
       geom_point(aes(color = location), size = 2) +
       theme_classic() + 
       scale_y_continuous(labels = scales::comma) +
@@ -117,7 +117,7 @@ server <- function(input, output) {
   
   output$landprice_linePlot_2 <- renderPlotly({ 
     ggplot(na.omit(location_df_2()), aes(quarter_year, average_price)) +
-      geom_line(aes(color = location), size = 1) +
+      geom_line(aes(color = location), linewidth = 1) +
       geom_point(aes(color = location), size = 2) +
       theme_classic() + 
       scale_y_continuous(labels = scales::comma) +
