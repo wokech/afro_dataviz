@@ -7,7 +7,7 @@
 # increase download length time
 
 #install.packages("sf")
-library(sf) # simple features
+library(sf) # simple feature 
 library(tidyverse)
 library(ggplot2)
 library(ggrepel)
@@ -228,7 +228,7 @@ livestock_area_county %>%
        caption = "") +
   theme_minimal() +
   scale_y_continuous(labels = comma) +
-  theme(axis.title.x =element_text(size = 20),
+  theme(axis.title.x =element_text(size = 20), 
         axis.title.y =element_text(size = 20),
         axis.text.x = element_text(size = 15),
         axis.text.y = element_text(size = 15),
