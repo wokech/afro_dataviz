@@ -16,3 +16,5 @@ str(kcpe_1)
 kcpe_1_long <- kcpe_1 %>%
   pivot_longer(!Year, names_to = "Years", values_to = "Count")
 
+kcpe_1_long_wide <- kcpe_1_long %>%
+  pivot_wider(names_from = "Year", values_from = "Count")
