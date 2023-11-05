@@ -75,6 +75,8 @@ meat_clean_region_non_fao_continent <- meat_clean_region_non_fao %>%
                         "North America", "South America", 
                         "Oceania"))
 
+# A) 1080 by 1080 
+
 meat_clean_region_non_fao_continent %>% 
   ggplot(aes(year, meat_production_tonnes, fill = country, label = country, color = country)) +
   geom_area() +
@@ -89,10 +91,10 @@ meat_clean_region_non_fao_continent %>%
   scale_fill_brewer(palette = "Set3") +
   scale_color_brewer(palette = "Set3") +
   theme(axis.title.x =element_text(size = 28, vjust = 1, face = "bold"),
-        axis.title.y =element_text(size = 28,  vjust = 1, face = "bold"),
+        axis.title.y =element_text(size = 28, vjust = 1, face = "bold"),
         axis.text.x = element_text(size = 28, face = "bold", color = "black"),
         axis.text.y = element_text(size = 28, face = "bold", color = "black"),
-        plot.title = element_text(family="Helvetica", face="bold", size = 32, colour = "#5C4033"),
+        plot.title = element_text(family="Helvetica", face="bold", size = 36, colour = "#000000", hjust  = 0.5),
         plot.subtitle = element_text(family="Helvetica", face="bold", size = 15),
         plot.caption = element_text(family = "Helvetica",size = 24, , hjust = 0.5, vjust = 1),
         plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
@@ -106,3 +108,38 @@ meat_clean_region_non_fao_continent %>%
         legend.margin = margin(6, 6, 6, 6))
 
 ggsave("sub_pro_13_agriculture_owid/images/continent_meat_1.png", width = 12, height = 12, dpi = 72)
+
+# B) 1080 by 1920 
+
+meat_clean_region_non_fao_continent %>% 
+  ggplot(aes(year, meat_production_tonnes, fill = country, label = country, color = country)) +
+  geom_area() +
+  labs(x = "Year",
+       y = "Meat Production\n(Millions of Tonnes)",
+       title = "Africa's Share of Global Meat\nProduction Has Significantly\nDecreased",
+       subtitle = "",
+       caption = "Data Source: Our World in Data | By @afro_dataviz") +
+  theme_classic() +
+  scale_y_continuous(limits = c(0, 360000000), labels  = 
+                       label_number(scale = 1e-6)) +
+  scale_fill_brewer(palette = "Set3") +
+  scale_color_brewer(palette = "Set3") +
+  theme(axis.title.x =element_text(size = 28, vjust = 1, face = "bold"),
+        axis.title.y =element_text(size = 28,  vjust = 1, face = "bold"),
+        axis.text.x = element_text(size = 28, face = "bold", color = "black"),
+        axis.text.y = element_text(size = 28, face = "bold", color = "black"),
+        plot.title = element_text(family="Helvetica", face="bold", size = 32, colour = "#000000", hjust  = 0.5),
+        plot.subtitle = element_text(family="Helvetica", face="bold", size = 15),
+        plot.caption = element_text(family = "Helvetica",size = 24, vjust = 1),
+        plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
+        panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
+        legend.title = element_blank(),
+        legend.text = element_text(size = 28),
+        legend.background = element_rect("bisque1"),
+        legend.position = c(.5, .95),
+        legend.justification = c("right", "top"),
+        legend.box.just = "right",
+        legend.margin = margin(6, 6, 6, 6))
+
+ggsave("sub_pro_13_agriculture_owid/images/continent_meat_2.png", width = 9, height = 16, dpi = 72)
+
