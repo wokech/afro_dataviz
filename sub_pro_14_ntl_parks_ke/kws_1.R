@@ -16,7 +16,9 @@ library(janitor)
 
 # 2) Load the data
 
-nat_parks_ke <- read_excel("sub_pro_14_ntl_parks_ke/parks.png.xlsx")
+# Set the appropriate working directory
+
+nat_parks_ke <- read_excel("parks.xlsx")
 
 # 3) Wrangle data
 
