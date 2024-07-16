@@ -24,21 +24,23 @@ library(janitor)
 
 #install.packages("ggpol")
 library(ggpol)
-#install.packages("ggparliament")
+
+#install.packages("devtools")
+#devtools::install_github("zmeers/ggparliament")
 library(ggparliament)
 
 # To export the images
 # camcorder::gg_record()
 
-library(camcorder)
-
-gg_record(
-  dir = 'sub_pro_4_national_assembly/images',
-  width = 12,
-  height = 12 * 9 / 16,
-  dpi = 300,
-  bg = 'white'
-)
+# library(camcorder)
+# 
+# gg_record(
+#   dir = 'sub_pro_4_national_assembly/images',
+#   width = 12,
+#   height = 12 * 9 / 16,
+#   dpi = 300,
+#   bg = 'white'
+# )
 
 # 2) Load the required datasets
 
