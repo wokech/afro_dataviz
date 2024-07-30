@@ -1,4 +1,4 @@
-# ICT in Africa
+# ICT in East Africa
 
 # Load the required libraries and packages
 
@@ -71,7 +71,7 @@ ict_per_100_clean_eac %>%
   ggplot(aes(x = year, 
              y = fixed_telephone_subscriptions_per_100_people, 
              color = country)) + 
-  geom_line(size = 1) +
+  geom_line(linewidth = 1) +
   labs(x = "Year",
        y = "Number of fixed telephone\nline subscriptions (per 100 people) ",
        title = "No place for landlines",
@@ -109,14 +109,14 @@ ict_per_100_clean_eac %>%
         plot.subtitle = element_text(family="Helvetica", face="bold", size = 20, hjust = 0.5),
         #plot.subtitle.position = "plot",
         plot.caption = element_text(family = "Helvetica",size = 20, face = "bold", hjust = 1),
-        plot.background = element_rect(fill = "azure", colour = "azure"),
-        panel.background = element_rect(fill = "azure", colour = "azure"),
+        plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
+        panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
         legend.title = element_blank(),
         legend.text = element_text(size = 14),
-        legend.background = element_rect("azure"),
+        legend.background = element_rect("bisque1"),
         legend.position = "none") 
 
-ggsave("sub_pro_16_ict/images/landlines_eac.png", width = 12, height = 12, dpi = 300)
+# ggsave("sub_pro_16_ict/images/landlines_eac.png", width = 12, height = 12, dpi = 300)
 
 # 2) Individuals using the internet as a percent of the population (2000 - 2020) in EAC
 
@@ -135,7 +135,7 @@ ict_per_100_clean_eac %>%
   ggplot(aes(x = year, 
              y = individuals_using_the_internet_percent_of_population, 
              color = country)) + 
-  geom_line(size = 1) +
+  geom_line(linewidth = 1) +
   labs(x = "Year",
        y = "Share of the population\nusing the internet (%)",
        title = "How many East Africans are online?",
@@ -163,14 +163,14 @@ ict_per_100_clean_eac %>%
         plot.subtitle = element_text(family="Helvetica", face="bold", size = 20, hjust = 0.5),
         #plot.subtitle.position = "plot",
         plot.caption = element_text(family = "Helvetica",size = 20, face = "bold", hjust = 1),
-        plot.background = element_rect(fill = "azure", colour = "azure"),
-        panel.background = element_rect(fill = "azure", colour = "azure"),
+        plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
+        panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
         legend.title = element_blank(),
         legend.text = element_text(size = 14),
-        legend.background = element_rect("azure"),
+        legend.background = element_rect("bisque1"),
         legend.position = "none") 
 
-ggsave("sub_pro_16_ict/images/internet_percent_eac.png", width = 12, height = 12, dpi = 300)
+# ggsave("sub_pro_16_ict/images/internet_percent_eac.png", width = 12, height = 12, dpi = 300)
 
 # 3) Mobile phone subscriptions per 100 people (2000 - 2020) in EAC
 
@@ -189,7 +189,7 @@ ict_per_100_clean_eac %>%
   ggplot(aes(x = year, 
              y = mobile_cellular_subscriptions_per_100_people, 
              color = country)) + 
-  geom_line(size = 1) +
+  geom_line(linewidth = 1) +
   geom_hline(yintercept = 100, size = 1, linetype = "dashed") +
   annotate("text", x = 2005, y = 102, size = 8, face = "bold", label = "Cellular subscriptions:Population = 1:1") +
   labs(x = "Year",
@@ -219,14 +219,14 @@ ict_per_100_clean_eac %>%
         plot.subtitle = element_text(family="Helvetica", face="bold", size = 20, hjust = 0.5),
         plot.subtitle.position = "plot",
         plot.caption = element_text(family = "Helvetica",size = 20, face = "bold", hjust = 1),
-        plot.background = element_rect(fill = "azure", colour = "azure"),
-        panel.background = element_rect(fill = "azure", colour = "azure"),
+        plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
+        panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
         legend.title = element_blank(),
         legend.text = element_text(size = 14),
-        legend.background = element_rect("azure"),
+        legend.background = element_rect("bisque1"),
         legend.position = "none") 
 
-ggsave("sub_pro_16_ict/images/cellphone_subs_eac.png", width = 12, height = 12, dpi = 300)
+# ggsave("sub_pro_16_ict/images/cellphone_subs_eac.png", width = 12, height = 12, dpi = 300)
 
 # 4) Number of fixed vs mobile in SS Africa
 
@@ -253,7 +253,7 @@ ict_per_100_clean_ssa_long %>%
   ggplot(aes(x = year, 
              y = numbers_per_100, 
              color = connection_type)) + 
-  geom_line(size = 1) +
+  geom_line(linewidth = 1) +
   labs(x = "Year",
        y = "Number of users (per 100 people)",
        title = "Cellular dominates in Sub-Saharan Africa",
@@ -276,15 +276,15 @@ ict_per_100_clean_ssa_long %>%
         plot.subtitle = element_text(family="Helvetica", face="bold", size = 20, hjust = 0.5),
         plot.subtitle.position = "plot",
         plot.caption = element_text(family = "Helvetica",size = 20, face = "bold", hjust = 1),
-        plot.background = element_rect(fill = "azure", colour = "azure"),
-        panel.background = element_rect(fill = "azure", colour = "azure"),
+        plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
+        panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
         legend.title = element_blank(),
         legend.text = element_text(size = 14),
-        legend.background = element_rect("azure"),
+        legend.background = element_rect("bisque1"),
         legend.position = "none") 
 
 
-ggsave("sub_pro_16_ict/images/communication_ssa.png", width = 12, height = 12, dpi = 300)
+# ggsave("sub_pro_16_ict/images/communication_ssa.png", width = 12, height = 12, dpi = 300)
 
 
 
