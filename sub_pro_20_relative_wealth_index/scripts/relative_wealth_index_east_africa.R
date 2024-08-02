@@ -1,8 +1,8 @@
-# Relative Wealth Index
+# Relative Wealth Index - East Africa
 # using the Meta DataforGood dataset
 
 # Install necessary packages
-install.packages(c("ggplot2", "sf", "viridis", "rnaturalearth", "rnaturalearthdata"))
+# install.packages(c("ggplot2", "sf", "viridis", "rnaturalearth", "rnaturalearthdata"))
 
 # Load the libraries
 library(ggplot2)
@@ -33,12 +33,12 @@ major_towns_kenya <- data.frame(
 # Map of Kenya
 
 ggplot() +
-  geom_sf(data = kenya, fill = NA, color = "black", linewidth = 1.5) + # Add Kenya borders
-  geom_point(data = ken_data, aes(x = longitude, y = latitude, color = rwi), size = 0.4, alpha = 0.9) +
+  geom_sf(data = kenya, fill = NA, color = "black", linewidth = 1) + # Add Kenya borders
+  geom_point(data = ken_data, aes(x = longitude, y = latitude, color = rwi), size = 0.5, alpha = 0.8) +
   geom_text_repel(data = major_towns_kenya, aes(x = longitude, y = latitude, label = name), 
-            color = "black", fontface = "bold", check_overlap = TRUE, size = 8, vjust = 1.5) +
-  geom_point(data = major_towns, aes(x = longitude, y = latitude), 
-             color = "black", size = 4, shape = 13) +
+            color = "black", fontface = "bold", check_overlap = TRUE, size = 10, vjust = 1.5) +
+  geom_point(data = major_towns_kenya, aes(x = longitude, y = latitude), 
+             color = "black", size = 5, shape = 13) +
   scale_color_viridis(option = "plasma") +
   theme_void() +
   labs(title = "Wealth Index Distribution\nin Kenya",
@@ -48,7 +48,7 @@ ggplot() +
   theme(plot.title = element_text(family="Helvetica", face="bold", size = 44, hjust = 0.5),
         #plot.subtitle = element_text(family="Helvetica", size = 24, hjust = 0.5),
         plot.title.position = 'plot',
-        plot.caption = element_text(family = "Helvetica",size = 24, hjust = -1, vjust = 0.5),
+        plot.caption = element_text(family = "Helvetica",size = 24, hjust = -0.25, vjust = 0.5),
         plot.caption.position = 'plot',
         plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
         panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
@@ -79,12 +79,12 @@ major_towns_tanzania <- data.frame(
 # Map of Tanzania
 
 ggplot() +
-  geom_sf(data = tanzania, fill = NA, color = "black", linewidth = 1.5) + # Add Tanzania borders
-  geom_point(data = tza_data, aes(x = longitude, y = latitude, color = rwi), size = 0.4, alpha = 0.9) +
+  geom_sf(data = tanzania, fill = NA, color = "black", linewidth = 1) + # Add Tanzania borders
+  geom_point(data = tza_data, aes(x = longitude, y = latitude, color = rwi), size = 0.5, alpha = 0.9) +
   geom_text_repel(data = major_towns_tanzania, aes(x = longitude, y = latitude, label = name), 
                   color = "black", fontface = "bold", check_overlap = TRUE, size = 10, vjust = 1.5) +
   geom_point(data = major_towns_tanzania, aes(x = longitude, y = latitude), 
-             color = "black", size = 4, shape = 13) +
+             color = "black", size = 5, shape = 13) +
   scale_color_viridis(option = "plasma") +
   theme_void() +
   labs(title = "Wealth Index Distribution\nin Tanzania",
@@ -126,12 +126,12 @@ major_towns_uganda <- data.frame(
 # Map of Uganda
 
 ggplot() +
-  geom_sf(data = uganda, fill = NA, color = "black", linewidth = 1.5) + # Add Uganda borders
-  geom_point(data = uga_data, aes(x = longitude, y = latitude, color = rwi), size = 0.4, alpha = 0.9) +
+  geom_sf(data = uganda, fill = NA, color = "black", linewidth = 1) + # Add Uganda borders
+  geom_point(data = uga_data, aes(x = longitude, y = latitude, color = rwi), size = 1, alpha = 0.9) +
   geom_text_repel(data = major_towns_uganda, aes(x = longitude, y = latitude, label = name), 
                   color = "black", fontface = "bold", check_overlap = TRUE, size = 10, vjust = 1.5) +
   geom_point(data = major_towns_uganda, aes(x = longitude, y = latitude), 
-             color = "black", size = 4, shape = 13) +
+             color = "black", size = 5, shape = 13) +
   scale_color_viridis(option = "plasma") +
   theme_void() +
   labs(title = "Wealth Index Distribution\nin Uganda",
@@ -141,7 +141,7 @@ ggplot() +
   theme(plot.title = element_text(family="Helvetica", face="bold", size = 44, hjust = 0.5),
         #plot.subtitle = element_text(family="Helvetica", size = 24, hjust = 0.5),
         plot.title.position = 'plot',
-        plot.caption = element_text(family = "Helvetica",size = 24, hjust = -0.25, vjust = 0.5),
+        plot.caption = element_text(family = "Helvetica",size = 24, hjust = -0.3, vjust = 0.5),
         plot.caption.position = 'plot',
         plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
         panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
@@ -167,18 +167,18 @@ burundi <- ne_countries(scale = "medium", country = "Burundi", returnclass = "sf
 major_towns_burundi <- data.frame(
   name = c("Bujumbura", "Gitega", "Ngozi", "Ruyigi", "Kayanza"),
   latitude = c(-3.3731, -3.4264, -2.9075, -3.4753, -2.9227),
-  longitude = c(29.9189, 29.9246, 29.8301, 30.2485, 29.6295)
+  longitude = c(29.3644, 29.9246, 29.8301, 30.2485, 29.6295)
 )
 
 # Map of Burundi
 
 ggplot() +
-  geom_sf(data = burundi, fill = NA, color = "black", linewidth = 1.5) + # Add Burundi borders
+  geom_sf(data = burundi, fill = NA, color = "black", linewidth = 1) + # Add Burundi borders
   geom_point(data = bdi_data, aes(x = longitude, y = latitude, color = rwi), size = 3, alpha = 0.9) +
   geom_text_repel(data = major_towns_burundi, aes(x = longitude, y = latitude, label = name), 
                   color = "black", fontface = "bold", check_overlap = TRUE, size = 10, vjust = 1.5) +
   geom_point(data = major_towns_burundi, aes(x = longitude, y = latitude), 
-             color = "black", size = 4, shape = 13) +
+             color = "black", size = 5, shape = 13) +
   scale_color_viridis(option = "plasma") +
   theme_void() +
   labs(title = "Wealth Index Distribution\nin Burundi",
@@ -188,7 +188,7 @@ ggplot() +
   theme(plot.title = element_text(family="Helvetica", face="bold", size = 44, hjust = 0.5),
         #plot.subtitle = element_text(family="Helvetica", size = 24, hjust = 0.5),
         plot.title.position = 'plot',
-        plot.caption = element_text(family = "Helvetica",size = 24, hjust = -0.25, vjust = 0.5),
+        plot.caption = element_text(family = "Helvetica",size = 24, hjust = -0.5, vjust = 0.5),
         plot.caption.position = 'plot',
         plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
         panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
@@ -212,7 +212,7 @@ rwanda <- ne_countries(scale = "medium", country = "Rwanda", returnclass = "sf")
 
 # Create a data frame with major Rwandan towns
 major_towns_rwanda <- data.frame(
-  name = c("Kigali", "Butare", "Gisenyi", "Ruhengeri", "Gitarama"),
+  name = c("Kigali", "Butare", "Gisenyi", "Ruhengeri", "Muhanga"),
   latitude = c(-1.9706, -2.5985, -1.6840, -1.4998, -2.0736),
   longitude = c(30.1044, 29.7370, 29.2625, 29.6342, 29.7565)
 )
@@ -220,12 +220,12 @@ major_towns_rwanda <- data.frame(
 # Map of Rwanda
 
 ggplot() +
-  geom_sf(data = rwanda, fill = NA, color = "black", linewidth = 1.5) + # Add Rwanda borders
-  geom_point(data = rwa_data, aes(x = longitude, y = latitude, color = rwi), size = 3, alpha = 0.9) +
+  geom_sf(data = rwanda, fill = NA, color = "black", linewidth = 1) + # Add Rwanda borders
+  geom_point(data = rwa_data, aes(x = longitude, y = latitude, color = rwi), size = 3.5, alpha = 0.9) +
   geom_text_repel(data = major_towns_rwanda, aes(x = longitude, y = latitude, label = name), 
                   color = "black", fontface = "bold", check_overlap = TRUE, size = 10, vjust = 1.5) +
   geom_point(data = major_towns_rwanda, aes(x = longitude, y = latitude), 
-             color = "black", size = 4, shape = 13) +
+             color = "black", size = 5, shape = 13) +
   scale_color_viridis(option = "plasma") +
   theme_void() +
   labs(title = "Wealth Index Distribution\nin Rwanda",
@@ -235,7 +235,7 @@ ggplot() +
   theme(plot.title = element_text(family="Helvetica", face="bold", size = 44, hjust = 0.5),
         #plot.subtitle = element_text(family="Helvetica", size = 24, hjust = 0.5),
         plot.title.position = 'plot',
-        plot.caption = element_text(family = "Helvetica",size = 24, hjust = -0.25, vjust = 0.5),
+        plot.caption = element_text(family = "Helvetica",size = 24, hjust = -0.1, vjust = 0.5),
         plot.caption.position = 'plot',
         plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
         panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
@@ -267,12 +267,12 @@ major_towns_cod <- data.frame(
 # Map of DR Congo
 
 ggplot() +
-  geom_sf(data = drcongo, fill = NA, color = "black", linewidth = 1.5) + # Add DR Congo borders
-  geom_point(data = cod_data, aes(x = longitude, y = latitude, color = rwi), size = 1, alpha = 0.9) +
+  geom_sf(data = drcongo, fill = NA, color = "black", linewidth = 1) + # Add DR Congo borders
+  geom_point(data = cod_data, aes(x = longitude, y = latitude, color = rwi), size = 0.5, alpha = 0.9) +
   geom_text_repel(data = major_towns_cod, aes(x = longitude, y = latitude, label = name), 
                   color = "black", fontface = "bold", check_overlap = TRUE, size = 10, vjust = 1.5) +
   geom_point(data = major_towns_cod, aes(x = longitude, y = latitude), 
-             color = "black", size = 4, shape = 13) +
+             color = "black", size = 5, shape = 13) +
   scale_color_viridis(option = "plasma") +
   theme_void() +
   labs(title = "Wealth Index Distribution\nin the DR Congo",
@@ -291,7 +291,3 @@ ggplot() +
         legend.position = "top")
 
 ggsave("sub_pro_20_relative_wealth_index/images/drcongo.png", width = 12, height = 12, dpi = 72)
-
-
-
-
