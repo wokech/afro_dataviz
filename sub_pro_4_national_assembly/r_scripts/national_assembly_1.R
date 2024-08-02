@@ -90,7 +90,7 @@ ggplot(ke_semicircle, aes(x=x, y=y, colour = abbreviation)) +
   labs(title = "The 13th Parliament of the Republic of Kenya",
        subtitle = "Composition of MPs elected in August 2022",
        color = "Party",
-       caption = "* Small parties have 5 or less MPs\nSource: National Assembly of Kenya | By: @willyokech") +
+       caption = "* Small parties have 5 or less MPs\nSource: National Assembly of Kenya | By: @afro_dataviz") +
   scale_colour_manual(values = ke_semicircle$colors,
                       limits = ke_semicircle$abbreviation)
 
