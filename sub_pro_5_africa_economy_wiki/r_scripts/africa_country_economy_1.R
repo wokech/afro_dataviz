@@ -12,21 +12,22 @@ library(stringr)
 library(janitor)
 library(gghighlight)
 library(readr)
+library(treemapify)
 
 # (B) New method to export images and gifs
 
 # To export the images
 # camcorder::gg_record()
 
-library(camcorder)
-
-gg_record(
-  dir = 'sub_pro_5_africa_economy/images',
-  width = 12,
-  height = 12 ,
-  dpi = 300,
-  bg = 'white'
-)
+# library(camcorder)
+# 
+# gg_record(
+#   dir = 'sub_pro_5_africa_economy/images',
+#   width = 12,
+#   height = 12 ,
+#   dpi = 300,
+#   bg = 'white'
+# )
 
 # (C) Get the data from Wikipedia
 
@@ -42,8 +43,9 @@ africa_country_GDP <- africa_country[[1]]
 africa_country_GDP_clean <- africa_country_GDP %>%
   clean_names() %>%
   filter(country != "Total") %>%
-  rename("nominal_gdp" = "nominal_gdp_billion_us_8_9",
-         "gdp_per_capita" = "per_capita_us_8_9")
+  rename("nominal_gdp" = "nominal_gdp_billion_us_1",
+         "gdp_per_capita" = "per_capita_us_1") %>%
+  mutate(across(everything(), ~ str_remove_all(., "\\[6\\]|\\(2019\\)")))
 
 # parsing out the number is very critical as a simple conversion using 
 # as._____() will not work
@@ -62,6 +64,9 @@ str(africa_country_GDP_clean_1)
 
 africa_country_GDP_clean_2 <- subset(africa_country_GDP_clean, select = -nominal_gdp)
 str(africa_country_GDP_clean_1)
+
+# Save the processed dataset
+
 
 # (E) Plots
 
@@ -96,7 +101,7 @@ ggplot(africa_country_GDP_clean_1, aes(reorder(country, +nominal_gdp), nominal_g
 africa_country_GDP_clean_top_5 <- africa_country_GDP_clean_1[1:5, ]
 
 # Get the bottom 49
-africa_country_GDP_clean_bottom <- africa_country_GDP_clean_1[africa_country_GDP_clean_1$nominal_gdp < 130, ]
+africa_country_GDP_clean_bottom <- africa_country_GDP_clean_1[6:54, ]
 
 # Sum the bottom 49
 africa_country_GDP_clean_bottom_total <- africa_country_GDP_clean_bottom %>%
@@ -144,17 +149,17 @@ ggplot(africa_country_GDP_clean_2, aes(reorder(country, +gdp_per_capita), gdp_pe
   scale_fill_brewer(palette="OrRd") +
   labs(x = "Country",
        y = "GDP per capita (US$)",
-       title = "Only 3 countries in Africa were part of the $10k or greater club",
+       title = "Only 2 countries in Africa were part of the $10k or greater club",
        subtitle = "Majority of the countries had GDPs per capita below $1500",
        caption = "Data Source: Wikipedia | By @willyokech") +
   theme_classic() +
-  scale_y_continuous(labels = comma) +
+  #scale_y_continuous(labels = comma) +
   theme(axis.title.x =element_text(size = 20),
         axis.title.y =element_text(size = 20),
         axis.text.x = element_text(size = 20),
         axis.text.y = element_text(size = 15),
         plot.title = element_text(family="Helvetica", face="bold", size = 25, hjust = 1.5, vjust=0.5),
-        plot.subtitle = element_text(family="Helvetica", size = 20, hjust = -1.5, vjust=0.5),
+        plot.subtitle = element_text(family="Helvetica", size = 20, hjust = 0.5, vjust=0.5),
         plot.caption = element_text(family = "Helvetica",size = 15, face = "bold"),
         plot.background = element_rect(fill = "azure2", colour = "azure2"),
         panel.background = element_rect(fill = "azure2", colour = "azure2"),
@@ -196,6 +201,9 @@ africa_country_pop_1_clean[africa_country_pop_1_clean=="Gambia"] <- "The Gambia"
 # Join the tables 
 
 africa_country_GDP_pop <- left_join(africa_country_GDP_clean, africa_country_pop_1_clean, by = "country")
+
+# Save the processed dataset
+
 
 # Basic bubble plot / ####### Not very useful #########
 

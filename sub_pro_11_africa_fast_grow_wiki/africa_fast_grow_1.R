@@ -4,7 +4,7 @@
 
 # A) Load the required packages and libraries
 
-install.packages('rvest')
+#install.packages('rvest')
 library(rvest)
 
 # B) Scrape the data
@@ -20,8 +20,8 @@ webpage_2023 <- read_html(url_2023)
 # Extract the table (adjust CSS selector as needed)
 table_data_2023 <- html_table(webpage_2023, fill = TRUE)[[1]]
 
-# Print the scraped table
-print(table_data_2023)
+# View the scraped table
+View(table_data_2023)
 
 # 2024
 
@@ -35,15 +35,80 @@ webpage_2024 <- read_html(url_2024)
 table_data_2024 <- html_table(webpage_2024, fill = TRUE)[[1]]
 
 # Print the scraped table
-print(table_data_2024)
-
-# Which companies are in both tables
-
-merge_1 <- merge(table_data_2023, table_data_2024, by = "Company name")
-merge_2 <- merge(table_data_2023, table_data_2024, by = "Brand")
+View(table_data_2024)
 
 # C) Data cleaning 
 
-
+table_data_2023_clean <- table_data_2023 %>%
+  clean_names()
+table_data_2024_clean <- table_data_2024 %>%
+  clean_names()
 
 # D) EDA
+
+# Which companies are in both tables? 
+
+merge_1 <- merge(table_data_2023_clean, table_data_2024_clean, by = "company_name")
+merge_2 <- merge(table_data_2023_clean, table_data_2024_clean, by = "brand")
+
+# Where do most companies come from?
+
+table_data_2023_clean_country <- table_data_2023_clean %>%
+  group_by(country) %>%
+  summarise(total = n()) %>%
+  arrange(desc(total))
+
+table_data_2024_clean_country <- table_data_2024_clean %>%
+  group_by(country) %>%
+  summarise(total = n()) %>%
+  arrange(desc(total))
+
+# What sector do the companies work in?
+
+table_data_2023_clean_sector <- table_data_2023_clean %>%
+  group_by(sector) %>%
+  summarise(total = n()) %>%
+  arrange(desc(total))
+
+table_data_2024_clean_sector <- table_data_2024_clean %>%
+  group_by(sector) %>%
+  summarise(total = n()) %>%
+  arrange(desc(total))
+
+# When were the companies founded?
+
+table_data_2023_clean_year <- table_data_2023_clean %>%
+  group_by(founding_year) %>%
+  summarise(total = n()) %>%
+  arrange(desc(total))
+
+table_data_2024_clean_year <- table_data_2024_clean %>%
+  group_by(founding_year) %>%
+  summarise(total = n()) %>%
+  arrange(desc(total))
+
+# Grouped data by year
+
+table_data_2023_clean_year_group <- table_data_2023_clean %>%
+  mutate(founding_year_group = case_when(
+    founding_year >= 1850 & founding_year <= 1950 ~ "1850-1950",
+    founding_year >= 1951 & founding_year <= 1975 ~ "1951-1975",
+    founding_year >= 1976 & founding_year <= 2000 ~ "1976-2000",
+    founding_year >= 2001 & founding_year <= 2012 ~ "2001-2012",
+    founding_year >= 2013 & founding_year <= 2024 ~ "2013-2024", 
+    )) %>%
+  group_by(founding_year_group) %>%
+  summarise(total = n()) %>%
+  arrange(desc(total))
+
+table_data_2024_clean_year_group <- table_data_2024_clean %>%
+  mutate(founding_year_group = case_when(
+    founding_year >= 1850 & founding_year <= 1950 ~ "1850-1950",
+    founding_year >= 1951 & founding_year <= 1975 ~ "1951-1975",
+    founding_year >= 1976 & founding_year <= 2000 ~ "1976-2000",
+    founding_year >= 2001 & founding_year <= 2012 ~ "2001-2012",
+    founding_year >= 2013 & founding_year <= 2024 ~ "2013-2024", 
+  )) %>%
+  group_by(founding_year_group) %>%
+  summarise(total = n()) %>%
+  arrange(desc(total))
