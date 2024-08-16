@@ -1,0 +1,126 @@
+"","rank","company_name","brand","country","sector","absolute_growth_rate_percent","compound_annual_growth_rate_cagr_percent","revenues_2022_mn","revenues_2019_mn","number_of_employees_2022","number_of_employees_2019","founding_year"
+"1",1,"Omniretail Inc.","OmniRetail","Nigeria","E-commerce","66,294.88",772.39,"139.88","0.25","896","11",2019
+"2",2,"Kyosk Digital","Kyosk.App","Mauritius","E-commerce","41,644.81",647.37,"155.35","0.37","202","20",2019
+"3",3,"Resourgenix Pty Ltd.","Resourgenix","South Africa","Employment Services","26,441.42",542.65,"33.62","0.14","91","5",2019
+"4",4,"Moniepoint Inc.","Moniepoint","Nigeria","Fintech, Financial Services & Insurance","7,979.35",332.31,"148.66","1.84","962","111",2015
+"5",5,"Afex Commodities Exchange Ltd.","Afex","Nigeria","Fintech, Financial Services & Insurance","5,733.12",287.82,"415.54","8.38","391","59",2014
+"6",6,"Chari.Co","Chari","Morocco","E-commerce","4,107.31",247.8,"6.31","0.15","187","10",2019
+"7",7,"Enara Group","Enara","Egypt","Energy & Utilities","3,265.65",222.87,"4.31","0.15","36","3",2018
+"8",8,"Yellow Digital Retailers Ltd.","Yellow","Mauritius","Energy & Utilities","2,892.22",210.45,"28.77","0.96","85","17",2018
+"9",9,"Kentegra Biotechnology Epz Ltd.","Kentegra Biotechnology","Kenya","Health Care & Life Sciences","2,333.05",189.77,"3.76","0.15","194","42",2017
+"10",10,"HearX Group Pty Ltd.","HearX Group","South Africa","Health Care & Life Sciences","2,056.82",178.36,"12.28","0.57","172","42",2016
+"11",11,"AfricaWorks","Africaworks","Mauritius","Real estate","1,847.88",169.06,"7.45","0.38","77","12",2017
+"12",12,"Mycredit Investments Ltd.","FairMoney","Nigeria","Fintech, Financial Services & Insurance","1,719.13",163,"142.93","9.25","542","45",2017
+"13",13,"Agro Supply Ltd.","Agro Supply","Uganda","Agriculture, Forestry & Fishing","1,466.77",150.23,"2.29","0.15","12","4",2017
+"14",14,"Lapaire Glasses Côte D’Ivoire S.A.R.L.","Lapaire","Ivory Coast","Health Care & Life Sciences","1,344.04",143.52,"3.42","0.24","323","24",2018
+"15",15,"Deimos Cloud Pty Ltd.","Deimos Cloud","South Africa","IT & Software","1,196.11",134.9,"15.23","1.33","82","24",2018
+"16",16,"Alpha Morgan Capital Managers Ltd.","Alpha Morgan Capital","Nigeria","Fintech, Financial Services & Insurance","994.85",122.05,"13.79","1.48","59","22",2012
+"17",17,"Balancell Energy Pty Ltd.","Balancell Energy","South Africa","Manufacturing","984.95",121.38,"11.4","1.19","40","8",2017
+"18",18,"Thrive Agric Ltd.","ThriveAgric","Nigeria","Professional, Scientific & Technical Services","964.9",120.01,"73.26","8.1","223","30",2016
+"19",19,"Bisedge Ltd.","Bisedge","Nigeria","Logistics & Transportation","926.54",117.33,"3.14","0.36","372","20",2016
+"20",20,"Evolution Foods International Pty Ltd.","Evolution Foods International","South Africa","Food & Beverages","911.04",116.23,"2.3","0.26","1","1",2017
+"21",21,"Tymebank Ltd.","Tymebank","South Africa","Fintech, Financial Services & Insurance","885.69",114.41,"40.41","4.65","350","230",2018
+"22",22,"Marchiche Global Solutions","Marchiche Global Solutions","Morocco","Professional, Scientific & Technical Services","858.61",112.43,"10.34","1.14","66","104",2008
+"23",23,"Globe Medex For Trade And Distribution","Globe Medex","Egypt","Pharmaceuticals & Cosmetics","799.97",108.01,"2.55","0.28","12","6",2017
+"24",24,"The Seamless Company Ltd.","SeamlessHR","Nigeria","IT & Software","700.66",100.06,"2.62","0.38","160","39",2018
+"25",25,"Lipa Later Ltd.","Lipa Later","Kenya","Fintech, Financial Services & Insurance","606.44",91.88,"7.17","1.01","73","12",2017
+"26",26,"Consilient Ltd. Company","Consilient","Somalia/Somaliland","Professional, Scientific & Technical Services","599.74",91.27,"2.58","0.37","35","15",2019
+"27",27,"Zendascape Pty","Aura","South Africa","IT & Software","596.45",90.97,"3.73","0.61","63","15",2017
+"28",28,"Terragon Holdings Mauritius","Terragon","Mauritius","Advertising & Marketing","568.23",88.35,"19.45","2.91","109","106",2017
+"29",29,"Natural Extracts Industries Ltd.","Natural Extracts Industries","Tanzania","Agriculture, Forestry & Fishing","496.85",81.39,"2.99","0.51","135","39",2011
+"30",30,"Hubtel Ltd.","Hubtel","Ghana","Fintech, Financial Services & Insurance","448.97",76.41,"31.95","5.82","238","60",2007
+"31",31,"West African Soy Industries Ltd.","Wasil","Nigeria","Agriculture, Forestry & Fishing","446",76.09,"248.71","53.6","762","174",2015
+"32",32,"Herholdt’S Group Pty Ltd.","The Herholdt’S Group","South Africa","Energy & Utilities","405.66",71.64,"273.7","61.34","208","161",1989
+"33",33,"Open Vantage Pty Ltd.","Open Vantage","South Africa","IT & Software","362.22",66.58,"3","0.74","53","28",2017
+"34",34,"Quick Mart Ltd.","Quick Mart","Kenya","Retail","346.72",64.69,"294.86","76.34","5,309","1,734",2006
+"35",35,"Aces Africa Pty Ltd.","Aces","South Africa","Energy & Utilities","336.65",62.49,"3.96","1.04","54","20",2013
+"36",36,"Innovo Networks Pty Ltd.","Innovo Networks","South Africa","Media & Telecommunications","316.41",60.88,"1.69","0.46","8","5",2013
+"37",37,"CSSi South Africa Pty Ltd.","CSSi South Africa","South Africa","IT & Software","315.02",60.7,"44.16","12.06","82","37",2000
+"38",38,"Fleetcam Pty Ltd.","Fleetcam","South Africa","IT & Software","311.63",60.26,"3.11","0.86","44","21",2014
+"39",39,"GoMyCode","GoMyCode","Tunisia","Education & Social Services","309.4",59.97,"2.1","0.51","130","40",2018
+"40",40,"Powergen East Africa Renewable Energy Ltd.","Powergen Renewable Energy","Kenya","Energy & Utilities","307.48",59.72,"3.44","0.85","104","146",2011
+"41",41,"Easy Solar (Sl) Ltd.","Easy Solar","Sierra Leone","Energy & Utilities","303.53",59.21,"6.76","1.67","256","150",2016
+"42",42,"Turaco Ltd.","Turaco","Kenya","Fintech, Financial Services & Insurance","303.43",59.19,"2.28","0.56","60","37",2019
+"43",43,"Luxity Pty Ltd.","Luxity","South Africa","E-commerce","297.61",58.42,"2.98","0.75","23","12",2015
+"44",44,"Good Nature Agro Products Ltd.","Good Nature Agro","Zambia","Agriculture, Forestry & Fishing","291.4",57.59,"9.8","2.5","171","31",2014
+"45",45,"Sundry Markets Ltd.","Marketsquare","Nigeria","Retail","281.44",56.25,"128.42","39.62","2,098","922",2014
+"46",46,"Solar Md Pty Ltd.","Solar MD","South Africa","Electrical Manufacturing","272.1",54.96,"24.76","7.54","75","35",2014
+"47",47,"Veritasi Homes And Properties Ltd.","Veritasi Homes","Nigeria","Real estate","267.56",54.33,"77.94","24.95","33","23",2017
+"48",48,"KudiGo Inc","Verifibuy","Ghana","E-commerce","266.25",54.14,"1.78","0.49","18","34",2017
+"49",49,"Paratus Group Holdings Ltd.","Paratus","Namibia","Media & Telecommunications","262.86",53.67,"26.63","130.04","202","450",2017
+"50",50,"AfriGrown","AfriGrown","South Africa","Professional, Scientific & Technical Services","260.63",53.35,"4.67","1.47","31","19",2008
+"51",51,"Wicorp Pty Ltd.","WiSolar","South Africa","Energy & Utilities","252.37",52.17,"1.86","0.6","16","5",2016
+"52",52,"PayLogic S.A.","Paylogic","Morocco","Fintech, Financial Services & Insurance","248.8",51.66,"8.3","2.51","49","34",2010
+"53",53,"CFO360 Pty Ltd.","CFO360","South Africa","Professional, Scientific & Technical Services","246.33",51.3,"1.8","0.52","54","11",2016
+"54",54,"Africa Healthcare Network","Africa Healthcare Network","Mauritius","Health Care & Life Sciences","245.48",51.17,"6.48","1.88","391","107",2015
+"55",55,"Zen Petroleum Ltd.","Zen Petroleum","Ghana","Energy & Utilities","239.13",50.24,"565.96","281.38","896","515",2012
+"56",56,"Paga Group Ltd.","Paga Group","Nigeria","Fintech, Financial Services & Insurance","238.07",50.09,"56.29","19.59","212","448",2009
+"57",57,"M-Kopa Holdings Ltd.","M-Kopa","Kenya","Fintech, Financial Services & Insurance","224.6",48.06,"224.56","69.18","1,740","939",2011
+"58",58,"Akdital S.A.","Akdital","Morocco","Health Care & Life Sciences","218.13",47.07,"102.06","325.27","2,920","n.a.",2016
+"59",59,"Mobiblanc S.A.R.L.","Mobiblanc","Morocco","IT & Software","213.54",46.36,"3.42","1.15","80","50",2010
+"60",60,"United Capital Plc.","United Capital","Nigeria","Fintech, Financial Services & Insurance","213.04",46.29,"63.48","23.86","103","99",2012
+"61",61,"Nclose Pty Ltd.","Nclose","South Africa","IT & Software","207.49",45.42,"12.27","4.52","101","34",2017
+"62",62,"LayUp Technologies","LayUp","South Africa","Fintech, Financial Services & Insurance","202.38",44.61,"2.77","1.04","14","12",2018
+"63",63,"Reefy Micro Finance Enterprise Services","Reefy","Egypt","Fintech, Financial Services & Insurance","196.9",43.73,"49.94","19.22","3,004","1,829",2007
+"64",64,"Impower Pty Ltd.","Impower","South Africa","Energy & Utilities","189.43",42.51,"6.34","2.48","34","3",2014
+"65",65,"Fidson Healthcare Plc.","Fidson Healthcare","Nigeria","Pharmaceuticals & Cosmetics","187.04",42.12,"95.26","39.05","1,270","802",1995
+"66",66,"Electrum Payments Pty Ltd.","Electrum","South Africa","IT & Software","186.51",42.03,"8.14","3.22","78","50",2012
+"67",67,"Ami-African Management Initiative","AMI African Management Institute","Mauritius","Educational & Social Services","183.5",41.53,"5.14","1.81","95","52",2013
+"68",68,"Leatt, Corp.","Leatt","South Africa","Manufacturing","169.57",39.17,"76.34","28.32","115","75",2005
+"69",69,"Elenjical Solutions Pty Ltd.","Elenjical Solutions","South Africa","IT & Software","169.46",39.15,"8.26","3.48","83","35",2013
+"70",70,"Sasini Plc.","Sasini","Kenya","Food & Beverages","162.82",38,"63.66","2,794.83","2,567","4,124",1952
+"71",71,"Entelect Software Pty Ltd.","Entelect","South Africa","IT & Software","160.79",37.65,"97.09","42.19","1,032","657",2001
+"72",72,"R.T Briscoe Plc.","R.T. Briscoe","Nigeria","Retail","157.7",37.1,"42.28","6,939.39","212","215",1957
+"73",73,"Bonben Assurance Namibia Ltd.","Bonlife Assurance","Namibia","Fintech, Financial Services & Insurance","148.8",35.5,"5.78","2.63","46","38",1996
+"74",74,"Green Med S.A.R.L","Green Med","Morocco","Agriculture, Forestry & Fishing","146.08",35.01,"2.23","0.96","21","13",2007
+"75",75,"Tripple Gee & Company Plc.","Tripple Gee & Company","Nigeria","Professional, Scientific & Technical Services","140.47",33.97,"7.33","1,320.96","110","93",1980
+"76",76,"Société Tunisienne Des Industries De Pneumatiques S.A.","Société Tunisienne des Industries de Pneumatiques (S.T.I.P.)","Tunisia","Manufacturing","138.42",33.59,"49.24","63.56","895","690",1980
+"77",77,"Bitventure Consulting Pty Ltd.","Bitventure","South Africa","IT & Software","137.65",33.45,"2.08","0.99","14","17",2012
+"78",78,"Impax Business Solutions Ltd.","Impax Business Solutions","Kenya","IT & Software","136.17",33.17,"3.82","1.87","78","56",2003
+"79",79,"Bua Foods Plc.","Bua Foods","Nigeria","Food & Beverages","135.45",33.03,"987.33","493.49","2,107","370",2008
+"80",80,"Victory Farms Ltd.","Victory Farms","Kenya","Agriculture, Forestry & Fishing","133.18",32.61,"18.41","7.89","1,303","728",2015
+"81",81,"Market Demand Trading 268 Pty Ltd.","TruckFuelNet","South Africa","Logistics & Transportation","131.94",32.37,"5.6","2.74","23","18",2008
+"82",82,"Palmci S.A.","Palmci","Ivory Coast","Agriculture, Forestry & Fishing","131.4",32.27,"387.23","177.8","7,458","7,603",1997
+"83",83,"Abear Industrial Pty Ltd.","Abear Industrial","South Africa","Manufacturing","131.38",32.26,"1.94","0.95","35","14",2015
+"84",84,"Atlantic Dredging Maroc S.A.","Atlantic Dredging","Morocco","Professional, Scientific & Technical Services","126.47",31.32,"23.19","10.82","156","107",2010
+"85",85,"iLearn Corporate Services Pty Ltd.","iLearn","South Africa","Education & Social Services","126.33",31.3,"3.01","1.51","38","28",2012
+"86",86,"Mauritius Oil Refineries Ltd.","Moroil","Mauritius","Manufacturing","120.41",30.14,"48.61","994.69","165","171",1968
+"87",87,"MNT Investments BV","MNT-Halan","Egypt","Fintech, Financial Services & Insurance","117.62",29.59,"301.02","138.32","22,000","7,800",2018
+"88",88,"International Economics Consulting Ltd.","International Economics","Mauritius","Management consulting","116.8",29.43,"1.77","0.82","15","15",2013
+"89",89,"Black House Media Group Ltd.","BHM","Nigeria","Management consulting","116.01",29.27,"4.98","2.71","77","70",2006
+"90",90,"Swift Egypt Ltd.","Swift Egypt","Egypt","Logistics & Transportation","114.36",28.94,"80.36","42.84","209","171",2012
+"91",91,"Zambia Seed Company Ltd.","Zamseed","Zambia","Agriculture, Forestry & Fishing","112.66",28.6,"12.05","5.66","321","298",1980
+"92",92,"Ocp S.A.","Ocp Group","Morocco","Chemicals","111.81",28.43,"11,300.08","54,092.00","20,587","19,865",1920
+"93",93,"Comercio Partners Ltd.","Comercio Partners","Nigeria","Fintech, Financial Services & Insurance","108.29",27.71,"3.94","2.23","35","20",2016
+"94",94,"Evolution Credit Ltd.","Evolution","South Africa","Fintech, Financial Services & Insurance","107.83",27.62,"32.88","268.02","n.a.","n.a.",1999
+"95",95,"Suez Canal Bank","Scbank","Egypt","Fintech, Financial Services & Insurance","104.86",27.01,"163.83","91.38","1,300","1,200",1978
+"96",96,"Aveng Ltd.","Aveng","South Africa","Construction & Engineering","103.49",26.72,"1,627.31","14,185.00","3,861","11,544",1944
+"97",97,"Associated Commercial Company Ltd.","Associated Commercial Company (ACC)","Mauritius","Automotive","101.63",26.33,"10.77","240.84","n.a.","n.a.",1954
+"98",98,"Routed Hosting Pty Ltd.","Routed Hosting","South Africa","IT & Software","100.99",26.2,"1.82","0.91","5","4",2016
+"99",99,"Iona Shipping Ltd.","Iona Shipping","Liberia","Logistics & Transportation","100.45",26.09,"6.48","3.23","n.a.","n.a.",2014
+"100",100,"Rhino Earthmovers Cc","Rhino","South Africa","Metals & Mining","99.76",25.94,"3.85","2.18","50","42",2009
+"101",101,"Wacot Rice Ltd.","Wacot Rice","Nigeria","Agriculture, Forestry & Fishing","98.79",25.74,"95.24","56.38","187","157",2014
+"102",102,"John Holt Plc.","John Holt","Nigeria","Logistics & Transportation","98.16",25.6,"8.55","1,793.00","98","n.a.",1961
+"103",103,"Jachris Hose And Couplings Pty Ltd.","Jachris Hose And Couplings","South Africa","Metals & Mining","96.49",25.25,"21.58","12.45","350","195",1976
+"104",104,"Amel International Services Ltd.","Amel Susan","Nigeria","Food & Beverages","96.43",25.24,"5.08","3.04","69","36",2014
+"105",105,"Lapigems Ltd.","The Rare Gemstone Company","Kenya","E-commerce","84.87",22.73,"1.81","0.98","17","8",1974
+"106",106,"Academy Press Plc.","Academy Press","Nigeria","Manufacturing","84.41",22.63,"10.39","2,439.61","15","36",1964
+"107",107,"Cutix Plc.","Cutix","Nigeria","Electrical Manufacturing","84.02",22.54,"21.18","5,025.50","243","255",1982
+"108",108,"EFG Holding","EFG Holding","Egypt","Fintech, Financial Services & Insurance","80.86",21.84,"559.79","309.52","5,479","5,481",1984
+"109",109,"Terrasan Group Pty Ltd.","Terrasan","South Africa","Fintech, Financial Services & Insurance","77.27",21.03,"96.03","61.38","1,145","1,273",1963
+"110",110,"Lesieur Cristal S.A.","Lesieur Cristal","Morocco","Manufacturing","77.14",21,"680.13","3,893.00","1,637","924",1908
+"111",111,"Raubex Group Ltd.","Raubex Group","South Africa","Construction & Engineering","75.25",20.56,"919.78","8,734.90","7,660","7,418",1974
+"112",112,"Dynamic DNA Pty Ltd.","Dynamic DNA","South Africa","Education & Social Services","72.47",19.92,"1.94","1.28","27","23",2016
+"113",113,"Zambeef Products Plc.","Zambeef Products","Zambia","Food & Beverages","72.08",19.83,"316.58","3,134.97","7,528","7,082",1994
+"114",114,"Travaux Généraux De Construction De Casablanca S.A","Travaux Généraux De Construction De Casablanca","Morocco","Construction & Engineering","70.35",19.43,"510.65","3,039.47","11,313","n.a.",1991
+"115",115,"New Mauritius Hotels Ltd.","Beachcomber Resorts & Hotels","Mauritius","Hospitality & Travel","70.12",19.38,"312.27","8,278.53","4,878","5,327",1964
+"116",116,"Froozels Food Products Pty Ltd.","Froozels","South Africa","Food & Beverages","142.72",17.49,"5.4","3.77","75","51",2011
+"117",117,"Transcorp Hotels Plc.","Transcorp Hotels","Nigeria","Hospitality & Travel","56.07",15.99,"71.82","54.16","1,224","1,452",1994
+"118",118,"Eadvance Pty Ltd.","SPARK Schools","South Africa","Education & Social Services","55.24",15.79,"26.4","19.27","1,240","1,106",2012
+"119",119,"Opennetworks Pty Ltd.","Opennetworks","South Africa","IT & Software","52.71",15.16,"8.64","6.41","30","30",2000
+"120",120,"Laterite Kenya Ltd.","Laterite","Kenya","Professional, Scientific & Technical Services","48",13.96,"6.43","4.34","82","57",2010
+"121",121,"Dislog Group","Dislog Group","Morocco","Pharmaceuticals & Cosmetics","47.68",13.88,"238.07","170.34","1,530","1,714",2005
+"122",122,"Easy Debit Payment Solutions Pty Ltd.","Easy Debit","South Africa","Fintech, Financial Services & Insurance","44.98",13.18,"4.41","3.45","35","32",2014
+"123",123,"Jibu Inc.","Jibu","Rwanda","Food & Beverages","37.93",11.32,"3.3","2.39","136","87",2012
+"124",124,"Geo4Net S.A.R.L.","Geo4Net","Morocco","IT & Software","34.79",10.46,"1.62","1.27","27","31",2008
+"125",125,"Med - Optics Ltd.","Med - Optics Vision Centre","Uganda","Health Care & Life Sciences","28.17",8.62,"1.88","1.46","38","45",2002

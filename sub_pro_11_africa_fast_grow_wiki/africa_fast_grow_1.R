@@ -44,6 +44,11 @@ table_data_2023_clean <- table_data_2023 %>%
 table_data_2024_clean <- table_data_2024 %>%
   clean_names()
 
+# Save the data
+
+write.csv(table_data_2023_clean, "sub_pro_11_africa_fast_grow_wiki/processed_data/fast_grow_2023")
+write.csv(table_data_2024_clean, "sub_pro_11_africa_fast_grow_wiki/processed_data/fast_grow_2024")
+
 # D) EDA
 
 # Which companies are in both tables? 
@@ -112,3 +117,4 @@ table_data_2024_clean_year_group <- table_data_2024_clean %>%
   group_by(founding_year_group) %>%
   summarise(total = n()) %>%
   arrange(desc(total))
+

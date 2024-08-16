@@ -1,5 +1,50 @@
 # African Regional Groupings
 
+# All African Countries
+african_countries <- data.frame(
+  Country = c("Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", 
+              "Burundi", "Cabo Verde", "Cameroon", "Central African Republic", 
+              "Chad", "Comoros", "Congo", "Congo, Democratic Republic of the", 
+              "Djibouti", "Egypt", "Equatorial Guinea", "Eritrea", 
+              "Eswatini", "Ethiopia", "Gabon", "Gambia", "Ghana", 
+              "Guinea", "Guinea-Bissau", "Ivory Coast", "Kenya", 
+              "Lesotho", "Liberia", "Libya", "Madagascar", "Malawi", 
+              "Mali", "Mauritania", "Mauritius", "Morocco", "Mozambique", 
+              "Namibia", "Niger", "Nigeria", "Rwanda", "Sao Tome and Principe", 
+              "Senegal", "Seychelles", "Sierra Leone", "Somalia", "South Africa", 
+              "South Sudan", "Sudan", "Tanzania", "Togo", "Tunisia", 
+              "Uganda", "Zambia", "Zimbabwe"),
+  
+  ISO2 = c("DZ", "AO", "BJ", "BW", "BF", 
+           "BI", "CV", "CM", "CF", 
+           "TD", "KM", "CG", "CD", 
+           "DJ", "EG", "GQ", "ER", 
+           "SZ", "ET", "GA", "GM", "GH", 
+           "GN", "GW", "CI", "KE", 
+           "LS", "LR", "LY", "MG", "MW", 
+           "ML", "MR", "MU", "MA", "MZ", 
+           "NA", "NE", "NG", "RW", "ST", 
+           "SN", "SC", "SL", "SO", "ZA", 
+           "SS", "SD", "TZ", "TG", "TN", 
+           "UG", "ZM", "ZW"),
+  
+  ISO3 = c("DZA", "AGO", "BEN", "BWA", "BFA", 
+           "BDI", "CPV", "CMR", "CAF", 
+           "TCD", "COM", "COG", "COD", 
+           "DJI", "EGY", "GNQ", "ERI", 
+           "SWZ", "ETH", "GAB", "GMB", "GHA", 
+           "GIN", "GNB", "CIV", "KEN", 
+           "LSO", "LBR", "LBY", "MDG", "MWI", 
+           "MLI", "MRT", "MUS", "MAR", "MOZ", 
+           "NAM", "NER", "NGA", "RWA", "STP", 
+           "SEN", "SYC", "SLE", "SOM", "ZAF", 
+           "SSD", "SDN", "TZA", "TGO", "TUN", 
+           "UGA", "ZMB", "ZWE")
+)
+
+# Display the dataframe
+print(african_countries)
+
 # Arab Maghreb Union (AMU)
 amu <- c("Algeria", "Libya", "Mauritania", "Morocco", "Tunisia")
 
