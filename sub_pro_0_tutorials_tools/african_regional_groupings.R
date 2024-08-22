@@ -3,8 +3,8 @@
 # All African Countries
 african_countries <- data.frame(
   Country = c("Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", 
-              "Burundi", "Cabo Verde", "Cameroon", "Central African Republic", 
-              "Chad", "Comoros", "Congo", "Congo, Democratic Republic of the", 
+              "Burundi", "Cape Verde", "Cameroon", "Central African Republic", 
+              "Chad", "Comoros", "Congo", "Democratic Republic of Congo", 
               "Djibouti", "Egypt", "Equatorial Guinea", "Eritrea", 
               "Eswatini", "Ethiopia", "Gabon", "Gambia", "Ghana", 
               "Guinea", "Guinea-Bissau", "Ivory Coast", "Kenya", 
