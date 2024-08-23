@@ -46,8 +46,8 @@ table_data_2024_clean <- table_data_2024 %>%
 
 # Save the data
 
-write.csv(table_data_2023_clean, "sub_pro_11_africa_fast_grow_wiki/processed_data/fast_grow_2023")
-write.csv(table_data_2024_clean, "sub_pro_11_africa_fast_grow_wiki/processed_data/fast_grow_2024")
+write.csv(table_data_2023_clean, "sub_pro_11_africa_fast_grow_wiki/datasets/fast_grow_2023")
+write.csv(table_data_2024_clean, "sub_pro_11_africa_fast_grow_wiki/datasets/fast_grow_2024")
 
 # D) EDA
 

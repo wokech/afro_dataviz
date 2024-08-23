@@ -39,7 +39,7 @@ library(ggtext)
 
 # Load and clean the required data sets
 
-fish_seafood_1 <- read_csv("sub_pro_13_agriculture_owid/processed_tables/fish-seafood-production.csv")
+fish_seafood_1 <- read_csv("sub_pro_7_agriculture_owid/datasets/fish-seafood-production.csv")
 
 # Clean the column headings
 

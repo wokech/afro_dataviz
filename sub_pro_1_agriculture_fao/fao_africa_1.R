@@ -23,9 +23,9 @@ library(geomtextpath)
 
 # C) Load the data
 
-data_file_1 <- here("sub_pro_19_agriculture_fao/data", "africa_production_2022.csv")
-data_file_2 <- here("sub_pro_19_agriculture_fao/data", "world_africa_area_harvested_1961_2022.csv")
-data_file_3 <- here("sub_pro_19_agriculture_fao/data", "world_africa_production_1961_2022.csv")
+data_file_1 <- here("sub_pro_19_agriculture_fao/datasets", "africa_production_2022.csv")
+data_file_2 <- here("sub_pro_19_agriculture_fao/datasets", "world_africa_area_harvested_1961_2022.csv")
+data_file_3 <- here("sub_pro_19_agriculture_fao/datasets", "world_africa_production_1961_2022.csv")
 
 africa_production_2022 <- read_csv(data_file_1)
 world_africa_area_harvest_61to22 <- read_csv(data_file_2)

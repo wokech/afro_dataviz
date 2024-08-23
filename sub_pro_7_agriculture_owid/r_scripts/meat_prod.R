@@ -37,7 +37,7 @@ library(ggtext)
 
 # Load and clean the required data sets
 
-meat <- read_csv("sub_pro_13_agriculture_owid/processed_tables/global-meat-production.csv")
+meat <- read_csv("sub_pro_7_agriculture_owid/datasets/global-meat-production.csv")
 
 # Clean the column headings
 

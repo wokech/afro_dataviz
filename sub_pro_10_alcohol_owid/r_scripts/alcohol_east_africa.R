@@ -8,7 +8,7 @@ library(janitor)
 
 # (B) Load the required data
 
-alcohol <- read_csv('sub_pro_10_alcohol/processed_tables/total-alcohol-consumption-per-capita-litres-of-pure-alcohol.csv')
+alcohol <- read_csv('sub_pro_10_alcohol/datasets/total-alcohol-consumption-per-capita-litres-of-pure-alcohol.csv')
 head(alcohol)
 
 # (C) Clean the data and filter for Africa
@@ -19,5 +19,5 @@ alcohol_eac <- alcohol %>%
          "country" = "entity") %>%
   filter(country %in% c("Kenya", "Tanzania", "Uganda", "Burundi", "Rwanda", "Democratic Republic of Congo"))
 
-write.csv(alcohol_eac, "sub_pro_10_alcohol/processed_tables/alcohol_eac.csv")
+write.csv(alcohol_eac, "sub_pro_10_alcohol/datasets/alcohol_eac.csv")
 

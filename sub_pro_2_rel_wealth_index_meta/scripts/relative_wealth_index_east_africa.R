@@ -15,7 +15,7 @@ library(rnaturalearthdata)
 # Kenya
 
 # Read the CSV file
-ken_data <- read.csv("sub_pro_20_relative_wealth_index/data/ken_relative_wealth_index.csv")
+ken_data <- read.csv("sub_pro_20_relative_wealth_index/datasets/ken_relative_wealth_index.csv")
 
 # Convert the data to an sf object
 ken_data_sf <- st_as_sf(ken_data, coords = c("longitude", "latitude"), crs = 4326)
@@ -61,7 +61,7 @@ ggsave("sub_pro_20_relative_wealth_index/images/kenya.png", width = 12, height =
 # Tanzania
 
 # Read the CSV file
-tza_data <- read.csv("sub_pro_20_relative_wealth_index/data/tza_relative_wealth_index.csv")
+tza_data <- read.csv("sub_pro_20_relative_wealth_index/datasets/tza_relative_wealth_index.csv")
 
 # Convert the data to an sf object
 tza_data_sf <- st_as_sf(tza_data, coords = c("longitude", "latitude"), crs = 4326)
@@ -108,7 +108,7 @@ ggsave("sub_pro_20_relative_wealth_index/images/tanzania.png", width = 12, heigh
 # Uganda
 
 # Read the CSV file
-uga_data <- read.csv("sub_pro_20_relative_wealth_index/data/uga_relative_wealth_index.csv")
+uga_data <- read.csv("sub_pro_20_relative_wealth_index/datasets/uga_relative_wealth_index.csv")
 
 # Convert the data to an sf object
 uga_data_sf <- st_as_sf(uga_data, coords = c("longitude", "latitude"), crs = 4326)
@@ -155,7 +155,7 @@ ggsave("sub_pro_20_relative_wealth_index/images/uganda.png", width = 12, height 
 # Burundi
 
 # Read the CSV file
-bdi_data <- read.csv("sub_pro_20_relative_wealth_index/data/bdi_relative_wealth_index.csv")
+bdi_data <- read.csv("sub_pro_20_relative_wealth_index/datasets/bdi_relative_wealth_index.csv")
 
 # Convert the data to an sf object
 bdi_data_sf <- st_as_sf(bdi_data, coords = c("longitude", "latitude"), crs = 4326)
@@ -202,7 +202,7 @@ ggsave("sub_pro_20_relative_wealth_index/images/burundi.png", width = 12, height
 # Rwanda
 
 # Read the CSV file
-rwa_data <- read.csv("sub_pro_20_relative_wealth_index/data/rwa_relative_wealth_index.csv")
+rwa_data <- read.csv("sub_pro_20_relative_wealth_index/datasets/rwa_relative_wealth_index.csv")
 
 # Convert the data to an sf object
 rwa_data_sf <- st_as_sf(rwa_data, coords = c("longitude", "latitude"), crs = 4326)
@@ -249,7 +249,7 @@ ggsave("sub_pro_20_relative_wealth_index/images/rwanda.png", width = 12, height 
 # DR Congo
 
 # Read the CSV file
-cod_data <- read.csv("sub_pro_20_relative_wealth_index/data/cod_relative_wealth_index.csv")
+cod_data <- read.csv("sub_pro_20_relative_wealth_index/datasets/cod_relative_wealth_index.csv")
 
 # Convert the data to an sf object
 cod_data_sf <- st_as_sf(cod_data, coords = c("longitude", "latitude"), crs = 4326)

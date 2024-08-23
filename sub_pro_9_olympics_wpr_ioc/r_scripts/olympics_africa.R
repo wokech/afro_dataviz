@@ -27,7 +27,7 @@ library(readr)
 
 # (B) Load the required data and include the required sheet
 
-olympic_data <- read_excel("sub_pro_9_olympics/processed_tables/olympic_medal_country.xlsx", sheet = "African countries")
+olympic_data <- read_excel("sub_pro_9_olympics/datasets/olympic_medal_country.xlsx", sheet = "African countries")
 
 # (C) Clean the data, fix columns and county labels
 

@@ -14,11 +14,11 @@ library(ggthemes)
 
 # a) ICT adoption per 100 people
 
-ict_per_100 <- read_csv("sub_pro_16_ict/data/ict-adoption-per-100-people.csv")
+ict_per_100 <- read_csv("sub_pro_16_ict/datasets/ict-adoption-per-100-people.csv")
 
 # b) Share of individuals using the internet
 
-share_net <- read_csv("sub_pro_16_ict/data/share-of-individuals-using-the-internet.csv")
+share_net <- read_csv("sub_pro_16_ict/datasets/share-of-individuals-using-the-internet.csv")
 
 # Clean the datasets
 

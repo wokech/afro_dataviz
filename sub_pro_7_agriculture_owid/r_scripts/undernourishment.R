@@ -37,7 +37,7 @@ library(ggtext)
 
 # Load and clean the required data sets
 
-undernourishment <- read_csv("sub_pro_13_agriculture_owid/processed_tables/prevalence-of-undernourishment.csv")
+undernourishment <- read_csv("sub_pro_7_agriculture_owid/datasets/prevalence-of-undernourishment.csv")
 
 # Clean the column headings
 

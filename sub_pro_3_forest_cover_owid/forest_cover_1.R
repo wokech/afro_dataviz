@@ -1,4 +1,7 @@
-# Forest Cover Worldwide
+# Forests by OWID
+# Here we look at two datasets:
+# 1) Share of global forest area;
+# 2) Forest cover as a share of total land area within the country or region.
 
 # A) Load the required libraries and set up data
 
@@ -10,11 +13,11 @@ library(hrbrthemes)
 
 # Load data
 
-# Share of global forest
-share_global_forest <- read_csv("sub_pro_3_forest_cover_owid/data/share-global-forest.csv")
+# Share of global forests worldwide
+share_global_forest <- read_csv("sub_pro_3_forest_cover_owid/datasets/share-global-forest.csv")
 
 # Forest as a share of land area
-forest_share_land_area <- read_csv("sub_pro_3_forest_cover_owid/data/forest-area-as-share-of-land-area.csv")
+forest_share_land_area <- read_csv("sub_pro_3_forest_cover_owid/datasets/forest-area-as-share-of-land-area.csv")
 
 # Clean datasets
 share_global_forest <- share_global_forest %>%
@@ -24,27 +27,25 @@ forest_share_land_area <- forest_share_land_area %>%
 
 # Set up datasets 
 
-##############
+############## Share of global forests worldwide
 
-# Share of global forest - Continent
+# Share of global forest (By Continent)
 share_global_forest_continent <- share_global_forest %>%
   filter(entity %in% c("Africa", "Asia", "Europe", "Northern America", 
                        "Oceania", "South America", "Central America"))
 
-# Share of global forest - Countries
+# Share of global forest (By Country)
 share_global_forest_countries <- share_global_forest %>%
   filter(!is.na(code)) %>%
   filter(entity != "World")
 
-# Share of global forest - Africa Regions
+# Share of global forest (By African Region)
 share_global_forest_africa_regions <- share_global_forest %>%
   filter(entity %in% c("Eastern Africa", "Northern Africa", "Middle Africa",
-                       "Southern Africa", "Western Africa"))
+                       "Southern Africa", "Western Africa")) %>%
+  mutate(entity = ifelse(entity == 'Middle Africa', 'Central Africa', entity))
 
-# Share of global forest - Africa Countries
-
-##########IVORY COAST IS MISSING
-
+# Share of global forest (By African Countries)
 african_countries <- c("Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", 
               "Burundi", "Cape Verde", "Cameroon", "Central African Republic", 
               "Chad", "Comoros", "Congo", "Democratic Republic of Congo", 
@@ -61,29 +62,27 @@ african_countries <- c("Algeria", "Angola", "Benin", "Botswana", "Burkina Faso",
 share_global_forest_africa_countries <- share_global_forest %>%
   filter(entity %in% african_countries)
 
-unique(share_global_forest_africa_countries$entity)
+############### Forests as a share of land area
 
-
-###############
-
-# Forest as a share of land area - Continent
+# Forest as a share of land area (By Continent)
 forest_share_land_area_continent <- forest_share_land_area %>%
   filter(entity %in% c("Africa", "Asia", "Europe", "Northern America", 
                        "Oceania", "South America", "Central America"))
 
-# Forest as a share of land area - Countries
+# Forest as a share of land area (By Countries)
 forest_share_land_area_countries <- forest_share_land_area %>%
   filter(!is.na(code)) %>%
   filter(entity != "World")
 
-# Forest as a share of land area - Africa Regions
-forest_share_land_area_africa <- forest_share_land_area %>%
+# Forest as a share of land area (By African Region)
+forest_share_land_area_africa_regions <- forest_share_land_area %>%
   filter(entity %in% c("Eastern Africa", "Northern Africa", "Middle Africa",
-                       "Southern Africa", "Western Africa"))
+                       "Southern Africa", "Western Africa")) %>%
+  mutate(entity = ifelse(entity == 'Middle Africa', 'Central Africa', entity))
 
-# Forest as a share of land area - Africa Countries
+# Forest as a share of land area (By African Countries)
 
-##########IVORY COAST IS MISSING
+# This is list of African Countries but IVORY COAST IS MISSING
 
 african_countries <- c("Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", 
                        "Burundi", "Cape Verde", "Cameroon", "Central African Republic", 
@@ -101,32 +100,134 @@ african_countries <- c("Algeria", "Angola", "Benin", "Botswana", "Burkina Faso",
 forest_share_land_area_africa_countries <- forest_share_land_area %>%
   filter(entity %in% african_countries)
 
-unique(forest_share_land_area_africa_countries$entity)
+# B) EDA and Basic Plots
 
-# B) EDA
+# Share of global forests worldwide
 
-# Try a streamgraph
-  
-# devtools::install_github("hrbrmstr/streamgraph")
-
-# library(streamgraph)
-
-# pp <- streamgraph(share_global_forest_continent, key="entity", value="share_of_global_forest_area", date="year", height="300px", width="1000px")
-# pp
-
-# Stacked area chart for global
+# Stacked area chart for share of global forest (By Continent)
 
 ggplot(share_global_forest_continent, aes(x=year, y=share_of_global_forest_area, fill=entity)) + 
-  geom_area(alpha=0.6 , size=1, colour="black") +
+  geom_area(alpha=0.6 , size=0.5, colour="black") +
   scale_fill_viridis(discrete = T) +
   theme_ipsum() + 
   ggtitle("")
 
-# Line plot
-ggplot(share_global_forest_africa, aes(x=year, y=share_of_global_forest_area, color=entity)) + 
+# Line plot for share of global forest in Africa (By Region)
+
+ggplot(share_global_forest_africa_regions, aes(x=year, y=share_of_global_forest_area, color=entity)) + 
+  geom_line(alpha=0.5, size=1) +
+  geom_point(size=2) +
+  theme_classic() + 
+  ggtitle("")
+
+# Regions with the highest and lowest share of global forest (2020)
+
+share_global_forest_africa_regions |> 
+  filter(year == 2020) |>
+  arrange(desc(share_of_global_forest_area)) |>
+  ggplot(aes(x=reorder(entity, share_of_global_forest_area), y = share_of_global_forest_area, fill = entity)) + 
+  geom_bar(stat = "identity") +
+  theme_ipsum() + 
+  coord_flip() +
+  ggtitle("2020")
+
+# Countries with the highest and lowest share of global forest (2020)
+
+# Highest
+
+share_global_forest_africa_countries |> 
+  filter(year == 2020) |>
+  arrange(desc(share_of_global_forest_area)) |>
+  top_n(5) |>
+  ggplot(aes(x=reorder(entity, share_of_global_forest_area), y = share_of_global_forest_area, fill = entity)) + 
+  geom_bar(stat = "identity") +
+  theme_ipsum() + 
+  coord_flip() +
+  ggtitle("2020")
+
+# Lowest
+
+share_global_forest_africa_countries |> 
+  filter(year == 2020) |>
+  arrange(desc(share_of_global_forest_area)) |>
+  top_n(-5) |>
+  ggplot(aes(x=reorder(entity, share_of_global_forest_area), y = share_of_global_forest_area, fill = entity)) + 
+  geom_bar(stat = "identity") +
+  theme_ipsum() + 
+  coord_flip() +
+  ggtitle("2020")
+
+# Map of countries showing share of global forest area in 1990 vs 2020
+
+share_global_forest_africa_countries |> 
+  filter(year == 1990) |>
+  arrange(desc(share_of_global_forest_area))
+
+share_global_forest_africa_countries |> 
+  filter(year == 2020) |>
+  arrange(desc(share_of_global_forest_area))
+
+# Forests as a share of land area (within country)
+
+# Line chart for forest as a share of land area (By Continent)
+
+ggplot(forest_share_land_area_continent, aes(x=year, y=forest_cover, color=entity)) + 
+  geom_line(alpha=0.5, size=1) +
+  geom_point(size=2) +
+  theme_ipsum() + 
+  ggtitle("")
+
+# Line chart for forest as a share of land area (By Region)
+
+ggplot(forest_share_land_area_africa, aes(x=year, y=forest_cover, color=entity)) + 
   geom_line(alpha=0.6, size=1) +
-  scale_fill_viridis(discrete = T) +
+  geom_point(size=2) +
   theme_ipsum() + 
   ggtitle("")
 
- 
+# Regions with the highest and lowest forest as a share of land area (2020)
+
+forest_share_land_area_africa_regions |> 
+  filter(year == 2020) |>
+  arrange(desc(forest_cover)) |>
+ggplot(aes(x=reorder(entity, forest_cover), y = forest_cover, fill = entity)) + 
+  geom_bar(stat = "identity") +
+  theme_ipsum() + 
+  coord_flip() +
+  ggtitle("2020")
+
+# Countries with the highest and lowest forest as a share of land area (2020)
+
+# Highest
+
+forest_share_land_area_africa_countries |> 
+  filter(year == 2020) |>
+  arrange(desc(forest_cover)) |>
+  top_n(5) |>
+  ggplot(aes(x=reorder(entity, forest_cover), y = forest_cover, fill = entity)) + 
+  geom_bar(stat = "identity") +
+  theme_ipsum() + 
+  coord_flip() +
+  ggtitle("2020")
+
+# Lowest
+
+forest_share_land_area_africa_countries |> 
+  filter(year == 2020) |>
+  arrange(desc(forest_cover)) |>
+  top_n(-5) |>
+  ggplot(aes(x=reorder(entity, forest_cover), y = forest_cover, fill = entity)) + 
+  geom_bar(stat = "identity") +
+  theme_ipsum() + 
+  coord_flip() +
+  ggtitle("2020")
+
+# Map of countries showing forest as a share of land area in 1990 vs 2020
+
+forest_share_land_area_africa_countries |> 
+  filter(year == 1990) |>
+  arrange(desc(share_of_global_forest_area))
+
+forest_share_land_area_africa_countries |> 
+  filter(year == 2020) |>
+  arrange(desc(share_of_global_forest_area))
