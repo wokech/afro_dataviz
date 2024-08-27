@@ -23,9 +23,9 @@ library(geomtextpath)
 
 # C) Load the data
 
-data_file_1 <- here("sub_pro_19_agriculture_fao/datasets", "africa_production_2022.csv")
-data_file_2 <- here("sub_pro_19_agriculture_fao/datasets", "world_africa_area_harvested_1961_2022.csv")
-data_file_3 <- here("sub_pro_19_agriculture_fao/datasets", "world_africa_production_1961_2022.csv")
+data_file_1 <- here("sub_pro_1_agriculture_fao/datasets", "africa_production_2022.csv")
+data_file_2 <- here("sub_pro_1_agriculture_fao/datasets", "world_africa_area_harvested_1961_2022.csv")
+data_file_3 <- here("sub_pro_1_agriculture_fao/datasets", "world_africa_production_1961_2022.csv")
 
 africa_production_2022 <- read_csv(data_file_1)
 world_africa_area_harvest_61to22 <- read_csv(data_file_2)
@@ -203,7 +203,7 @@ p1 <- percent_area_harvest_61to22 |>
         legend.background = element_rect("bisque1"),
         legend.position = "")
 
-ggsave("sub_pro_19_agriculture_fao/images/percent_area_harvest.png", width = 11.25, height = 11.25, dpi =600)
+ggsave("sub_pro_1_agriculture_fao/images/percent_area_harvest.png", width = 11.25, height = 11.25, dpi =600)
 
 # 2) Percent Production
 
@@ -237,7 +237,7 @@ p2 <- percent_production_61to22 |>
         legend.background = element_rect("bisque1"),
         legend.position = "")
 
-ggsave("sub_pro_19_agriculture_fao/images/percent_production.png", width = 11.25, height = 11.25, dpi =600)
+ggsave("sub_pro_1_agriculture_fao/images/percent_production.png", width = 11.25, height = 11.25, dpi =600)
 
 # 3) Top 5 countries for production
 
@@ -285,7 +285,7 @@ p3 <- africa_production_2022_clean_cocoa |>
         legend.background = element_rect("bisque1"),
         legend.position = "none")
 
-ggsave("sub_pro_19_agriculture_fao/images/cocoa_production_1.png", width = 11.25, height = 11.25, dpi =600)
+ggsave("sub_pro_1_agriculture_fao/images/cocoa_production_1.png", width = 11.25, height = 11.25, dpi =600)
 
 # p4 <- africa_production_2022_clean_cocoa |>
 #   ggplot(aes(reorder(area, +value), value)) +
@@ -315,7 +315,7 @@ ggsave("sub_pro_19_agriculture_fao/images/cocoa_production_1.png", width = 11.25
 #         legend.background = element_rect("bisque1"),
 #         legend.position = "none")
 # 
-# ggsave("sub_pro_19_agriculture_fao/images/cocoa_production_2.png", width = 11.25, height = 11.25, dpi =600)
+# ggsave("sub_pro_1_agriculture_fao/images/cocoa_production_2.png", width = 11.25, height = 11.25, dpi =600)
 
 # Coffee
 
@@ -363,7 +363,7 @@ p5 <- africa_production_2022_clean_coffee |>
         legend.background = element_rect("bisque1"),
         legend.position = "none")
 
-ggsave("sub_pro_19_agriculture_fao/images/coffee_production_1.png", width = 11.25, height = 11.25, dpi =600)
+ggsave("sub_pro_1_agriculture_fao/images/coffee_production_1.png", width = 11.25, height = 11.25, dpi =600)
 
 # p6 <- africa_production_2022_clean_coffee |>
 #   ggplot(aes(reorder(area, +value), value)) +
@@ -395,7 +395,7 @@ ggsave("sub_pro_19_agriculture_fao/images/coffee_production_1.png", width = 11.2
 #         legend.background = element_rect("bisque1"),
 #         legend.position = "none")
 # 
-# ggsave("sub_pro_19_agriculture_fao/images/coffee_production_2.png", width = 11.25, height = 11.25, dpi =600)
+# ggsave("sub_pro_1_agriculture_fao/images/coffee_production_2.png", width = 11.25, height = 11.25, dpi =600)
 
 # Tea
 
@@ -442,7 +442,7 @@ p7 <- africa_production_2022_clean_tea |>
         legend.background = element_rect("bisque1"),
         legend.position = "none")
 
-ggsave("sub_pro_19_agriculture_fao/images/tea_production_1.png", width = 11.25, height = 11.25, dpi =600)
+ggsave("sub_pro_1_agriculture_fao/images/tea_production_1.png", width = 11.25, height = 11.25, dpi =600)
 
 # p8 <- africa_production_2022_clean_tea |>
 #   ggplot(aes(reorder(area, +value), value)) +
@@ -472,7 +472,7 @@ ggsave("sub_pro_19_agriculture_fao/images/tea_production_1.png", width = 11.25, 
 #         legend.background = element_rect("bisque1"),
 #         legend.position = "none")
 # 
-# ggsave("sub_pro_19_agriculture_fao/images/tea_production_2.png", width = 11.25, height = 11.25, dpi =600)
+# ggsave("sub_pro_1_agriculture_fao/images/tea_production_2.png", width = 11.25, height = 11.25, dpi =600)
 
 # Plot maps
 
@@ -526,7 +526,7 @@ p9_cocoa <- ggplot(data = africa) +
        subtitle = "Which countries produced the most cocoa beans in Africa?",
        caption = "Data Source: FAO")
 
-ggsave("sub_pro_19_agriculture_fao/images/cocoa_map.png", width = 11.25, height = 11.25, dpi =600)
+ggsave("sub_pro_1_agriculture_fao/images/cocoa_map.png", width = 11.25, height = 11.25, dpi =600)
 
 # Coffee
 
@@ -559,7 +559,7 @@ p10_coffee <- ggplot(data = africa) +
        subtitle = "Which countries produced the most green\ncoffee beans in Africa?",
        caption = "Data Source: FAO")
 
-ggsave("sub_pro_19_agriculture_fao/images/coffee_map.png", width = 11.25, height = 11.25, dpi =600)
+ggsave("sub_pro_1_agriculture_fao/images/coffee_map.png", width = 11.25, height = 11.25, dpi =600)
 
 # Tea
 
@@ -592,6 +592,6 @@ p11_tea <- ggplot(data = africa) +
        subtitle = "Which countries produced the most tea leaves in Africa?",
        caption = "Data Source: FAO")
 
-ggsave("sub_pro_19_agriculture_fao/images/tea_map.png", width = 11.25, height = 11.25, dpi =600)
+ggsave("sub_pro_1_agriculture_fao/images/tea_map.png", width = 11.25, height = 11.25, dpi =600)
 
 
