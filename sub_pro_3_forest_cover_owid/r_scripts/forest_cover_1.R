@@ -10,6 +10,10 @@ library(tidyverse)
 library(janitor)
 library(viridis)
 library(hrbrthemes)
+library(sf)
+library(rnaturalearth)
+library(rnaturalearthdata)
+# Also ensure that rnatural hi res is installed
 
 # Load data
 
@@ -62,6 +66,17 @@ african_countries <- c("Algeria", "Angola", "Benin", "Botswana", "Burkina Faso",
 share_global_forest_africa_countries <- share_global_forest %>%
   filter(entity %in% african_countries)
 
+share_global_forest_africa_countries_rnaturalearth <- share_global_forest_africa_countries %>%
+  mutate(entity = case_when(
+    entity == "Cape Verde"  ~ "Cabo Verde",
+    entity == "Sao Tome and Principe"  ~ "São Tomé and Principe",
+    entity == "Eswatini"  ~ "eSwatini",
+    entity == "Democratic Republic of Congo"  ~ "Democratic Republic of the Congo",
+    entity == "Tanzania"  ~ "United Republic of Tanzania",
+    entity == "Congo"  ~ "Republic of the Congo",
+    TRUE ~ entity  # Retain original name if none of the conditions are met
+  ))
+
 ############### Forests as a share of land area
 
 # Forest as a share of land area (By Continent)
@@ -99,6 +114,21 @@ african_countries <- c("Algeria", "Angola", "Benin", "Botswana", "Burkina Faso",
 
 forest_share_land_area_africa_countries <- forest_share_land_area %>%
   filter(entity %in% african_countries)
+
+##################################################################
+
+# Change to standard names used in rnaturalearth for maps
+
+forest_share_land_area_africa_countries_rnaturalearth <- forest_share_land_area_africa_countries %>%
+  mutate(entity = case_when(
+    entity == "Cape Verde"  ~ "Cabo Verde",
+    entity == "Sao Tome and Principe"  ~ "São Tomé and Principe",
+    entity == "Eswatini"  ~ "eSwatini",
+    entity == "Democratic Republic of Congo"  ~ "Democratic Republic of the Congo",
+    entity == "Tanzania"  ~ "United Republic of Tanzania",
+    entity == "Congo"  ~ "Republic of the Congo",
+    TRUE ~ entity  # Retain original name if none of the conditions are met
+  ))
 
 # B) EDA and Basic Plots
 
@@ -159,13 +189,47 @@ share_global_forest_africa_countries |>
 
 # Map of countries showing share of global forest area in 1990 vs 2020
 
-share_global_forest_africa_countries |> 
+#########.............
+
+# Fetch high-resolution country data
+world <- ne_countries(scale = "large", returnclass = "sf")
+
+# Filter African countries, including Seychelles and Mauritius
+africa <- world %>%
+  filter(continent == "Africa" | admin %in% c("Seychelles", "Mauritius"))
+
+# 1990
+share_global_forest_africa_countries_1990 <- share_global_forest_africa_countries_rnaturalearth |> 
   filter(year == 1990) |>
   arrange(desc(share_of_global_forest_area))
 
-share_global_forest_africa_countries |> 
+
+# Step 1: Identify rows that don't match
+# Left join to keep all rows from africa
+
+share_global_forest_africa_countries_1990_full_join <- full_join(africa, 
+                                                          share_global_forest_africa_countries_1990,
+                                                          by = c("admin" = "entity"))
+
+# Rows only in africa
+
+share_global_forest_africa_countries_1990_anti_join_1 <- anti_join(africa, 
+                                                                   share_global_forest_africa_countries_1990, 
+                                                                   by = c("admin" = "entity"))
+
+# Rows only in share_global...
+share_global_forest_africa_countries_1990_anti_join_2 <- anti_join(share_global_forest_africa_countries_1990, 
+                                                                   africa, 
+                                                                   by = c("entity" = "admin"))
+
+# Change
+
+
+# 2020
+share_global_forest_africa_countries_2020 <- share_global_forest_africa_countries_rnaturalearth |> 
   filter(year == 2020) |>
   arrange(desc(share_of_global_forest_area))
+
 
 # Forests as a share of land area (within country)
 
@@ -179,7 +243,7 @@ ggplot(forest_share_land_area_continent, aes(x=year, y=forest_cover, color=entit
 
 # Line chart for forest as a share of land area (By Region)
 
-ggplot(forest_share_land_area_africa, aes(x=year, y=forest_cover, color=entity)) + 
+ggplot(forest_share_land_area_africa_regions, aes(x=year, y=forest_cover, color=entity)) + 
   geom_line(alpha=0.6, size=1) +
   geom_point(size=2) +
   theme_ipsum() + 
@@ -223,6 +287,7 @@ forest_share_land_area_africa_countries |>
   ggtitle("2020")
 
 # Map of countries showing forest as a share of land area in 1990 vs 2020
+##############.....................
 
 forest_share_land_area_africa_countries |> 
   filter(year == 1990) |>

@@ -42,7 +42,7 @@ roi_sf <- gadm(country = "GHA", level=1, path = tempdir())
 # nighttime lights for Ghana.
 
 ### Daily data: raster for February 5, 2021
-r_20210205 <- bm_raster(roi_sf = roi_gha,
+r_20210205 <- bm_raster(roi_sf = roi_sf,
                         product_id = "VNP46A2",
                         date = "2021-02-05",
                         bearer = bearer)
