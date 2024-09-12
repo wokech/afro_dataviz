@@ -7,25 +7,15 @@
 # Solve package loading issues with options(timeout = 600) 
 # increase download length time
 
-library(readxl)
-library(readr)
 library(tidyverse)
+library(janitor)
+library(viridis)
+library(hrbrthemes)
 library(ggplot2)
 library(janitor)
-library(tidyverse)
-library(tidyr)
-library(tidyr)
 library(scales)
 library(devtools)
-#devtools::install_github('bbc/bbplot')
-#library(bbplot)
-#install.packages("wordcloud")
-library(wordcloud)
-# install.packages("ggwordcloud")
-library(ggwordcloud)
-# install.packages("treemapify")
 library(treemapify)
-# install.packages("ggrepel")
 library(ggrepel)
 library(patchwork)
 library(stringr)
@@ -109,14 +99,14 @@ fish_seafood_1_clean_world %>%
         legend.background = element_rect("bisque1"),
         legend.position = "right") 
 
-ggsave("sub_pro_13_agriculture_owid/images/global_fish.png", width = 12, height = 12, dpi = 72)
+ggsave("sub_pro_7_agriculture_owid/images/global_fish.png", width = 12, height = 12, dpi = 72)
 
 # b) Pivot the worldwide data for Flourish
 
 fish_seafood_1_clean_world_wide <- fish_seafood_1_clean_world %>%
   pivot_wider(names_from = year, values_from = fish_and_seafood_production_tonnes)
 
-write_csv(fish_seafood_1_clean_world_wide, "sub_pro_13_agriculture_owid/processed_tables/fish_seafood_1_clean_world_wide.csv")
+write_csv(fish_seafood_1_clean_world_wide, "sub_pro_7_agriculture_owid/processed_tables/fish_seafood_1_clean_world_wide.csv")
 
 # 4) Continental (Non-FAO) Fish Production
 
@@ -157,7 +147,7 @@ fish_seafood_1_clean_region_non_fao_continent %>%
         legend.box.just = "right",
         legend.margin = margin(6, 6, 6, 6))
 
-ggsave("sub_pro_13_agriculture_owid/images/continent_fish_2.png", width = 12, height = 12, dpi = 72)
+ggsave("sub_pro_7_agriculture_owid/images/continent_fish_2.png", width = 12, height = 12, dpi = 72)
 
 # b) Circle Packing Chart 
 
@@ -199,14 +189,14 @@ ggplot() +
   theme(legend.position="none") +
   coord_equal()
 
-ggsave("sub_pro_1_danger_disturb/images/continent_fish_pack_circle.png", width = 12, height = 12, dpi = 72)
+ggsave("sub_pro_7_agriculture_owid/images/continent_fish_pack_circle.png", width = 12, height = 12, dpi = 72)
 
 # c) Pivot the data for Flourish Line Chart
 
 fish_seafood_1_clean_region_non_fao_continent_wide <- fish_seafood_1_clean_region_non_fao_continent %>%
   pivot_wider(names_from = year, values_from = fish_and_seafood_production_tonnes)
 
-write_csv(fish_seafood_1_clean_region_non_fao_continent_wide, "sub_pro_13_agriculture_owid/processed_tables/fish_seafood_1_clean_region_non_fao_continent_wide.csv")
+write_csv(fish_seafood_1_clean_region_non_fao_continent_wide, "sub_pro_7_agriculture_owid/processed_tables/fish_seafood_1_clean_region_non_fao_continent_wide.csv")
 
 # 5) Fish production by Income Level
 
@@ -222,7 +212,7 @@ fish_seafood_1_clean_region_non_fao_income %>%
        y = "Fish and Seafood Production\n(Millions of Tonnes)",
        title = "Majority of the Global Fish Production\nis from Upper-Middle-Income countries",
        subtitle = "",
-       caption = "Data Source: Our World in Data\nBy @afro_dataviz") +
+       caption = "Data Source: Our World in Data") +
   theme_classic() +
   scale_y_continuous(limits = c(0, 200000000), labels  = 
                        label_number(scale = 1e-6)) +
@@ -245,14 +235,14 @@ fish_seafood_1_clean_region_non_fao_income %>%
         legend.box.just = "right",
         legend.margin = margin(6, 6, 6, 6))
 
-ggsave("sub_pro_13_agriculture_owid/images/income_fish.png", width = 12, height = 12, dpi = 72)
+ggsave("sub_pro_7_agriculture_owid/images/income_fish.png", width = 12, height = 12, dpi = 72)
 
 # b) Pivot the data for Flourish Line Chart
 
 fish_seafood_1_clean_region_non_fao_income_wide <- fish_seafood_1_clean_region_non_fao_income %>%
   pivot_wider(names_from = year, values_from = fish_and_seafood_production_tonnes)
 
-write_csv(fish_seafood_1_clean_region_non_fao_income_wide, "sub_pro_13_agriculture_owid/processed_tables/fish_seafood_1_clean_region_non_fao_income_wide.csv")
+write_csv(fish_seafood_1_clean_region_non_fao_income_wide, "sub_pro_7_agriculture_owid/processed_tables/fish_seafood_1_clean_region_non_fao_income_wide.csv")
 
 # c) Circle Packing Chart 
 
@@ -310,14 +300,14 @@ fish_seafood_1_clean_region_fao_africa_only %>%
         legend.background = element_rect("bisque1"),
         legend.position = "right") 
 
-ggsave("sub_pro_13_agriculture_owid/images/africa_only_fish.png", width = 12, height = 12, dpi = 72)
+ggsave("sub_pro_7_agriculture_owid/images/africa_only_fish.png", width = 12, height = 12, dpi = 72)
 
 # Pivot the data for Flourish
 
 fish_seafood_1_clean_region_fao_africa_only_wide <- fish_seafood_1_clean_region_fao_africa_only %>%
   pivot_wider(names_from = year, values_from = fish_and_seafood_production_tonnes)
 
-write_csv(fish_seafood_1_clean_region_fao_africa_only_wide, "sub_pro_13_agriculture_owid/processed_tables/fish_seafood_1_clean_region_fao_africa_only_wide.csv")
+write_csv(fish_seafood_1_clean_region_fao_africa_only_wide, "sub_pro_7_agriculture_owid/processed_tables/fish_seafood_1_clean_region_fao_africa_only_wide.csv")
 
 # b) Stacked Area chart for Africa regions
 
@@ -351,14 +341,14 @@ fish_seafood_1_clean_region_fao_africa_segment %>%
         legend.box.just = "right",
         legend.margin = margin(6, 6, 6, 6))
 
-ggsave("sub_pro_13_agriculture_owid/images/africa_segment_fish.png", width = 12, height = 12, dpi = 72)
+ggsave("sub_pro_7_agriculture_owid/images/africa_segment_fish.png", width = 12, height = 12, dpi = 72)
 
 # Pivot the data for Flourish
 
 fish_seafood_1_clean_region_fao_africa_segment_wide <- fish_seafood_1_clean_region_fao_africa_segment %>%
   pivot_wider(names_from = year, values_from = fish_and_seafood_production_tonnes)
 
-write_csv(fish_seafood_1_clean_region_fao_africa_segment_wide, "sub_pro_13_agriculture_owid/processed_tables/fish_seafood_1_clean_region_fao_africa_segment_wide.csv")
+write_csv(fish_seafood_1_clean_region_fao_africa_segment_wide, "sub_pro_7_agriculture_owid/processed_tables/fish_seafood_1_clean_region_fao_africa_segment_wide.csv")
 
 # c) Circle Packing Chart 
 

@@ -14,11 +14,11 @@ library(ggthemes)
 
 # a) ICT adoption per 100 people
 
-ict_per_100 <- read_csv("sub_pro_16_ict/datasets/ict-adoption-per-100-people.csv")
+ict_per_100 <- read_csv("sub_pro_8_ict_owid/datasets/ict-adoption-per-100-people.csv")
 
 # b) Share of individuals using the internet
 
-share_net <- read_csv("sub_pro_16_ict/datasets/share-of-individuals-using-the-internet.csv")
+share_net <- read_csv("sub_pro_8_ict_owid/datasets/share-of-individuals-using-the-internet.csv")
 
 # Clean the datasets
 
@@ -76,7 +76,7 @@ ict_per_100_clean_eac %>%
        y = "Number of fixed telephone\nline subscriptions (per 100 people) ",
        title = "No place for landlines",
        subtitle = "At its peak, there was only about 1 landline for every 100 people in East Africa",
-       caption = "Data Source: Our World in Data\nBy @afro_dataviz") +
+       caption = "Data Source: Our World in Data") +
   geom_label_repel(data = ict_per_100_clean_eac_label_1, 
                    aes(label = country), 
                    nudge_x = 0.1,
@@ -140,7 +140,7 @@ ict_per_100_clean_eac %>%
        y = "Share of the population\nusing the internet (%)",
        title = "How many East Africans are online?",
        subtitle = "The percentage of East Africans using the internet is generally increasing",
-       caption = "Data Source: Our World in Data\nBy @afro_dataviz") +
+       caption = "Data Source: Our World in Data") +
   geom_label_repel(data = ict_per_100_clean_eac_label_5, 
                    aes(label = country), 
                    nudge_x = 0.5,

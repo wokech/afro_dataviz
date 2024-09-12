@@ -12,19 +12,6 @@ library(janitor)
 library(gghighlight)
 library(readr)
 
-# To export the images
-# camcorder::gg_record()
-
-# library(camcorder)
-# 
-# gg_record(
-#   dir = 'sub_pro_9_olympics/images',
-#   width = 12,
-#   height = 12 * 9 / 16,
-#   dpi = 300,
-#   bg = 'white'
-# )
-
 # (B) Load the required data and include the required sheet
 
 olympic_data <- read_excel("sub_pro_9_olympics/datasets/olympic_medal_country.xlsx", sheet = "African countries")

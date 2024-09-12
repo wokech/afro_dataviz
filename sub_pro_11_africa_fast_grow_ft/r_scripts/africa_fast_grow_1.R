@@ -66,15 +66,15 @@ library(janitor)
 
 # Save the data
 
-# write.csv(table_data_2022_clean, "sub_pro_11_africa_fast_grow_wiki/datasets/fast_grow_2022")
-# write.csv(table_data_2023_clean, "sub_pro_11_africa_fast_grow_wiki/datasets/fast_grow_2023")
-# write.csv(table_data_2024_clean, "sub_pro_11_africa_fast_grow_wiki/datasets/fast_grow_2024")
+# write.csv(table_data_2022_clean, "sub_pro_11_africa_fast_grow_ft/datasets/fast_grow_2022")
+# write.csv(table_data_2023_clean, "sub_pro_11_africa_fast_grow_ft/datasets/fast_grow_2023")
+# write.csv(table_data_2024_clean, "sub_pro_11_africa_fast_grow_ft/datasets/fast_grow_2024")
 
 # Get the data
 
-table_data_2022_clean <- read_csv("sub_pro_11_africa_fast_grow_wiki/datasets/fast_grow_2022")
-table_data_2023_clean <- read_csv("sub_pro_11_africa_fast_grow_wiki/datasets/fast_grow_2023")
-table_data_2024_clean <- read_csv("sub_pro_11_africa_fast_grow_wiki/datasets/fast_grow_2024")
+table_data_2022_clean <- read_csv("sub_pro_11_africa_fast_grow_ft/datasets/fast_grow_2022")
+table_data_2023_clean <- read_csv("sub_pro_11_africa_fast_grow_ft/datasets/fast_grow_2023")
+table_data_2024_clean <- read_csv("sub_pro_11_africa_fast_grow_ft/datasets/fast_grow_2024")
 
 # D) EDA
 
@@ -155,7 +155,7 @@ table_data_2022_clean_country |>
         legend.title = element_blank(),
         legend.position = "none") 
 
-ggsave("sub_pro_11_africa_fast_grow_wiki/images/2022/origin_2022.png", width = 12, height = 12, dpi = 300)
+ggsave("sub_pro_11_africa_fast_grow_ft/images/2022/origin_2022.png", width = 12, height = 12, dpi = 300)
 
 # 2023
 
@@ -202,7 +202,7 @@ table_data_2023_clean_country |>
         legend.title = element_blank(),
         legend.position = "none") 
 
-ggsave("sub_pro_11_africa_fast_grow_wiki/images/2023/origin_2023.png", width = 12, height = 12, dpi = 300)
+ggsave("sub_pro_11_africa_fast_grow_ft/images/2023/origin_2023.png", width = 12, height = 12, dpi = 300)
 
 # 2024
 
@@ -249,7 +249,7 @@ table_data_2024_clean_country |>
         legend.title = element_blank(),
         legend.position = "none") 
 
-ggsave("sub_pro_11_africa_fast_grow_wiki/images/2024/origin_2024.png", width = 12, height = 12, dpi = 300)
+ggsave("sub_pro_11_africa_fast_grow_ft/images/2024/origin_2024.png", width = 12, height = 12, dpi = 300)
 
 # What sector do the companies work in?
 
@@ -298,7 +298,7 @@ table_data_2022_clean_sector |>
         legend.title = element_blank(),
         legend.position = "none") 
 
-ggsave("sub_pro_11_africa_fast_grow_wiki/images/2022/sector_2022.png", width = 12, height = 12, dpi = 300)
+ggsave("sub_pro_11_africa_fast_grow_ft/images/2022/sector_2022.png", width = 12, height = 12, dpi = 300)
 
 # 2023
 
@@ -345,7 +345,7 @@ table_data_2023_clean_sector |>
         legend.title = element_blank(),
         legend.position = "none") 
 
-ggsave("sub_pro_11_africa_fast_grow_wiki/images/2023/sector_2023.png", width = 12, height = 12, dpi = 300)
+ggsave("sub_pro_11_africa_fast_grow_ft/images/2023/sector_2023.png", width = 12, height = 12, dpi = 300)
 
 # 2024
 
@@ -392,7 +392,7 @@ table_data_2024_clean_sector |>
         legend.title = element_blank(),
         legend.position = "none") 
 
-ggsave("sub_pro_11_africa_fast_grow_wiki/images/2024/sector_2024.png", width = 12, height = 12, dpi = 300)
+ggsave("sub_pro_11_africa_fast_grow_ft/images/2024/sector_2024.png", width = 12, height = 12, dpi = 300)
 
 # When were the companies founded?
 
@@ -421,7 +421,7 @@ table_data_2022_clean_year_group <- table_data_2022_clean %>%
     founding_year >= 1951 & founding_year <= 1975 ~ "1951-1975",
     founding_year >= 1976 & founding_year <= 2000 ~ "1976-2000",
     founding_year >= 2001 & founding_year <= 2012 ~ "2001-2012",
-    founding_year >= 2013 & founding_year <= 2024 ~ "2013-2024", 
+    founding_year >= 2013 & founding_year <= 2022 ~ "2013-2022", 
   )) %>%
   group_by(founding_year_group) %>%
   summarise(total = n()) %>%
@@ -430,7 +430,7 @@ table_data_2022_clean_year_group <- table_data_2022_clean %>%
 # Order the bars by year
 
 table_data_2022_clean_year_group$founding_year_group <- factor(table_data_2022_clean_year_group$founding_year_group, 
-                                                               levels = c("1850-1950", "1951-1975", "1976-2000", "2001-2012", "2013-2024"))
+                                                               levels = c("1850-1950", "1951-1975", "1976-2000", "2001-2012", "2013-2022"))
 
 
 table_data_2022_clean_year_group |>
@@ -467,7 +467,7 @@ table_data_2022_clean_year_group |>
         legend.title = element_blank(),
         legend.position = "none") 
 
-ggsave("sub_pro_11_africa_fast_grow_wiki/images/2022/year_2022.png", width = 12, height = 12, dpi = 300)
+ggsave("sub_pro_11_africa_fast_grow_ft/images/2022/year_2022.png", width = 12, height = 12, dpi = 300)
 
 # 2023
 
@@ -477,14 +477,14 @@ table_data_2023_clean_year_group <- table_data_2023_clean %>%
     founding_year >= 1951 & founding_year <= 1975 ~ "1951-1975",
     founding_year >= 1976 & founding_year <= 2000 ~ "1976-2000",
     founding_year >= 2001 & founding_year <= 2012 ~ "2001-2012",
-    founding_year >= 2013 & founding_year <= 2024 ~ "2013-2024", 
+    founding_year >= 2013 & founding_year <= 2023 ~ "2013-2023", 
     )) %>%
   group_by(founding_year_group) %>%
   summarise(total = n()) %>%
   arrange(desc(total))
 
 table_data_2023_clean_year_group$founding_year_group <- factor(table_data_2023_clean_year_group$founding_year_group, 
-                                                               levels = c("1850-1950", "1951-1975", "1976-2000", "2001-2012", "2013-2024"))
+                                                               levels = c("1850-1950", "1951-1975", "1976-2000", "2001-2012", "2013-2023"))
 
 
 table_data_2023_clean_year_group |>
@@ -521,7 +521,7 @@ table_data_2023_clean_year_group |>
         legend.title = element_blank(),
         legend.position = "none") 
 
-ggsave("sub_pro_11_africa_fast_grow_wiki/images/2023/year_2023.png", width = 12, height = 12, dpi = 300)
+ggsave("sub_pro_11_africa_fast_grow_ft/images/2023/year_2023.png", width = 12, height = 12, dpi = 300)
 
 # 2024
 
@@ -575,4 +575,4 @@ table_data_2024_clean_year_group |>
         legend.title = element_blank(),
         legend.position = "none") 
 
-ggsave("sub_pro_11_africa_fast_grow_wiki/images/2024/year_2024.png", width = 12, height = 12, dpi = 300)
+ggsave("sub_pro_11_africa_fast_grow_ft/images/2024/year_2024.png", width = 12, height = 12, dpi = 300)
