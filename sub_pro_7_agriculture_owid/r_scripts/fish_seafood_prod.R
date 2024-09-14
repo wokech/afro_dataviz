@@ -75,25 +75,26 @@ fish_seafood_1_clean_world <- fish_seafood_1_clean_country %>%
 
 fish_seafood_1_clean_world %>%
   ggplot(aes(year, fish_and_seafood_production_tonnes)) + 
-  geom_line(color = "#5C4033", size = 1.5) +
-  geom_point(color = "#5C4033", size = 3) +
+  geom_line(size = 1.5) +
+  geom_point(size = 3) +
   labs(x = "Year",
        y = "Fish and Seafood Production\n(Millions of Tonnes)",
-       title = "Global Fish Production Has\nIncreased By Nearly 5x\nBetween 1960 And 2020",
+       title = "Global Fish Production Has Increased By\nNearly 5x Between 1960 And 2020",
        subtitle = "",
-       caption = "Data Source: Our World in Data\nBy @afro_dataviz") +
+       caption = "Data Source: Our World in Data") +
   theme_classic() +
   scale_y_continuous(limits = c(0, 200000000), labels  = 
                   label_number(scale = 1e-6)) +
   theme(axis.title.x =element_text(size = 28, vjust = -2, face = "bold"),
         axis.title.y =element_text(size = 28,  vjust = 2, face = "bold"),
-        axis.text.x = element_text(size = 24, face = "bold"),
-        axis.text.y = element_text(size = 24, face = "bold"),
-        plot.title = element_text(family="Helvetica", face="bold", size = 48, hjust = 0.3, colour = "#5C4033"),
+        axis.text.x = element_text(size = 28, face = "bold", color = "black"),
+        axis.text.y = element_text(size = 28, face = "bold", color = "black"),
+        plot.title = element_text(family="Helvetica", face="bold", size = 36, hjust = 0.5),
         plot.subtitle = element_text(family="Helvetica", face="bold", size = 15),
         plot.caption = element_text(family = "Helvetica",size = 20, face = "bold", hjust = 0),
         plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
         panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
+        plot.title.position = 'plot',
         legend.title = element_blank(),
         legend.text = element_text(size = 14),
         legend.background = element_rect("bisque1"),
@@ -270,31 +271,34 @@ fish_seafood_1_clean_region_fao_africa_only <- fish_seafood_1_clean_region_fao_a
 fish_seafood_1_clean_region_fao_africa_segment <- fish_seafood_1_clean_region_fao_africa %>%
   filter(country %in% c("Eastern Africa (FAO)", "Middle Africa (FAO)", 
                         "Northern Africa (FAO)", "Southern Africa (FAO)",
-                        "Western Africa (FAO)"))
+                        "Western Africa (FAO)")) |>
+  mutate(country = str_remove(country, " \\(FAO\\)"))
+
 
 # a) Line plot for Africa Only
 
 fish_seafood_1_clean_region_fao_africa_only %>%
   ggplot(aes(year, fish_and_seafood_production_tonnes)) + 
-  geom_line(color = "#5C4033", size = 1.5) +
-  geom_point(color = "#5C4033", size = 3) +
+  geom_line(size = 1.5) +
+  geom_point(size = 3) +
   labs(x = "Year",
        y = "Fish and Seafood Production\n(Millions of Tonnes)",
-       title = "A Fivefold Increase in African\nFish and Seafood Production",
+       title = "A Fivefold Increase in African Fish and\nSeafood Production between 1960 and 2020",
        subtitle = "",
-       caption = "Data Source: Our World in Data\nBy @afro_dataviz") +
+       caption = "Data Source: Our World in Data") +
   theme_classic() +
   scale_y_continuous(limits = c(0, 15000000), labels  = 
                        label_number(scale = 1e-6)) +
   theme(axis.title.x =element_text(size = 28, vjust = -2, face = "bold"),
         axis.title.y =element_text(size = 28,  vjust = 2, face = "bold"),
-        axis.text.x = element_text(size = 24, face = "bold"),
-        axis.text.y = element_text(size = 24, face = "bold"),
-        plot.title = element_text(family="Helvetica", face="bold", size = 48, hjust = 0.3, colour = "#5C4033"),
+        axis.text.x = element_text(size = 28, face = "bold", color = "black"),
+        axis.text.y = element_text(size = 28, face = "bold", color = "black"),
+        plot.title = element_text(family="Helvetica", face="bold", size = 36, hjust = 0.5),
         plot.subtitle = element_text(family="Helvetica", face="bold", size = 15),
-        plot.caption = element_text(family = "Helvetica",size = 20, face = "bold", hjust = 0),
+        plot.caption = element_text(family = "Helvetica",size = 24, hjust = 0),
         plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
         panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
+        plot.title.position = 'plot',
         legend.title = element_blank(),
         legend.text = element_text(size = 14),
         legend.background = element_rect("bisque1"),
@@ -307,7 +311,7 @@ ggsave("sub_pro_7_agriculture_owid/images/africa_only_fish.png", width = 12, hei
 fish_seafood_1_clean_region_fao_africa_only_wide <- fish_seafood_1_clean_region_fao_africa_only %>%
   pivot_wider(names_from = year, values_from = fish_and_seafood_production_tonnes)
 
-write_csv(fish_seafood_1_clean_region_fao_africa_only_wide, "sub_pro_7_agriculture_owid/processed_tables/fish_seafood_1_clean_region_fao_africa_only_wide.csv")
+# write_csv(fish_seafood_1_clean_region_fao_africa_only_wide, "sub_pro_7_agriculture_owid/processed_tables/fish_seafood_1_clean_region_fao_africa_only_wide.csv")
 
 # b) Stacked Area chart for Africa regions
 
@@ -318,19 +322,19 @@ fish_seafood_1_clean_region_fao_africa_segment %>%
        y = "Fish and Seafood Production\n(Millions of Tonnes)",
        title = "North And West Africa Dominate\nFish Production On The Continent",
        subtitle = "",
-       caption = "Data Source: Our World in Data\nBy @afro_dataviz") +
+       caption = "Data Source: Our World in Data") +
   theme_classic() +
   scale_y_continuous(limits = c(0, 15000000), labels  = 
                        label_number(scale = 1e-6)) +
   scale_fill_brewer(palette = "Set1") +
   scale_color_brewer(palette = "Set1") +
-  theme(axis.title.x =element_text(size = 28, vjust = 2, face = "bold"),
-        axis.title.y =element_text(size = 28,  vjust = 0, face = "bold"),
-        axis.text.x = element_text(size = 24, face = "bold"),
-        axis.text.y = element_text(size = 24, face = "bold"),
-        plot.title = element_text(family="Helvetica", face="bold", size = 44, hjust = 0.5, colour = "#5C4033"),
+  theme(axis.title.x =element_text(size = 28, vjust = 1, face = "bold"),
+        axis.title.y =element_text(size = 28, vjust = 1, face = "bold"),
+        axis.text.x = element_text(size = 28, face = "bold", color = "black"),
+        axis.text.y = element_text(size = 28, face = "bold", color = "black"),
+        plot.title = element_text(family="Helvetica", face="bold", size = 36, hjust = 0.5),
         plot.subtitle = element_text(family="Helvetica", face="bold", size = 15),
-        plot.caption = element_text(family = "Helvetica",size = 18, face = "bold", hjust = 0),
+        plot.caption = element_text(family = "Helvetica",size = 24, hjust = 0),
         plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
         panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
         legend.title = element_blank(),

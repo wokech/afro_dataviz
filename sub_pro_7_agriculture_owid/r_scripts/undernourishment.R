@@ -89,7 +89,7 @@ undernourishment_clean_income_2 %>%
         legend.box.just = "right",
         legend.margin = margin(6, 6, 6, 6))
 
-ggsave("sub_pro_7_agriculture_owid/images/undernourished_income.png", width = 12, height = 12, dpi = 72)
+# ggsave("sub_pro_7_agriculture_owid/images/undernourished_income.png", width = 12, height = 12, dpi = 72)
 
 # Filter by region
 
@@ -97,7 +97,7 @@ ggsave("sub_pro_7_agriculture_owid/images/undernourished_income.png", width = 12
 
 undernourishment_clean_region <- undernourishment_clean %>%
   filter(grepl('(WB)', country)) |>
-  str_remove("(WB)")
+  mutate(country = str_remove(country, " \\(WB\\)"))
 
 undernourishment_clean_region %>%
   ggplot(aes(year, undernourishment_percent, group = country, color = country)) + 
@@ -105,7 +105,7 @@ undernourishment_clean_region %>%
   geom_point(size = 4) +
   labs(x = "Year",
        y = "Percentage (%) ",
-       title = "Share of the worldwide population that\nis undernourished (by region)",
+       title = "The prevalence of undernourishment\nis highest in Sub-Saharan Africa",
        subtitle = "",
        caption = "Data Source: Our World in Data") +
   theme_classic() +
@@ -117,8 +117,9 @@ undernourishment_clean_region %>%
         axis.text.y = element_text(size = 28, face = "bold", color = "black"),
         plot.title = element_text(family="Helvetica", face="bold", size = 40, colour = "#000000", hjust  = 0.5),
         plot.subtitle = element_text(family="Helvetica", face="bold", size = 15),
-        plot.caption = element_text(family = "Helvetica",size = 24, hjust = 0.5, vjust = 1),
+        plot.caption = element_text(family = "Helvetica",size = 24, hjust = 0, vjust = 1),
         plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
+        plot.title.position = 'plot',
         panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
         legend.title = element_blank(),
         legend.text = element_text(size = 20),
@@ -129,5 +130,3 @@ undernourishment_clean_region %>%
         legend.margin = margin(6, 6, 6, 6))
 
 ggsave("sub_pro_7_agriculture_owid/images/undernourished_region.png", width = 12, height = 12, dpi = 72)
-
-

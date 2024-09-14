@@ -73,7 +73,7 @@ meat_clean_region_non_fao_continent %>%
   labs(x = "Year",
        y = "Meat Production\n(Millions of Tonnes)",
        title = "Africa's Share of Global Meat Production\nHas Significantly Decreased",
-       subtitle = "",
+       subtitle = "This is despite an increase in overall production (tonnes)",
        caption = "Data Source: Our World in Data") +
   theme_classic() +
   scale_y_continuous(limits = c(0, 360000000), labels  = 
@@ -85,10 +85,11 @@ meat_clean_region_non_fao_continent %>%
         axis.text.x = element_text(size = 28, face = "bold", color = "black"),
         axis.text.y = element_text(size = 28, face = "bold", color = "black"),
         plot.title = element_text(family="Helvetica", face="bold", size = 36, colour = "#000000", hjust  = 0.5),
-        plot.subtitle = element_text(family="Helvetica", face="bold", size = 15),
-        plot.caption = element_text(family = "Helvetica",size = 24, , hjust = 0.5, vjust = 1),
+        plot.subtitle = element_text(family="Helvetica", face="bold", size = 24, hjust  = 0.5),
+        plot.caption = element_text(family = "Helvetica",size = 24, , hjust = 0, vjust = 1),
         plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
         panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
+        plot.title.position = 'plot',
         legend.title = element_blank(),
         legend.text = element_text(size = 28),
         legend.background = element_rect("bisque1"),
