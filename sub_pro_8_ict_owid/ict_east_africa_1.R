@@ -1,4 +1,4 @@
-# ICT in East Africa
+# ICT in East Africa (Part 1)
 
 # Load the required libraries and packages
 
@@ -9,21 +9,22 @@ library(tidyverse)
 library(janitor)
 library(ggrepel)
 library(ggthemes)
+library(viridis)
+library(hrbrthemes)
+library(sf)
+library(rnaturalearth)
+library(rnaturalearthdata)
+# Also ensure that rnatural hi res is installed
+library(patchwork)
+library(ggrepel)
 
 # Load the required datasets
 
-# a) ICT adoption per 100 people
-
-ict_per_100 <- read_csv("sub_pro_8_ict_owid/datasets/ict-adoption-per-100-people.csv")
-
-# b) Share of individuals using the internet
+# a) Share of individuals using the internet
 
 share_net <- read_csv("sub_pro_8_ict_owid/datasets/share-of-individuals-using-the-internet.csv")
 
 # Clean the datasets
-
-ict_per_100_clean <- ict_per_100 %>%
-  clean_names()
 
 share_net_clean <- share_net %>%
   clean_names()
@@ -51,17 +52,7 @@ african_countries <- c("Algeria", "Angola", "Benin", "Botswana", "Burkina Faso",
 # african_countries[!(african_countries %in% unique(share_net_clean_africa$country))]
 #############
 
-# ICT per 100 in Africa
-
-ict_per_100_clean_africa <- ict_per_100_clean |>
-  rename("country" = "entity") |>
-  mutate(country = case_when(
-    country == "Cote d'Ivoire" ~ "Ivory Coast",
-    TRUE ~ country
-  )) |>
-  filter(country %in% african_countries)
-
-# Share of individuals using the internet
+# Share of individuals using the internet in Africa
 
 share_net_clean_africa <- share_net_clean |>
   rename("country" = "entity") |>
@@ -71,66 +62,67 @@ share_net_clean_africa <- share_net_clean |>
   )) |>
   filter(country %in% african_countries)
 
+############## Share using the internet worldwide
+
+# Share of Net Usage (By Continent) 
+share_net_clean_continent <- share_net_clean |>
+  filter(entity %in% c("East Asia and Pacific (WB)", "Europe and Central Asia (WB)", 
+                       "Latin America and Caribbean (WB)", "Middle East and North Africa (WB)", 
+                       "North America (WB)", "South Asia (WB)", "Sub-Saharan Africa (WB)")) |>
+  mutate(entity = gsub("\\(WB\\)", "", entity))
+
+# To combine the datasets with mapping dataset - change some of the country names to match
+
+# Change to standard names used in rnaturalearth for maps
+
+share_net_clean_africa_rnaturalearth <- share_net_clean_africa %>%
+  mutate(country = case_when(
+    country == "Cape Verde"  ~ "Cabo Verde",
+    country == "Sao Tome and Principe"  ~ "São Tomé and Principe",
+    country == "Eswatini"  ~ "eSwatini",
+    country == "Democratic Republic of Congo"  ~ "Democratic Republic of the Congo",
+    country == "Tanzania"  ~ "United Republic of Tanzania",
+    country == "Congo"  ~ "Republic of the Congo",
+    TRUE ~ country  # Retain original name if none of the conditions are met
+  )) |>
+  rename(share_net_use = "individuals_using_the_internet_percent_of_population")
+
 # EDA plots
 
-# 1) 
+# 1) Share with Internet in SSA
 
-# ggsave("sub_pro_8_ict_owid/images/        .png", width = 12, height = 12, dpi = 300)
+share_net_clean_ssa <- share_net_clean |>
+  rename(share_using_net = "individuals_using_the_internet_percent_of_population") |>
+  rename("country" = "entity") |>
+  filter(country == "Sub-Saharan Africa (WB)") |>
+  mutate(country = case_when(
+    country == "Sub-Saharan Africa (WB)" ~ "Sub-Saharan Africa",
+    TRUE ~ country))
 
-# 2)
-
-# ggsave("sub_pro_8_ict_owid/images/        .png", width = 12, height = 12, dpi = 300)
-
-# 3) 
-
-# ggsave("sub_pro_8_ict_owid/images/        .png", width = 12, height = 12, dpi = 300)
-
-# 4) Number of fixed vs mobile in SS Africa
-
-ict_per_100_clean_ssa <- ict_per_100_clean %>%
-  rename("country" = "entity") %>%
-  filter(country == "Sub-Saharan Africa (WB)") %>%
-  select(!c(code, individuals_using_the_internet_percent_of_population)) 
-
-ict_per_100_clean_ssa_long <- ict_per_100_clean_ssa %>%
-  pivot_longer(!c(country, year), names_to = "connection_type", values_to = "numbers_per_100")
-
-# Label
-
-ict_per_100_clean_ssa_long_label_5 <- ict_per_100_clean_ssa_long %>%
-  group_by(connection_type) %>%
-  filter(year == 2015) 
-
-ict_per_100_clean_ssa_long_label_5[ict_per_100_clean_ssa_long_label_5 == "fixed_telephone_subscriptions_per_100_people"] <- "Fixed Telephone"
-ict_per_100_clean_ssa_long_label_5[ict_per_100_clean_ssa_long_label_5 == "fixed_broadband_subscriptions_per_100_people"] <- "Fixed Broadband"
-ict_per_100_clean_ssa_long_label_5[ict_per_100_clean_ssa_long_label_5 == "mobile_cellular_subscriptions_per_100_people"] <- "Mobile"
-
-ict_per_100_clean_ssa_long %>%
-  filter(year>=2000 & year <= 2021) %>%
+share_net_clean_ssa %>%
   ggplot(aes(x = year, 
-             y = numbers_per_100, 
-             color = connection_type)) + 
+             y = share_using_net)) + 
   geom_line(linewidth = 1) +
+  geom_rect(
+    fill = "brown", alpha = 0.01, 
+    xmin = 2010,
+    xmax = 2020,
+    ymin = 0,
+    ymax = 30
+  ) +
   labs(x = "Year",
-       y = "Number of users (per 100 people)",
-       title = "Cellular dominates in Sub-Saharan Africa",
-       subtitle = "Fixed line and Broadband lag significantly behind ",
+       y = "Individuals using the Internet (% of population)",
+       title = "Over a quarter of Africa's population has\naccess to the internet",
+       subtitle = "Majority of the internet access was obtained between 2010 and 2020",
        caption = "Data Source: Our World in Data") +
-  #scale_fill_manual(values = c("darkred", "gold", "navy","darkred", "gold", "navy")) +
-  scale_color_manual(values = c("darkred", "navy", "darkred", "navy", "darkgreen", "darkgreen")) +# figure out what the order does
   theme_classic() +
-  geom_text_repel(data = ict_per_100_clean_ssa_long_label_5,
-                   aes(label = connection_type), 
-                   nudge_x = 0.5,
-                   nudge_y = 0.5,
-                   size = 7) +
   theme(axis.title.x =element_text(size = 28, vjust = 0, face = "bold"),
         axis.title.y =element_text(size = 28,  vjust = 2, face = "bold"),
         axis.text.x = element_text(size = 24, face = "bold", colour = "#000000"),
         axis.text.y = element_text(size = 24, face = "bold", colour = "#000000"),
         plot.title = element_text(family="Helvetica", face="bold", size = 40, hjust = 0.5),
         plot.title.position = "plot",
-        plot.subtitle = element_text(family="Helvetica", face="bold", size = 20, hjust = 0.5),
+        plot.subtitle = element_text(family="Helvetica", face="bold", size = 24, hjust = 0.5),
         plot.subtitle.position = "plot",
         plot.caption = element_text(family = "Helvetica",size = 20, face = "bold", hjust = 0),
         plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
@@ -140,7 +132,376 @@ ict_per_100_clean_ssa_long %>%
         legend.background = element_rect("bisque1"),
         legend.position = "none") 
 
-ggsave("sub_pro_8_ict_owid/images/communication_ssa.png", width = 12, height = 12, dpi = 300)
+ggsave("sub_pro_8_ict_owid/images/share_net_ssa.png", width = 12, height = 12, dpi = 300)
+
+# 2) Top 5 African Countries (Internet Access)
+
+share_net_clean_africa |> 
+  rename(share_using_net = "individuals_using_the_internet_percent_of_population") |>
+  filter(year == 2020) |>
+  arrange(desc(share_using_net)) |>
+  top_n(5) |>
+  ggplot(aes(x=reorder(country, share_using_net), y = share_using_net, fill = country)) + 
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  scale_color_brewer(palette = "Set3") +
+  theme_classic() + 
+  scale_y_continuous(expand = expansion(mult = c(0, 0.02))) +
+  geom_text(aes(y = 0.02, label = country),
+            hjust = 0,
+            vjust = 0.5,
+            size = 10,
+            color = "black",
+            show.legend = FALSE) +
+  labs(x = "Country",
+       y = "Share of the population using the Internet (%)",
+       title = "African countries with the highest share of\nthe population using the Internet (%)",
+       subtitle = "",
+       caption = "Data Source: Our World In Data") +
+  theme(axis.title.x = element_text(size = 25),
+        axis.title.y = element_blank(),
+        axis.text.x = element_text(size = 25),
+        axis.text.y = element_blank(), 
+        axis.ticks.length.x = unit(0.2, "cm"),  # Lengthen the ticks
+        axis.ticks.minor.x = element_line(color = "black", size = 2),  # Show minor ticks
+        plot.title = element_text(family="Helvetica", face="bold", size = 35, hjust = 0.5),
+        plot.subtitle = element_text(family="Helvetica", size = 25),
+        plot.caption = element_text(family = "Helvetica",size = 25, face = "bold", hjust = 0),
+        plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
+        panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
+        plot.title.position = 'plot',
+        legend.title = element_blank(),
+        legend.position = "none") 
+
+ggsave("sub_pro_8_ict_owid/images/share_net_top_5.png", width = 12, height = 12, dpi = 300)
+
+# 3) Bottom 5 African Countries (Internet Access)
+
+share_net_clean_africa |> 
+  rename(share_using_net = "individuals_using_the_internet_percent_of_population") |>
+  filter(year == 2020) |>
+  arrange(desc(share_using_net)) |>
+  top_n(-5) |>
+  ggplot(aes(x=reorder(country, share_using_net), y = share_using_net, fill = country)) + 
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  scale_color_brewer(palette = "Set3") +
+  theme_classic() + 
+  scale_y_continuous(expand = expansion(mult = c(0.01, 0.02))) +
+  geom_text(aes(y = 0.02, label = country),
+            hjust = 0,
+            vjust = 0.5,
+            size = 10,
+            color = "black",
+            show.legend = FALSE) +
+  labs(x = "Country",
+       y = "Share of the population using the Internet (%)",
+       title = "African countries with the lowest share of\nthe population using the Internet (%)",
+       subtitle = "",
+       caption = "Data Source: Our World In Data") +
+  theme(axis.title.x = element_text(size = 25),
+        axis.title.y = element_blank(),
+        axis.text.x = element_text(size = 25),
+        axis.text.y = element_blank(), 
+        axis.ticks.length.x = unit(0.2, "cm"),  # Lengthen the ticks
+        axis.ticks.minor.x = element_line(color = "black", size = 2),  # Show minor ticks
+        plot.title = element_text(family="Helvetica", face="bold", size = 35, hjust = 0.5),
+        plot.subtitle = element_text(family="Helvetica", size = 25),
+        plot.caption = element_text(family = "Helvetica",size = 25, face = "bold", hjust = 0),
+        plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
+        panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
+        plot.title.position = 'plot',
+        legend.title = element_blank(),
+        legend.position = "none") 
+
+ggsave("sub_pro_8_ict_owid/images/share_net_bottom_5.png", width = 12, height = 12, dpi = 300)
+
+# Set up datasets to merge with rnaturalearth
+
+############## Share of global forests worldwide
+
+# To combine the datasets with mapping dataset - change some of the country names to match
+
+# Change to standard names used in rnaturalearth for maps
+
+share_global_forest_africa_countries_rnaturalearth <- share_global_forest_africa_countries %>%
+  mutate(entity = case_when(
+    entity == "Cape Verde"  ~ "Cabo Verde",
+    entity == "Sao Tome and Principe"  ~ "São Tomé and Principe",
+    entity == "Eswatini"  ~ "eSwatini",
+    entity == "Democratic Republic of Congo"  ~ "Democratic Republic of the Congo",
+    entity == "Tanzania"  ~ "United Republic of Tanzania",
+    entity == "Congo"  ~ "Republic of the Congo",
+    TRUE ~ entity  # Retain original name if none of the conditions are met
+  ))
 
 
+# 4) Map of countries showing share using internet between 1990 and 2020
 
+#########.............
+
+# Fetch high-resolution country data
+world <- ne_countries(scale = "large", returnclass = "sf")
+
+# Filter African countries, including Seychelles and Mauritius
+africa <- world %>%
+  filter(continent == "Africa" | admin %in% c("Seychelles", "Mauritius"))
+
+# Get 1990 data
+share_net_clean_africa_1990 <- share_net_clean_africa_rnaturalearth |> 
+  filter(year == 1990) |>
+  arrange(desc(share_net_use))
+
+# Now we have the 1990 dataset and the africa dataset.
+# These two need to be joined together.
+
+# Identify rows that don't match
+
+# Left join to keep all rows from africa
+
+share_net_clean_africa_1990_full_join <- full_join(africa, 
+                                                   share_net_clean_africa_1990,
+                                                   by = c("admin" = "country"))
+
+# Find rows only in africa
+
+share_net_clean_africa_1990_anti_join_1 <- anti_join(africa, 
+                                                     share_net_clean_africa_1990, 
+                                                     by = c("admin" = "country"))
+
+# Find rows only in share_global_forest_africa_countries_1990
+
+share_net_clean_africa_1990_anti_join_2 <- anti_join(share_net_clean_africa_1990, 
+                                                     africa, 
+                                                     by = c("country" = "admin"))
+
+###############
+# As you plot the different years, remember that not all years had all countries measured
+###############
+
+p1 <- ggplot(data = africa) +
+  geom_sf() + 
+  geom_sf(data = share_net_clean_africa_1990_full_join, aes(fill = share_net_use), linewidth = 1) +
+  scale_fill_distiller(palette = "YlGnBu", 
+                       direction = 1,
+                       limits = c(0, 4),
+                       #labels = scales::percent_format(accuracy = 1),
+                       name = "Percentage (%)",
+                       guide = guide_colorbar(     # Adjustments specific to continuous scales
+                         title.position = "top",   # Position the title ('top', 'bottom', 'left', 'right')
+                         title.hjust = 0.5         # Center the title horizontally) 
+                       )) +
+  theme_void() +
+  theme(
+    plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
+    panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
+    plot.title = element_text(family="Helvetica", face="bold", size = 150, hjust = 0.5),
+    plot.title.position = "plot",
+    plot.subtitle = element_text(family="Helvetica", face="bold", size = 26, hjust = 0.5),
+    plot.caption = element_text(family = "Helvetica",size = 24, hjust = 0, vjust = 1),
+    legend.title = element_text(size = 20),
+    legend.text = element_text(size = 20),
+    legend.position = "bottom",
+    legend.key.height = unit(1, 'cm'), #change legend key height,
+    legend.key.width = unit(1, 'cm'), #change legend key width
+  ) +
+  labs(title = "1990",
+       subtitle = "",
+       caption = "") 
+
+#ggsave("sub_pro_3_forest_cover_owid/images/share_global_forest/share_global_forest_map_1990.png", width = 9, height = 16, dpi = 300)
+
+# Get 2000 data
+share_global_forest_africa_countries_2000 <- share_global_forest_africa_countries_rnaturalearth |> 
+  filter(year == 2000) |>
+  arrange(desc(share_of_global_forest_area))
+
+# Now we have the 2000 dataset and the africa dataset.
+# These two need to be joined together.
+
+# Identify rows that don't match
+
+# Left join to keep all rows from africa
+
+share_global_forest_africa_countries_2000_full_join <- full_join(africa, 
+                                                                 share_global_forest_africa_countries_2000,
+                                                                 by = c("admin" = "entity"))
+
+# Find rows only in africa
+
+share_global_forest_africa_countries_2000_anti_join_1 <- anti_join(africa, 
+                                                                   share_global_forest_africa_countries_2000, 
+                                                                   by = c("admin" = "entity"))
+
+# Find rows only in share_global_forest_africa_countries_2000
+
+share_global_forest_africa_countries_2000_anti_join_2 <- anti_join(share_global_forest_africa_countries_2000, 
+                                                                   africa, 
+                                                                   by = c("entity" = "admin"))
+
+
+p2 <- ggplot(data = africa) +
+  geom_sf() + 
+  geom_sf(data = share_global_forest_africa_countries_2000_full_join, aes(fill = share_of_global_forest_area), linewidth = 1) +
+  scale_fill_distiller(palette = "YlGnBu", 
+                       direction = 1,
+                       limits = c(0, 4),
+                       #labels = scales::percent_format(accuracy = 1),
+                       name = "Percentage (%)",
+                       guide = guide_colorbar(     # Adjustments specific to continuous scales
+                         title.position = "top",   # Position the title ('top', 'bottom', 'left', 'right')
+                         title.hjust = 0.5         # Center the title horizontally) 
+                       )) +
+  theme_void() +
+  theme(
+    plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
+    panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
+    plot.title = element_text(family="Helvetica", face="bold", size = 150, hjust = 0.5),
+    plot.title.position = "plot",
+    plot.subtitle = element_text(family="Helvetica", face="bold", size = 26, hjust = 0.5),
+    plot.caption = element_text(family = "Helvetica",size = 24, hjust = 0, vjust = 1),
+    legend.title = element_text(size = 20),
+    legend.text = element_text(size = 20),
+    legend.position = "bottom",
+    legend.key.height = unit(1, 'cm'), #change legend key height,
+    legend.key.width = unit(1, 'cm'), #change legend key width
+  ) +
+  labs(title = "2000",
+       subtitle = "",
+       caption = "")
+
+# ggsave("sub_pro_3_forest_cover_owid/images/share_global_forest/share_global_forest_map_2000.png", width = 9, height = 16, dpi = 300)
+
+# Get 2010 data
+share_global_forest_africa_countries_2010 <- share_global_forest_africa_countries_rnaturalearth |> 
+  filter(year == 2010) |>
+  arrange(desc(share_of_global_forest_area))
+
+# Now we have the 2010 dataset and the africa dataset.
+# These two need to be joined together.
+
+# Identify rows that don't match
+
+# Left join to keep all rows from africa
+
+share_global_forest_africa_countries_2010_full_join <- full_join(africa, 
+                                                                 share_global_forest_africa_countries_2010,
+                                                                 by = c("admin" = "entity"))
+
+# Find rows only in africa
+
+share_global_forest_africa_countries_2010_anti_join_1 <- anti_join(africa, 
+                                                                   share_global_forest_africa_countries_2010, 
+                                                                   by = c("admin" = "entity"))
+
+# Find rows only in share_global_forest_africa_countries_2010
+
+share_global_forest_africa_countries_2010_anti_join_2 <- anti_join(share_global_forest_africa_countries_2010, 
+                                                                   africa, 
+                                                                   by = c("entity" = "admin"))
+
+
+p3 <- ggplot(data = africa) +
+  geom_sf() + 
+  geom_sf(data = share_global_forest_africa_countries_2010_full_join, aes(fill = share_of_global_forest_area), linewidth = 1) +
+  scale_fill_distiller(palette = "YlGnBu", 
+                       direction = 1,
+                       limits = c(0, 4),
+                       #labels = scales::percent_format(accuracy = 1),
+                       name = "Percentage (%)",
+                       guide = guide_colorbar(     # Adjustments specific to continuous scales
+                         title.position = "top",   # Position the title ('top', 'bottom', 'left', 'right')
+                         title.hjust = 0.5         # Center the title horizontally) 
+                       ))+
+  theme_void() +
+  theme(
+    plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
+    panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
+    plot.title = element_text(family="Helvetica", face="bold", size = 150, hjust = 0.5),
+    plot.title.position = "plot",
+    plot.subtitle = element_text(family="Helvetica", face="bold", size = 26, hjust = 0.5),
+    plot.caption = element_text(family = "Helvetica",size = 24, hjust = 0, vjust = 1),
+    legend.title = element_text(size = 20),
+    legend.text = element_text(size = 20),
+    legend.position = "bottom",
+    legend.key.height = unit(1, 'cm'), #change legend key height,
+    legend.key.width = unit(1, 'cm'), #change legend key width
+  ) +
+  labs(title = "2010",
+       subtitle = "",
+       caption = "")
+
+# ggsave("sub_pro_3_forest_cover_owid/images/share_global_forest/share_global_forest_map_2010.png", width = 9, height = 16, dpi = 300)
+
+# Get 2020 data
+share_global_forest_africa_countries_2020 <- share_global_forest_africa_countries_rnaturalearth |> 
+  filter(year == 2020) |>
+  arrange(desc(share_of_global_forest_area))
+
+# Now we have the 2020 dataset and the africa dataset.
+# These two need to be joined together.
+
+# Identify rows that don't match
+
+# Left join to keep all rows from africa
+
+share_global_forest_africa_countries_2020_full_join <- full_join(africa, 
+                                                                 share_global_forest_africa_countries_2020,
+                                                                 by = c("admin" = "entity"))
+
+# Find rows only in africa
+
+share_global_forest_africa_countries_2020_anti_join_1 <- anti_join(africa, 
+                                                                   share_global_forest_africa_countries_2020, 
+                                                                   by = c("admin" = "entity"))
+
+# Find rows only in share_global_forest_africa_countries_2020
+
+share_global_forest_africa_countries_2020_anti_join_2 <- anti_join(share_global_forest_africa_countries_2020, 
+                                                                   africa, 
+                                                                   by = c("entity" = "admin"))
+
+
+p4 <- ggplot(data = africa) +
+  geom_sf() + 
+  geom_sf(data = share_global_forest_africa_countries_2020_full_join, aes(fill = share_of_global_forest_area), linewidth = 1) +
+  scale_fill_distiller(palette = "YlGnBu", 
+                       direction = 1,
+                       limits = c(0, 4),
+                       #labels = scales::percent_format(accuracy = 1),
+                       name = "Percentage (%)",
+                       guide = guide_colorbar(     # Adjustments specific to continuous scales
+                         title.position = "top",   # Position the title ('top', 'bottom', 'left', 'right')
+                         title.hjust = 0.5         # Center the title horizontally) 
+                       ))+
+  theme_void() +
+  theme(
+    plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
+    panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
+    plot.title = element_text(family="Helvetica", face="bold", size = 150, hjust = 0.5),
+    plot.title.position = "plot",
+    plot.subtitle = element_text(family="Helvetica", face="bold", size = 26, hjust = 0.5),
+    plot.caption = element_text(family = "Helvetica",size = 24, hjust = 0, vjust = 1),
+    legend.title = element_text(size = 20),
+    legend.text = element_text(size = 20),
+    legend.position = "bottom",
+    legend.key.height = unit(1, 'cm'), #change legend key height,
+    legend.key.width = unit(1, 'cm'), #change legend key width
+  ) +
+  labs(title = "2020",
+       subtitle = "",
+       caption = "")
+
+# ggsave("sub_pro_3_forest_cover_owid/images/share_global_forest/share_global_forest_map_2020.png", width = 9, height = 16, dpi = 300)
+
+#######################
+
+# Calculate countries with the biggest changes (increase or decrease)
+
+share_global_forest_africa_countries_join_1990_2020 <- share_global_forest_africa_countries_1990 %>% 
+  full_join(share_global_forest_africa_countries_2020, by = "entity")
+
+share_global_forest_africa_countries_join_1990_2020 <- share_global_forest_africa_countries_join_1990_2020 |> 
+  mutate(changes = share_of_global_forest_area.y - share_of_global_forest_area.x) |>
+  mutate(abs_changes = abs(changes)) |>
+  arrange(desc(changes))
