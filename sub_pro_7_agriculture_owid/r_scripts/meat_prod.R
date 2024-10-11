@@ -78,8 +78,8 @@ meat_clean_region_non_fao_continent %>%
   theme_classic() +
   scale_y_continuous(limits = c(0, 360000000), labels  = 
                        label_number(scale = 1e-6)) +
-  scale_fill_brewer(palette = "Set3") +
-  scale_color_brewer(palette = "Set3") +
+  scale_fill_brewer(palette = "Set1") +
+  scale_color_brewer(palette = "Set1") +
   theme(axis.title.x =element_text(size = 28, vjust = 1, face = "bold"),
         axis.title.y =element_text(size = 28, vjust = 1, face = "bold"),
         axis.text.x = element_text(size = 28, face = "bold", color = "black"),

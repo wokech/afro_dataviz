@@ -155,7 +155,7 @@ table_data_2022_clean_country |>
         legend.title = element_blank(),
         legend.position = "none") 
 
-ggsave("sub_pro_11_africa_fast_grow_ft/images/2022/origin_2022.png", width = 12, height = 12, dpi = 300)
+#ggsave("sub_pro_11_africa_fast_grow_ft/images/2022/origin_2022.png", width = 12, height = 12, dpi = 300)
 
 # 2023
 
@@ -202,7 +202,7 @@ table_data_2023_clean_country |>
         legend.title = element_blank(),
         legend.position = "none") 
 
-ggsave("sub_pro_11_africa_fast_grow_ft/images/2023/origin_2023.png", width = 12, height = 12, dpi = 300)
+#ggsave("sub_pro_11_africa_fast_grow_ft/images/2023/origin_2023.png", width = 12, height = 12, dpi = 300)
 
 # 2024
 
@@ -249,7 +249,7 @@ table_data_2024_clean_country |>
         legend.title = element_blank(),
         legend.position = "none") 
 
-ggsave("sub_pro_11_africa_fast_grow_ft/images/2024/origin_2024.png", width = 12, height = 12, dpi = 300)
+#ggsave("sub_pro_11_africa_fast_grow_ft/images/2024/origin_2024.png", width = 12, height = 12, dpi = 300)
 
 # What sector do the companies work in?
 
@@ -298,7 +298,7 @@ table_data_2022_clean_sector |>
         legend.title = element_blank(),
         legend.position = "none") 
 
-ggsave("sub_pro_11_africa_fast_grow_ft/images/2022/sector_2022.png", width = 12, height = 12, dpi = 300)
+#ggsave("sub_pro_11_africa_fast_grow_ft/images/2022/sector_2022.png", width = 12, height = 12, dpi = 300)
 
 # 2023
 
@@ -345,7 +345,7 @@ table_data_2023_clean_sector |>
         legend.title = element_blank(),
         legend.position = "none") 
 
-ggsave("sub_pro_11_africa_fast_grow_ft/images/2023/sector_2023.png", width = 12, height = 12, dpi = 300)
+#ggsave("sub_pro_11_africa_fast_grow_ft/images/2023/sector_2023.png", width = 12, height = 12, dpi = 300)
 
 # 2024
 
@@ -392,7 +392,7 @@ table_data_2024_clean_sector |>
         legend.title = element_blank(),
         legend.position = "none") 
 
-ggsave("sub_pro_11_africa_fast_grow_ft/images/2024/sector_2024.png", width = 12, height = 12, dpi = 300)
+#ggsave("sub_pro_11_africa_fast_grow_ft/images/2024/sector_2024.png", width = 12, height = 12, dpi = 300)
 
 # When were the companies founded?
 
@@ -467,7 +467,7 @@ table_data_2022_clean_year_group |>
         legend.title = element_blank(),
         legend.position = "none") 
 
-ggsave("sub_pro_11_africa_fast_grow_ft/images/2022/year_2022.png", width = 12, height = 12, dpi = 300)
+#ggsave("sub_pro_11_africa_fast_grow_ft/images/2022/year_2022.png", width = 12, height = 12, dpi = 300)
 
 # 2023
 
@@ -521,7 +521,7 @@ table_data_2023_clean_year_group |>
         legend.title = element_blank(),
         legend.position = "none") 
 
-ggsave("sub_pro_11_africa_fast_grow_ft/images/2023/year_2023.png", width = 12, height = 12, dpi = 300)
+#ggsave("sub_pro_11_africa_fast_grow_ft/images/2023/year_2023.png", width = 12, height = 12, dpi = 300)
 
 # 2024
 
@@ -575,4 +575,5 @@ table_data_2024_clean_year_group |>
         legend.title = element_blank(),
         legend.position = "none") 
 
-ggsave("sub_pro_11_africa_fast_grow_ft/images/2024/year_2024.png", width = 12, height = 12, dpi = 300)
+#ggsave("sub_pro_11_africa_fast_grow_ft/images/2024/year_2024.png", width = 12, height = 12, dpi = 300)
+

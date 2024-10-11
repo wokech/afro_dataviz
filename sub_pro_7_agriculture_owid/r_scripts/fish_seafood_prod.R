@@ -100,14 +100,14 @@ fish_seafood_1_clean_world %>%
         legend.background = element_rect("bisque1"),
         legend.position = "right") 
 
-ggsave("sub_pro_7_agriculture_owid/images/global_fish.png", width = 12, height = 12, dpi = 72)
+# ggsave("sub_pro_7_agriculture_owid/images/global_fish.png", width = 12, height = 12, dpi = 72)
 
 # b) Pivot the worldwide data for Flourish
 
 fish_seafood_1_clean_world_wide <- fish_seafood_1_clean_world %>%
   pivot_wider(names_from = year, values_from = fish_and_seafood_production_tonnes)
 
-write_csv(fish_seafood_1_clean_world_wide, "sub_pro_7_agriculture_owid/processed_tables/fish_seafood_1_clean_world_wide.csv")
+# write_csv(fish_seafood_1_clean_world_wide, "sub_pro_7_agriculture_owid/processed_tables/fish_seafood_1_clean_world_wide.csv")
 
 # 4) Continental (Non-FAO) Fish Production
 
@@ -123,27 +123,28 @@ fish_seafood_1_clean_region_non_fao_continent %>%
   geom_area() +
   labs(x = "Year",
        y = "Fish and Seafood Production\n(Millions of Tonnes)",
-       title = "Africa's Share of Global Fish Production\nHas Significantly Decreased",
-       subtitle = "",
+       title = "Africa's Share of Global Fish & Seafood\nProduction Has Significantly Decreased",
+       subtitle = "This is despite an increase in overall production (tonnes)",
        caption = "Data Source: Our World in Data") +
   theme_classic() +
   scale_y_continuous(limits = c(0, 200000000), labels  = 
                        label_number(scale = 1e-6)) +
-  scale_fill_brewer(palette = "Pastel1") +
-  scale_color_brewer(palette = "Pastel1") +
-  theme(axis.title.x =element_text(size = 28, vjust = -2, face = "bold"),
-        axis.title.y =element_text(size = 28,  vjust = 2, face = "bold"),
-        axis.text.x = element_text(size = 24, face = "bold"),
-        axis.text.y = element_text(size = 24, face = "bold"),
-        plot.title = element_text(family="Helvetica", face="bold", size = 32, colour = "#5C4033"),
-        plot.subtitle = element_text(family="Helvetica", face="bold", size = 15),
-        plot.caption = element_text(family = "Helvetica",size = 16, face = "bold", hjust = 1, vjust = -2),
+  scale_fill_brewer(palette = "Set1") +
+  scale_color_brewer(palette = "Set1") +
+  theme(axis.title.x =element_text(size = 28, vjust = 0, face = "bold"),
+        axis.title.y =element_text(size = 28,  vjust = 0, face = "bold"),
+        axis.text.x = element_text(size = 28, face = "bold"),
+        axis.text.y = element_text(size = 28, face = "bold"),
+        plot.title = element_text(family="Helvetica", face="bold", size = 40, hjust = 0.5),
+        plot.subtitle = element_text(family="Helvetica", face="bold", size = 24, hjust  = 0.5),
+        plot.caption = element_text(family = "Helvetica",size = 24, face = "bold", hjust = 0),
         plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
         panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
+        plot.title.position = 'plot',
         legend.title = element_blank(),
-        legend.text = element_text(size = 20),
+        legend.text = element_text(size = 24),
         legend.background = element_rect("bisque1"),
-        legend.position = c(.35, .85),
+        legend.position = c(.35, .95),
         legend.justification = c("right", "top"),
         legend.box.just = "right",
         legend.margin = margin(6, 6, 6, 6))
@@ -190,14 +191,14 @@ ggplot() +
   theme(legend.position="none") +
   coord_equal()
 
-ggsave("sub_pro_7_agriculture_owid/images/continent_fish_pack_circle.png", width = 12, height = 12, dpi = 72)
+# ggsave("sub_pro_7_agriculture_owid/images/continent_fish_pack_circle.png", width = 12, height = 12, dpi = 72)
 
 # c) Pivot the data for Flourish Line Chart
 
 fish_seafood_1_clean_region_non_fao_continent_wide <- fish_seafood_1_clean_region_non_fao_continent %>%
   pivot_wider(names_from = year, values_from = fish_and_seafood_production_tonnes)
 
-write_csv(fish_seafood_1_clean_region_non_fao_continent_wide, "sub_pro_7_agriculture_owid/processed_tables/fish_seafood_1_clean_region_non_fao_continent_wide.csv")
+# write_csv(fish_seafood_1_clean_region_non_fao_continent_wide, "sub_pro_7_agriculture_owid/processed_tables/fish_seafood_1_clean_region_non_fao_continent_wide.csv")
 
 # 5) Fish production by Income Level
 
@@ -223,7 +224,7 @@ fish_seafood_1_clean_region_non_fao_income %>%
         axis.title.y =element_text(size = 28,  vjust = 0, face = "bold"),
         axis.text.x = element_text(size = 24, face = "bold"),
         axis.text.y = element_text(size = 24, face = "bold"),
-        plot.title = element_text(family="Helvetica", face="bold", size = 36, hjust = 0.5, colour = "#5C4033"),
+        plot.title = element_text(family="Helvetica", face="bold", size = 36, hjust = 0.5),
         plot.subtitle = element_text(family="Helvetica", face="bold", size = 15),
         plot.caption = element_text(family = "Helvetica",size = 18, face = "bold", hjust = 0),
         plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
@@ -236,14 +237,14 @@ fish_seafood_1_clean_region_non_fao_income %>%
         legend.box.just = "right",
         legend.margin = margin(6, 6, 6, 6))
 
-ggsave("sub_pro_7_agriculture_owid/images/income_fish.png", width = 12, height = 12, dpi = 72)
+# ggsave("sub_pro_7_agriculture_owid/images/income_fish.png", width = 12, height = 12, dpi = 72)
 
 # b) Pivot the data for Flourish Line Chart
 
 fish_seafood_1_clean_region_non_fao_income_wide <- fish_seafood_1_clean_region_non_fao_income %>%
   pivot_wider(names_from = year, values_from = fish_and_seafood_production_tonnes)
 
-write_csv(fish_seafood_1_clean_region_non_fao_income_wide, "sub_pro_7_agriculture_owid/processed_tables/fish_seafood_1_clean_region_non_fao_income_wide.csv")
+# write_csv(fish_seafood_1_clean_region_non_fao_income_wide, "sub_pro_7_agriculture_owid/processed_tables/fish_seafood_1_clean_region_non_fao_income_wide.csv")
 
 # c) Circle Packing Chart 
 
@@ -283,7 +284,7 @@ fish_seafood_1_clean_region_fao_africa_only %>%
   geom_point(size = 3) +
   labs(x = "Year",
        y = "Fish and Seafood Production\n(Millions of Tonnes)",
-       title = "A Fivefold Increase in African Fish and\nSeafood Production between 1960 and 2020",
+       title = "Africa's Fish and Seafood Production\nincreased fivefold between 1960 and 2020",
        subtitle = "",
        caption = "Data Source: Our World in Data") +
   theme_classic() +
@@ -337,6 +338,7 @@ fish_seafood_1_clean_region_fao_africa_segment %>%
         plot.caption = element_text(family = "Helvetica",size = 24, hjust = 0),
         plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
         panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
+        plot.title.position = 'plot',
         legend.title = element_blank(),
         legend.text = element_text(size = 28),
         legend.background = element_rect("bisque1"),
@@ -352,7 +354,7 @@ ggsave("sub_pro_7_agriculture_owid/images/africa_segment_fish.png", width = 12, 
 fish_seafood_1_clean_region_fao_africa_segment_wide <- fish_seafood_1_clean_region_fao_africa_segment %>%
   pivot_wider(names_from = year, values_from = fish_and_seafood_production_tonnes)
 
-write_csv(fish_seafood_1_clean_region_fao_africa_segment_wide, "sub_pro_7_agriculture_owid/processed_tables/fish_seafood_1_clean_region_fao_africa_segment_wide.csv")
+# write_csv(fish_seafood_1_clean_region_fao_africa_segment_wide, "sub_pro_7_agriculture_owid/processed_tables/fish_seafood_1_clean_region_fao_africa_segment_wide.csv")
 
 # c) Circle Packing Chart 
 
@@ -361,5 +363,3 @@ write_csv(fish_seafood_1_clean_region_fao_africa_segment_wide, "sub_pro_7_agricu
 fish_seafood_1_clean_region_fao_africa_segment_sum <- fish_seafood_1_clean_region_fao_africa_segment %>%
   group_by(country) %>%
   summarise(total = sum(fish_and_seafood_production_tonnes))
-
-# Plot a packed circle chart and compare with Flourish

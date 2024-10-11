@@ -104,8 +104,8 @@ undernourishment_clean_region %>%
   geom_line(size = 2) +
   geom_point(size = 4) +
   labs(x = "Year",
-       y = "Percentage (%) ",
-       title = "The prevalence of undernourishment\nis highest in Sub-Saharan Africa",
+       y = "Percent undernourished (%) ",
+       title = "The share of the undernourished population\nis highest in Sub-Saharan Africa",
        subtitle = "",
        caption = "Data Source: Our World in Data") +
   theme_classic() +

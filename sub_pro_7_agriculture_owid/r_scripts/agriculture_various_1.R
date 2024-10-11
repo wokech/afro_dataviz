@@ -60,6 +60,123 @@ nitrogen_fertilizer_app_clean <- nitrogen_fertilizer_app %>%
   clean_names() |>
   rename(nitrogen_per_hectare = nutrient_nitrogen_n_total_00003102_use_per_area_of_cropland_005159_kilograms_per_hectare)
 
-# Select the correct columns
 crop_yields_clean <- crop_yields %>%
   clean_names()
+
+# Create datasets for plotting
+
+veg_consumption_clean_countries <- veg_consumption_clean |>
+  filter(!is.na(code))
+
+veg_consumption_clean_regions <- veg_consumption_clean |>
+  filter(is.na(code))
+
+fruit_consumption_clean_countries <- fruit_consumption_clean |>
+  filter(!is.na(code))
+
+fruit_consumption_clean_regions <- fruit_consumption_clean |>
+  filter(is.na(code))
+
+share_land_area_ag_clean_countries <- share_land_area_ag_clean |>
+  filter(!is.na(code))
+
+share_land_area_ag_clean_regions <- share_land_area_ag_clean |>
+  filter(is.na(code))
+
+nitrogen_fertilizer_app_clean_countries <- nitrogen_fertilizer_app_clean |>
+  filter(!is.na(code))
+
+nitrogen_fertilizer_app_clean_regions <- nitrogen_fertilizer_app_clean |>
+  filter(is.na(code))
+
+# Only include African Countries
+
+african_countries <- c("Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", 
+                       "Burundi", "Cape Verde", "Cameroon", "Central African Republic", 
+                       "Chad", "Comoros", "Congo", "Democratic Republic of Congo", 
+                       "Djibouti", "Egypt", "Equatorial Guinea", "Eritrea", 
+                       "Eswatini", "Ethiopia", "Gabon", "Gambia", "Ghana", 
+                       "Guinea", "Guinea-Bissau", "Ivory Coast", "Kenya", 
+                       "Lesotho", "Liberia", "Libya", "Madagascar", "Malawi", 
+                       "Mali", "Mauritania", "Mauritius", "Morocco", "Mozambique", 
+                       "Namibia", "Niger", "Nigeria", "Rwanda", "Sao Tome and Principe", 
+                       "Senegal", "Seychelles", "Sierra Leone", "Somalia", "South Africa", 
+                       "South Sudan", "Sudan", "Tanzania", "Togo", "Tunisia", 
+                       "Uganda", "Zambia", "Zimbabwe")
+
+# Vegetable Consumption in Africa
+
+veg_consumption_clean_countries_africa <- veg_consumption_clean_countries |>
+  rename("country" = "entity") |>
+  mutate(country = case_when(
+    country == "Cote d'Ivoire" ~ "Ivory Coast",
+    TRUE ~ country
+  )) |>
+  filter(country %in% african_countries)
+
+#############
+# Check if the values in the african_countries dataset are present in new dataframes
+
+unique(veg_consumption_clean_countries_africa$country)
+
+african_countries[!(african_countries %in% unique(veg_consumption_clean_countries_africa$country))]
+
+#############
+
+# Fruit Consumption in Africa
+
+fruit_consumption_clean_countries_africa <- fruit_consumption_clean_countries |>
+  rename("country" = "entity") |>
+  mutate(country = case_when(
+    country == "Cote d'Ivoire" ~ "Ivory Coast",
+    TRUE ~ country
+  )) |>
+  filter(country %in% african_countries)
+
+#############
+# Check if the values in the african_countries dataset are present in new dataframes
+
+unique(fruit_consumption_clean_countries_africa$country)
+
+african_countries[!(african_countries %in% unique(fruit_consumption_clean_countries_africa$country))]
+
+#############
+
+# Share of land area in Africa
+
+share_land_area_ag_clean_countries_africa <- share_land_area_ag_clean_countries |>
+  rename("country" = "entity") |>
+  mutate(country = case_when(
+    country == "Cote d'Ivoire" ~ "Ivory Coast",
+    TRUE ~ country
+  )) |>
+  filter(country %in% african_countries)
+
+#############
+# Check if the values in the african_countries dataset are present in new dataframes
+
+unique(share_land_area_ag_clean_countries_africa$country)
+
+african_countries[!(african_countries %in% unique(share_land_area_ag_clean_countries_africa$country))]
+
+#############
+
+# Nitrogen Fertilizer Application in Africa
+
+nitrogen_fertilizer_app_clean_countries_africa <- nitrogen_fertilizer_app_clean_countries |>
+  rename("country" = "entity") |>
+  mutate(country = case_when(
+    country == "Cote d'Ivoire" ~ "Ivory Coast",
+    TRUE ~ country
+  )) |>
+  filter(country %in% african_countries)
+
+#############
+# Check if the values in the african_countries dataset are present in new dataframes
+
+unique(nitrogen_fertilizer_app_clean_countries_africa$country)
+
+african_countries[!(african_countries %in% unique(nitrogen_fertilizer_app_clean_countries_africa$country))]
+
+#############
+

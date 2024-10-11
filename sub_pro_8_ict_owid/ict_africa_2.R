@@ -103,3 +103,23 @@ ict_per_100_clean_africa <- ict_per_100_clean |>
     TRUE ~ country
   )) |>
   filter(country %in% african_countries)
+
+ict_per_100_clean_africa_2020 <- ict_per_100_clean_africa |>
+  filter(year == 2020) |>
+  filter(individuals_using_the_internet_percent_of_population != "NA") |>
+  rename("fixed_tel_per_100" = "fixed_telephone_subscriptions_per_100_people",
+         "fixed_broad_per_100" = "fixed_broadband_subscriptions_per_100_people",
+         "mobile_per_100" = "mobile_cellular_subscriptions_per_100_people",
+         "internet_percent" = "individuals_using_the_internet_percent_of_population")
+
+ict_per_100_clean_africa_2020 |>
+  ggplot(aes(fixed_tel_per_100, internet_percent)) +
+  geom_point()
+
+ict_per_100_clean_africa_2020 |>
+  ggplot(aes(mobile_per_100, internet_percent)) +
+  geom_point() 
+
+ict_per_100_clean_africa_2020 |>
+  ggplot(aes(fixed_broad_per_100, internet_percent)) +
+  geom_point()
