@@ -291,3 +291,49 @@ ggplot() +
         legend.position = "top")
 
 ggsave("sub_pro_20_relative_wealth_index/images/drcongo.png", width = 12, height = 12, dpi = 72)
+
+# 6. Ethiopia
+
+# Read the CSV file
+eth_data <- read_csv("sub_pro_2_rel_wealth_index_meta/datasets/eth_relative_wealth_index.csv")
+
+# Convert the data to an sf object
+eth_data_sf <- st_as_sf(eth_data, coords = c("longitude", "latitude"), crs = 4326)
+
+# Ethiopia country borders
+ethiopia <- ne_countries(scale = "medium", country = "Ethiopia", returnclass = "sf")
+
+# Create a data frame with major Ethiopian towns
+major_towns_ethiopia <- data.frame(
+  name = c("Addis Ababa", "Dire Dawa", "Mek'ele", "Adama", "Gondar"),
+  longitude = c(38.7578, 41.8661, 39.4753, 39.2671, 37.4667),
+  latitude = c(9.0252, 9.5951, 13.4967, 8.5400, 12.6000)
+)
+
+# Map of Ethiopian towns
+
+ggplot() +
+  geom_sf(data = ethiopia, fill = NA, color = "black", linewidth = 1) + # Add Ethiopia borders
+  geom_point(data = eth_data, aes(x = longitude, y = latitude, color = rwi), size = 0.5, alpha = 0.8) +
+  geom_text_repel(data = major_towns_ethiopia, aes(x = longitude, y = latitude, label = name), 
+                  color = "black", fontface = "bold", check_overlap = TRUE, size = 10, vjust = 1.5) +
+  geom_point(data = major_towns_ethiopia, aes(x = longitude, y = latitude), 
+             color = "black", size = 7, shape = 16) +
+  scale_color_viridis(option = "plasma") +
+  theme_void() +
+  labs(title = "6. Ethiopia",
+       subtitle = "",
+       caption = "Data Source: Meta (Data for Good)",
+       color = "Relative Wealth Index") +
+  theme(plot.title = element_text(family="Helvetica", face="bold", size = 44, hjust = 0.5),
+        #plot.subtitle = element_text(family="Helvetica", size = 24, hjust = 0.5),
+        plot.title.position = 'plot',
+        plot.caption = element_text(family = "Helvetica",size = 24, hjust = 0, vjust = 0.5),
+        plot.caption.position = 'plot',
+        plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
+        panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
+        legend.title = element_text(family="Helvetica", size = 24),
+        legend.text = element_text(size = 24), 
+        legend.position = "top")
+
+ggsave("sub_pro_2_rel_wealth_index_meta/images/ethiopia.png", width = 12, height = 12, dpi = 72)
