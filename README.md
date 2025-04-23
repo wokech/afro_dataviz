@@ -3,7 +3,9 @@
 This repository contains a collection of data visualizations about various topics related to the African continent. 
 The visualizations have been created using various tools and software, and they are meant to provide a concise explanation of various phenomena to policymakers and the general public.
 
-Visualizations can be seen [here](https://linktr.ee/afro_dataviz), [here](https://www.instagram.com/afro_dataviz/), and [here](https://www.tiktok.com/@afro_dataviz).
+***NOTE: Direct links to the code used to produce the image(s) below will be provided ASAP.***
+
+Visualizations can be seen [here](https://linktr.ee/afro_dataviz) and [here](https://www.instagram.com/afro_dataviz/).
 
 ## Example visualizations (to be included ASAP)
 
