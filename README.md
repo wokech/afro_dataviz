@@ -7,7 +7,7 @@ The visualizations have been created using various tools and software, and they 
 
 Visualizations can be seen [here](https://linktr.ee/afro_dataviz) and [here](https://www.instagram.com/afro_dataviz/).
 
-## Example visualizations (to be included ASAP)
+## Example visualizations
 
 ### 1) African Olympic Medals 
 
