@@ -64,7 +64,7 @@ undernourishment_clean_income_2 %>%
   geom_point(size = 4) +
   labs(x = "Year",
        y = "Percentage (%) ",
-       title = "Share of the worldwide population that\nis undernourished (by income)",
+       title = "Share of the worldwide population that is\nundernourished (by income)",
        subtitle = "",
        caption = "Data Source: Our World in Data") +
   theme_classic() +
@@ -76,11 +76,13 @@ undernourishment_clean_income_2 %>%
         axis.title.y =element_text(size = 28,  vjust = 1, face = "bold"),
         axis.text.x = element_text(size = 28, face = "bold", color = "black"),
         axis.text.y = element_text(size = 28, face = "bold", color = "black"),
-        plot.title = element_text(family="Helvetica", face="bold", size = 40, colour = "#000000", hjust = 0.5),
+        plot.title = element_text(family="Helvetica", face="bold", size = 40, colour = "#000000", hjust = 0),
         plot.subtitle = element_text(family="Helvetica", face="bold", size = 15),
-        plot.caption = element_text(family = "Helvetica",size = 24, hjust = 0.5, vjust = 1),
+        plot.caption = element_text(family = "Helvetica",size = 24, hjust = 0, vjust = 1),
         plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
         panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
+        plot.title.position = 'plot',
+        plot.caption.position = 'plot',
         legend.title = element_blank(),
         legend.text = element_text(size = 20),
         legend.background = element_rect("bisque1"),
@@ -89,7 +91,7 @@ undernourishment_clean_income_2 %>%
         legend.box.just = "right",
         legend.margin = margin(6, 6, 6, 6))
 
-# ggsave("sub_pro_7_agriculture_owid/images/undernourished_income.png", width = 12, height = 12, dpi = 72)
+ggsave("sub_pro_7_agriculture_owid/images/undernourished_income.png", width = 12, height = 12, dpi = 72)
 
 # Filter by region
 
@@ -115,11 +117,12 @@ undernourishment_clean_region %>%
         axis.title.y =element_text(size = 28,  vjust = 1, face = "bold"),
         axis.text.x = element_text(size = 28, face = "bold", color = "black"),
         axis.text.y = element_text(size = 28, face = "bold", color = "black"),
-        plot.title = element_text(family="Helvetica", face="bold", size = 40, colour = "#000000", hjust  = 0.5),
+        plot.title = element_text(family="Helvetica", face="bold", size = 40, colour = "#000000", hjust  = 0),
         plot.subtitle = element_text(family="Helvetica", face="bold", size = 15),
         plot.caption = element_text(family = "Helvetica",size = 24, hjust = 0, vjust = 1),
         plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
         plot.title.position = 'plot',
+        plot.caption.position = 'plot',
         panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
         legend.title = element_blank(),
         legend.text = element_text(size = 20),

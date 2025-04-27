@@ -15,7 +15,7 @@ library(rnaturalearthdata)
 # Kenya
 
 # Read the CSV file
-ken_data <- read.csv("sub_pro_20_relative_wealth_index/datasets/ken_relative_wealth_index.csv")
+ken_data <- read.csv("sub_pro_2_rel_wealth_index_meta/datasets/ken_relative_wealth_index.csv")
 
 # Convert the data to an sf object
 ken_data_sf <- st_as_sf(ken_data, coords = c("longitude", "latitude"), crs = 4326)
@@ -38,17 +38,17 @@ ggplot() +
   geom_text_repel(data = major_towns_kenya, aes(x = longitude, y = latitude, label = name), 
             color = "black", fontface = "bold", check_overlap = TRUE, size = 10, vjust = 1.5) +
   geom_point(data = major_towns_kenya, aes(x = longitude, y = latitude), 
-             color = "black", size = 5, shape = 13) +
+             color = "black", size = 7, shape = 16) +
   scale_color_viridis(option = "plasma") +
   theme_void() +
-  labs(title = "Wealth Index Distribution\nin Kenya",
+  labs(title = "Wealth Index Distribution in Kenya",
        subtitle = "",
        caption = "Data Source: Meta (Data for Good)",
        color = "Relative Wealth Index") +
   theme(plot.title = element_text(family="Helvetica", face="bold", size = 44, hjust = 0.5),
         #plot.subtitle = element_text(family="Helvetica", size = 24, hjust = 0.5),
         plot.title.position = 'plot',
-        plot.caption = element_text(family = "Helvetica",size = 24, hjust = -0.25, vjust = 0.5),
+        plot.caption = element_text(family = "Helvetica",size = 24, hjust = -0.5, vjust = 0.5),
         plot.caption.position = 'plot',
         plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
         panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
@@ -56,12 +56,12 @@ ggplot() +
         legend.text = element_text(size = 24), 
         legend.position = "top")
 
-ggsave("sub_pro_20_relative_wealth_index/images/kenya.png", width = 12, height = 12, dpi = 72)
+ggsave("sub_pro_2_rel_wealth_index_meta/images/kenya.png", width = 12, height = 12, dpi = 72)
 
 # Tanzania
 
 # Read the CSV file
-tza_data <- read.csv("sub_pro_20_relative_wealth_index/datasets/tza_relative_wealth_index.csv")
+tza_data <- read.csv("sub_pro_2_rel_wealth_index_meta/datasets/tza_relative_wealth_index.csv")
 
 # Convert the data to an sf object
 tza_data_sf <- st_as_sf(tza_data, coords = c("longitude", "latitude"), crs = 4326)
@@ -84,17 +84,17 @@ ggplot() +
   geom_text_repel(data = major_towns_tanzania, aes(x = longitude, y = latitude, label = name), 
                   color = "black", fontface = "bold", check_overlap = TRUE, size = 10, vjust = 1.5) +
   geom_point(data = major_towns_tanzania, aes(x = longitude, y = latitude), 
-             color = "black", size = 5, shape = 13) +
+             color = "black", size = 7, shape = 16) +
   scale_color_viridis(option = "plasma") +
   theme_void() +
-  labs(title = "Wealth Index Distribution\nin Tanzania",
+  labs(title = "Wealth Index Distribution in Tanzania",
        subtitle = "",
        caption = "Data Source: Meta (Data for Good)",
        color = "Relative Wealth Index") +
   theme(plot.title = element_text(family="Helvetica", face="bold", size = 44, hjust = 0.5),
         #plot.subtitle = element_text(family="Helvetica", size = 24, hjust = 0.5),
         plot.title.position = 'plot',
-        plot.caption = element_text(family = "Helvetica",size = 24, hjust = -0.25, vjust = 0.5),
+        plot.caption = element_text(family = "Helvetica",size = 24, vjust = 0.5, hjust = 0),
         plot.caption.position = 'plot',
         plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
         panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
@@ -102,13 +102,13 @@ ggplot() +
         legend.text = element_text(size = 24), 
         legend.position = "top")
 
-ggsave("sub_pro_20_relative_wealth_index/images/tanzania.png", width = 12, height = 12, dpi = 72)
+ggsave("sub_pro_2_rel_wealth_index_meta/images/tanzania.png", width = 12, height = 12, dpi = 72)
 
 
 # Uganda
 
 # Read the CSV file
-uga_data <- read.csv("sub_pro_20_relative_wealth_index/datasets/uga_relative_wealth_index.csv")
+uga_data <- read.csv("sub_pro_2_rel_wealth_index_meta/datasets/uga_relative_wealth_index.csv")
 
 # Convert the data to an sf object
 uga_data_sf <- st_as_sf(uga_data, coords = c("longitude", "latitude"), crs = 4326)
@@ -127,21 +127,21 @@ major_towns_uganda <- data.frame(
 
 ggplot() +
   geom_sf(data = uganda, fill = NA, color = "black", linewidth = 1) + # Add Uganda borders
-  geom_point(data = uga_data, aes(x = longitude, y = latitude, color = rwi), size = 1, alpha = 0.9) +
+  geom_point(data = uga_data, aes(x = longitude, y = latitude, color = rwi), size = 0.5, alpha = 0.9) +
   geom_text_repel(data = major_towns_uganda, aes(x = longitude, y = latitude, label = name), 
                   color = "black", fontface = "bold", check_overlap = TRUE, size = 10, vjust = 1.5) +
   geom_point(data = major_towns_uganda, aes(x = longitude, y = latitude), 
-             color = "black", size = 5, shape = 13) +
+             color = "black", size = 7, shape = 16) +
   scale_color_viridis(option = "plasma") +
   theme_void() +
-  labs(title = "Wealth Index Distribution\nin Uganda",
+  labs(title = "Wealth Index Distribution in Uganda",
        subtitle = "",
        caption = "Data Source: Meta (Data for Good)",
        color = "Relative Wealth Index") +
   theme(plot.title = element_text(family="Helvetica", face="bold", size = 44, hjust = 0.5),
         #plot.subtitle = element_text(family="Helvetica", size = 24, hjust = 0.5),
         plot.title.position = 'plot',
-        plot.caption = element_text(family = "Helvetica",size = 24, hjust = -0.3, vjust = 0.5),
+        plot.caption = element_text(family = "Helvetica",size = 24, vjust = 0.5, hjust = 0),
         plot.caption.position = 'plot',
         plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
         panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
@@ -149,13 +149,13 @@ ggplot() +
         legend.text = element_text(size = 24), 
         legend.position = "top")
 
-ggsave("sub_pro_20_relative_wealth_index/images/uganda.png", width = 12, height = 12, dpi = 72)
+ggsave("sub_pro_2_rel_wealth_index_meta/images/uganda.png", width = 12, height = 12, dpi = 72)
 
 
 # Burundi
 
 # Read the CSV file
-bdi_data <- read.csv("sub_pro_20_relative_wealth_index/datasets/bdi_relative_wealth_index.csv")
+bdi_data <- read.csv("sub_pro_2_rel_wealth_index_meta/datasets/bdi_relative_wealth_index.csv")
 
 # Convert the data to an sf object
 bdi_data_sf <- st_as_sf(bdi_data, coords = c("longitude", "latitude"), crs = 4326)
@@ -178,17 +178,17 @@ ggplot() +
   geom_text_repel(data = major_towns_burundi, aes(x = longitude, y = latitude, label = name), 
                   color = "black", fontface = "bold", check_overlap = TRUE, size = 10, vjust = 1.5) +
   geom_point(data = major_towns_burundi, aes(x = longitude, y = latitude), 
-             color = "black", size = 5, shape = 13) +
+             color = "black", size = 7, shape = 16) +
   scale_color_viridis(option = "plasma") +
   theme_void() +
-  labs(title = "Wealth Index Distribution\nin Burundi",
+  labs(title = "Wealth Index Distribution in Burundi",
        subtitle = "",
        caption = "Data Source: Meta (Data for Good)",
        color = "Relative Wealth Index") +
   theme(plot.title = element_text(family="Helvetica", face="bold", size = 44, hjust = 0.5),
         #plot.subtitle = element_text(family="Helvetica", size = 24, hjust = 0.5),
         plot.title.position = 'plot',
-        plot.caption = element_text(family = "Helvetica",size = 24, hjust = -0.5, vjust = 0.5),
+        plot.caption = element_text(family = "Helvetica",size = 24, vjust = 0.5, hjust = -0.5),
         plot.caption.position = 'plot',
         plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
         panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
@@ -196,13 +196,13 @@ ggplot() +
         legend.text = element_text(size = 24), 
         legend.position = "top")
 
-ggsave("sub_pro_20_relative_wealth_index/images/burundi.png", width = 12, height = 12, dpi = 72)
+ggsave("sub_pro_2_rel_wealth_index_meta/images/burundi.png", width = 12, height = 12, dpi = 72)
 
 
 # Rwanda
 
 # Read the CSV file
-rwa_data <- read.csv("sub_pro_20_relative_wealth_index/datasets/rwa_relative_wealth_index.csv")
+rwa_data <- read.csv("sub_pro_2_rel_wealth_index_meta/datasets/rwa_relative_wealth_index.csv")
 
 # Convert the data to an sf object
 rwa_data_sf <- st_as_sf(rwa_data, coords = c("longitude", "latitude"), crs = 4326)
@@ -221,21 +221,21 @@ major_towns_rwanda <- data.frame(
 
 ggplot() +
   geom_sf(data = rwanda, fill = NA, color = "black", linewidth = 1) + # Add Rwanda borders
-  geom_point(data = rwa_data, aes(x = longitude, y = latitude, color = rwi), size = 3.5, alpha = 0.9) +
+  geom_point(data = rwa_data, aes(x = longitude, y = latitude, color = rwi), size = 3, alpha = 0.9) +
   geom_text_repel(data = major_towns_rwanda, aes(x = longitude, y = latitude, label = name), 
                   color = "black", fontface = "bold", check_overlap = TRUE, size = 10, vjust = 1.5) +
   geom_point(data = major_towns_rwanda, aes(x = longitude, y = latitude), 
-             color = "black", size = 5, shape = 13) +
+             color = "black", size = 7, shape = 16) +
   scale_color_viridis(option = "plasma") +
   theme_void() +
-  labs(title = "Wealth Index Distribution\nin Rwanda",
+  labs(title = "Wealth Index Distribution in Rwanda",
        subtitle = "",
        caption = "Data Source: Meta (Data for Good)",
        color = "Relative Wealth Index") +
   theme(plot.title = element_text(family="Helvetica", face="bold", size = 44, hjust = 0.5),
         #plot.subtitle = element_text(family="Helvetica", size = 24, hjust = 0.5),
         plot.title.position = 'plot',
-        plot.caption = element_text(family = "Helvetica",size = 24, hjust = -0.1, vjust = 0.5),
+        plot.caption = element_text(family = "Helvetica",size = 24, vjust = 0.5, hjust = 0),
         plot.caption.position = 'plot',
         plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
         panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
@@ -243,13 +243,13 @@ ggplot() +
         legend.text = element_text(size = 24), 
         legend.position = "top")
 
-ggsave("sub_pro_20_relative_wealth_index/images/rwanda.png", width = 12, height = 12, dpi = 72)
+ggsave("sub_pro_2_rel_wealth_index_meta/images/rwanda.png", width = 12, height = 12, dpi = 72)
 
 
 # DR Congo
 
 # Read the CSV file
-cod_data <- read.csv("sub_pro_20_relative_wealth_index/datasets/cod_relative_wealth_index.csv")
+cod_data <- read.csv("sub_pro_2_rel_wealth_index_meta/datasets/cod_relative_wealth_index.csv")
 
 # Convert the data to an sf object
 cod_data_sf <- st_as_sf(cod_data, coords = c("longitude", "latitude"), crs = 4326)
@@ -272,17 +272,17 @@ ggplot() +
   geom_text_repel(data = major_towns_cod, aes(x = longitude, y = latitude, label = name), 
                   color = "black", fontface = "bold", check_overlap = TRUE, size = 10, vjust = 1.5) +
   geom_point(data = major_towns_cod, aes(x = longitude, y = latitude), 
-             color = "black", size = 5, shape = 13) +
+             color = "black", size = 7, shape = 16) +
   scale_color_viridis(option = "plasma") +
   theme_void() +
-  labs(title = "Wealth Index Distribution\nin the DR Congo",
+  labs(title = "Wealth Index Distribution in the DR Congo",
        subtitle = "",
        caption = "Data Source: Meta (Data for Good)",
        color = "Relative Wealth Index") +
-  theme(plot.title = element_text(family="Helvetica", face="bold", size = 44, hjust = 0.5),
+  theme(plot.title = element_text(family="Helvetica", face="bold", size = 40, hjust = 0.5),
         #plot.subtitle = element_text(family="Helvetica", size = 24, hjust = 0.5),
         plot.title.position = 'plot',
-        plot.caption = element_text(family = "Helvetica",size = 24, hjust = -0.25, vjust = 0.5),
+        plot.caption = element_text(family = "Helvetica",size = 24, vjust = 0.5, hjust = 0),
         plot.caption.position = 'plot',
         plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
         panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
@@ -290,12 +290,12 @@ ggplot() +
         legend.text = element_text(size = 24), 
         legend.position = "top")
 
-ggsave("sub_pro_20_relative_wealth_index/images/drcongo.png", width = 12, height = 12, dpi = 72)
+ggsave("sub_pro_2_rel_wealth_index_meta/images/drcongo.png", width = 12, height = 12, dpi = 72)
 
 # 6. Ethiopia
 
 # Read the CSV file
-eth_data <- read_csv("sub_pro_2_rel_wealth_index_meta/datasets/eth_relative_wealth_index.csv")
+eth_data <- read.csv("sub_pro_2_rel_wealth_index_meta/datasets/eth_relative_wealth_index.csv")
 
 # Convert the data to an sf object
 eth_data_sf <- st_as_sf(eth_data, coords = c("longitude", "latitude"), crs = 4326)
@@ -321,14 +321,14 @@ ggplot() +
              color = "black", size = 7, shape = 16) +
   scale_color_viridis(option = "plasma") +
   theme_void() +
-  labs(title = "6. Ethiopia",
+  labs(title = "Wealth Index Distribution in Ethiopia",
        subtitle = "",
        caption = "Data Source: Meta (Data for Good)",
        color = "Relative Wealth Index") +
   theme(plot.title = element_text(family="Helvetica", face="bold", size = 44, hjust = 0.5),
         #plot.subtitle = element_text(family="Helvetica", size = 24, hjust = 0.5),
         plot.title.position = 'plot',
-        plot.caption = element_text(family = "Helvetica",size = 24, hjust = 0, vjust = 0.5),
+        plot.caption = element_text(family = "Helvetica",size = 24, vjust = 0.5, hjust = 0),
         plot.caption.position = 'plot',
         plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
         panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
@@ -337,3 +337,4 @@ ggplot() +
         legend.position = "top")
 
 ggsave("sub_pro_2_rel_wealth_index_meta/images/ethiopia.png", width = 12, height = 12, dpi = 72)
+
