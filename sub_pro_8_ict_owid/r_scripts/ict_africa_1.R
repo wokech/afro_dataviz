@@ -162,7 +162,7 @@ share_net_clean_africa |>
             show.legend = FALSE) +
   labs(x = "Country",
        y = "Share of the population using the Internet (%)",
-       title = "African countries with the highest share of\nthe population using the Internet (%)",
+       title = "African countries with the highest share of\nthe population (%) using the Internet (2020)",
        subtitle = "",
        caption = "Data Source: Our World In Data") +
   theme(axis.title.x = element_text(size = 25),
@@ -203,7 +203,7 @@ share_net_clean_africa |>
             show.legend = FALSE) +
   labs(x = "Country",
        y = "Share of the population using the Internet (%)",
-       title = "African countries with the lowest share of\nthe population using the Internet (%)",
+       title = "African countries with the lowest share of\nthe population (%) using the Internet (2020)",
        subtitle = "",
        caption = "Data Source: Our World In Data") +
   theme(axis.title.x = element_text(size = 25),
