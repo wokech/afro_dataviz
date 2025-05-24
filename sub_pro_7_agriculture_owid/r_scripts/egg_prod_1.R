@@ -1,4 +1,4 @@
-# Meat Production
+# Egg production
 
 # 1) Load the Required Libraries
 
@@ -25,58 +25,70 @@ library(ggtext)
 
 # 2) Data Cleaning and Organization
 
-# Load and clean the required data sets
+# Download data
 
-meat <- read_csv("sub_pro_7_agriculture_owid/datasets/global-meat-production.csv")
+library(jsonlite)
+
+# # Fetch the data
+# 
+# egg_prod <- read.csv("https://ourworldindata.org/grapher/egg-production-thousand-tonnes.csv?v=1&csvType=full&useColumnShortNames=true",
+#                       na.strings = "")
+# 
+# # Save the data
+# write.csv(egg_prod, "sub_pro_7_agriculture_owid/datasets/egg-production-thousand-tonnes.csv",
+#           row.names = FALSE)
+
+# Read the data
+egg_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/egg-production-thousand-tonnes.csv")
 
 # Clean the column headings
 
-meat_clean <- meat %>%
-  clean_names()
+egg_prod_clean <- egg_prod %>%
+  clean_names() 
 
 # Change the column title names
 
-meat_clean <- meat_clean %>%
+egg_prod_clean <- egg_prod_clean %>%
   rename("country" = "entity",
-         "meat_production_tonnes" = "meat_total_00001765_production_005510_tonnes") 
+         "egg_production_tonnes" = "eggs_00001783_production_005510_tonnes") 
 
 # Filter by region
 
-meat_clean_region <- meat_clean %>%
+egg_prod_clean_region <- egg_prod_clean %>%
   filter(is.na(code)) %>%
   select(c(1,3,4)) 
 
 # Filter by FAO region
 
-meat_clean_region_fao <- meat_clean_region %>%
+egg_prod_clean_region_fao <- egg_prod_clean_region %>%
   filter(grepl('(FAO)', country))
 
 # Filter by non-FAO region
 
-meat_clean_region_non_fao <- meat_clean_region %>%
+egg_prod_clean_region_non_fao <- egg_prod_clean_region %>%
   filter(!grepl('(FAO)', country))
 
-# 3) Continental (Non-FAO) Fish Production
+# 3) Continental (Non-FAO) Milk production
 
 # a) Stacked area chart
 
-meat_clean_region_non_fao_continent <- meat_clean_region_non_fao %>%
+egg_prod_clean_region_non_fao_continent <- egg_prod_clean_region_non_fao %>%
   filter(country %in% c("Africa", "Asia", "Europe", 
                         "North America", "South America", 
                         "Oceania"))
 
 # A) 1080 by 1080 
 
-meat_clean_region_non_fao_continent %>% 
-  ggplot(aes(year, meat_production_tonnes, fill = country, label = country, color = country)) +
+egg_prod_clean_region_non_fao_continent %>% 
+  ggplot(aes(year, egg_production_tonnes, fill = country, label = country, color = country)) +
   geom_area() +
   labs(x = "Year",
-       y = "Meat Production\n(Millions of Tonnes)",
-       title = "Africa's Share of Global Meat Production Has\nSignificantly Decreased",
-       subtitle = "This is despite an increase in overall production (tonnes)",
-       caption = "Data Source: Our World in Data") +
+       y = "Egg Production\n(Millions of Tonnes)",
+       title = "",
+       subtitle = "",
+       caption = "Data Source: Our World in Data | FAO | World Bank") +
   theme_classic() +
-  scale_y_continuous(limits = c(0, 360000000), labels  = 
+  scale_y_continuous(limits = c(0, 100000000), labels  = 
                        label_number(scale = 1e-6)) +
   scale_fill_brewer(palette = "Set1") +
   scale_color_brewer(palette = "Set1") +
@@ -100,4 +112,4 @@ meat_clean_region_non_fao_continent %>%
         legend.box.just = "right",
         legend.margin = margin(6, 6, 6, 6))
 
-ggsave("sub_pro_7_agriculture_owid/images/continent_meat_1.png", width = 12, height = 12, dpi = 72)
+ggsave("sub_pro_7_agriculture_owid/images/continent_egg_1.png", width = 12, height = 12, dpi = 72)
