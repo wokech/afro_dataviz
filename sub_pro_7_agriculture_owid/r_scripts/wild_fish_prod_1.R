@@ -22,6 +22,7 @@ library(tidyverse)
 library(ggstream)
 library(showtext)
 library(ggtext)
+library(jsonlite)
 
 # 2) Data Cleaning and Organization
 
@@ -31,7 +32,6 @@ library(ggtext)
 #                        na.strings = "")
 # 
 # # Save the data
-# 
 # write.csv(wild_fish, "sub_pro_7_agriculture_owid/datasets/capture-fishery-production.csv",
 #           row.names = FALSE)
 
@@ -47,7 +47,7 @@ wild_fish_clean <- wild_fish %>%
 # Change the column title names
 
 wild_fish_clean <- wild_fish_clean %>%
-  rename("country" = "entity",
+  rename("region" = "entity",
          "wild_fish_tonnes" = "er_fsh_capt_mt") 
 
 # Filter by region
@@ -59,35 +59,79 @@ wild_fish_clean_region <- wild_fish_clean %>%
 # Filter by WB region
 
 wild_fish_clean_region_wb <- wild_fish_clean_region %>%
-  filter(grepl('(WB)', country))
+  filter(grepl('(WB)', region))
 
 # Remove "(WB)" from region
 
 wild_fish_clean_region_wb <- wild_fish_clean_region_wb %>%
-  mutate(country = str_remove_all(country, "[(WB)]"))
+  mutate(region = str_remove_all(region, " \\(WB\\)"))
 
 # Filter by not WB region
 
 wild_fish_clean_region_non_wb <- wild_fish_clean_region %>%
-  filter(!grepl('(WB)', country))
+  filter(!grepl('(WB)', region))
 
 # 3) Continental (WB) wild capture fish production
+
+# Use tableau 10 color scale for the design
+
+afro_stack_palette <- c(
+  "#4E79A7", "#964B00", "#76B7B2","#E15759",
+  "#59A14F", "#000000", "#B07AA1"
+)
+
+# reorder the stacks
+
+desired_order <- c("North America", "Sub-Saharan Africa", "Middle East and North Africa", "Europe and Central Asia", "Latin America and Caribbean", "South Asia", "East Asia and Pacific")
+
+wild_fish_clean_region_wb <- wild_fish_clean_region_wb %>%
+  mutate(region = factor(region, levels = desired_order)) %>%
+  arrange(desc(region))
+
+#  calculate cumulative positions for label placement
+
+label_df_wf <- wild_fish_clean_region_wb %>%
+  filter(year == max(year)) %>%
+  mutate(region = factor(region, levels = rev(desired_order))) %>%
+  arrange(region) %>%
+  mutate(x_label = max(year),
+         y_top = cumsum(wild_fish_tonnes),
+         y_bottom = y_top - wild_fish_tonnes,
+         y_mid = (y_bottom + y_top) / 2) %>%
+  select(region, year, x_label, y_top, y_mid) 
 
 # a) Stacked area chart
 
 wild_fish_clean_region_wb %>% 
-  ggplot(aes(year, wild_fish_tonnes, fill = country, label = country, color = country)) +
+  ggplot(aes(year, wild_fish_tonnes, fill = region, label = region, color = region), fill = "bisque1") +
   geom_area() +
+  geom_text_repel(
+    data = label_df_wf,
+    aes(x = x_label, y = y_mid, label = region, color = region),
+    hjust = 0,
+    fontface = "bold",
+    size = 7.5,
+    inherit.aes = FALSE,
+    direction = "y",
+    hjust = 0,
+    nudge_x = 40,
+    segment.curvature = 0.01,
+    segment.size = 0.5,
+    segment.ncp = 1,
+    min.segment.length = 0
+  ) +
+  coord_cartesian(clip = "off") +
   labs(x = "Year",
        y = "Wild Fish Catch Production\n(Millions of Tonnes)",
-       title = "",
+       title = "In 2020, Sub-Saharan Africa contributed less\nthan 10% of global wild fish catch production",
        subtitle = "",
        caption = "Data Source: Our World in Data | FAO | World Bank") +
   theme_classic() +
-  scale_y_continuous(limits = c(0, 125000000), labels  = 
+  scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
+  scale_y_continuous(limits = c(0, 110000000), labels  = 
                        label_number(scale = 1e-6)) +
-  scale_fill_brewer(palette = "Set1") +
-  scale_color_brewer(palette = "Set1") +
+  scale_fill_manual(values = afro_stack_palette) +
+  scale_color_manual(values = afro_stack_palette) +
   theme(axis.title.x =element_text(size = 28, vjust = 0, face = "bold"),
         axis.title.y =element_text(size = 28,  vjust = 0, face = "bold"),
         axis.text.x = element_text(size = 28, face = "bold"),
@@ -100,13 +144,9 @@ wild_fish_clean_region_wb %>%
         plot.title.position = 'plot',
         plot.subtitle.position = 'plot',
         plot.caption.position = 'plot',
-        legend.title = element_blank(),
-        legend.text = element_text(size = 24),
-        legend.background = element_rect("bisque1"),
-        legend.position = c(.5, .95),
-        legend.justification = c("right", "top"),
-        legend.box.just = "right",
-        legend.margin = margin(6, 6, 6, 6))
+        plot.margin = margin(5, 5, 5, 5),
+        legend.position = "none"
+        )
 
-ggsave("sub_pro_7_agriculture_owid/images/continent_wild_fish_1.png", width = 12, height = 12, dpi = 72)
+ggsave("sub_pro_7_agriculture_owid/images/continental/continent_wild_fish_1.png", width = 12, height = 12, dpi = 72)
 

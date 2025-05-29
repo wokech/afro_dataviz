@@ -22,12 +22,9 @@ library(tidyverse)
 library(ggstream)
 library(showtext)
 library(ggtext)
+library(jsonlite)
 
 # 2) Data Cleaning and Organization
-
-# Download data
-
-library(jsonlite)
 
 # # Fetch the data
 # 
@@ -49,7 +46,7 @@ egg_prod_clean <- egg_prod %>%
 # Change the column title names
 
 egg_prod_clean <- egg_prod_clean %>%
-  rename("country" = "entity",
+  rename("region" = "entity",
          "egg_production_tonnes" = "eggs_00001783_production_005510_tonnes") 
 
 # Filter by region
@@ -61,37 +58,80 @@ egg_prod_clean_region <- egg_prod_clean %>%
 # Filter by FAO region
 
 egg_prod_clean_region_fao <- egg_prod_clean_region %>%
-  filter(grepl('(FAO)', country))
+  filter(grepl('(FAO)', region))
 
 # Filter by non-FAO region
 
 egg_prod_clean_region_non_fao <- egg_prod_clean_region %>%
-  filter(!grepl('(FAO)', country))
+  filter(!grepl('(FAO)', region))
 
 # 3) Continental (Non-FAO) Milk production
 
 # a) Stacked area chart
 
 egg_prod_clean_region_non_fao_continent <- egg_prod_clean_region_non_fao %>%
-  filter(country %in% c("Africa", "Asia", "Europe", 
+  filter(region %in% c("Africa", "Asia", "Europe", 
                         "North America", "South America", 
                         "Oceania"))
 
-# A) 1080 by 1080 
+# Use tableau 10 color scale for the design
+
+afro_stack_palette <- c(
+  "#4E79A7", "#964B00", "#E15759",
+  "#59A14F", "#000000", "#B07AA1"
+)
+
+# reorder the stacks
+
+desired_order <- c("Oceania", "Africa", "South America", "Europe", "North America", "Asia")
+
+egg_prod_clean_region_non_fao_continent <- egg_prod_clean_region_non_fao_continent %>%
+  mutate(region = factor(region, levels = desired_order)) %>%
+  arrange(desc(region))
+
+#  calculate cumulative positions for label placement
+
+label_df_egg <- egg_prod_clean_region_non_fao_continent %>%
+  filter(year == max(year)) %>%
+  mutate(region = factor(region, levels = rev(desired_order))) %>%
+  arrange(region) %>%
+  mutate(x_label = max(year),
+         y_top = cumsum(egg_production_tonnes),
+         y_bottom = y_top - egg_production_tonnes,
+         y_mid = (y_bottom + y_top) / 2) %>%
+  select(region, year, x_label, y_top, y_mid) 
+
+# plot the stack area chart
 
 egg_prod_clean_region_non_fao_continent %>% 
-  ggplot(aes(year, egg_production_tonnes, fill = country, label = country, color = country)) +
+  ggplot(aes(year, egg_production_tonnes, fill = region, label = region, color = region)) +
   geom_area() +
+  geom_text_repel(
+    data = label_df_egg,
+    aes(x = x_label, y = y_mid, label = region, color = region),
+    hjust = 0,
+    fontface = "bold",
+    size = 7.5,
+    inherit.aes = FALSE,
+    direction = "y",
+    hjust = 0,
+    nudge_x = -50,
+    segment.curvature = 0.1,
+    segment.size = 0.5,
+    segment.ncp = 1,
+    min.segment.length = 0
+  ) +
   labs(x = "Year",
        y = "Egg Production\n(Millions of Tonnes)",
-       title = "",
+       title = "Only 5% of global egg production in 2020\nwas in Africa",
        subtitle = "",
        caption = "Data Source: Our World in Data | FAO | World Bank") +
   theme_classic() +
+  scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
   scale_y_continuous(limits = c(0, 100000000), labels  = 
                        label_number(scale = 1e-6)) +
-  scale_fill_brewer(palette = "Set1") +
-  scale_color_brewer(palette = "Set1") +
+  scale_fill_manual(values = afro_stack_palette) +
+  scale_color_manual(values = afro_stack_palette) +
   theme(axis.title.x =element_text(size = 28, vjust = 1, face = "bold"),
         axis.title.y =element_text(size = 28, vjust = 1, face = "bold"),
         axis.text.x = element_text(size = 28, face = "bold", color = "black"),
@@ -104,12 +144,8 @@ egg_prod_clean_region_non_fao_continent %>%
         plot.title.position = 'plot',
         plot.subtitle.position = 'plot',
         plot.caption.position = 'plot',
-        legend.title = element_blank(),
-        legend.text = element_text(size = 28),
-        legend.background = element_rect("bisque1"),
-        legend.position = c(.35, .95),
-        legend.justification = c("right", "top"),
-        legend.box.just = "right",
-        legend.margin = margin(6, 6, 6, 6))
+        plot.margin = margin(5, 5, 5, 5),
+        legend.position = "none"
+        )
 
-ggsave("sub_pro_7_agriculture_owid/images/continent_egg_1.png", width = 12, height = 12, dpi = 72)
+ggsave("sub_pro_7_agriculture_owid/images/continental/continent_egg_1.png", width = 12, height = 12, dpi = 72)

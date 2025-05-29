@@ -14,6 +14,7 @@ library(rnaturalearthdata)
 # Also ensure that rnatural hi res is installed
 library(patchwork)
 library(ggrepel)
+library(scales)
 
 # 1) Load the required datasets and data cleaning
 

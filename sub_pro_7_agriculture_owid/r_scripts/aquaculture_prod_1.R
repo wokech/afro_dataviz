@@ -1,4 +1,4 @@
-# Fish and Seafood Production (Wildfish Catch)
+# Fish and Seafood Production (Aquaculture)
 
 # 1) Load the Required Libraries
 
@@ -22,6 +22,7 @@ library(tidyverse)
 library(ggstream)
 library(showtext)
 library(ggtext)
+library(jsonlite)
 
 # 2) Data Cleaning and Organization
 
@@ -34,6 +35,8 @@ library(ggtext)
 # write.csv(aquaculture, "sub_pro_7_agriculture_owid/datasets/aquaculture-farmed-fish-production.csv",
 #           row.names = FALSE)
 
+# Read in the data
+
 aquaculture <- read.csv("sub_pro_7_agriculture_owid/datasets/aquaculture-farmed-fish-production.csv")
 
 # Clean the column headings
@@ -44,7 +47,7 @@ aquaculture_clean <- aquaculture %>%
 # Change the column title names
 
 aquaculture_clean <- aquaculture_clean %>%
-  rename("country" = "entity",
+  rename("region" = "entity",
          "aquaculture_tonnes" = "er_fsh_aqua_mt") 
 
 # Filter by region
@@ -56,35 +59,79 @@ aquaculture_clean_region <- aquaculture_clean %>%
 # Filter by WB region
 
 aquaculture_clean_wb <- aquaculture_clean_region %>%
-  filter(grepl('(WB)', country))
+  filter(grepl('(WB)', region))
 
 # Remove "(WB)" from region
 
 aquaculture_clean_region_wb <- aquaculture_clean_wb %>%
-  mutate(country = str_remove_all(country, "[(WB)]"))
+  mutate(region = str_remove_all(region, " \\(WB\\)"))
 
 # Filter by not WB region
 
 aquaculture_clean_region_non_wb <- aquaculture_clean_region %>%
-  filter(!grepl('(WB)', country))
+  filter(!grepl('(WB)', region))
 
 # 3) Continental (WB) wild capture fish production
+
+# Use tableau 10 color scale for the design
+
+afro_stack_palette <- c(
+  "#4E79A7", "#964B00", "#76B7B2","#E15759",
+  "#59A14F", "#000000", "#B07AA1"
+)
+
+# reorder the stacks
+
+desired_order <- c("North America", "Sub-Saharan Africa", "Middle East and North Africa", "Europe and Central Asia", "Latin America and Caribbean", "South Asia", "East Asia and Pacific")
+
+aquaculture_clean_region_wb <- aquaculture_clean_region_wb %>%
+  mutate(region = factor(region, levels = desired_order)) %>%
+  arrange(desc(region))
+  
+#  calculate cumulative positions for label placement
+
+label_df_aqua <- aquaculture_clean_region_wb %>%
+  filter(year == max(year)) %>%
+  mutate(region = factor(region, levels = rev(desired_order))) %>%
+  arrange(region) %>%
+  mutate(x_label = max(year),
+         y_top = cumsum(aquaculture_tonnes),
+         y_bottom = y_top - aquaculture_tonnes,
+         y_mid = (y_bottom + y_top) / 2) %>%
+  select(region, year, x_label, y_top, y_mid) 
 
 # a) Stacked area chart
 
 aquaculture_clean_region_wb %>% 
-  ggplot(aes(year, aquaculture_tonnes, fill = country, label = country, color = country)) +
+  ggplot(aes(year, aquaculture_tonnes, fill = region, label = region, color = region), fill = "bisque1") +
   geom_area() +
+  geom_text_repel(
+    data = label_df_aqua,
+    aes(x = x_label, y = y_mid, label = region, color = region),
+    hjust = 0,
+    fontface = "bold",
+    size = 7.5,
+    inherit.aes = FALSE,
+    direction = "y",
+    hjust = 0,
+    nudge_x = -60,
+    segment.curvature = 0.01,
+    segment.size = 0.5,
+    segment.ncp = 1,
+    min.segment.length = 0
+  ) +
+  coord_cartesian(clip = "off") +
   labs(x = "Year",
        y = "Aquaculture Production\n(Millions of Tonnes)",
-       title = "",
+       title = "Sub-Saharan Africa has a minor role\nin global aquaculture production",
        subtitle = "",
        caption = "Data Source: Our World in Data  | FAO | World Bank") +
   theme_classic() +
+  scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
   scale_y_continuous(limits = c(0, 150000000), labels  = 
                        label_number(scale = 1e-6)) +
-  scale_fill_brewer(palette = "Set1") +
-  scale_color_brewer(palette = "Set1") +
+  scale_fill_manual(values = afro_stack_palette) +
+  scale_color_manual(values = afro_stack_palette) +
   theme(axis.title.x =element_text(size = 28, vjust = 0, face = "bold"),
         axis.title.y =element_text(size = 28,  vjust = 0, face = "bold"),
         axis.text.x = element_text(size = 28, face = "bold"),
@@ -97,13 +144,9 @@ aquaculture_clean_region_wb %>%
         plot.title.position = 'plot',
         plot.subtitle.position = 'plot',
         plot.caption.position = 'plot',
-        legend.title = element_blank(),
-        legend.text = element_text(size = 24),
-        legend.background = element_rect("bisque1"),
-        legend.position = c(.5, .95),
-        legend.justification = c("right", "top"),
-        legend.box.just = "right",
-        legend.margin = margin(6, 6, 6, 6))
+        plot.margin = margin(5, 5, 5, 5),
+        legend.position = "none"
+        )
 
-ggsave("sub_pro_7_agriculture_owid/images/continent_aquaculture_1.png", width = 12, height = 12, dpi = 72)
+ggsave("sub_pro_7_agriculture_owid/images/continental/continent_aquaculture_1.png", width = 12, height = 12, dpi = 72)
 
