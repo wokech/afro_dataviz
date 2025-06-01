@@ -73,11 +73,11 @@ wild_fish_clean_region_non_wb <- wild_fish_clean_region %>%
 
 # 3) Continental (WB) wild capture fish production
 
-# Use tableau 10 color scale for the design
+# Use afro_stack color palette for the design on bisque1 background
 
 afro_stack_palette <- c(
-  "#4E79A7", "#964B00", "#76B7B2","#E15759",
-  "#59A14F", "#000000", "#B07AA1"
+  "#0072B2", "#E69F00", "#009E73",
+  "#D55E00", "#CC79A7", "#6A5ACD", "#56B4E9"
 )
 
 # reorder the stacks
