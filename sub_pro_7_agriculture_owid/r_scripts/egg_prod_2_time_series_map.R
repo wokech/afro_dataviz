@@ -883,4 +883,10 @@ p12 <- ggplot(data = africa) +
        subtitle = "",
        caption = "") 
 
-ggsave("sub_pro_7_agriculture_owid/images/egg_time_series/egg_clean_africa_map_2020.png", width = 9, height = 16, dpi = 300)
+# ggsave("sub_pro_7_agriculture_owid/images/egg_time_series/egg_clean_africa_map_2020.png", width = 9, height = 16, dpi = 300)
+
+egg_prod_clean_africa_rnaturalearth |>
+  filter(year == 2020) |>
+  top_n(-3, egg_production) |>
+  arrange(desc(egg_production))
+    

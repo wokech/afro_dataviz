@@ -123,7 +123,7 @@ milk_prod_clean_region_non_fao_continent %>%
   ) +
   labs(x = "Year",
        y = "Milk Production\n(Millions of Tonnes)",
-       title = "About one-twentieth (1/20th) of global milk\nproduction is from Africa",
+       title = "About one-twentieth (1/20th) of global milk\nproduction in 2020 was from Africa",
        subtitle = "",
        caption = "Data Source: Our World in Data | FAO | World Bank") +
   theme_classic() +
