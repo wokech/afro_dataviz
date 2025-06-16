@@ -123,7 +123,7 @@ egg_prod_clean_region_non_fao_continent %>%
   ) +
   labs(x = "Year",
        y = "Egg Production\n(Millions of Tonnes)",
-       title = "Only 5% of global egg production in 2020\nwas in Africa",
+       title = "Only 5% of global egg production in 2020\nwas from Africa",
        subtitle = "",
        caption = "Data Source: Our World in Data | FAO | World Bank") +
   theme_classic() +
