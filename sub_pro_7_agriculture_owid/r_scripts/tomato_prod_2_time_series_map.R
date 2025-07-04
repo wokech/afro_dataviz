@@ -1,4 +1,4 @@
-# Pig Production Time Series
+# Tomato Production Time Series
 
 # Load the required libraries and packages
 
@@ -18,11 +18,11 @@ library(scales)
 
 # 1) Load the required datasets and data cleaning
 
-pig_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/pigmeat-production-tonnes.csv")
+tomato_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/tomato-production-tonnes.csv")
 
 # Clean the datasets
 
-pig_prod_clean <- pig_prod %>%
+tomato_prod_clean <- tomato_prod %>%
   clean_names() 
 
 # Only include African Countries
@@ -50,7 +50,7 @@ african_countries <- c("Algeria", "Angola", "Benin", "Botswana", "Burkina Faso",
 
 # Global Meat Production in Africa
 
-pig_prod_clean_africa <- pig_prod_clean |>
+tomato_prod_clean_africa <- tomato_prod_clean |>
   rename("country" = "entity") |>
   mutate(country = case_when(
     country == "Cote d'Ivoire" ~ "Ivory Coast",
@@ -62,7 +62,7 @@ pig_prod_clean_africa <- pig_prod_clean |>
 
 # Change to standard names used in rnaturalearth for maps
 
-pig_prod_clean_africa_rnaturalearth <- pig_prod_clean_africa %>%
+tomato_prod_clean_africa_rnaturalearth <- tomato_prod_clean_africa %>%
   mutate(country = case_when(
     country == "Cape Verde"  ~ "Cabo Verde",
     country == "Sao Tome and Principe"  ~ "São Tomé and Principe",
@@ -72,7 +72,7 @@ pig_prod_clean_africa_rnaturalearth <- pig_prod_clean_africa %>%
     country == "Congo"  ~ "Republic of the Congo",
     TRUE ~ country  # Retain original name if none of the conditions are met
   )) |>
-  rename(pig_production = "meat_pig_00001035_production_005510_tonnes")
+  rename(tomato_production = "tomatoes_00000388_production_005510_tonnes")
 
 # 2) Map of countries showing global meat production between 1965 and 2020
 
@@ -85,9 +85,9 @@ africa <- world %>%
 
 # Get 1965 data
 
-pig_prod_clean_africa_1965 <- pig_prod_clean_africa_rnaturalearth |> 
+tomato_prod_clean_africa_1965 <- tomato_prod_clean_africa_rnaturalearth |> 
   filter(year == 1965) |>
-  arrange(desc(pig_production))
+  arrange(desc(tomato_production))
 
 # Now we have the 1965 dataset and the africa dataset.
 # These two need to be joined together.
@@ -96,19 +96,19 @@ pig_prod_clean_africa_1965 <- pig_prod_clean_africa_rnaturalearth |>
 
 # Left join to keep all rows from africa
 
-pig_prod_clean_africa_1965_full_join <- full_join(africa, 
-                                                      pig_prod_clean_africa_1965,
+tomato_prod_clean_africa_1965_full_join <- full_join(africa, 
+                                                      tomato_prod_clean_africa_1965,
                                                       by = c("admin" = "country"))
 
 # Find rows only in africa
 
-pig_prod_clean_africa_1965_anti_join_1 <- anti_join(africa, 
-                                                        pig_prod_clean_africa_1965, 
+tomato_prod_clean_africa_1965_anti_join_1 <- anti_join(africa, 
+                                                        tomato_prod_clean_africa_1965, 
                                                         by = c("admin" = "country"))
 
 # Find rows only in global_meat_clean_africa_1965
 
-pig_prod_clean_africa_1965_anti_join_2 <- anti_join(pig_prod_clean_africa_1965, 
+tomato_prod_clean_africa_1965_anti_join_2 <- anti_join(tomato_prod_clean_africa_1965, 
                                                         africa, 
                                                         by = c("country" = "admin"))
 
@@ -118,10 +118,10 @@ pig_prod_clean_africa_1965_anti_join_2 <- anti_join(pig_prod_clean_africa_1965,
 
 p1 <- ggplot(data = africa) +
   geom_sf() + 
-  geom_sf(data = pig_prod_clean_africa_1965_full_join, aes(fill = pig_production), linewidth = 1) +
+  geom_sf(data = tomato_prod_clean_africa_1965_full_join, aes(fill = tomato_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 400000),
+                       limits = c(0, 12000000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -146,15 +146,15 @@ p1 <- ggplot(data = africa) +
        subtitle = "",
        caption = "") 
 
-ggsave("sub_pro_7_agriculture_owid/images/pig_meat_time_series/pig_meat_clean_africa_map_1965.png", width = 9, height = 16, dpi = 300)
+ggsave("sub_pro_7_agriculture_owid/images/tomato_time_series/tomato_clean_africa_map_1965.png", width = 9, height = 16, dpi = 300)
 
 
 
 # Get 1970 data
 
-pig_prod_clean_africa_1970 <- pig_prod_clean_africa_rnaturalearth |> 
+tomato_prod_clean_africa_1970 <- tomato_prod_clean_africa_rnaturalearth |> 
   filter(year == 1970) |>
-  arrange(desc(pig_production))
+  arrange(desc(tomato_production))
 
 # Now we have the 1970 dataset and the africa dataset.
 # These two need to be joined together.
@@ -163,19 +163,19 @@ pig_prod_clean_africa_1970 <- pig_prod_clean_africa_rnaturalearth |>
 
 # Left join to keep all rows from africa
 
-pig_prod_clean_africa_1970_full_join <- full_join(africa, 
-                                                      pig_prod_clean_africa_1970,
+tomato_prod_clean_africa_1970_full_join <- full_join(africa, 
+                                                      tomato_prod_clean_africa_1970,
                                                       by = c("admin" = "country"))
 
 # Find rows only in africa
 
-pig_prod_clean_africa_1970_anti_join_1 <- anti_join(africa, 
-                                                        pig_prod_clean_africa_1970, 
+tomato_prod_clean_africa_1970_anti_join_1 <- anti_join(africa, 
+                                                        tomato_prod_clean_africa_1970, 
                                                         by = c("admin" = "country"))
 
 # Find rows only in global_meat_clean_africa_1970
 
-pig_prod_clean_africa_1970_anti_join_2 <- anti_join(pig_prod_clean_africa_1970, 
+tomato_prod_clean_africa_1970_anti_join_2 <- anti_join(tomato_prod_clean_africa_1970, 
                                                         africa, 
                                                         by = c("country" = "admin"))
 
@@ -185,10 +185,10 @@ pig_prod_clean_africa_1970_anti_join_2 <- anti_join(pig_prod_clean_africa_1970,
 
 p2 <- ggplot(data = africa) +
   geom_sf() + 
-  geom_sf(data = pig_prod_clean_africa_1970_full_join, aes(fill = pig_production), linewidth = 1) +
+  geom_sf(data = tomato_prod_clean_africa_1970_full_join, aes(fill = tomato_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 400000),
+                       limits = c(0, 12000000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -213,15 +213,15 @@ p2 <- ggplot(data = africa) +
        subtitle = "",
        caption = "") 
 
-ggsave("sub_pro_7_agriculture_owid/images/pig_meat_time_series/pig_meat_clean_africa_map_1970.png", width = 9, height = 16, dpi = 300)
+ggsave("sub_pro_7_agriculture_owid/images/tomato_time_series/tomato_clean_africa_map_1970.png", width = 9, height = 16, dpi = 300)
 
 
 
 # Get 1975 data
 
-pig_prod_clean_africa_1975 <- pig_prod_clean_africa_rnaturalearth |> 
+tomato_prod_clean_africa_1975 <- tomato_prod_clean_africa_rnaturalearth |> 
   filter(year == 1975) |>
-  arrange(desc(pig_production))
+  arrange(desc(tomato_production))
 
 # Now we have the 1975 dataset and the africa dataset.
 # These two need to be joined together.
@@ -230,19 +230,19 @@ pig_prod_clean_africa_1975 <- pig_prod_clean_africa_rnaturalearth |>
 
 # Left join to keep all rows from africa
 
-pig_prod_clean_africa_1975_full_join <- full_join(africa, 
-                                                      pig_prod_clean_africa_1975,
+tomato_prod_clean_africa_1975_full_join <- full_join(africa, 
+                                                      tomato_prod_clean_africa_1975,
                                                       by = c("admin" = "country"))
 
 # Find rows only in africa
 
-pig_prod_clean_africa_1975_anti_join_1 <- anti_join(africa, 
-                                                        pig_prod_clean_africa_1975, 
+tomato_prod_clean_africa_1975_anti_join_1 <- anti_join(africa, 
+                                                        tomato_prod_clean_africa_1975, 
                                                         by = c("admin" = "country"))
 
 # Find rows only in global_meat_clean_africa_1975
 
-pig_prod_clean_africa_1975_anti_join_2 <- anti_join(pig_prod_clean_africa_1975, 
+tomato_prod_clean_africa_1975_anti_join_2 <- anti_join(tomato_prod_clean_africa_1975, 
                                                         africa, 
                                                         by = c("country" = "admin"))
 
@@ -252,10 +252,10 @@ pig_prod_clean_africa_1975_anti_join_2 <- anti_join(pig_prod_clean_africa_1975,
 
 p3 <- ggplot(data = africa) +
   geom_sf() + 
-  geom_sf(data = pig_prod_clean_africa_1975_full_join, aes(fill = pig_production), linewidth = 1) +
+  geom_sf(data = tomato_prod_clean_africa_1975_full_join, aes(fill = tomato_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 400000),
+                       limits = c(0, 12000000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -280,15 +280,15 @@ p3 <- ggplot(data = africa) +
        subtitle = "",
        caption = "") 
 
-ggsave("sub_pro_7_agriculture_owid/images/pig_meat_time_series/pig_meat_clean_africa_map_1975.png", width = 9, height = 16, dpi = 300)
+ggsave("sub_pro_7_agriculture_owid/images/tomato_time_series/tomato_clean_africa_map_1975.png", width = 9, height = 16, dpi = 300)
 
 
 
 # Get 1980 data
 
-pig_prod_clean_africa_1980 <- pig_prod_clean_africa_rnaturalearth |> 
+tomato_prod_clean_africa_1980 <- tomato_prod_clean_africa_rnaturalearth |> 
   filter(year == 1980) |>
-  arrange(desc(pig_production))
+  arrange(desc(tomato_production))
 
 # Now we have the 1980 dataset and the africa dataset.
 # These two need to be joined together.
@@ -297,19 +297,19 @@ pig_prod_clean_africa_1980 <- pig_prod_clean_africa_rnaturalearth |>
 
 # Left join to keep all rows from africa
 
-pig_prod_clean_africa_1980_full_join <- full_join(africa, 
-                                                      pig_prod_clean_africa_1980,
+tomato_prod_clean_africa_1980_full_join <- full_join(africa, 
+                                                      tomato_prod_clean_africa_1980,
                                                       by = c("admin" = "country"))
 
 # Find rows only in africa
 
-pig_prod_clean_africa_1980_anti_join_1 <- anti_join(africa, 
-                                                        pig_prod_clean_africa_1980, 
+tomato_prod_clean_africa_1980_anti_join_1 <- anti_join(africa, 
+                                                        tomato_prod_clean_africa_1980, 
                                                         by = c("admin" = "country"))
 
 # Find rows only in global_meat_clean_africa_1980
 
-pig_prod_clean_africa_1980_anti_join_2 <- anti_join(pig_prod_clean_africa_1980, 
+tomato_prod_clean_africa_1980_anti_join_2 <- anti_join(tomato_prod_clean_africa_1980, 
                                                         africa, 
                                                         by = c("country" = "admin"))
 
@@ -319,10 +319,10 @@ pig_prod_clean_africa_1980_anti_join_2 <- anti_join(pig_prod_clean_africa_1980,
 
 p4 <- ggplot(data = africa) +
   geom_sf() + 
-  geom_sf(data = pig_prod_clean_africa_1980_full_join, aes(fill = pig_production), linewidth = 1) +
+  geom_sf(data = tomato_prod_clean_africa_1980_full_join, aes(fill = tomato_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 400000),
+                       limits = c(0, 12000000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -347,15 +347,15 @@ p4 <- ggplot(data = africa) +
        subtitle = "",
        caption = "") 
 
-ggsave("sub_pro_7_agriculture_owid/images/pig_meat_time_series/pig_meat_clean_africa_map_1980.png", width = 9, height = 16, dpi = 300)
+ggsave("sub_pro_7_agriculture_owid/images/tomato_time_series/tomato_clean_africa_map_1980.png", width = 9, height = 16, dpi = 300)
 
 
 
 # Get 1985 data
 
-pig_prod_clean_africa_1985 <- pig_prod_clean_africa_rnaturalearth |> 
+tomato_prod_clean_africa_1985 <- tomato_prod_clean_africa_rnaturalearth |> 
   filter(year == 1985) |>
-  arrange(desc(pig_production))
+  arrange(desc(tomato_production))
 
 # Now we have the 1985 dataset and the africa dataset.
 # These two need to be joined together.
@@ -364,19 +364,19 @@ pig_prod_clean_africa_1985 <- pig_prod_clean_africa_rnaturalearth |>
 
 # Left join to keep all rows from africa
 
-pig_prod_clean_africa_1985_full_join <- full_join(africa, 
-                                                      pig_prod_clean_africa_1985,
+tomato_prod_clean_africa_1985_full_join <- full_join(africa, 
+                                                      tomato_prod_clean_africa_1985,
                                                       by = c("admin" = "country"))
 
 # Find rows only in africa
 
-pig_prod_clean_africa_1985_anti_join_1 <- anti_join(africa, 
-                                                        pig_prod_clean_africa_1985, 
+tomato_prod_clean_africa_1985_anti_join_1 <- anti_join(africa, 
+                                                        tomato_prod_clean_africa_1985, 
                                                         by = c("admin" = "country"))
 
 # Find rows only in global_meat_clean_africa_1985
 
-pig_prod_clean_africa_1985_anti_join_2 <- anti_join(pig_prod_clean_africa_1985, 
+tomato_prod_clean_africa_1985_anti_join_2 <- anti_join(tomato_prod_clean_africa_1985, 
                                                         africa, 
                                                         by = c("country" = "admin"))
 
@@ -386,10 +386,10 @@ pig_prod_clean_africa_1985_anti_join_2 <- anti_join(pig_prod_clean_africa_1985,
 
 p5 <- ggplot(data = africa) +
   geom_sf() + 
-  geom_sf(data = pig_prod_clean_africa_1985_full_join, aes(fill = pig_production), linewidth = 1) +
+  geom_sf(data = tomato_prod_clean_africa_1985_full_join, aes(fill = tomato_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 400000),
+                       limits = c(0, 12000000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -414,15 +414,15 @@ p5 <- ggplot(data = africa) +
        subtitle = "",
        caption = "") 
 
-ggsave("sub_pro_7_agriculture_owid/images/pig_meat_time_series/pig_meat_clean_africa_map_1985.png", width = 9, height = 16, dpi = 300)
+ggsave("sub_pro_7_agriculture_owid/images/tomato_time_series/tomato_clean_africa_map_1985.png", width = 9, height = 16, dpi = 300)
 
 
 
 # Get 1990 data
 
-pig_prod_clean_africa_1990 <- pig_prod_clean_africa_rnaturalearth |> 
+tomato_prod_clean_africa_1990 <- tomato_prod_clean_africa_rnaturalearth |> 
   filter(year == 1990) |>
-  arrange(desc(pig_production))
+  arrange(desc(tomato_production))
 
 # Now we have the 1990 dataset and the africa dataset.
 # These two need to be joined together.
@@ -431,19 +431,19 @@ pig_prod_clean_africa_1990 <- pig_prod_clean_africa_rnaturalearth |>
 
 # Left join to keep all rows from africa
 
-pig_prod_clean_africa_1990_full_join <- full_join(africa, 
-                                                      pig_prod_clean_africa_1990,
+tomato_prod_clean_africa_1990_full_join <- full_join(africa, 
+                                                      tomato_prod_clean_africa_1990,
                                                       by = c("admin" = "country"))
 
 # Find rows only in africa
 
-pig_prod_clean_africa_1990_anti_join_1 <- anti_join(africa, 
-                                                        pig_prod_clean_africa_1990, 
+tomato_prod_clean_africa_1990_anti_join_1 <- anti_join(africa, 
+                                                        tomato_prod_clean_africa_1990, 
                                                         by = c("admin" = "country"))
 
 # Find rows only in global_meat_clean_africa_1990
 
-pig_prod_clean_africa_1990_anti_join_2 <- anti_join(pig_prod_clean_africa_1990, 
+tomato_prod_clean_africa_1990_anti_join_2 <- anti_join(tomato_prod_clean_africa_1990, 
                                                         africa, 
                                                         by = c("country" = "admin"))
 
@@ -453,10 +453,10 @@ pig_prod_clean_africa_1990_anti_join_2 <- anti_join(pig_prod_clean_africa_1990,
 
 p6 <- ggplot(data = africa) +
   geom_sf() + 
-  geom_sf(data = pig_prod_clean_africa_1990_full_join, aes(fill = pig_production), linewidth = 1) +
+  geom_sf(data = tomato_prod_clean_africa_1990_full_join, aes(fill = tomato_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 400000),
+                       limits = c(0, 12000000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -481,15 +481,15 @@ p6 <- ggplot(data = africa) +
        subtitle = "",
        caption = "") 
 
-ggsave("sub_pro_7_agriculture_owid/images/pig_meat_time_series/pig_meat_clean_africa_map_1990.png", width = 9, height = 16, dpi = 300)
+ggsave("sub_pro_7_agriculture_owid/images/tomato_time_series/tomato_clean_africa_map_1990.png", width = 9, height = 16, dpi = 300)
 
 
 
 # Get 1995 data
 
-pig_prod_clean_africa_1995 <- pig_prod_clean_africa_rnaturalearth |> 
+tomato_prod_clean_africa_1995 <- tomato_prod_clean_africa_rnaturalearth |> 
   filter(year == 1995) |>
-  arrange(desc(pig_production))
+  arrange(desc(tomato_production))
 
 # Now we have the 1995 dataset and the africa dataset.
 # These two need to be joined together.
@@ -498,19 +498,19 @@ pig_prod_clean_africa_1995 <- pig_prod_clean_africa_rnaturalearth |>
 
 # Left join to keep all rows from africa
 
-pig_prod_clean_africa_1995_full_join <- full_join(africa, 
-                                                      pig_prod_clean_africa_1995,
+tomato_prod_clean_africa_1995_full_join <- full_join(africa, 
+                                                      tomato_prod_clean_africa_1995,
                                                       by = c("admin" = "country"))
 
 # Find rows only in africa
 
-pig_prod_clean_africa_1995_anti_join_1 <- anti_join(africa, 
-                                                        pig_prod_clean_africa_1995, 
+tomato_prod_clean_africa_1995_anti_join_1 <- anti_join(africa, 
+                                                        tomato_prod_clean_africa_1995, 
                                                         by = c("admin" = "country"))
 
 # Find rows only in global_meat_clean_africa_1995
 
-pig_prod_clean_africa_1995_anti_join_2 <- anti_join(pig_prod_clean_africa_1995, 
+tomato_prod_clean_africa_1995_anti_join_2 <- anti_join(tomato_prod_clean_africa_1995, 
                                                         africa, 
                                                         by = c("country" = "admin"))
 
@@ -520,10 +520,10 @@ pig_prod_clean_africa_1995_anti_join_2 <- anti_join(pig_prod_clean_africa_1995,
 
 p7 <- ggplot(data = africa) +
   geom_sf() + 
-  geom_sf(data = pig_prod_clean_africa_1995_full_join, aes(fill = pig_production), linewidth = 1) +
+  geom_sf(data = tomato_prod_clean_africa_1995_full_join, aes(fill = tomato_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 400000),
+                       limits = c(0, 12000000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -548,15 +548,15 @@ p7 <- ggplot(data = africa) +
        subtitle = "",
        caption = "") 
 
-ggsave("sub_pro_7_agriculture_owid/images/pig_meat_time_series/pig_meat_clean_africa_map_1995.png", width = 9, height = 16, dpi = 300)
+ggsave("sub_pro_7_agriculture_owid/images/tomato_time_series/tomato_clean_africa_map_1995.png", width = 9, height = 16, dpi = 300)
 
 
 
 # Get 2000 data
 
-pig_prod_clean_africa_2000 <- pig_prod_clean_africa_rnaturalearth |> 
+tomato_prod_clean_africa_2000 <- tomato_prod_clean_africa_rnaturalearth |> 
   filter(year == 2000) |>
-  arrange(desc(pig_production))
+  arrange(desc(tomato_production))
 
 # Now we have the 2000 dataset and the africa dataset.
 # These two need to be joined together.
@@ -565,19 +565,19 @@ pig_prod_clean_africa_2000 <- pig_prod_clean_africa_rnaturalearth |>
 
 # Left join to keep all rows from africa
 
-pig_prod_clean_africa_2000_full_join <- full_join(africa, 
-                                                      pig_prod_clean_africa_2000,
+tomato_prod_clean_africa_2000_full_join <- full_join(africa, 
+                                                      tomato_prod_clean_africa_2000,
                                                       by = c("admin" = "country"))
 
 # Find rows only in africa
 
-pig_prod_clean_africa_2000_anti_join_1 <- anti_join(africa, 
-                                                        pig_prod_clean_africa_2000, 
+tomato_prod_clean_africa_2000_anti_join_1 <- anti_join(africa, 
+                                                        tomato_prod_clean_africa_2000, 
                                                         by = c("admin" = "country"))
 
 # Find rows only in global_meat_clean_africa_2000
 
-pig_prod_clean_africa_2000_anti_join_2 <- anti_join(pig_prod_clean_africa_2000, 
+tomato_prod_clean_africa_2000_anti_join_2 <- anti_join(tomato_prod_clean_africa_2000, 
                                                         africa, 
                                                         by = c("country" = "admin"))
 
@@ -587,10 +587,10 @@ pig_prod_clean_africa_2000_anti_join_2 <- anti_join(pig_prod_clean_africa_2000,
 
 p8 <- ggplot(data = africa) +
   geom_sf() + 
-  geom_sf(data = pig_prod_clean_africa_2000_full_join, aes(fill = pig_production), linewidth = 1) +
+  geom_sf(data = tomato_prod_clean_africa_2000_full_join, aes(fill = tomato_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 400000),
+                       limits = c(0, 12000000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -615,15 +615,15 @@ p8 <- ggplot(data = africa) +
        subtitle = "",
        caption = "") 
 
-ggsave("sub_pro_7_agriculture_owid/images/pig_meat_time_series/pig_meat_clean_africa_map_2000.png", width = 9, height = 16, dpi = 300)
+ggsave("sub_pro_7_agriculture_owid/images/tomato_time_series/tomato_clean_africa_map_2000.png", width = 9, height = 16, dpi = 300)
 
 
 
 # Get 2005 data
 
-pig_prod_clean_africa_2005 <- pig_prod_clean_africa_rnaturalearth |> 
+tomato_prod_clean_africa_2005 <- tomato_prod_clean_africa_rnaturalearth |> 
   filter(year == 2005) |>
-  arrange(desc(pig_production))
+  arrange(desc(tomato_production))
 
 # Now we have the 2005 dataset and the africa dataset.
 # These two need to be joined together.
@@ -632,19 +632,19 @@ pig_prod_clean_africa_2005 <- pig_prod_clean_africa_rnaturalearth |>
 
 # Left join to keep all rows from africa
 
-pig_prod_clean_africa_2005_full_join <- full_join(africa, 
-                                                      pig_prod_clean_africa_2005,
+tomato_prod_clean_africa_2005_full_join <- full_join(africa, 
+                                                      tomato_prod_clean_africa_2005,
                                                       by = c("admin" = "country"))
 
 # Find rows only in africa
 
-pig_prod_clean_africa_2005_anti_join_1 <- anti_join(africa, 
-                                                        pig_prod_clean_africa_2005, 
+tomato_prod_clean_africa_2005_anti_join_1 <- anti_join(africa, 
+                                                        tomato_prod_clean_africa_2005, 
                                                         by = c("admin" = "country"))
 
 # Find rows only in global_meat_clean_africa_2005
 
-pig_prod_clean_africa_2005_anti_join_2 <- anti_join(pig_prod_clean_africa_2005, 
+tomato_prod_clean_africa_2005_anti_join_2 <- anti_join(tomato_prod_clean_africa_2005, 
                                                         africa, 
                                                         by = c("country" = "admin"))
 
@@ -654,10 +654,10 @@ pig_prod_clean_africa_2005_anti_join_2 <- anti_join(pig_prod_clean_africa_2005,
 
 p9 <- ggplot(data = africa) +
   geom_sf() + 
-  geom_sf(data = pig_prod_clean_africa_2005_full_join, aes(fill = pig_production), linewidth = 1) +
+  geom_sf(data = tomato_prod_clean_africa_2005_full_join, aes(fill = tomato_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 400000),
+                       limits = c(0, 12000000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -682,15 +682,15 @@ p9 <- ggplot(data = africa) +
        subtitle = "",
        caption = "") 
 
-ggsave("sub_pro_7_agriculture_owid/images/pig_meat_time_series/pig_meat_clean_africa_map_2005.png", width = 9, height = 16, dpi = 300)
+ggsave("sub_pro_7_agriculture_owid/images/tomato_time_series/tomato_clean_africa_map_2005.png", width = 9, height = 16, dpi = 300)
 
 
 
 # Get 2010 data
 
-pig_prod_clean_africa_2010 <- pig_prod_clean_africa_rnaturalearth |> 
+tomato_prod_clean_africa_2010 <- tomato_prod_clean_africa_rnaturalearth |> 
   filter(year == 2010) |>
-  arrange(desc(pig_production))
+  arrange(desc(tomato_production))
 
 # Now we have the 2010 dataset and the africa dataset.
 # These two need to be joined together.
@@ -699,19 +699,19 @@ pig_prod_clean_africa_2010 <- pig_prod_clean_africa_rnaturalearth |>
 
 # Left join to keep all rows from africa
 
-pig_prod_clean_africa_2010_full_join <- full_join(africa, 
-                                                      pig_prod_clean_africa_2010,
+tomato_prod_clean_africa_2010_full_join <- full_join(africa, 
+                                                      tomato_prod_clean_africa_2010,
                                                       by = c("admin" = "country"))
 
 # Find rows only in africa
 
-pig_prod_clean_africa_2010_anti_join_1 <- anti_join(africa, 
-                                                        pig_prod_clean_africa_2010, 
+tomato_prod_clean_africa_2010_anti_join_1 <- anti_join(africa, 
+                                                        tomato_prod_clean_africa_2010, 
                                                         by = c("admin" = "country"))
 
 # Find rows only in global_meat_clean_africa_2010
 
-pig_prod_clean_africa_2010_anti_join_2 <- anti_join(pig_prod_clean_africa_2010, 
+tomato_prod_clean_africa_2010_anti_join_2 <- anti_join(tomato_prod_clean_africa_2010, 
                                                         africa, 
                                                         by = c("country" = "admin"))
 
@@ -721,10 +721,10 @@ pig_prod_clean_africa_2010_anti_join_2 <- anti_join(pig_prod_clean_africa_2010,
 
 p10 <- ggplot(data = africa) +
   geom_sf() + 
-  geom_sf(data = pig_prod_clean_africa_2010_full_join, aes(fill = pig_production), linewidth = 1) +
+  geom_sf(data = tomato_prod_clean_africa_2010_full_join, aes(fill = tomato_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 400000),
+                       limits = c(0, 12000000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -749,15 +749,15 @@ p10 <- ggplot(data = africa) +
        subtitle = "",
        caption = "") 
 
-ggsave("sub_pro_7_agriculture_owid/images/pig_meat_time_series/pig_meat_clean_africa_map_2010.png", width = 9, height = 16, dpi = 300)
+ggsave("sub_pro_7_agriculture_owid/images/tomato_time_series/tomato_clean_africa_map_2010.png", width = 9, height = 16, dpi = 300)
 
 
 
 # Get 2015 data
 
-pig_prod_clean_africa_2015 <- pig_prod_clean_africa_rnaturalearth |> 
+tomato_prod_clean_africa_2015 <- tomato_prod_clean_africa_rnaturalearth |> 
   filter(year == 2015) |>
-  arrange(desc(pig_production))
+  arrange(desc(tomato_production))
 
 # Now we have the 2015 dataset and the africa dataset.
 # These two need to be joined together.
@@ -766,19 +766,19 @@ pig_prod_clean_africa_2015 <- pig_prod_clean_africa_rnaturalearth |>
 
 # Left join to keep all rows from africa
 
-pig_prod_clean_africa_2015_full_join <- full_join(africa, 
-                                                      pig_prod_clean_africa_2015,
+tomato_prod_clean_africa_2015_full_join <- full_join(africa, 
+                                                      tomato_prod_clean_africa_2015,
                                                       by = c("admin" = "country"))
 
 # Find rows only in africa
 
-pig_prod_clean_africa_2015_anti_join_1 <- anti_join(africa, 
-                                                        pig_prod_clean_africa_2015, 
+tomato_prod_clean_africa_2015_anti_join_1 <- anti_join(africa, 
+                                                        tomato_prod_clean_africa_2015, 
                                                         by = c("admin" = "country"))
 
 # Find rows only in global_meat_clean_africa_2015
 
-pig_prod_clean_africa_2015_anti_join_2 <- anti_join(pig_prod_clean_africa_2015, 
+tomato_prod_clean_africa_2015_anti_join_2 <- anti_join(tomato_prod_clean_africa_2015, 
                                                         africa, 
                                                         by = c("country" = "admin"))
 
@@ -788,10 +788,10 @@ pig_prod_clean_africa_2015_anti_join_2 <- anti_join(pig_prod_clean_africa_2015,
 
 p11 <- ggplot(data = africa) +
   geom_sf() + 
-  geom_sf(data = pig_prod_clean_africa_2015_full_join, aes(fill = pig_production), linewidth = 1) +
+  geom_sf(data = tomato_prod_clean_africa_2015_full_join, aes(fill = tomato_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 400000),
+                       limits = c(0, 12000000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -816,15 +816,15 @@ p11 <- ggplot(data = africa) +
        subtitle = "",
        caption = "") 
 
-ggsave("sub_pro_7_agriculture_owid/images/pig_meat_time_series/pig_meat_clean_africa_map_2015.png", width = 9, height = 16, dpi = 300)
+ggsave("sub_pro_7_agriculture_owid/images/tomato_time_series/tomato_clean_africa_map_2015.png", width = 9, height = 16, dpi = 300)
 
 
 
 # Get 2020 data
 
-pig_prod_clean_africa_2020 <- pig_prod_clean_africa_rnaturalearth |> 
+tomato_prod_clean_africa_2020 <- tomato_prod_clean_africa_rnaturalearth |> 
   filter(year == 2020) |>
-  arrange(desc(pig_production))
+  arrange(desc(tomato_production))
 
 # Now we have the 2020 dataset and the africa dataset.
 # These two need to be joined together.
@@ -833,19 +833,19 @@ pig_prod_clean_africa_2020 <- pig_prod_clean_africa_rnaturalearth |>
 
 # Left join to keep all rows from africa
 
-pig_prod_clean_africa_2020_full_join <- full_join(africa, 
-                                                      pig_prod_clean_africa_2020,
+tomato_prod_clean_africa_2020_full_join <- full_join(africa, 
+                                                      tomato_prod_clean_africa_2020,
                                                       by = c("admin" = "country"))
 
 # Find rows only in africa
 
-pig_prod_clean_africa_2020_anti_join_1 <- anti_join(africa, 
-                                                        pig_prod_clean_africa_2020, 
+tomato_prod_clean_africa_2020_anti_join_1 <- anti_join(africa, 
+                                                        tomato_prod_clean_africa_2020, 
                                                         by = c("admin" = "country"))
 
 # Find rows only in global_meat_clean_africa_2020
 
-pig_prod_clean_africa_2020_anti_join_2 <- anti_join(pig_prod_clean_africa_2020, 
+tomato_prod_clean_africa_2020_anti_join_2 <- anti_join(tomato_prod_clean_africa_2020, 
                                                         africa, 
                                                         by = c("country" = "admin"))
 
@@ -855,10 +855,10 @@ pig_prod_clean_africa_2020_anti_join_2 <- anti_join(pig_prod_clean_africa_2020,
 
 p12 <- ggplot(data = africa) +
   geom_sf() + 
-  geom_sf(data = pig_prod_clean_africa_2020_full_join, aes(fill = pig_production), linewidth = 1) +
+  geom_sf(data = tomato_prod_clean_africa_2020_full_join, aes(fill = tomato_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 400000),
+                       limits = c(0, 12000000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -883,4 +883,4 @@ p12 <- ggplot(data = africa) +
        subtitle = "",
        caption = "") 
 
-ggsave("sub_pro_7_agriculture_owid/images/pig_meat_time_series/pig_meat_clean_africa_map_2020.png", width = 9, height = 16, dpi = 300)
+ggsave("sub_pro_7_agriculture_owid/images/tomato_time_series/tomato_clean_africa_map_2020.png", width = 9, height = 16, dpi = 300)

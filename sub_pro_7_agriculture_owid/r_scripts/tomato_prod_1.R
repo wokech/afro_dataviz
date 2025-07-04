@@ -1,4 +1,4 @@
-# Pig meat production
+# Tomato production
 
 # 1) Load the Required Libraries
 
@@ -28,51 +28,51 @@ library(jsonlite)
 
 # Fetch the data
 
-# pig_prod <- read.csv("https://ourworldindata.org/grapher/pigmeat-production-tonnes.csv?v=1&csvType=full&useColumnShortNames=true",
-#                       na.strings = "")
-# 
-# # Save the data
-# write.csv(pig_prod, "sub_pro_7_agriculture_owid/datasets/pigmeat-production-tonnes.csv",
-#           row.names = FALSE)
+tomato_prod <- read.csv("https://ourworldindata.org/grapher/tomato-production.csv?v=1&csvType=full&useColumnShortNames=true",
+                      na.strings = "")
+
+# Save the data
+write.csv(tomato_prod, "sub_pro_7_agriculture_owid/datasets/tomato-production-tonnes.csv",
+          row.names = FALSE)
 
 # Read in the data
-pig_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/pigmeat-production-tonnes.csv")
+tomato_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/tomato-production-tonnes.csv")
 
 # Clean the column headings
 
-pig_prod_clean <- pig_prod %>%
+tomato_prod_clean <- tomato_prod %>%
   clean_names() 
 
 # Change the column title names
 
-pig_prod_clean <- pig_prod_clean %>%
+tomato_prod_clean <- tomato_prod_clean %>%
   rename("region" = "entity",
-         "pig_production_tonnes" = "meat_pig_00001035_production_005510_tonnes") 
+         "tomato_production_tonnes" = "tomatoes_00000388_production_005510_tonnes") 
 
 # Filter by region
 
-pig_prod_clean_region <- pig_prod_clean %>%
+tomato_prod_clean_region <- tomato_prod_clean %>%
   filter(is.na(code)) %>%
   select(c(1,3,4)) 
 
 # Filter by FAO region
 
-pig_prod_clean_region_fao <- pig_prod_clean_region %>%
+tomato_prod_clean_region_fao <- tomato_prod_clean_region %>%
   filter(grepl('(FAO)', region))
 
 # Filter by non-FAO region
 
-pig_prod_clean_region_non_fao <- pig_prod_clean_region %>%
+tomato_prod_clean_region_non_fao <- tomato_prod_clean_region %>%
   filter(!grepl('(FAO)', region))
 
-# 3) Continental (Non-FAO) Pig meat production
+# 3) Continental (Non-FAO) tomato meat production
 
 # a) Stacked area chart
 
-pig_prod_clean_region_non_fao_continent <- pig_prod_clean_region_non_fao %>%
+tomato_prod_clean_region_non_fao_continent <- tomato_prod_clean_region_non_fao %>%
   filter(region %in% c("Africa", "Asia", "Europe", 
-                        "North America", "South America", 
-                        "Oceania"))
+                       "North America", "South America", 
+                       "Oceania"))
 
 # Use afro_stack color palette for the design on bisque1 background
 
@@ -85,50 +85,50 @@ afro_stack_palette <- c(
 
 desired_order <- c("Oceania", "Africa", "Europe", "North America", "South America", "Asia")
 
-pig_prod_clean_region_non_fao_continent <- pig_prod_clean_region_non_fao_continent %>%
+tomato_prod_clean_region_non_fao_continent <- tomato_prod_clean_region_non_fao_continent %>%
   mutate(region = factor(region, levels = desired_order)) %>%
   arrange(desc(region))
 
 #  calculate cumulative positions for label placement
 
-label_df_pig <- pig_prod_clean_region_non_fao_continent %>%
+label_df_tomato <- tomato_prod_clean_region_non_fao_continent %>%
   filter(year == max(year)) %>%
   mutate(region = factor(region, levels = rev(desired_order))) %>%
   arrange(region) %>%
   mutate(x_label = max(year),
-         y_top = cumsum(pig_production_tonnes),
-         y_bottom = y_top - pig_production_tonnes,
+         y_top = cumsum(tomato_production_tonnes),
+         y_bottom = y_top - tomato_production_tonnes,
          y_mid = (y_bottom + y_top) / 2) %>%
   select(region, year, x_label, y_top, y_mid) 
 
 # plot the stack area chart
 
-pig_prod_clean_region_non_fao_continent %>% 
-  ggplot(aes(year, pig_production_tonnes, fill = region, label = region, color = region)) +
+tomato_prod_clean_region_non_fao_continent %>% 
+  ggplot(aes(year, tomato_production_tonnes, fill = region, label = region, color = region)) +
   geom_area() +
   geom_text_repel(
-    data = label_df_pig,
+    data = label_df_tomato,
     aes(x = x_label, y = y_mid, label = region, color = region),
     hjust = 0,
     fontface = "bold",
-    size = 7.5,
+    size = 12,
     inherit.aes = FALSE,
     direction = "y",
     hjust = 0,
-    nudge_x = 22.5,
+    nudge_x = -55,
     segment.curvature = 0.1,
     segment.size = 0.5,
     segment.ncp = 1,
     min.segment.length = 0
   ) +
   labs(x = "Year",
-         y = "Pig Meat Production\n(Millions of Tonnes)",
-       title = "At 2%, global pig meat production in Africa\nwas almost negligible in 2020",
+       y = "Tomato Production\n(Millions of Tonnes)",
+       title = "1 out of 8 tomatoes produced globally was from\nAfrica in 2020",
        subtitle = "",
        caption = "Data Source: Our World in Data | FAO | World Bank") +
   theme_classic() +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
-  scale_y_continuous(limits = c(0, 125000000), labels  = 
+  scale_y_continuous(limits = c(0, 200000000), labels  = 
                        label_number(scale = 1e-6)) +
   scale_fill_manual(values = afro_stack_palette) +
   scale_color_manual(values = afro_stack_palette) +
@@ -146,11 +146,13 @@ pig_prod_clean_region_non_fao_continent %>%
         plot.caption.position = 'plot',
         plot.margin = margin(5, 5, 5, 5),
         legend.position = "none"
-        )
+  )
 
-ggsave("sub_pro_7_agriculture_owid/images/continental/continent_pig_meat_1.png", width = 12, height = 12, dpi = 72)
+ggsave("sub_pro_7_agriculture_owid/images/continental/continent_tomato_1.png", width = 12, height = 12, dpi = 72)
 
 
-pig_prod_clean_region_non_fao_continent %>%
+tomato_prod_clean_region_non_fao_continent %>%
   filter(year == 2020) %>%
-  mutate(percent = 100 * pig_production_tonnes/sum(pig_production_tonnes))
+  mutate(percent = 100 * tomato_production_tonnes/sum(tomato_production_tonnes))
+
+

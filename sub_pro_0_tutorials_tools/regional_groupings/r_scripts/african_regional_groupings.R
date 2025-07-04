@@ -1,6 +1,7 @@
 # African Regional Groupings
 
 # All African Countries
+
 african_countries <- data.frame(
   Country = c("Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", 
               "Burundi", "Cape Verde", "Cameroon", "Central African Republic", 
@@ -70,12 +71,25 @@ eccas <- c("Angola", "Burundi", "Cameroon", "Central African Republic", "Chad",
            "Democratic Republic of the Congo", "Equatorial Guinea", "Gabon", 
            "Republic of Congo", "Rwanda", "Sao Tome and Principe")
 
-# Economic Community of West African States (ECOWAS)
-ecowas <- c("Benin", "Burkina Faso", "Cape Verde", "Ivory Coast", "The Gambia", 
-            "Ghana", "Guinea", "Guinea-Bissau", "Liberia", "Mali", "Niger", 
+# Economic Community of West African States (ECOWAS) - All (2025)
+ecowas <- c("Benin", "Cape Verde", "Ivory Coast", "The Gambia", 
+            "Ghana", "Guinea", "Guinea-Bissau", "Liberia", 
             "Nigeria", "Senegal", "Sierra Leone", "Togo")
 
-# Split into Francophone and Aglophone or ECOWAS A and B
+# Economic Community of West African States (ECOWAS) - Francophone (2025)
+ecowas_francophone <- c("Benin", "Côte d'Ivoire", "Guinea", 
+                        "Senegal", "Togo")
+
+# Economic Community of West African States (ECOWAS) - Anglophone (2025)
+ecowas_anglophone <- c("Gambia", "Ghana", "Liberia", 
+                       "Nigeria", "Sierra Leone")
+
+# Economic Community of West African States (ECOWAS) - Lusophone (2025)
+ecowas_lusophone <- c("Cape Verde", "Guinea-Bissau")
+
+# The Alliance of Sahel States (AES)
+aes <- c("Burkina Faso", "Mali", "Niger")
+aes_df <- africa |> filter(admin %in% aes)
 
 # Intergovernmental Authority on Development (IGAD)
 igad <- c("Djibouti", "Eritrea", "Ethiopia", "Kenya", 
