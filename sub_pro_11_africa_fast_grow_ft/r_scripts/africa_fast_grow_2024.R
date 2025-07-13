@@ -167,7 +167,7 @@ table_data_2024_clean_year_group |>
   geom_text(aes(label = total, y = total-0.2),  
             hjust = 1,                           
             color = "white",                        
-            size = 10) +  
+            size = 13) +  
   coord_flip() +
   theme_classic() +
   labs(x = "",
@@ -175,13 +175,13 @@ table_data_2024_clean_year_group |>
        title = "Africa’s Fastest Growing Companies (2024)",
        subtitle = "Year of Origin",
        caption = "Data Source: Financial Times") +
-  scale_y_continuous(breaks = seq(0, 40, by = 10),
-                     minor_breaks = seq(0, 40, by = 5),
+  scale_y_continuous(breaks = seq(0, 60, by = 10),
+                     minor_breaks = seq(0, 60, by = 5),
                      expand = expansion(mult = c(0, 0.25))) +
   theme(axis.title.x = element_text(size = 25),
         axis.title.y = element_text(size = 25),
-        axis.text.x = element_text(size = 25),
-        axis.text.y = element_text(size = 25),
+        axis.text.x = element_text(size = 35, color = "black"),
+        axis.text.y = element_text(size = 35, color = "black"),
         axis.ticks.length.x = unit(0.2, "cm"),  # Lengthen the ticks
         axis.ticks.minor.x = element_line(color = "black", size = 2),  # Show minor ticks
         axis.line.y = element_blank(),
