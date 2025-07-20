@@ -1,9 +1,12 @@
+# Africa’s Fastest Growing Companies 2025
+
 # A) Load the required packages and libraries
 
 #install.packages('rvest')
 library(rvest)
 library(tidyverse)
 library(janitor)
+library(treemapify)
 
 # B) Scrape the data
 
@@ -23,7 +26,7 @@ library(janitor)
 # 
 # # C) Data cleaning 
 # 
-# table_data_2025_clean <- table_data_2025 %>%
+# table_data_2025_clean <- table_data_2025 |>
 #   clean_names()
 # 
 # # Save the data
@@ -40,9 +43,9 @@ table_data_2025_clean <- read_csv("sub_pro_11_africa_fast_grow_ft/datasets/fast_
 
 # 2025
 
-table_data_2025_clean_country <- table_data_2025_clean %>%
-  group_by(country) %>%
-  summarise(total = n()) %>%
+table_data_2025_clean_country <- table_data_2025_clean |>
+  group_by(country) |>
+  summarise(total = n()) |>
   arrange(desc(total))
 
 table_data_2025_clean_country |>
@@ -89,9 +92,10 @@ table_data_2025_clean_country |>
 
 # 2025
 
-table_data_2025_clean_sector <- table_data_2025_clean %>%
-  group_by(sector) %>%
-  summarise(total = n()) %>%
+table_data_2025_clean_sector <- table_data_2025_clean |>
+  mutate(sector = recode(sector, "Real estate" = "Real Estate")) |>
+  group_by(sector) |>
+  summarise(total = n()) |>
   arrange(desc(total))
 
 table_data_2025_clean_sector |>
@@ -136,30 +140,29 @@ table_data_2025_clean_sector |>
 
 # When were the companies founded?
 
-table_data_2025_clean_year <- table_data_2025_clean %>%
-  group_by(founding_year) %>%
-  summarise(total = n()) %>%
+table_data_2025_clean_year <- table_data_2025_clean |>
+  group_by(founding_year) |>
+  summarise(total = n()) |>
   arrange(desc(total))
 
 # Grouped data by year
 
 # 2025
 
-table_data_2025_clean_year_group <- table_data_2025_clean %>%
+table_data_2025_clean_year_group <- table_data_2025_clean |>
   mutate(founding_year_group = case_when(
     founding_year >= 1850 & founding_year <= 1950 ~ "1850-1950",
     founding_year >= 1951 & founding_year <= 1975 ~ "1951-1975",
     founding_year >= 1976 & founding_year <= 2000 ~ "1976-2000",
     founding_year >= 2001 & founding_year <= 2012 ~ "2001-2012",
     founding_year >= 2013 & founding_year <= 2025 ~ "2013-2025", 
-  )) %>%
-  group_by(founding_year_group) %>%
-  summarise(total = n()) %>%
+  )) |>
+  group_by(founding_year_group) |>
+  summarise(total = n()) |>
   arrange(desc(total))
 
 table_data_2025_clean_year_group$founding_year_group <- factor(table_data_2025_clean_year_group$founding_year_group, 
                                                                levels = c("1850-1950", "1951-1975", "1976-2000", "2001-2012", "2013-2025"))
-
 
 table_data_2025_clean_year_group |>
   ggplot(aes(x = founding_year_group, y = total)) +
@@ -195,5 +198,128 @@ table_data_2025_clean_year_group |>
         legend.title = element_blank(),
         legend.position = "none") 
 
-ggsave("sub_pro_11_africa_fast_grow_ft/images/2025/year_2025.png", width = 12, height = 12, dpi = 300)
+# ggsave("sub_pro_11_africa_fast_grow_ft/images/2025/year_2025.png", width = 12, height = 12, dpi = 300)
 
+# Treemap of top 5 countries, year, and sectors
+
+# Countries
+
+table_data_2025_clean_country_treemap <- table_data_2025_clean |>
+  group_by(country) |>
+  summarise(total = n()) |>
+  arrange(desc(total)) |>
+  mutate(group = if_else(row_number() <= 5,
+                         country, "Other Countries")) |>
+  group_by(group) |>
+  summarise(total = sum(total)) |>
+  mutate(percent_total = round((total/sum(total))*100, 1)) |>
+  arrange(desc(percent_total))
+
+# Visualize the data
+
+ggplot(table_data_2025_clean_country_treemap, 
+       aes(area = percent_total, fill = percent_total, 
+           label = paste0(group, "\n",
+                          percent_total, "%"))) +
+  geom_treemap() +
+  labs(title = "",
+       subtitle = "",
+       fill = "",
+       caption = "") +
+  geom_treemap_text(colour = "black",
+                    place = "centre",
+                    size = 40) + 
+  theme(legend.position = "none",
+        plot.title = element_text(size=24),
+        plot.subtitle = element_text(size=18),
+        legend.text = element_text(size = 10),
+        plot.caption = element_text(size =12),
+        panel.background = element_rect(fill="bisque1"),
+        plot.background = element_rect(fill="bisque1"),
+        legend.background = element_rect(fill="bisque1")) +
+  scale_fill_gradient(low = "#FFD6D1", high = "#E84B3D")
+
+# Sectors
+
+table_data_2025_clean_sector_treemap <- table_data_2025_clean |>
+  mutate(sector = recode(sector, "Real estate" = "Real Estate")) |>
+  group_by(sector) |>
+  summarise(total = n()) |>
+  arrange(desc(total)) |>
+  mutate(group = if_else(row_number() <= 5,
+                         sector, "Other Sectors")) |>
+  group_by(group) |>
+  summarise(total = sum(total)) |>
+  mutate(percent_total = round((total/sum(total))*100, 1)) |>
+  arrange(desc(percent_total))
+
+# Visualize the data
+
+ggplot(table_data_2025_clean_sector_treemap, 
+       aes(area = percent_total, fill = percent_total, 
+           label = paste0(group, "\n",
+                          percent_total, "%"))) +
+  geom_treemap() +
+  labs(title = "",
+       subtitle = "",
+       fill = "",
+       caption = "") +
+  geom_treemap_text(colour = "black",
+                    place = "centre",
+                    size = 40) + 
+  theme(legend.position = "none",
+        plot.title = element_text(size=24),
+        plot.subtitle = element_text(size=18),
+        legend.text = element_text(size = 10),
+        plot.caption = element_text(size =12),
+        panel.background = element_rect(fill="bisque1"),
+        plot.background = element_rect(fill="bisque1"),
+        legend.background = element_rect(fill="bisque1")) +
+  scale_fill_gradient(low = "#FFD6D1", high = "#E84B3D")
+
+# Founding Year
+
+table_data_2025_clean_year_group <- table_data_2025_clean |>
+  mutate(founding_year_group = case_when(
+    founding_year >= 1850 & founding_year <= 1950 ~ "1850-1950",
+    founding_year >= 1951 & founding_year <= 1975 ~ "1951-1975",
+    founding_year >= 1976 & founding_year <= 2000 ~ "1976-2000",
+    founding_year >= 2001 & founding_year <= 2012 ~ "2001-2012",
+    founding_year >= 2013 & founding_year <= 2025 ~ "2013-2025", 
+  )) |>
+  group_by(founding_year_group) |>
+  summarise(total = n()) |>
+  arrange(desc(total))
+
+table_data_2025_clean_year_group$founding_year_group <- factor(table_data_2025_clean_year_group$founding_year_group, 
+                                                               levels = c("1850-1950", "1951-1975", "1976-2000", "2001-2012", "2013-2025"))
+
+table_data_2025_clean_year_group_treemap <- table_data_2025_clean_year_group |>
+  group_by(founding_year_group) |>
+  summarise(total = sum(total)) |>
+  mutate(percent_total = round((total/sum(total))*100, 1)) |>
+  arrange(desc(percent_total))
+
+# Visualize the data
+
+ggplot(table_data_2025_clean_year_group_treemap, 
+       aes(area = percent_total, fill = percent_total, 
+           label = paste0(founding_year_group, "\n",
+                          "(", percent_total, "%", ")"))) +
+  geom_treemap() +
+  labs(title = "",
+       subtitle = "",
+       fill = "",
+       caption = "") +
+  geom_treemap_text(colour = "black",
+                    place = "centre",
+                    size = 40) + 
+  theme(legend.position = "none",
+        plot.title = element_text(size=24),
+        plot.subtitle = element_text(size=18),
+        legend.text = element_text(size = 10),
+        plot.caption = element_text(size =12),
+        panel.background = element_rect(fill="bisque1"),
+        plot.background = element_rect(fill="bisque1"),
+        legend.background = element_rect(fill="bisque1")) +
+  scale_fill_gradient(low = "#FFD6D1", high = "#E84B3D")
