@@ -7,6 +7,19 @@ library(rvest)
 library(tidyverse)
 library(janitor)
 library(treemapify)
+library(tidyverse)
+library(janitor)
+library(ggrepel)
+library(ggthemes)
+library(viridis)
+library(hrbrthemes)
+library(sf)
+library(rnaturalearth)
+library(rnaturalearthdata)
+# Also ensure that rnatural hi res is installed
+library(patchwork)
+library(ggrepel)
+library(scales)
 
 # B) Scrape the data
 
@@ -90,10 +103,12 @@ table_data_2025_clean_country |>
 
 # What sector do the companies work in?
 
-# 2025
+# 2025 
 
 table_data_2025_clean_sector <- table_data_2025_clean |>
   mutate(sector = recode(sector, "Real estate" = "Real Estate")) |>
+  mutate(sector = recode(sector, "E-commerce" = "E-Commerce")) |>
+  mutate(sector = recode(sector, "Management consulting" = "Management Consulting")) |>
   group_by(sector) |>
   summarise(total = n()) |>
   arrange(desc(total))
@@ -237,12 +252,18 @@ ggplot(table_data_2025_clean_country_treemap,
         panel.background = element_rect(fill="bisque1"),
         plot.background = element_rect(fill="bisque1"),
         legend.background = element_rect(fill="bisque1")) +
-  scale_fill_gradient(low = "#FFD6D1", high = "#E84B3D")
+  scale_fill_gradient(low = "#ECD2FC", high = "#C16FF5")
+
+ggsave("sub_pro_11_africa_fast_grow_ft/images/2025/origin_2025_treemap.png", width = 12, height = 8, dpi = 300)
 
 # Sectors
 
 table_data_2025_clean_sector_treemap <- table_data_2025_clean |>
   mutate(sector = recode(sector, "Real estate" = "Real Estate")) |>
+  mutate(sector = recode(sector, "Fintech, Financial Services & Insurance" = "Fintech, Financial Services\n& Insurance")) |>
+  mutate(sector = recode(sector, "Media & Telecomunications" = "Media &\nTelecomunications")) |>
+  mutate(sector = recode(sector, "Energy & Utilities" = "Energy &\nUtilities")) |>
+  mutate(sector = recode(sector, "Health Care & Life Sciences" = "Health Care &\nLife Sciences")) |>
   group_by(sector) |>
   summarise(total = n()) |>
   arrange(desc(total)) |>
@@ -275,7 +296,9 @@ ggplot(table_data_2025_clean_sector_treemap,
         panel.background = element_rect(fill="bisque1"),
         plot.background = element_rect(fill="bisque1"),
         legend.background = element_rect(fill="bisque1")) +
-  scale_fill_gradient(low = "#FFD6D1", high = "#E84B3D")
+  scale_fill_gradient(low = "#ECD2FC", high = "#C16FF5")
+
+ggsave("sub_pro_11_africa_fast_grow_ft/images/2025/sector_2025_treemap.png", width = 12, height = 8, dpi = 300)
 
 # Founding Year
 
@@ -322,4 +345,104 @@ ggplot(table_data_2025_clean_year_group_treemap,
         panel.background = element_rect(fill="bisque1"),
         plot.background = element_rect(fill="bisque1"),
         legend.background = element_rect(fill="bisque1")) +
-  scale_fill_gradient(low = "#FFD6D1", high = "#E84B3D")
+  scale_fill_gradient(low = "#ECD2FC", high = "#C16FF5")
+
+ggsave("sub_pro_11_africa_fast_grow_ft/images/2025/year_2025_treemap.png", width = 12, height = 8, dpi = 300)
+
+# Matching treemap and map
+
+# Map
+
+# Fetch high-resolution country data
+world <- ne_countries(scale = "large", returnclass = "sf")
+
+# Filter African countries, including Seychelles and Mauritius
+africa <- world |>
+  filter(continent == "Africa" | admin %in% c("Seychelles", "Mauritius"))
+
+# List top 5 counties
+top_5 <- africa |>
+  filter(admin %in% c("Nigeria", "South Africa", "Morocco", "Mauritius", "Kenya")) |>
+  pull(admin)
+
+# Add group column to full tidy dataset
+africa_top_5 <- africa |>
+  mutate(group = if_else(admin %in% top_5, admin, "Other Countries"))
+
+# Color Map (2025)
+
+color_map_2025 <- c(
+  "Nigeria" = "#FFB5A7",
+  "South Africa" = "#B5EAD7",
+  "Morocco" = "#9EC1CF",
+  "Mauritius" = "#BDA167",
+  "Kenya" = "#CC79A7",
+  "Other Countries" = "#BEBEBE"  # For grouped others
+)
+
+# Plot of Africa
+ggplot(data = africa_top_5) +
+  geom_sf(aes(fill = group), linewidth = 0.5) +
+  theme_void()+
+  labs(title = "",
+       caption = "",
+       fill = "")+
+  theme(plot.title = element_text(family = "Helvetica",size = 16, hjust = 0.5),
+        plot.caption = element_text(family = "Helvetica",size = 12),
+        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
+        panel.background = element_rect(fill = "bisque1", color = "bisque1"),
+        legend.position = "none") +
+  scale_fill_manual(values = color_map_2025)
+
+ggsave("sub_pro_11_africa_fast_grow_ft/images/2025/origin_2025_map_match.png", width = 12, height = 8, dpi = 300)
+
+# Treemap
+
+# Countries
+
+table_data_2025_clean_country_treemap <- table_data_2025_clean |>
+  group_by(country) |>
+  summarise(total = n()) |>
+  arrange(desc(total)) |>
+  mutate(group = if_else(row_number() <= 5,
+                         country, "Other Countries")) |>
+  group_by(group) |>
+  summarise(total = sum(total)) |>
+  mutate(percent_total = round((total/sum(total))*100, 1)) |>
+  arrange(desc(percent_total))
+
+# Visualize the data
+
+color_map_2025 <- c(
+  "Nigeria" = "#FFB5A7",
+  "South Africa" = "#B5EAD7",
+  "Morocco" = "#9EC1CF",
+  "Mauritius" = "#BDA167",
+  "Kenya" = "#CC79A7",
+  "Other Countries" = "#BEBEBE"  # For grouped others
+)
+
+ggplot(table_data_2025_clean_country_treemap, 
+       aes(area = percent_total, fill = group, 
+           label = paste0(group, "\n",
+                          percent_total, "%"))) +
+  geom_treemap() +
+  labs(title = "",
+       subtitle = "",
+       fill = "",
+       caption = "") +
+  geom_treemap_text(colour = "black",
+                    place = "centre",
+                    size = 40) + 
+  theme(legend.position = "none",
+        plot.title = element_text(size=24),
+        plot.subtitle = element_text(size=18),
+        legend.text = element_text(size = 10),
+        plot.caption = element_text(size =12),
+        panel.background = element_rect(fill="bisque1"),
+        plot.background = element_rect(fill="bisque1"),
+        legend.background = element_rect(fill="bisque1")) +
+  scale_fill_manual(values = color_map_2025)
+
+ggsave("sub_pro_11_africa_fast_grow_ft/images/2025/origin_2025_treemap_match.png", width = 12, height = 8, dpi = 300)
+
