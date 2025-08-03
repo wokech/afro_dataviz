@@ -259,7 +259,7 @@ ggplot(table_data_2022_clean_country_treemap,
   scale_fill_gradient(low = "#ECD2FC", high = "#C16FF5")
 
 
-ggsave("sub_pro_11_africa_fast_grow_ft/images/2022/origin_2022_treemap.png", width = 12, height = 8, dpi = 300)
+ggsave("sub_pro_11_africa_fast_grow_ft/images/2022/origin_2022_treemap.png", width = 12, height = 12, dpi = 300)
 
 
 # Sectors
@@ -302,7 +302,7 @@ ggplot(table_data_2022_clean_sector_treemap,
         legend.background = element_rect(fill="bisque1")) +
   scale_fill_gradient(low = "#ECD2FC", high = "#C16FF5")
 
-ggsave("sub_pro_11_africa_fast_grow_ft/images/2022/sector_2022_treemap.png", width = 12, height = 8, dpi = 300)
+ggsave("sub_pro_11_africa_fast_grow_ft/images/2022/sector_2022_treemap.png", width = 12, height = 12, dpi = 300)
 
 # Founding Year
 
@@ -351,7 +351,7 @@ ggplot(table_data_2022_clean_year_group_treemap,
         legend.background = element_rect(fill="bisque1")) +
   scale_fill_gradient(low = "#ECD2FC", high = "#C16FF5")
 
-ggsave("sub_pro_11_africa_fast_grow_ft/images/2022/year_2022_treemap.png", width = 12, height = 8, dpi = 300)
+ggsave("sub_pro_11_africa_fast_grow_ft/images/2022/year_2022_treemap.png", width = 12, height = 12, dpi = 300)
 
 # Matching treemap and map
 
@@ -398,7 +398,7 @@ ggplot(data = africa_top_5) +
         legend.position = "none") +
   scale_fill_manual(values = color_map_2022)
 
-ggsave("sub_pro_11_africa_fast_grow_ft/images/2022/origin_2022_map_match.png", width = 12, height = 8, dpi = 300)
+ggsave("sub_pro_11_africa_fast_grow_ft/images/2022/origin_2022_map_match.png", width = 12, height = 12, dpi = 300)
 
 # Treemap
 
@@ -448,4 +448,5 @@ ggplot(table_data_2022_clean_country_treemap,
         legend.background = element_rect(fill="bisque1")) +
   scale_fill_manual(values = color_map_2022)
 
-ggsave("sub_pro_11_africa_fast_grow_ft/images/2022/origin_2022_treemap_match.png", width = 12, height = 8, dpi = 300)
+ggsave("sub_pro_11_africa_fast_grow_ft/images/2022/origin_2022_treemap_match.png", width = 12, height = 12, dpi = 300)
+
