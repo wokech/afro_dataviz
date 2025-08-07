@@ -151,7 +151,7 @@ table_data_2025_clean_sector |>
         legend.title = element_blank(),
         legend.position = "none") 
 
-#ggsave("sub_pro_11_africa_fast_grow_ft/images/2025/sector_2025.png", width = 12, height = 12, dpi = 300)
+ggsave("sub_pro_11_africa_fast_grow_ft/images/2025/sector_2025.png", width = 12, height = 12, dpi = 300)
 
 # When were the companies founded?
 
