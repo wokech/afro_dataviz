@@ -1,4 +1,4 @@
-# Dry Bean Production
+# Cassava Production
 
 # 1) Load the Required Libraries
 
@@ -28,48 +28,48 @@ library(jsonlite)
 
 # Fetch the data
 
-bean_prod <- read.csv("https://ourworldindata.org/grapher/bean-production.csv?v=1&csvType=full&useColumnShortNames=true",
-                       na.strings = "")
+cassava_prod <- read.csv("https://ourworldindata.org/grapher/cassava-production.csv?v=1&csvType=full&useColumnShortNames=true",
+                      na.strings = "")
 
 # Save the data
-write.csv(bean_prod, "sub_pro_7_agriculture_owid/datasets/bean-production-tonnes.csv",
+write.csv(cassava_prod, "sub_pro_7_agriculture_owid/datasets/cassava-production-tonnes.csv",
           row.names = FALSE)
 
 # Read in the data
-bean_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/bean-production-tonnes.csv")
+cassava_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/cassava-production-tonnes.csv")
 
 # Clean the column headings
 
-bean_prod_clean <- bean_prod %>%
+cassava_prod_clean <- cassava_prod %>%
   clean_names() 
 
 # Change the column title names
 
-bean_prod_clean <- bean_prod_clean %>%
+cassava_prod_clean <- cassava_prod_clean %>%
   rename("region" = "entity",
-         "bean_production_tonnes" = "beans_dry_00000176_production_005510_tonnes") 
+         "cassava_production_tonnes" = "cassavas_dry_00000176_production_005510_tonnes") 
 
 # Filter by region
 
-bean_prod_clean_region <- bean_prod_clean %>%
+cassava_prod_clean_region <- cassava_prod_clean %>%
   filter(is.na(code)) %>%
   select(c(1,3,4)) 
 
 # Filter by FAO region
 
-bean_prod_clean_region_fao <- bean_prod_clean_region %>%
+cassava_prod_clean_region_fao <- cassava_prod_clean_region %>%
   filter(grepl('(FAO)', region))
 
 # Filter by non-FAO region
 
-bean_prod_clean_region_non_fao <- bean_prod_clean_region %>%
+cassava_prod_clean_region_non_fao <- cassava_prod_clean_region %>%
   filter(!grepl('(FAO)', region))
 
-# 3) Continental (Non-FAO) bean production
+# 3) Continental (Non-FAO) cassava production
 
 # a) Stacked area chart
 
-bean_prod_clean_region_non_fao_continent <- bean_prod_clean_region_non_fao %>%
+cassava_prod_clean_region_non_fao_continent <- cassava_prod_clean_region_non_fao %>%
   filter(region %in% c("Africa", "Asia", "Europe", 
                        "North America", "South America", 
                        "Oceania"))
@@ -85,29 +85,29 @@ afro_stack_palette <- c(
 
 desired_order <- c("Oceania", "Africa", "Europe", "North America", "South America", "Asia")
 
-bean_prod_clean_region_non_fao_continent <- bean_prod_clean_region_non_fao_continent %>%
+cassava_prod_clean_region_non_fao_continent <- cassava_prod_clean_region_non_fao_continent %>%
   mutate(region = factor(region, levels = desired_order)) %>%
   arrange(desc(region))
 
 #  calculate cumulative positions for label placement
 
-label_df_bean <- bean_prod_clean_region_non_fao_continent %>%
+label_df_cassava <- cassava_prod_clean_region_non_fao_continent %>%
   filter(year == max(year)) %>%
   mutate(region = factor(region, levels = rev(desired_order))) %>%
   arrange(region) %>%
   mutate(x_label = max(year),
-         y_top = cumsum(bean_production_tonnes),
-         y_bottom = y_top - bean_production_tonnes,
+         y_top = cumsum(cassava_production_tonnes),
+         y_bottom = y_top - cassava_production_tonnes,
          y_mid = (y_bottom + y_top) / 2) %>%
   select(region, year, x_label, y_top, y_mid) 
 
 # plot the stack area chart
 
-bean_prod_clean_region_non_fao_continent %>% 
-  ggplot(aes(year, bean_production_tonnes, fill = region, label = region, color = region)) +
+cassava_prod_clean_region_non_fao_continent %>% 
+  ggplot(aes(year, cassava_production_tonnes, fill = region, label = region, color = region)) +
   geom_area() +
   geom_text_repel(
-    data = label_df_bean,
+    data = label_df_cassava,
     aes(x = x_label, y = y_mid, label = region, color = region),
     hjust = 0,
     fontface = "bold",
@@ -122,8 +122,8 @@ bean_prod_clean_region_non_fao_continent %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Bean Production\n(Millions of Tonnes)",
-       title = "Africa contributed to slightly over a quarter of\nglobal dry bean production in 2020",
+       y = "cassava Production\n(Millions of Tonnes)",
+       title = "Africa contributed to slightly over a quarter of\nglobal dry cassava production in 2020",
        subtitle = "",
        caption = "Data Source: Our World in Data | FAO | World Bank") +
   theme_classic() +
@@ -148,12 +148,11 @@ bean_prod_clean_region_non_fao_continent %>%
         legend.position = "none"
   )
 
-ggsave("sub_pro_7_agriculture_owid/images/continental/continent_bean_1.png", width = 12, height = 12, dpi = 72)
+ggsave("sub_pro_7_agriculture_owid/images/continental/continent_cassava_1.png", width = 12, height = 12, dpi = 72)
 
 
-bean_prod_clean_region_non_fao_continent %>%
+cassava_prod_clean_region_non_fao_continent %>%
   filter(year == 2020) %>%
-  mutate(percent = 100 * bean_production_tonnes/sum(bean_production_tonnes))
+  mutate(percent = 100 * cassava_production_tonnes/sum(cassava_production_tonnes))
 
 
-  
