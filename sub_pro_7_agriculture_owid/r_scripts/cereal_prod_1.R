@@ -24,16 +24,16 @@ library(showtext)
 library(ggtext)
 library(jsonlite)
 
-# 2) Data Cleaning and Organization
-
-# Fetch the data
-
-cereal_prod <- read.csv("https://ourworldindata.org/grapher/cereal-production.csv?v=1&csvType=full&useColumnShortNames=true",
-                      na.strings = "")
-
-# Save the data
-write.csv(cereal_prod, "sub_pro_7_agriculture_owid/datasets/cereal-production-tonnes.csv",
-          row.names = FALSE)
+# # 2) Data Cleaning and Organization
+# 
+# # Fetch the data
+# 
+# cereal_prod <- read.csv("https://ourworldindata.org/grapher/cereal-production.csv?v=1&csvType=full&useColumnShortNames=true",
+#                       na.strings = "")
+# 
+# # Save the data
+# write.csv(cereal_prod, "sub_pro_7_agriculture_owid/datasets/cereal-production-tonnes.csv",
+#           row.names = FALSE)
 
 # Read in the data
 cereal_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/cereal-production-tonnes.csv")
@@ -47,7 +47,7 @@ cereal_prod_clean <- cereal_prod %>%
 
 cereal_prod_clean <- cereal_prod_clean %>%
   rename("region" = "entity",
-         "cereal_production_tonnes" = "cereals_dry_00000176_production_005510_tonnes") 
+         "cereal_production_tonnes" = "cereals_00001717_production_005510_tonnes") 
 
 # Filter by region
 
@@ -128,7 +128,7 @@ cereal_prod_clean_region_non_fao_continent %>%
        caption = "Data Source: Our World in Data | FAO | World Bank") +
   theme_classic() +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
-  scale_y_continuous(limits = c(0, 30000000), labels  = 
+  scale_y_continuous(limits = c(0, 3500000000), labels  = 
                        label_number(scale = 1e-6)) +
   scale_fill_manual(values = afro_stack_palette) +
   scale_color_manual(values = afro_stack_palette) +
@@ -153,6 +153,7 @@ ggsave("sub_pro_7_agriculture_owid/images/continental/continent_cereal_1.png", w
 
 cereal_prod_clean_region_non_fao_continent %>%
   filter(year == 2020) %>%
-  mutate(percent = 100 * cereal_production_tonnes/sum(cereal_production_tonnes))
+  mutate(percent = 100 * cereal_production_tonnes/sum(cereal_production_tonnes)) |>
+  summarise(sum = sum(cereal_production_tonnes))
 
 

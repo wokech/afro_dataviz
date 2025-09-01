@@ -26,14 +26,14 @@ library(jsonlite)
 
 # 2) Data Cleaning and Organization
 
-# Fetch the data
-
-apple_prod <- read.csv("https://ourworldindata.org/grapher/apple-production.csv?v=1&csvType=full&useColumnShortNames=true",
-                      na.strings = "")
-
-# Save the data
-write.csv(apple_prod, "sub_pro_7_agriculture_owid/datasets/apple-production-tonnes.csv",
-          row.names = FALSE)
+# # Fetch the data
+# 
+# apple_prod <- read.csv("https://ourworldindata.org/grapher/apple-production.csv?v=1&csvType=full&useColumnShortNames=true",
+#                       na.strings = "")
+# 
+# # Save the data
+# write.csv(apple_prod, "sub_pro_7_agriculture_owid/datasets/apple-production-tonnes.csv",
+#           row.names = FALSE)
 
 # Read in the data
 apple_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/apple-production-tonnes.csv")
@@ -47,7 +47,7 @@ apple_prod_clean <- apple_prod %>%
 
 apple_prod_clean <- apple_prod_clean %>%
   rename("region" = "entity",
-         "apple_production_tonnes" = "apples_dry_00000176_production_005510_tonnes") 
+         "apple_production_tonnes" = "apples_00000515_production_005510_tonnes") 
 
 # Filter by region
 
@@ -122,13 +122,13 @@ apple_prod_clean_region_non_fao_continent %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "apple Production\n(Millions of Tonnes)",
-       title = "Africa contributed to slightly over a quarter of\nglobal dry apple production in 2020",
+       y = "Apple Production\n(Millions of Tonnes)",
+       title = "Less than 5% of Apple Production was from\nAfrica in 2020",
        subtitle = "",
        caption = "Data Source: Our World in Data | FAO | World Bank") +
   theme_classic() +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
-  scale_y_continuous(limits = c(0, 30000000), labels  = 
+  scale_y_continuous(limits = c(0, 100000000), labels  = 
                        label_number(scale = 1e-6)) +
   scale_fill_manual(values = afro_stack_palette) +
   scale_color_manual(values = afro_stack_palette) +

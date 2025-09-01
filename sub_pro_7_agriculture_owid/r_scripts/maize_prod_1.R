@@ -26,14 +26,14 @@ library(jsonlite)
 
 # 2) Data Cleaning and Organization
 
-# Fetch the data
-
-maize_prod <- read.csv("https://ourworldindata.org/grapher/maize-production.csv?v=1&csvType=full&useColumnShortNames=true",
-                      na.strings = "")
-
-# Save the data
-write.csv(maize_prod, "sub_pro_7_agriculture_owid/datasets/maize-production-tonnes.csv",
-          row.names = FALSE)
+# # Fetch the data
+# 
+# maize_prod <- read.csv("https://ourworldindata.org/grapher/maize-production.csv?v=1&csvType=full&useColumnShortNames=true",
+#                       na.strings = "")
+# 
+# # Save the data
+# write.csv(maize_prod, "sub_pro_7_agriculture_owid/datasets/maize-production-tonnes.csv",
+#           row.names = FALSE)
 
 # Read in the data
 maize_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/maize-production-tonnes.csv")
@@ -47,7 +47,7 @@ maize_prod_clean <- maize_prod %>%
 
 maize_prod_clean <- maize_prod_clean %>%
   rename("region" = "entity",
-         "maize_production_tonnes" = "maizes_dry_00000176_production_005510_tonnes") 
+         "maize_production_tonnes" = "maize_00000056_production_005510_tonnes") 
 
 # Filter by region
 
@@ -122,13 +122,13 @@ maize_prod_clean_region_non_fao_continent %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "maize Production\n(Millions of Tonnes)",
-       title = "Africa contributed to slightly over a quarter of\nglobal dry maize production in 2020",
+       y = "Maize Production\n(Millions of Tonnes)",
+       title = "Approximately 10% of global maize production is from Africa",
        subtitle = "",
        caption = "Data Source: Our World in Data | FAO | World Bank") +
   theme_classic() +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
-  scale_y_continuous(limits = c(0, 30000000), labels  = 
+  scale_y_continuous(limits = c(0, 1250000000), labels  = 
                        label_number(scale = 1e-6)) +
   scale_fill_manual(values = afro_stack_palette) +
   scale_color_manual(values = afro_stack_palette) +
@@ -148,12 +148,13 @@ maize_prod_clean_region_non_fao_continent %>%
         legend.position = "none"
   )
 
-ggsave("sub_pro_7_agriculture_owid/images/continental/continent_maize_1.png", width = 12, height = 12, dpi = 72)
+# ggsave("sub_pro_7_agriculture_owid/images/continental/continent_maize_1.png", width = 12, height = 12, dpi = 72)
 
 
 maize_prod_clean_region_non_fao_continent %>%
   filter(year == 2020) %>%
-  mutate(percent = 100 * maize_production_tonnes/sum(maize_production_tonnes))
+  mutate(percent = 100 * maize_production_tonnes/sum(maize_production_tonnes)) |>
+  summarise(sum = sum(maize_production_tonnes))
 
 
 

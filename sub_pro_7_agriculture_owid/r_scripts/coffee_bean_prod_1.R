@@ -1,4 +1,4 @@
-# Green Coffee coffee_bean Production
+# Green Coffee Bean Production
 
 # 1) Load the Required Libraries
 
@@ -26,14 +26,14 @@ library(jsonlite)
 
 # 2) Data Cleaning and Organization
 
-# Fetch the data
-
-coffee_bean_prod <- read.csv("https://ourworldindata.org/grapher/coffee-bean-production.csv?v=1&csvType=full&useColumnShortNames=true",
-                      na.strings = "")
-
-# Save the data
-write.csv(coffee_bean_prod, "sub_pro_7_agriculture_owid/datasets/coffee-bean-production-tonnes.csv",
-          row.names = FALSE)
+# # Fetch the data
+# 
+# coffee_bean_prod <- read.csv("https://ourworldindata.org/grapher/coffee-bean-production.csv?v=1&csvType=full&useColumnShortNames=true",
+#                       na.strings = "")
+# 
+# # Save the data
+# write.csv(coffee_bean_prod, "sub_pro_7_agriculture_owid/datasets/coffee-bean-production-tonnes.csv",
+#           row.names = FALSE)
 
 # Read in the data
 coffee_bean_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/coffee-bean-production-tonnes.csv")
@@ -47,7 +47,7 @@ coffee_bean_prod_clean <- coffee_bean_prod %>%
 
 coffee_bean_prod_clean <- coffee_bean_prod_clean %>%
   rename("region" = "entity",
-         "coffee_bean_production_tonnes" = "coffee_beans_dry_00000176_production_005510_tonnes") 
+         "coffee_bean_production_tonnes" = "coffee_green_00000656_production_005510_tonnes") 
 
 # Filter by region
 
@@ -65,7 +65,7 @@ coffee_bean_prod_clean_region_fao <- coffee_bean_prod_clean_region %>%
 coffee_bean_prod_clean_region_non_fao <- coffee_bean_prod_clean_region %>%
   filter(!grepl('(FAO)', region))
 
-# 3) Continental (Non-FAO) coffee_bean production
+# 3) Continental (Non-FAO) coffee bean production
 
 # a) Stacked area chart
 
@@ -122,13 +122,13 @@ coffee_bean_prod_clean_region_non_fao_continent %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "coffee_bean Production\n(Millions of Tonnes)",
-       title = "Africa contributed to slightly over a quarter of\nglobal dry coffee_bean production in 2020",
+       y = "Coffee_bean Production\n(Millions of Tonnes)",
+       title = "1 out of 6 green coffee beans produced globally\nwas sourced from Africa",
        subtitle = "",
        caption = "Data Source: Our World in Data | FAO | World Bank") +
   theme_classic() +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
-  scale_y_continuous(limits = c(0, 30000000), labels  = 
+  scale_y_continuous(limits = c(0, 12000000), labels  = 
                        label_number(scale = 1e-6)) +
   scale_fill_manual(values = afro_stack_palette) +
   scale_color_manual(values = afro_stack_palette) +
@@ -153,6 +153,7 @@ ggsave("sub_pro_7_agriculture_owid/images/continental/continent_coffee_bean_1.pn
 
 coffee_bean_prod_clean_region_non_fao_continent %>%
   filter(year == 2020) %>%
-  mutate(percent = 100 * coffee_bean_production_tonnes/sum(coffee_bean_production_tonnes))
+  mutate(percent = 100 * coffee_bean_production_tonnes/sum(coffee_bean_production_tonnes)) |>
+  summarise(sum = sum(coffee_bean_production_tonnes))
 
 

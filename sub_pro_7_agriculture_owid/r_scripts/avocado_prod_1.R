@@ -26,14 +26,14 @@ library(jsonlite)
 
 # 2) Data Cleaning and Organization
 
-# Fetch the data
-
-avocado_prod <- read.csv("https://ourworldindata.org/grapher/avocado-production.csv?v=1&csvType=full&useColumnShortNames=true",
-                      na.strings = "")
-
-# Save the data
-write.csv(avocado_prod, "sub_pro_7_agriculture_owid/datasets/avocado-production-tonnes.csv",
-          row.names = FALSE)
+# # Fetch the data
+# 
+# avocado_prod <- read.csv("https://ourworldindata.org/grapher/avocado-production.csv?v=1&csvType=full&useColumnShortNames=true",
+#                       na.strings = "")
+# 
+# # Save the data
+# write.csv(avocado_prod, "sub_pro_7_agriculture_owid/datasets/avocado-production-tonnes.csv",
+#           row.names = FALSE)
 
 # Read in the data
 avocado_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/avocado-production-tonnes.csv")
@@ -47,7 +47,7 @@ avocado_prod_clean <- avocado_prod %>%
 
 avocado_prod_clean <- avocado_prod_clean %>%
   rename("region" = "entity",
-         "avocado_production_tonnes" = "avocados_dry_00000176_production_005510_tonnes") 
+         "avocado_production_tonnes" = "avocados_00000572_production_005510_tonnes") 
 
 # Filter by region
 
@@ -123,12 +123,12 @@ avocado_prod_clean_region_non_fao_continent %>%
   ) +
   labs(x = "Year",
        y = "avocado Production\n(Millions of Tonnes)",
-       title = "Africa contributed to slightly over a quarter of\nglobal dry avocado production in 2020",
+       title = "",
        subtitle = "",
        caption = "Data Source: Our World in Data | FAO | World Bank") +
   theme_classic() +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
-  scale_y_continuous(limits = c(0, 30000000), labels  = 
+  scale_y_continuous(limits = c(0, 12000000), labels  = 
                        label_number(scale = 1e-6)) +
   scale_fill_manual(values = afro_stack_palette) +
   scale_color_manual(values = afro_stack_palette) +
@@ -153,6 +153,7 @@ ggsave("sub_pro_7_agriculture_owid/images/continental/continent_avocado_1.png", 
 
 avocado_prod_clean_region_non_fao_continent %>%
   filter(year == 2020) %>%
-  mutate(percent = 100 * avocado_production_tonnes/sum(avocado_production_tonnes))
+  mutate(percent = 100 * avocado_production_tonnes/sum(avocado_production_tonnes)) |>
+  summarise(sum = sum(avocado_production_tonnes))
 
 

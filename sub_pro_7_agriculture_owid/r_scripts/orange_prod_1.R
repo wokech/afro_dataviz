@@ -26,14 +26,14 @@ library(jsonlite)
 
 # 2) Data Cleaning and Organization
 
-# Fetch the data
-
-orange_prod <- read.csv("https://ourworldindata.org/grapher/orange-production.csv?v=1&csvType=full&useColumnShortNames=true",
-                      na.strings = "")
-
-# Save the data
-write.csv(orange_prod, "sub_pro_7_agriculture_owid/datasets/orange-production-tonnes.csv",
-          row.names = FALSE)
+# # Fetch the data
+# 
+# orange_prod <- read.csv("https://ourworldindata.org/grapher/orange-production.csv?v=1&csvType=full&useColumnShortNames=true",
+#                       na.strings = "")
+# 
+# # Save the data
+# write.csv(orange_prod, "sub_pro_7_agriculture_owid/datasets/orange-production-tonnes.csv",
+#           row.names = FALSE)
 
 # Read in the data
 orange_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/orange-production-tonnes.csv")
@@ -47,7 +47,7 @@ orange_prod_clean <- orange_prod %>%
 
 orange_prod_clean <- orange_prod_clean %>%
   rename("region" = "entity",
-         "orange_production_tonnes" = "oranges_dry_00000176_production_005510_tonnes") 
+         "orange_production_tonnes" = "oranges_00000490_production_005510_tonnes") 
 
 # Filter by region
 
@@ -123,12 +123,12 @@ orange_prod_clean_region_non_fao_continent %>%
   ) +
   labs(x = "Year",
        y = "orange Production\n(Millions of Tonnes)",
-       title = "Africa contributed to slightly over a quarter of\nglobal dry orange production in 2020",
+       title = "",
        subtitle = "",
        caption = "Data Source: Our World in Data | FAO | World Bank") +
   theme_classic() +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
-  scale_y_continuous(limits = c(0, 30000000), labels  = 
+  scale_y_continuous(limits = c(0, 75000000), labels  = 
                        label_number(scale = 1e-6)) +
   scale_fill_manual(values = afro_stack_palette) +
   scale_color_manual(values = afro_stack_palette) +
@@ -153,6 +153,7 @@ ggsave("sub_pro_7_agriculture_owid/images/continental/continent_orange_1.png", w
 
 orange_prod_clean_region_non_fao_continent %>%
   filter(year == 2020) %>%
-  mutate(percent = 100 * orange_production_tonnes/sum(orange_production_tonnes))
+  mutate(percent = 100 * orange_production_tonnes/sum(orange_production_tonnes)) |>
+  summarise(sum = sum(orange_production_tonnes))
 
 

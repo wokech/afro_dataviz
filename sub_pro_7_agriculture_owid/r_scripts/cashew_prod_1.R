@@ -26,14 +26,14 @@ library(jsonlite)
 
 # 2) Data Cleaning and Organization
 
-# Fetch the data
-
-cashew_prod <- read.csv("https://ourworldindata.org/grapher/cashew-nut-production.csv?v=1&csvType=full&useColumnShortNames=true",
-                      na.strings = "")
-
-# Save the data
-write.csv(cashew_prod, "sub_pro_7_agriculture_owid/datasets/cashew-production-tonnes.csv",
-          row.names = FALSE)
+# # Fetch the data
+# 
+# cashew_prod <- read.csv("https://ourworldindata.org/grapher/cashew-nut-production.csv?v=1&csvType=full&useColumnShortNames=true",
+#                       na.strings = "")
+# 
+# # Save the data
+# write.csv(cashew_prod, "sub_pro_7_agriculture_owid/datasets/cashew-production-tonnes.csv",
+#           row.names = FALSE)
 
 # Read in the data
 cashew_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/cashew-production-tonnes.csv")
@@ -47,7 +47,7 @@ cashew_prod_clean <- cashew_prod %>%
 
 cashew_prod_clean <- cashew_prod_clean %>%
   rename("region" = "entity",
-         "cashew_production_tonnes" = "cashews_dry_00000176_production_005510_tonnes") 
+         "cashew_production_tonnes" = "cashew_nuts_00000217_production_005510_tonnes") 
 
 # Filter by region
 
@@ -128,7 +128,7 @@ cashew_prod_clean_region_non_fao_continent %>%
        caption = "Data Source: Our World in Data | FAO | World Bank") +
   theme_classic() +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
-  scale_y_continuous(limits = c(0, 30000000), labels  = 
+  scale_y_continuous(limits = c(0, 4000000), labels  = 
                        label_number(scale = 1e-6)) +
   scale_fill_manual(values = afro_stack_palette) +
   scale_color_manual(values = afro_stack_palette) +
@@ -153,6 +153,7 @@ ggsave("sub_pro_7_agriculture_owid/images/continental/continent_cashew_1.png", w
 
 cashew_prod_clean_region_non_fao_continent %>%
   filter(year == 2020) %>%
-  mutate(percent = 100 * cashew_production_tonnes/sum(cashew_production_tonnes))
+  mutate(percent = 100 * cashew_production_tonnes/sum(cashew_production_tonnes)) |>
+  summarise(sum = sum(cashew_production_tonnes))
 
 

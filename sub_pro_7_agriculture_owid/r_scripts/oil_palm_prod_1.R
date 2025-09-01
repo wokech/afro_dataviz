@@ -26,14 +26,14 @@ library(jsonlite)
 
 # 2) Data Cleaning and Organization
 
-# Fetch the data
-
-oil_palm_prod <- read.csv("https://ourworldindata.org/grapher/palm-oil-production.csv?v=1&csvType=full&useColumnShortNames=true",
-                      na.strings = "")
-
-# Save the data
-write.csv(oil_palm_prod, "sub_pro_7_agriculture_owid/datasets/palm-oil-production-tonnes.csv",
-          row.names = FALSE)
+# # Fetch the data
+# 
+# oil_palm_prod <- read.csv("https://ourworldindata.org/grapher/palm-oil-production.csv?v=1&csvType=full&useColumnShortNames=true",
+#                       na.strings = "")
+# 
+# # Save the data
+# write.csv(oil_palm_prod, "sub_pro_7_agriculture_owid/datasets/palm-oil-production-tonnes.csv",
+#           row.names = FALSE)
 
 # Read in the data
 oil_palm_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/palm-oil-production-tonnes.csv")
@@ -47,7 +47,7 @@ oil_palm_prod_clean <- oil_palm_prod %>%
 
 oil_palm_prod_clean <- oil_palm_prod_clean %>%
   rename("region" = "entity",
-         "oil_palm_production_tonnes" = "oil_palms_dry_00000176_production_005510_tonnes") 
+         "oil_palm_production_tonnes" = "palm_oil_00000257_production_005510_tonnes") 
 
 # Filter by region
 
@@ -122,13 +122,13 @@ oil_palm_prod_clean_region_non_fao_continent %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "oil_palm Production\n(Millions of Tonnes)",
-       title = "Africa contributed to slightly over a quarter of\nglobal dry oil_palm production in 2020",
+       y = "Oil Palm Production\n(Millions of Tonnes)",
+       title = "",
        subtitle = "",
        caption = "Data Source: Our World in Data | FAO | World Bank") +
   theme_classic() +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
-  scale_y_continuous(limits = c(0, 30000000), labels  = 
+  scale_y_continuous(limits = c(0, 85000000), labels  = 
                        label_number(scale = 1e-6)) +
   scale_fill_manual(values = afro_stack_palette) +
   scale_color_manual(values = afro_stack_palette) +
@@ -153,6 +153,7 @@ ggsave("sub_pro_7_agriculture_owid/images/continental/continent_oil_palm_1.png",
 
 oil_palm_prod_clean_region_non_fao_continent %>%
   filter(year == 2020) %>%
-  mutate(percent = 100 * oil_palm_production_tonnes/sum(oil_palm_production_tonnes))
+  mutate(percent = 100 * oil_palm_production_tonnes/sum(oil_palm_production_tonnes)) |>
+  summarise(sum = sum(oil_palm_production_tonnes))
 
 

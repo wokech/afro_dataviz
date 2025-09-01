@@ -26,14 +26,14 @@ library(jsonlite)
 
 # 2) Data Cleaning and Organization
 
-# Fetch the data
-
-sesame_seed_prod <- read.csv("https://ourworldindata.org/grapher/sesame-seed-production.csv?v=1&csvType=full&useColumnShortNames=true",
-                      na.strings = "")
-
-# Save the data
-write.csv(sesame_seed_prod, "sub_pro_7_agriculture_owid/datasets/sesame-seed-production-tonnes.csv",
-          row.names = FALSE)
+# # Fetch the data
+# 
+# sesame_seed_prod <- read.csv("https://ourworldindata.org/grapher/sesame-seed-production.csv?v=1&csvType=full&useColumnShortNames=true",
+#                       na.strings = "")
+# 
+# # Save the data
+# write.csv(sesame_seed_prod, "sub_pro_7_agriculture_owid/datasets/sesame-seed-production-tonnes.csv",
+#           row.names = FALSE)
 
 # Read in the data
 sesame_seed_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/sesame-seed-production-tonnes.csv")
@@ -47,7 +47,7 @@ sesame_seed_prod_clean <- sesame_seed_prod %>%
 
 sesame_seed_prod_clean <- sesame_seed_prod_clean %>%
   rename("region" = "entity",
-         "sesame_seed_production_tonnes" = "sesame_seeds_dry_00000176_production_005510_tonnes") 
+         "sesame_seed_production_tonnes" = "sesame_seed_00000289_production_005510_tonnes") 
 
 # Filter by region
 
@@ -122,13 +122,13 @@ sesame_seed_prod_clean_region_non_fao_continent %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "sesame_seed Production\n(Millions of Tonnes)",
-       title = "Africa contributed to slightly over a quarter of\nglobal dry sesame_seed production in 2020",
+       y = "Sesame Seed Production\n(Millions of Tonnes)",
+       title = "",
        subtitle = "",
        caption = "Data Source: Our World in Data | FAO | World Bank") +
   theme_classic() +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
-  scale_y_continuous(limits = c(0, 30000000), labels  = 
+  scale_y_continuous(limits = c(0, 7500000), labels  = 
                        label_number(scale = 1e-6)) +
   scale_fill_manual(values = afro_stack_palette) +
   scale_color_manual(values = afro_stack_palette) +
@@ -153,6 +153,7 @@ ggsave("sub_pro_7_agriculture_owid/images/continental/continent_sesame_seed_1.pn
 
 sesame_seed_prod_clean_region_non_fao_continent %>%
   filter(year == 2020) %>%
-  mutate(percent = 100 * sesame_seed_production_tonnes/sum(sesame_seed_production_tonnes))
+  mutate(percent = 100 * sesame_seed_production_tonnes/sum(sesame_seed_production_tonnes)) |>
+  summarise(sum = sum(sesame_seed_production_tonnes))
 
 

@@ -26,14 +26,14 @@ library(jsonlite)
 
 # 2) Data Cleaning and Organization
 
-# Fetch the data
-
-banana_prod <- read.csv("https://ourworldindata.org/grapher/banana-production.csv?v=1&csvType=full&useColumnShortNames=true",
-                      na.strings = "")
-
-# Save the data
-write.csv(banana_prod, "sub_pro_7_agriculture_owid/datasets/banana-production-tonnes.csv",
-          row.names = FALSE)
+# # Fetch the data
+# 
+# banana_prod <- read.csv("https://ourworldindata.org/grapher/banana-production.csv?v=1&csvType=full&useColumnShortNames=true",
+#                       na.strings = "")
+# 
+# # Save the data
+# write.csv(banana_prod, "sub_pro_7_agriculture_owid/datasets/banana-production-tonnes.csv",
+#           row.names = FALSE)
 
 # Read in the data
 banana_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/banana-production-tonnes.csv")
@@ -47,7 +47,7 @@ banana_prod_clean <- banana_prod %>%
 
 banana_prod_clean <- banana_prod_clean %>%
   rename("region" = "entity",
-         "banana_production_tonnes" = "bananas_dry_00000176_production_005510_tonnes") 
+         "banana_production_tonnes" = "bananas_00000486_production_005510_tonnes") 
 
 # Filter by region
 
@@ -122,13 +122,13 @@ banana_prod_clean_region_non_fao_continent %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "banana Production\n(Millions of Tonnes)",
-       title = "Africa contributed to slightly over a quarter of\nglobal dry banana production in 2020",
+       y = "Banana Production\n(Millions of Tonnes)",
+       title = "",
        subtitle = "",
        caption = "Data Source: Our World in Data | FAO | World Bank") +
   theme_classic() +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
-  scale_y_continuous(limits = c(0, 30000000), labels  = 
+  scale_y_continuous(limits = c(0, 150000000), labels  = 
                        label_number(scale = 1e-6)) +
   scale_fill_manual(values = afro_stack_palette) +
   scale_color_manual(values = afro_stack_palette) +
@@ -153,6 +153,7 @@ ggsave("sub_pro_7_agriculture_owid/images/continental/continent_banana_1.png", w
 
 banana_prod_clean_region_non_fao_continent %>%
   filter(year == 2020) %>%
-  mutate(percent = 100 * banana_production_tonnes/sum(banana_production_tonnes))
+  mutate(percent = 100 * banana_production_tonnes/sum(banana_production_tonnes)) |>
+  summarise(sum = sum(banana_production_tonnes))
 
 

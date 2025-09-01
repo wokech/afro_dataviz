@@ -26,14 +26,14 @@ library(jsonlite)
 
 # 2) Data Cleaning and Organization
 
-# Fetch the data
-
-sugar_cane_prod <- read.csv("https://ourworldindata.org/grapher/sugar-cane-production.csv?v=1&csvType=full&useColumnShortNames=true",
-                      na.strings = "")
-
-# Save the data
-write.csv(sugar_cane_prod, "sub_pro_7_agriculture_owid/datasets/sugar-cane-production-tonnes.csv",
-          row.names = FALSE)
+# # Fetch the data
+# 
+# sugar_cane_prod <- read.csv("https://ourworldindata.org/grapher/sugar-cane-production.csv?v=1&csvType=full&useColumnShortNames=true",
+#                       na.strings = "")
+# 
+# # Save the data
+# write.csv(sugar_cane_prod, "sub_pro_7_agriculture_owid/datasets/sugar-cane-production-tonnes.csv",
+#           row.names = FALSE)
 
 # Read in the data
 sugar_cane_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/sugar-cane-production-tonnes.csv")
@@ -47,7 +47,7 @@ sugar_cane_prod_clean <- sugar_cane_prod %>%
 
 sugar_cane_prod_clean <- sugar_cane_prod_clean %>%
   rename("region" = "entity",
-         "sugar_cane_production_tonnes" = "sugar_canes_dry_00000176_production_005510_tonnes") 
+         "sugar_cane_production_tonnes" = "sugar_cane_00000156_production_005510_tonnes") 
 
 # Filter by region
 
@@ -122,13 +122,13 @@ sugar_cane_prod_clean_region_non_fao_continent %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "sugar_cane Production\n(Millions of Tonnes)",
-       title = "Africa contributed to slightly over a quarter of\nglobal dry sugar_cane production in 2020",
+       y = "Sugar Cane Production\n(Millions of Tonnes)",
+       title = "",
        subtitle = "",
        caption = "Data Source: Our World in Data | FAO | World Bank") +
   theme_classic() +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
-  scale_y_continuous(limits = c(0, 30000000), labels  = 
+  scale_y_continuous(limits = c(0, 2250000000), labels  = 
                        label_number(scale = 1e-6)) +
   scale_fill_manual(values = afro_stack_palette) +
   scale_color_manual(values = afro_stack_palette) +
@@ -153,6 +153,7 @@ ggsave("sub_pro_7_agriculture_owid/images/continental/continent_sugar_cane_1.png
 
 sugar_cane_prod_clean_region_non_fao_continent %>%
   filter(year == 2020) %>%
-  mutate(percent = 100 * sugar_cane_production_tonnes/sum(sugar_cane_production_tonnes))
+  mutate(percent = 100 * sugar_cane_production_tonnes/sum(sugar_cane_production_tonnes)) |>
+  summarise(sum = sum(sugar_cane_production_tonnes))
 
 

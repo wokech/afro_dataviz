@@ -28,12 +28,12 @@ library(jsonlite)
 
 # Fetch the data
 
-sweet_potato_prod <- read.csv("https://ourworldindata.org/grapher/sweet-potato-production.csv?v=1&csvType=full&useColumnShortNames=true",
-                      na.strings = "")
-
-# Save the data
-write.csv(sweet_potato_prod, "sub_pro_7_agriculture_owid/datasets/sweet-potato-production-tonnes.csv",
-          row.names = FALSE)
+# sweet_potato_prod <- read.csv("https://ourworldindata.org/grapher/sweet-potato-production.csv?v=1&csvType=full&useColumnShortNames=true",
+#                       na.strings = "")
+# 
+# # Save the data
+# write.csv(sweet_potato_prod, "sub_pro_7_agriculture_owid/datasets/sweet-potato-production-tonnes.csv",
+#           row.names = FALSE)
 
 # Read in the data
 sweet_potato_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/sweet-potato-production-tonnes.csv")
@@ -47,7 +47,7 @@ sweet_potato_prod_clean <- sweet_potato_prod %>%
 
 sweet_potato_prod_clean <- sweet_potato_prod_clean %>%
   rename("region" = "entity",
-         "sweet_potato_production_tonnes" = "sweet_potatos_dry_00000176_production_005510_tonnes") 
+         "sweet_potato_production_tonnes" = "sweet_potatoes_00000122_production_005510_tonnes") 
 
 # Filter by region
 
@@ -122,13 +122,13 @@ sweet_potato_prod_clean_region_non_fao_continent %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "sweet_potato Production\n(Millions of Tonnes)",
-       title = "Africa contributed to slightly over a quarter of\nglobal dry sweet_potato production in 2020",
+       y = "Sweet Potato Production\n(Millions of Tonnes)",
+       title = "About 3 out of 10 sweet potatoes came from Africa\nin 2020",
        subtitle = "",
        caption = "Data Source: Our World in Data | FAO | World Bank") +
   theme_classic() +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
-  scale_y_continuous(limits = c(0, 30000000), labels  = 
+  scale_y_continuous(limits = c(0, 175000000), labels  = 
                        label_number(scale = 1e-6)) +
   scale_fill_manual(values = afro_stack_palette) +
   scale_color_manual(values = afro_stack_palette) +
@@ -153,6 +153,7 @@ ggsave("sub_pro_7_agriculture_owid/images/continental/continent_sweet_potato_1.p
 
 sweet_potato_prod_clean_region_non_fao_continent %>%
   filter(year == 2020) %>%
-  mutate(percent = 100 * sweet_potato_production_tonnes/sum(sweet_potato_production_tonnes))
+  mutate(percent = 100 * sweet_potato_production_tonnes/sum(sweet_potato_production_tonnes)) |>
+  summarise(sum = sum(sweet_potato_production_tonnes))
 
 

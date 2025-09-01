@@ -26,14 +26,14 @@ library(jsonlite)
 
 # 2) Data Cleaning and Organization
 
-# Fetch the data
-
-yams_prod <- read.csv("https://ourworldindata.org/grapher/yams-production.csv?v=1&csvType=full&useColumnShortNames=true",
-                      na.strings = "")
-
-# Save the data
-write.csv(yams_prod, "sub_pro_7_agriculture_owid/datasets/yams-production-tonnes.csv",
-          row.names = FALSE)
+# # Fetch the data
+# 
+# yams_prod <- read.csv("https://ourworldindata.org/grapher/yams-production.csv?v=1&csvType=full&useColumnShortNames=true",
+#                       na.strings = "")
+# 
+# # Save the data
+# write.csv(yams_prod, "sub_pro_7_agriculture_owid/datasets/yams-production-tonnes.csv",
+#           row.names = FALSE)
 
 # Read in the data
 yams_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/yams-production-tonnes.csv")
@@ -47,7 +47,7 @@ yams_prod_clean <- yams_prod %>%
 
 yams_prod_clean <- yams_prod_clean %>%
   rename("region" = "entity",
-         "yams_production_tonnes" = "yamss_dry_00000176_production_005510_tonnes") 
+         "yams_production_tonnes" = "yams_00000137_production_005510_tonnes") 
 
 # Filter by region
 
@@ -123,12 +123,12 @@ yams_prod_clean_region_non_fao_continent %>%
   ) +
   labs(x = "Year",
        y = "yams Production\n(Millions of Tonnes)",
-       title = "Africa contributed to slightly over a quarter of\nglobal dry yams production in 2020",
+       title = "Yam Continent! Africa produced 97% of yams\nproduced globally in 2020",
        subtitle = "",
        caption = "Data Source: Our World in Data | FAO | World Bank") +
   theme_classic() +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
-  scale_y_continuous(limits = c(0, 30000000), labels  = 
+  scale_y_continuous(limits = c(0, 90000000), labels  = 
                        label_number(scale = 1e-6)) +
   scale_fill_manual(values = afro_stack_palette) +
   scale_color_manual(values = afro_stack_palette) +
