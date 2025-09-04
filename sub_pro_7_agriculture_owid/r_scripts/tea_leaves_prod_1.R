@@ -28,6 +28,8 @@ library(jsonlite)
 
 # Fetch the data (downloaded from FAO Stat and read in to R)
 
+############# NORTH AMERICA = AMERICA minus SOUTH AMERICA ##########################
+
 # Read in the data
 tea_leaves_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/tea-production-fao-stat.csv")
 
@@ -39,33 +41,41 @@ tea_leaves_prod_clean <- tea_leaves_prod %>%
 # Change the column title names
 
 tea_leaves_prod_clean <- tea_leaves_prod_clean %>%
-  rename("region" = "entity",
-         "tea_leaves_production_tonnes" = "tea_leavess_dry_00000176_production_005510_tonnes") 
+  select(area, year, value)
 
 # Filter by region
 
 tea_leaves_prod_clean_region <- tea_leaves_prod_clean %>%
-  filter(is.na(code)) %>%
-  select(c(1,3,4)) 
+  filter(area %in% c("Africa", "Americas", "South America", "Asia", "Europe", "Oceania"))
 
-# Filter by FAO region
+# Filter by Country
 
-tea_leaves_prod_clean_region_fao <- tea_leaves_prod_clean_region %>%
-  filter(grepl('(FAO)', region))
+# Separate A and B
+A <- tea_leaves_prod_clean_region$value[tea_leaves_prod_clean_region$area == "Americas"]
+B <- tea_leaves_prod_clean_region$value[tea_leaves_prod_clean_region$area == "South America"]
 
-# Filter by non-FAO region
+# Subtract A from B
+C <- A - B
 
-tea_leaves_prod_clean_region_non_fao <- tea_leaves_prod_clean_region %>%
-  filter(!grepl('(FAO)', region))
+# Create new rows with C
+df_C <- data.frame(
+  area = "North America",
+  value = C,
+  year = 1961:2023
+) |>
+  select(area, year, value)
 
-# 3) Continental (Non-FAO) tea_leaves production
+# Bind together (C rows will be below)
+tea_leaves_prod_clean_region_complete <- rbind(tea_leaves_prod_clean_region, df_C)
 
-# a) Stacked area chart
+tea_leaves_prod_clean_region_complete
 
-tea_leaves_prod_clean_region_non_fao_continent <- tea_leaves_prod_clean_region_non_fao %>%
-  filter(region %in% c("Africa", "Asia", "Europe", 
-                       "North America", "South America", 
-                       "Oceania"))
+# Remove "Americas" rows
+
+tea_leaves_prod_clean_region_complete <- tea_leaves_prod_clean_region_complete |>
+  filter(area != "Americas")
+
+# 3) Continental tea_leaves production
 
 # Use afro_stack color palette for the design on bisque1 background
 
@@ -78,30 +88,30 @@ afro_stack_palette <- c(
 
 desired_order <- c("Oceania", "Africa", "Europe", "North America", "South America", "Asia")
 
-tea_leaves_prod_clean_region_non_fao_continent <- tea_leaves_prod_clean_region_non_fao_continent %>%
-  mutate(region = factor(region, levels = desired_order)) %>%
-  arrange(desc(region))
+tea_leaves_prod_clean_region_complete <- tea_leaves_prod_clean_region_complete %>%
+  mutate(area = factor(area, levels = desired_order)) %>%
+  arrange(desc(area))
 
 #  calculate cumulative positions for label placement
 
-label_df_tea_leaves <- tea_leaves_prod_clean_region_non_fao_continent %>%
+label_df_tea_leaves <- tea_leaves_prod_clean_region_complete %>%
   filter(year == max(year)) %>%
-  mutate(region = factor(region, levels = rev(desired_order))) %>%
-  arrange(region) %>%
+  mutate(area = factor(area, levels = rev(desired_order))) %>%
+  arrange(area) %>%
   mutate(x_label = max(year),
-         y_top = cumsum(tea_leaves_production_tonnes),
-         y_bottom = y_top - tea_leaves_production_tonnes,
+         y_top = cumsum(value),
+         y_bottom = y_top - value,
          y_mid = (y_bottom + y_top) / 2) %>%
-  select(region, year, x_label, y_top, y_mid) 
+  select(area, year, x_label, y_top, y_mid) 
 
 # plot the stack area chart
 
-tea_leaves_prod_clean_region_non_fao_continent %>% 
-  ggplot(aes(year, tea_leaves_production_tonnes, fill = region, label = region, color = region)) +
+tea_leaves_prod_clean_region_complete %>% 
+  ggplot(aes(year, value, fill = area, label = area, color = area)) +
   geom_area() +
   geom_text_repel(
     data = label_df_tea_leaves,
-    aes(x = x_label, y = y_mid, label = region, color = region),
+    aes(x = x_label, y = y_mid, label = area, color = area),
     hjust = 0,
     fontface = "bold",
     size = 8,
@@ -115,14 +125,14 @@ tea_leaves_prod_clean_region_non_fao_continent %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "tea_leaves Production\n(Millions of Tonnes)",
-       title = "Africa contributed to slightly over a quarter of\nglobal dry tea_leaves production in 2020",
+       y = "Tea Leaves Production\n(Millions of Tonnes)",
+       title = "About 15% of global tea production was\nfrom Africa in 2020",
        subtitle = "",
-       caption = "Data Source: Our World in Data | FAO | World Bank") +
+       caption = "Data Source: FAOSTAT") +
   theme_classic() +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
-  scale_y_continuous(limits = c(0, 30000000), labels  = 
-                       label_number(scale = 1e-6)) +
+  scale_y_continuous(limits = c(0, 35000000), labels  = 
+                       label_number(scale = 1e-6, big.mark = ",")) +
   scale_fill_manual(values = afro_stack_palette) +
   scale_color_manual(values = afro_stack_palette) +
   theme(axis.title.x =element_text(size = 28, vjust = 1, face = "bold"),
@@ -139,13 +149,17 @@ tea_leaves_prod_clean_region_non_fao_continent %>%
         plot.caption.position = 'plot',
         plot.margin = margin(5, 5, 5, 5),
         legend.position = "none"
-  )
+  ) +
+  geom_vline(xintercept = 1991, linetype = "dashed", color = "black") +
+  annotate("text", x = 1990, y = 20000000, size = 8, 
+           label = "Switch from Official Figure\nto Estimated Value",
+           color = "black", vjust = 0, angle = 90)
 
 ggsave("sub_pro_7_agriculture_owid/images/continental/continent_tea_leaves_1.png", width = 12, height = 12, dpi = 72)
 
 
-tea_leaves_prod_clean_region_non_fao_continent %>%
+tea_leaves_prod_clean_region_complete %>%
   filter(year == 2020) %>%
-  mutate(percent = 100 * tea_leaves_production_tonnes/sum(tea_leaves_production_tonnes))
+  mutate(percent = 100 * value/sum(value))
 
 

@@ -122,14 +122,14 @@ yams_prod_clean_region_non_fao_continent %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "yams Production\n(Millions of Tonnes)",
-       title = "Yam Continent! Africa produced 97% of yams\nproduced globally in 2020",
+       y = "Yam Production\n(Millions of Tonnes)",
+       title = "Yam Continent! Africa produced 98% of yams\nproduced globally in 2020",
        subtitle = "",
        caption = "Data Source: Our World in Data | FAO | World Bank") +
   theme_classic() +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
   scale_y_continuous(limits = c(0, 90000000), labels  = 
-                       label_number(scale = 1e-6)) +
+                       label_number(scale = 1e-6, big.mark = ",")) +
   scale_fill_manual(values = afro_stack_palette) +
   scale_color_manual(values = afro_stack_palette) +
   theme(axis.title.x =element_text(size = 28, vjust = 1, face = "bold"),

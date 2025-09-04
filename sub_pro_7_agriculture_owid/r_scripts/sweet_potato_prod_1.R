@@ -123,13 +123,13 @@ sweet_potato_prod_clean_region_non_fao_continent %>%
   ) +
   labs(x = "Year",
        y = "Sweet Potato Production\n(Millions of Tonnes)",
-       title = "About 3 out of 10 sweet potatoes came from Africa\nin 2020",
+       title = "About 3 out of 10 sweet potatoes produced\nin 2020 came from Africa",
        subtitle = "",
        caption = "Data Source: Our World in Data | FAO | World Bank") +
   theme_classic() +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
   scale_y_continuous(limits = c(0, 175000000), labels  = 
-                       label_number(scale = 1e-6)) +
+                       label_number(scale = 1e-6, big.mark = ",")) +
   scale_fill_manual(values = afro_stack_palette) +
   scale_color_manual(values = afro_stack_palette) +
   theme(axis.title.x =element_text(size = 28, vjust = 1, face = "bold"),
@@ -153,7 +153,4 @@ ggsave("sub_pro_7_agriculture_owid/images/continental/continent_sweet_potato_1.p
 
 sweet_potato_prod_clean_region_non_fao_continent %>%
   filter(year == 2020) %>%
-  mutate(percent = 100 * sweet_potato_production_tonnes/sum(sweet_potato_production_tonnes)) |>
-  summarise(sum = sum(sweet_potato_production_tonnes))
-
-
+  mutate(percent = 100 * sweet_potato_production_tonnes/sum(sweet_potato_production_tonnes)) 
