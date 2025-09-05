@@ -121,7 +121,7 @@ p1 <- ggplot(data = africa) +
   geom_sf(data = cocoa_bean_prod_clean_africa_1965_full_join, aes(fill = cocoa_bean_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 1500000),
+                       limits = c(0, 2500000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -188,7 +188,7 @@ p2 <- ggplot(data = africa) +
   geom_sf(data = cocoa_bean_prod_clean_africa_1970_full_join, aes(fill = cocoa_bean_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 1500000),
+                       limits = c(0, 2500000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -255,7 +255,7 @@ p3 <- ggplot(data = africa) +
   geom_sf(data = cocoa_bean_prod_clean_africa_1975_full_join, aes(fill = cocoa_bean_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 1500000),
+                       limits = c(0, 2500000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -322,7 +322,7 @@ p4 <- ggplot(data = africa) +
   geom_sf(data = cocoa_bean_prod_clean_africa_1980_full_join, aes(fill = cocoa_bean_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 1500000),
+                       limits = c(0, 2500000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -389,7 +389,7 @@ p5 <- ggplot(data = africa) +
   geom_sf(data = cocoa_bean_prod_clean_africa_1985_full_join, aes(fill = cocoa_bean_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 1500000),
+                       limits = c(0, 2500000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -456,7 +456,7 @@ p6 <- ggplot(data = africa) +
   geom_sf(data = cocoa_bean_prod_clean_africa_1990_full_join, aes(fill = cocoa_bean_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 1500000),
+                       limits = c(0, 2500000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -523,7 +523,7 @@ p7 <- ggplot(data = africa) +
   geom_sf(data = cocoa_bean_prod_clean_africa_1995_full_join, aes(fill = cocoa_bean_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 1500000),
+                       limits = c(0, 2500000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -590,7 +590,7 @@ p8 <- ggplot(data = africa) +
   geom_sf(data = cocoa_bean_prod_clean_africa_2000_full_join, aes(fill = cocoa_bean_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 1500000),
+                       limits = c(0, 2500000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -657,7 +657,7 @@ p9 <- ggplot(data = africa) +
   geom_sf(data = cocoa_bean_prod_clean_africa_2005_full_join, aes(fill = cocoa_bean_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 1500000),
+                       limits = c(0, 2500000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -724,7 +724,7 @@ p10 <- ggplot(data = africa) +
   geom_sf(data = cocoa_bean_prod_clean_africa_2010_full_join, aes(fill = cocoa_bean_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 1500000),
+                       limits = c(0, 2500000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -791,7 +791,7 @@ p11 <- ggplot(data = africa) +
   geom_sf(data = cocoa_bean_prod_clean_africa_2015_full_join, aes(fill = cocoa_bean_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 1500000),
+                       limits = c(0, 2500000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -858,7 +858,7 @@ p12 <- ggplot(data = africa) +
   geom_sf(data = cocoa_bean_prod_clean_africa_2020_full_join, aes(fill = cocoa_bean_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 1500000),
+                       limits = c(0, 2500000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
