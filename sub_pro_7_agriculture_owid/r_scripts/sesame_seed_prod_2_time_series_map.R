@@ -72,7 +72,7 @@ sesame_seed_prod_clean_africa_rnaturalearth <- sesame_seed_prod_clean_africa %>%
     country == "Congo"  ~ "Republic of the Congo",
     TRUE ~ country  # Retain original name if none of the conditions are met
   )) |>
-  rename(sesame_seed_production = "sesame_seeds_dry_00000176_production_005510_tonnes")
+  rename(sesame_seed_production = "sesame_seed_00000289_production_005510_tonnes")
 
 # 2) Map of countries showing global meat production between 1965 and 2020
 

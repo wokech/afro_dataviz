@@ -123,9 +123,9 @@ sesame_seed_prod_clean_region_non_fao_continent %>%
   ) +
   labs(x = "Year",
        y = "Sesame Seed Production\n(Millions of Tonnes)",
-       title = "Close to two-thirds of sesame seed production\nin 2020 was from Africa",
+       title = "",
        subtitle = "",
-       caption = "Data Source: Our World in Data | FAO | World Bank") +
+       caption = "") +
   theme_classic() +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
   scale_y_continuous(limits = c(0, 7500000), labels  = 
@@ -148,7 +148,7 @@ sesame_seed_prod_clean_region_non_fao_continent %>%
         legend.position = "none"
   )
 
-# ggsave("sub_pro_7_agriculture_owid/images/continental/continent_sesame_seed_1.png", width = 12, height = 12, dpi = 72)
+ggsave("sub_pro_7_agriculture_owid/images/continental/continent_sesame_seed_1.png", width = 12, height = 12, dpi = 72)
 
 
 sesame_seed_prod_clean_region_non_fao_continent %>%
@@ -196,8 +196,8 @@ sesame_seed_prod_clean_region_non_fao_continent %>%
   ) +
   labs(x = "Year",
        y = "Share of Sesame Seed Production (%)",
-       title = "Regional Share of Global Sesame Seed Production (1960–2020)",
-       caption = "Data Source: Our World in Data | FAO | World Bank") +
+       title = "",
+       caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
                      labels = c("1960", "1980", "2000", "2020")) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
@@ -215,3 +215,6 @@ sesame_seed_prod_clean_region_non_fao_continent %>%
     panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
     legend.position = "none"
   )
+
+
+ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_sesame_seed_1.png", width = 12, height = 12, dpi = 72)

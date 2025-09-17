@@ -72,7 +72,7 @@ rice_prod_clean_africa_rnaturalearth <- rice_prod_clean_africa %>%
     country == "Congo"  ~ "Republic of the Congo",
     TRUE ~ country  # Retain original name if none of the conditions are met
   )) |>
-  rename(rice_production = "rices_dry_00000176_production_005510_tonnes")
+  rename(rice_production = "rice_00000027_production_005510_tonnes")
 
 # 2) Map of countries showing global meat production between 1965 and 2020
 

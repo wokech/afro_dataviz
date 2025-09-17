@@ -150,15 +150,13 @@ aquaculture_clean_region_wb %>%
 
 # ggsave("sub_pro_7_agriculture_owid/images/continental/continent_aquaculture_1.png", width = 12, height = 12, dpi = 72)
 
-
-
 ################################################################################
 # Stacked Percentage Area Chart
 ################################################################################
 
-label_df_aquaculture_percent <- aquaculture_prod_clean_region_non_fao_continent %>%
+label_df_aquaculture_percent <- aquaculture_clean_region_wb %>%
   group_by(year) %>%
-  mutate(share = aquaculture_production_tonnes / sum(aquaculture_production_tonnes, na.rm = TRUE)) %>%
+  mutate(share = aquaculture_tonnes / sum(aquaculture_tonnes, na.rm = TRUE)) %>%
   ungroup() %>%
   filter(year == max(year)) %>%
   mutate(region = factor(region, levels = rev(desired_order))) %>%
@@ -172,18 +170,18 @@ label_df_aquaculture_percent <- aquaculture_prod_clean_region_non_fao_continent 
   select(region, year, x_label, y_top, y_mid)
 
 
-aquaculture_prod_clean_region_non_fao_continent %>% 
-  ggplot(aes(year, aquaculture_production_tonnes, fill = region, color = region)) +
+aquaculture_clean_region_wb %>% 
+  ggplot(aes(year, aquaculture_tonnes, fill = region, color = region)) +
   geom_area(position = "fill") +
   geom_text_repel(
     data = label_df_aquaculture_percent,
     aes(x = x_label, y = y_mid, label = region, color = region),
-    hjust = 0,
+    hjust = 0.2,
     fontface = "bold",
     size = 8,
     inherit.aes = FALSE,
     direction = "y",
-    nudge_x = 15,
+    nudge_x = 45,
     segment.curvature = 0.1,
     segment.size = 0.5,
     segment.ncp = 1,
@@ -191,8 +189,8 @@ aquaculture_prod_clean_region_non_fao_continent %>%
   ) +
   labs(x = "Year",
        y = "Share of Bean Production (%)",
-       title = "Regional Share of Global Bean Production (1960–2020)",
-       caption = "Data Source: Our World in Data | FAO | World Bank") +
+       title = "",
+       caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
                      labels = c("1960", "1980", "2000", "2020")) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
@@ -210,3 +208,5 @@ aquaculture_prod_clean_region_non_fao_continent %>%
     panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
     legend.position = "none"
   )
+
+ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_aquaculture_1.png", width = 12, height = 12, dpi = 72)

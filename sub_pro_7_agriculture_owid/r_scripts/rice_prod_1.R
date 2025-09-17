@@ -123,9 +123,9 @@ rice_prod_clean_region_non_fao_continent %>%
   ) +
   labs(x = "Year",
        y = "Rice Production\n(Millions of Tonnes)",
-       title = "About 5% of global rice production in 2020 was\nfrom Africa",
+       title = "",
        subtitle = "",
-       caption = "Data Source: Our World in Data | FAO | World Bank") +
+       caption = "") +
   theme_classic() +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
   scale_y_continuous(limits = c(0, 825000000), labels  = 
@@ -148,7 +148,7 @@ rice_prod_clean_region_non_fao_continent %>%
         legend.position = "none"
   )
 
-# ggsave("sub_pro_7_agriculture_owid/images/continental/continent_rice_1.png", width = 12, height = 12, dpi = 72)
+ggsave("sub_pro_7_agriculture_owid/images/continental/continent_rice_1.png", width = 12, height = 12, dpi = 72)
 
 
 rice_prod_clean_region_non_fao_continent %>%
@@ -196,8 +196,8 @@ rice_prod_clean_region_non_fao_continent %>%
   ) +
   labs(x = "Year",
        y = "Share of Rice Production (%)",
-       title = "Regional Share of Global Rice Production (1960–2020)",
-       caption = "Data Source: Our World in Data | FAO | World Bank") +
+       title = "",
+       caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
                      labels = c("1960", "1980", "2000", "2020")) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
@@ -215,3 +215,6 @@ rice_prod_clean_region_non_fao_continent %>%
     panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
     legend.position = "none"
   )
+
+
+ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_rice_1.png", width = 12, height = 12, dpi = 72)

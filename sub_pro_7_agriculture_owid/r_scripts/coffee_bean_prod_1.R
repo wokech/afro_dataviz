@@ -123,9 +123,9 @@ coffee_bean_prod_clean_region_non_fao_continent %>%
   ) +
   labs(x = "Year",
        y = "Coffee Bean Production\n(Millions of Tonnes)",
-       title = "1 out of 6 green coffee beans produced globally\nin 2020 was from Africa",
+       title = "",
        subtitle = "",
-       caption = "Data Source: Our World in Data | FAO | World Bank") +
+       caption = "") +
   theme_classic() +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
   scale_y_continuous(limits = c(0, 12000000), labels  = 
@@ -148,7 +148,7 @@ coffee_bean_prod_clean_region_non_fao_continent %>%
         legend.position = "none"
   )
 
-# ggsave("sub_pro_7_agriculture_owid/images/continental/continent_coffee_bean_1.png", width = 12, height = 12, dpi = 72)
+ggsave("sub_pro_7_agriculture_owid/images/continental/continent_coffee_bean_1.png", width = 12, height = 12, dpi = 72)
 
 
 coffee_bean_prod_clean_region_non_fao_continent %>%
@@ -196,8 +196,8 @@ coffee_bean_prod_clean_region_non_fao_continent %>%
   ) +
   labs(x = "Year",
        y = "Share of Cocoa Bean Production (%)",
-       title = "Regional Share of Global Cocoa Bean Production (1960–2020)",
-       caption = "Data Source: Our World in Data | FAO | World Bank") +
+       title = "",
+       caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
                      labels = c("1960", "1980", "2000", "2020")) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
@@ -215,3 +215,6 @@ coffee_bean_prod_clean_region_non_fao_continent %>%
     panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
     legend.position = "none"
   )
+
+
+ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_coffee_bean_1.png", width = 12, height = 12, dpi = 72)

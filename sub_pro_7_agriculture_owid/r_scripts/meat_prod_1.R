@@ -37,7 +37,7 @@ meat_clean <- meat %>%
 # Change the column title names
 
 meat_clean <- meat_clean %>%
-  rename("country" = "entity",
+  rename("region" = "entity",
          "meat_production_tonnes" = "meat_total_00001765_production_005510_tonnes") 
 
 # Filter by region
@@ -49,37 +49,83 @@ meat_clean_region <- meat_clean %>%
 # Filter by FAO region
 
 meat_clean_region_fao <- meat_clean_region %>%
-  filter(grepl('(FAO)', country))
+  filter(grepl('(FAO)', region))
 
 # Filter by non-FAO region
 
 meat_clean_region_non_fao <- meat_clean_region %>%
-  filter(!grepl('(FAO)', country))
+  filter(!grepl('(FAO)', region))
 
-# 3) Continental (Non-FAO) Fish Production
+# 3) Continental (Non-FAO) Meat Production
 
 # a) Stacked area chart
 
 meat_clean_region_non_fao_continent <- meat_clean_region_non_fao %>%
-  filter(country %in% c("Africa", "Asia", "Europe", 
+  filter(region %in% c("Africa", "Asia", "Europe", 
                         "North America", "South America", 
                         "Oceania"))
+
+# Use afro_stack color palette for the design on bisque1 background
+
+afro_stack_palette <- c(
+  "#0072B2", "#E69F00", "#009E73",
+  "#D55E00", "#CC79A7", "#56B4E9"
+)
+
+# reorder the stacks
+
+desired_order <- c("Oceania", "Africa", "Europe", "North America", "South America", "Asia")
+
+# Order by desired color
+
+meat_clean_region_non_fao_continent <- meat_clean_region_non_fao_continent %>%
+  mutate(region = factor(region, levels = desired_order)) %>%
+  arrange(desc(region))
+
+#  calculate cumulative positions for label placement
+
+label_df_meat <- meat_clean_region_non_fao_continent %>%
+  filter(year == max(year)) %>%
+  mutate(region = factor(region, levels = rev(desired_order))) %>%
+  arrange(region) %>%
+  mutate(x_label = max(year),
+         y_top = cumsum(meat_production_tonnes),
+         y_bottom = y_top - meat_production_tonnes,
+         y_mid = (y_bottom + y_top) / 2) %>%
+  select(region, year, x_label, y_top, y_mid) 
+
 
 # A) 1080 by 1080 
 
 meat_clean_region_non_fao_continent %>% 
-  ggplot(aes(year, meat_production_tonnes, fill = country, label = country, color = country)) +
+  ggplot(aes(year, meat_production_tonnes, fill = region, label = region, color = region)) +
   geom_area() +
+  geom_text_repel(
+    data = label_df_meat,
+    aes(x = x_label, y = y_mid, label = region, color = region),
+    hjust = 0,
+    fontface = "bold",
+    size = 8,
+    inherit.aes = FALSE,
+    direction = "y",
+    hjust = 0,
+    nudge_x = 15,
+    segment.curvature = 0.1,
+    segment.size = 0.5,
+    segment.ncp = 1,
+    min.segment.length = 0
+  ) +
   labs(x = "Year",
        y = "Meat Production\n(Millions of Tonnes)",
        title = "Africa's Share of Global Meat Production Has\nSignificantly Decreased",
        subtitle = "This is despite an increase in overall production (tonnes)",
-       caption = "Data Source: Our World in Data") +
+       caption = "") +
   theme_classic() +
+  scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
   scale_y_continuous(limits = c(0, 360000000), labels  = 
                        label_number(scale = 1e-6)) +
-  scale_fill_brewer(palette = "Set1") +
-  scale_color_brewer(palette = "Set1") +
+  scale_fill_manual(values = afro_stack_palette) +
+  scale_color_manual(values = afro_stack_palette) +
   theme(axis.title.x =element_text(size = 28, vjust = 1, face = "bold"),
         axis.title.y =element_text(size = 28, vjust = 1, face = "bold"),
         axis.text.x = element_text(size = 28, face = "bold", color = "black"),
@@ -92,29 +138,23 @@ meat_clean_region_non_fao_continent %>%
         plot.title.position = 'plot',
         plot.subtitle.position = 'plot',
         plot.caption.position = 'plot',
-        legend.title = element_blank(),
-        legend.text = element_text(size = 28),
-        legend.background = element_rect("bisque1"),
-        legend.position = c(.35, .95),
-        legend.justification = c("right", "top"),
-        legend.box.just = "right",
-        legend.margin = margin(6, 6, 6, 6))
+        plot.margin = margin(5, 5, 5, 5),
+        legend.position = "none"
+  )
 
-# ggsave("sub_pro_7_agriculture_owid/images/continent_meat_1.png", width = 12, height = 12, dpi = 72)
-
-
+ggsave("sub_pro_7_agriculture_owid/images/continental/continent_meat_1.png", width = 12, height = 12, dpi = 72)
 
 ################################################################################
 # Stacked Percentage Area Chart
 ################################################################################
 
-label_df_meat_percent <- meat_prod_clean_region_non_fao_continent %>%
+label_df_meat_percent <- meat_clean_region_non_fao_continent %>%
   group_by(year) %>%
   mutate(share = meat_production_tonnes / sum(meat_production_tonnes, na.rm = TRUE)) %>%
   ungroup() %>%
   filter(year == max(year)) %>%
-  mutate(region = factor(region, levels = rev(desired_order))) %>%
-  arrange(region) %>%
+  mutate(country = factor(region, levels = rev(desired_order))) %>%
+  arrange(country) %>%
   mutate(
     x_label = max(year),
     y_top = cumsum(share),
@@ -124,7 +164,7 @@ label_df_meat_percent <- meat_prod_clean_region_non_fao_continent %>%
   select(region, year, x_label, y_top, y_mid)
 
 
-meat_prod_clean_region_non_fao_continent %>% 
+meat_clean_region_non_fao_continent %>% 
   ggplot(aes(year, meat_production_tonnes, fill = region, color = region)) +
   geom_area(position = "fill") +
   geom_text_repel(
@@ -142,9 +182,9 @@ meat_prod_clean_region_non_fao_continent %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Share of Bean Production (%)",
-       title = "Regional Share of Global Bean Production (1960–2020)",
-       caption = "Data Source: Our World in Data | FAO | World Bank") +
+       y = "Share of Meat Production (%)",
+       title = "",
+       caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
                      labels = c("1960", "1980", "2000", "2020")) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
@@ -163,3 +203,4 @@ meat_prod_clean_region_non_fao_continent %>%
     legend.position = "none"
   )
 
+ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_meat_1.png", width = 12, height = 12, dpi = 72)

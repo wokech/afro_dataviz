@@ -122,10 +122,10 @@ avocado_prod_clean_region_non_fao_continent %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Avocado Production\n(Millions of Tonnes)",
-       title = "Approximately 15% of global avocado production\nwas from Africa in 2020 ",
+       y = "",
+       title = "",
        subtitle = "",
-       caption = "Data Source: Our World in Data | FAO | World Bank") +
+       caption = "") +
   theme_classic() +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
   scale_y_continuous(limits = c(0, 12000000), labels  = 
@@ -148,7 +148,7 @@ avocado_prod_clean_region_non_fao_continent %>%
         legend.position = "none"
   )
 
-# ggsave("sub_pro_7_agriculture_owid/images/continental/continent_avocado_1.png", width = 12, height = 12, dpi = 72)
+ggsave("sub_pro_7_agriculture_owid/images/continental/continent_avocado_1.png", width = 12, height = 12, dpi = 72)
 
 
 avocado_prod_clean_region_non_fao_continent %>%
@@ -195,8 +195,8 @@ avocado_prod_clean_region_non_fao_continent %>%
   ) +
   labs(x = "Year",
        y = "Share of Avocado Production (%)",
-       title = "Regional Share of Global Avocado Production (1960–2020)",
-       caption = "Data Source: Our World in Data | FAO | World Bank") +
+       title = "",
+       caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
                      labels = c("1960", "1980", "2000", "2020")) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
@@ -214,3 +214,6 @@ avocado_prod_clean_region_non_fao_continent %>%
     panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
     legend.position = "none"
   )
+
+
+ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_avocado_1.png", width = 12, height = 12, dpi = 72)

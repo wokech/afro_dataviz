@@ -26,14 +26,14 @@ library(jsonlite)
 
 # 2) Data Cleaning and Organization
 
-# Fetch the data
-
-potato_prod <- read.csv("https://ourworldindata.org/grapher/potato-production.csv?v=1&csvType=full&useColumnShortNames=true",
-                        na.strings = "")
-
-# Save the data
-write.csv(potato_prod, "sub_pro_7_agriculture_owid/datasets/potato-production-tonnes.csv",
-          row.names = FALSE)
+# # Fetch the data
+# 
+# potato_prod <- read.csv("https://ourworldindata.org/grapher/potato-production.csv?v=1&csvType=full&useColumnShortNames=true",
+#                         na.strings = "")
+# 
+# # Save the data
+# write.csv(potato_prod, "sub_pro_7_agriculture_owid/datasets/potato-production-tonnes.csv",
+#          row.names = FALSE)
 
 # Read in the data
 potato_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/potato-production-tonnes.csv")
@@ -195,8 +195,8 @@ potato_prod_clean_region_non_fao_continent %>%
   ) +
   labs(x = "Year",
        y = "Share of Potato Production (%)",
-       title = "Regional Share of Global Potato Production (1960–2020)",
-       caption = "Data Source: Our World in Data | FAO | World Bank") +
+       title = "",
+       caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
                      labels = c("1960", "1980", "2000", "2020")) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
@@ -214,3 +214,5 @@ potato_prod_clean_region_non_fao_continent %>%
     panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
     legend.position = "none"
   )
+
+ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_potato_1.png", width = 12, height = 12, dpi = 72)

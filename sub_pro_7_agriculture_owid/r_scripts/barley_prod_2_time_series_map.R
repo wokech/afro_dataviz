@@ -72,7 +72,7 @@ barley_prod_clean_africa_rnaturalearth <- barley_prod_clean_africa %>%
     country == "Congo"  ~ "Republic of the Congo",
     TRUE ~ country  # Retain original name if none of the conditions are met
   )) |>
-  rename(barley_production = "barleys_dry_00000176_production_005510_tonnes")
+  rename(barley_production = "barley_00000044_production_005510_tonnes")
 
 # 2) Map of countries showing global meat production between 1965 and 2020
 

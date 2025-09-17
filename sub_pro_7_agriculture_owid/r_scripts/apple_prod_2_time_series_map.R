@@ -72,7 +72,7 @@ apple_prod_clean_africa_rnaturalearth <- apple_prod_clean_africa %>%
     country == "Congo"  ~ "Republic of the Congo",
     TRUE ~ country  # Retain original name if none of the conditions are met
   )) |>
-  rename(apple_production = "apples_dry_00000176_production_005510_tonnes")
+  rename(apple_production = "apples_00000515_production_005510_tonnes")
 
 # 2) Map of countries showing global meat production between 1965 and 2020
 
@@ -140,7 +140,7 @@ p1 <- ggplot(data = africa) +
     legend.text = element_text(size = 30, vjust = 0.5, hjust = 0.75),
     legend.position = "bottom",
     legend.key.height = unit(2, 'cm'), #change legend key height,
-    legend.key.width = unit(2, 'cm'), #change legend key width
+    legend.key.width = unit(3, 'cm'), #change legend key width
   ) +
   labs(title = "1965",
        subtitle = "",
@@ -207,7 +207,7 @@ p2 <- ggplot(data = africa) +
     legend.text = element_text(size = 30, vjust = 0.5, hjust = 0.75),
     legend.position = "bottom",
     legend.key.height = unit(2, 'cm'), #change legend key height,
-    legend.key.width = unit(2, 'cm'), #change legend key width
+    legend.key.width = unit(3, 'cm'), #change legend key width
   ) +
   labs(title = "1970",
        subtitle = "",
@@ -274,7 +274,7 @@ p3 <- ggplot(data = africa) +
     legend.text = element_text(size = 30, vjust = 0.5, hjust = 0.75),
     legend.position = "bottom",
     legend.key.height = unit(2, 'cm'), #change legend key height,
-    legend.key.width = unit(2, 'cm'), #change legend key width
+    legend.key.width = unit(3, 'cm'), #change legend key width
   ) +
   labs(title = "1975",
        subtitle = "",
@@ -341,7 +341,7 @@ p4 <- ggplot(data = africa) +
     legend.text = element_text(size = 30, vjust = 0.5, hjust = 0.75),
     legend.position = "bottom",
     legend.key.height = unit(2, 'cm'), #change legend key height,
-    legend.key.width = unit(2, 'cm'), #change legend key width
+    legend.key.width = unit(3, 'cm'), #change legend key width
   ) +
   labs(title = "1980",
        subtitle = "",
@@ -408,7 +408,7 @@ p5 <- ggplot(data = africa) +
     legend.text = element_text(size = 30, vjust = 0.5, hjust = 0.75),
     legend.position = "bottom",
     legend.key.height = unit(2, 'cm'), #change legend key height,
-    legend.key.width = unit(2, 'cm'), #change legend key width
+    legend.key.width = unit(3, 'cm'), #change legend key width
   ) +
   labs(title = "1985",
        subtitle = "",
@@ -475,7 +475,7 @@ p6 <- ggplot(data = africa) +
     legend.text = element_text(size = 30, vjust = 0.5, hjust = 0.75),
     legend.position = "bottom",
     legend.key.height = unit(2, 'cm'), #change legend key height,
-    legend.key.width = unit(2, 'cm'), #change legend key width
+    legend.key.width = unit(3, 'cm'), #change legend key width
   ) +
   labs(title = "1990",
        subtitle = "",
@@ -542,7 +542,7 @@ p7 <- ggplot(data = africa) +
     legend.text = element_text(size = 30, vjust = 0.5, hjust = 0.75),
     legend.position = "bottom",
     legend.key.height = unit(2, 'cm'), #change legend key height,
-    legend.key.width = unit(2, 'cm'), #change legend key width
+    legend.key.width = unit(3, 'cm'), #change legend key width
   ) +
   labs(title = "1995",
        subtitle = "",
@@ -609,7 +609,7 @@ p8 <- ggplot(data = africa) +
     legend.text = element_text(size = 30, vjust = 0.5, hjust = 0.75),
     legend.position = "bottom",
     legend.key.height = unit(2, 'cm'), #change legend key height,
-    legend.key.width = unit(2, 'cm'), #change legend key width
+    legend.key.width = unit(3, 'cm'), #change legend key width
   ) +
   labs(title = "2000",
        subtitle = "",
@@ -676,7 +676,7 @@ p9 <- ggplot(data = africa) +
     legend.text = element_text(size = 30, vjust = 0.5, hjust = 0.75),
     legend.position = "bottom",
     legend.key.height = unit(2, 'cm'), #change legend key height,
-    legend.key.width = unit(2, 'cm'), #change legend key width
+    legend.key.width = unit(3, 'cm'), #change legend key width
   ) +
   labs(title = "2005",
        subtitle = "",
@@ -743,7 +743,7 @@ p10 <- ggplot(data = africa) +
     legend.text = element_text(size = 30, vjust = 0.5, hjust = 0.75),
     legend.position = "bottom",
     legend.key.height = unit(2, 'cm'), #change legend key height,
-    legend.key.width = unit(2, 'cm'), #change legend key width
+    legend.key.width = unit(3, 'cm'), #change legend key width
   ) +
   labs(title = "2010",
        subtitle = "",
@@ -810,7 +810,7 @@ p11 <- ggplot(data = africa) +
     legend.text = element_text(size = 30, vjust = 0.5, hjust = 0.75),
     legend.position = "bottom",
     legend.key.height = unit(2, 'cm'), #change legend key height,
-    legend.key.width = unit(2, 'cm'), #change legend key width
+    legend.key.width = unit(3, 'cm'), #change legend key width
   ) +
   labs(title = "2015",
        subtitle = "",
@@ -877,7 +877,7 @@ p12 <- ggplot(data = africa) +
     legend.text = element_text(size = 30, vjust = 0.5, hjust = 0.75),
     legend.position = "bottom",
     legend.key.height = unit(2, 'cm'), #change legend key height,
-    legend.key.width = unit(2, 'cm'), #change legend key width
+    legend.key.width = unit(3, 'cm'), #change legend key width
   ) +
   labs(title = "2020",
        subtitle = "",

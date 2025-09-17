@@ -1,4 +1,4 @@
-# Cocoa cocoa_bean Production Time Series
+# Cocoa bean Production Time Series
 
 # Load the required libraries and packages
 
@@ -72,7 +72,7 @@ cocoa_bean_prod_clean_africa_rnaturalearth <- cocoa_bean_prod_clean_africa %>%
     country == "Congo"  ~ "Republic of the Congo",
     TRUE ~ country  # Retain original name if none of the conditions are met
   )) |>
-  rename(cocoa_bean_production = "cocoa_beans_dry_00000176_production_005510_tonnes")
+  rename(cocoa_bean_production = "cocoa_beans_00000661_production_005510_tonnes")
 
 # 2) Map of countries showing global meat production between 1965 and 2020
 

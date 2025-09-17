@@ -72,7 +72,7 @@ cassava_prod_clean_africa_rnaturalearth <- cassava_prod_clean_africa %>%
     country == "Congo"  ~ "Republic of the Congo",
     TRUE ~ country  # Retain original name if none of the conditions are met
   )) |>
-  rename(cassava_production = "cassavas_dry_00000176_production_005510_tonnes")
+  rename(cassava_production = "cassava_00000125_production_005510_tonnes")
 
 # 2) Map of countries showing global meat production between 1965 and 2020
 

@@ -1,4 +1,4 @@
-# Dry sweet_potato Production
+# Sweet Potato Production
 
 # 1) Load the Required Libraries
 
@@ -23,6 +23,7 @@ library(ggstream)
 library(showtext)
 library(ggtext)
 library(jsonlite)
+library(ggstream)
 
 # 2) Data Cleaning and Organization
 
@@ -40,36 +41,36 @@ sweet_potato_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/sweet-potato-
 
 # Clean the column headings
 
-sweet_potato_prod_clean <- sweet_potato_prod %>%
+sweet_potato_prod_clean <- sweet_potato_prod |>
   clean_names() 
 
 # Change the column title names
 
-sweet_potato_prod_clean <- sweet_potato_prod_clean %>%
+sweet_potato_prod_clean <- sweet_potato_prod_clean |>
   rename("region" = "entity",
          "sweet_potato_production_tonnes" = "sweet_potatoes_00000122_production_005510_tonnes") 
 
 # Filter by region
 
-sweet_potato_prod_clean_region <- sweet_potato_prod_clean %>%
-  filter(is.na(code)) %>%
+sweet_potato_prod_clean_region <- sweet_potato_prod_clean |>
+  filter(is.na(code)) |>
   select(c(1,3,4)) 
 
 # Filter by FAO region
 
-sweet_potato_prod_clean_region_fao <- sweet_potato_prod_clean_region %>%
+sweet_potato_prod_clean_region_fao <- sweet_potato_prod_clean_region |>
   filter(grepl('(FAO)', region))
 
 # Filter by non-FAO region
 
-sweet_potato_prod_clean_region_non_fao <- sweet_potato_prod_clean_region %>%
+sweet_potato_prod_clean_region_non_fao <- sweet_potato_prod_clean_region |>
   filter(!grepl('(FAO)', region))
 
 # 3) Continental (Non-FAO) sweet_potato production
 
 # a) Stacked area chart
 
-sweet_potato_prod_clean_region_non_fao_continent <- sweet_potato_prod_clean_region_non_fao %>%
+sweet_potato_prod_clean_region_non_fao_continent <- sweet_potato_prod_clean_region_non_fao |>
   filter(region %in% c("Africa", "Asia", "Europe", 
                        "North America", "South America", 
                        "Oceania"))
@@ -85,25 +86,25 @@ afro_stack_palette <- c(
 
 desired_order <- c("Oceania", "Africa", "Europe", "North America", "South America", "Asia")
 
-sweet_potato_prod_clean_region_non_fao_continent <- sweet_potato_prod_clean_region_non_fao_continent %>%
-  mutate(region = factor(region, levels = desired_order)) %>%
+sweet_potato_prod_clean_region_non_fao_continent <- sweet_potato_prod_clean_region_non_fao_continent |>
+  mutate(region = factor(region, levels = desired_order)) |>
   arrange(desc(region))
 
 #  calculate cumulative positions for label placement
 
-label_df_sweet_potato <- sweet_potato_prod_clean_region_non_fao_continent %>%
-  filter(year == max(year)) %>%
-  mutate(region = factor(region, levels = rev(desired_order))) %>%
-  arrange(region) %>%
+label_df_sweet_potato <- sweet_potato_prod_clean_region_non_fao_continent |>
+  filter(year == max(year)) |>
+  mutate(region = factor(region, levels = rev(desired_order))) |>
+  arrange(region) |>
   mutate(x_label = max(year),
          y_top = cumsum(sweet_potato_production_tonnes),
          y_bottom = y_top - sweet_potato_production_tonnes,
-         y_mid = (y_bottom + y_top) / 2) %>%
+         y_mid = (y_bottom + y_top) / 2) |>
   select(region, year, x_label, y_top, y_mid) 
 
 # plot the stack area chart
 
-sweet_potato_prod_clean_region_non_fao_continent %>% 
+sweet_potato_prod_clean_region_non_fao_continent |> 
   ggplot(aes(year, sweet_potato_production_tonnes, fill = region, label = region, color = region)) +
   geom_area() +
   geom_text_repel(
@@ -123,9 +124,9 @@ sweet_potato_prod_clean_region_non_fao_continent %>%
   ) +
   labs(x = "Year",
        y = "Sweet Potato Production\n(Millions of Tonnes)",
-       title = "About 3 out of 10 sweet potatoes produced\nin 2020 came from Africa",
+       title = "",
        subtitle = "",
-       caption = "Data Source: Our World in Data | FAO | World Bank") +
+       caption = "") +
   theme_classic() +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
   scale_y_continuous(limits = c(0, 175000000), labels  = 
@@ -148,11 +149,11 @@ sweet_potato_prod_clean_region_non_fao_continent %>%
         legend.position = "none"
   )
 
-# ggsave("sub_pro_7_agriculture_owid/images/continental/continent_sweet_potato_1.png", width = 12, height = 12, dpi = 72)
+ggsave("sub_pro_7_agriculture_owid/images/continental/continent_sweet_potato_1.png", width = 12, height = 12, dpi = 72)
 
 
-sweet_potato_prod_clean_region_non_fao_continent %>%
-  filter(year == 2020) %>%
+sweet_potato_prod_clean_region_non_fao_continent |>
+  filter(year == 2020) |>
   mutate(percent = 100 * sweet_potato_production_tonnes/sum(sweet_potato_production_tonnes)) 
 
 
@@ -161,23 +162,23 @@ sweet_potato_prod_clean_region_non_fao_continent %>%
 # Stacked Percentage Area Chart
 ################################################################################
 
-label_df_sweet_potato_percent <- sweet_potato_prod_clean_region_non_fao_continent %>%
-  group_by(year) %>%
-  mutate(share = sweet_potato_production_tonnes / sum(sweet_potato_production_tonnes, na.rm = TRUE)) %>%
-  ungroup() %>%
-  filter(year == max(year)) %>%
-  mutate(region = factor(region, levels = rev(desired_order))) %>%
-  arrange(region) %>%
+label_df_sweet_potato_percent <- sweet_potato_prod_clean_region_non_fao_continent |>
+  group_by(year) |>
+  mutate(share = sweet_potato_production_tonnes / sum(sweet_potato_production_tonnes, na.rm = TRUE)) |>
+  ungroup() |>
+  filter(year == max(year)) |>
+  mutate(region = factor(region, levels = rev(desired_order))) |>
+  arrange(region) |>
   mutate(
     x_label = max(year),
     y_top = cumsum(share),
     y_bottom = y_top - share,
     y_mid = (y_bottom + y_top) / 2
-  ) %>%
+  ) |>
   select(region, year, x_label, y_top, y_mid)
 
 
-sweet_potato_prod_clean_region_non_fao_continent %>% 
+sweet_potato_prod_clean_region_non_fao_continent |> 
   ggplot(aes(year, sweet_potato_production_tonnes, fill = region, color = region)) +
   geom_area(position = "fill") +
   geom_text_repel(
@@ -196,8 +197,8 @@ sweet_potato_prod_clean_region_non_fao_continent %>%
   ) +
   labs(x = "Year",
        y = "Share of Sweet Potato Production (%)",
-       title = "Regional Share of Global Sweet Potato Production (1960–2020)",
-       caption = "Data Source: Our World in Data | FAO | World Bank") +
+       title = "",
+       caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
                      labels = c("1960", "1980", "2000", "2020")) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
@@ -215,3 +216,11 @@ sweet_potato_prod_clean_region_non_fao_continent %>%
     panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
     legend.position = "none"
   )
+
+ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_sweet_potato_1.png", width = 12, height = 12, dpi = 72)
+
+################################################################################
+# StreamGraph Chart
+################################################################################
+
+# Use geom_stream() to convert

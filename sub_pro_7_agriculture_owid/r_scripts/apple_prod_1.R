@@ -85,6 +85,8 @@ afro_stack_palette <- c(
 
 desired_order <- c("Oceania", "Africa", "Europe", "North America", "South America", "Asia")
 
+# order of the colored regions
+
 apple_prod_clean_region_non_fao_continent <- apple_prod_clean_region_non_fao_continent %>%
   mutate(region = factor(region, levels = desired_order)) %>%
   arrange(desc(region))
@@ -123,9 +125,9 @@ apple_prod_clean_region_non_fao_continent %>%
   ) +
   labs(x = "Year",
        y = "Apple Production\n(Millions of Tonnes)",
-       title = "Less than 5% of global apple production was from\nAfrica in 2020",
+       title = "",
        subtitle = "",
-       caption = "Data Source: Our World in Data | FAO | World Bank") +
+       caption = "") +
   theme_classic() +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
   scale_y_continuous(limits = c(0, 100000000), labels  = 
@@ -148,7 +150,7 @@ apple_prod_clean_region_non_fao_continent %>%
         legend.position = "none"
   )
 
-# ggsave("sub_pro_7_agriculture_owid/images/continental/continent_apple_1.png", width = 12, height = 12, dpi = 72)
+ggsave("sub_pro_7_agriculture_owid/images/continental/continent_apple_1.png", width = 12, height = 12, dpi = 72)
 
 
 apple_prod_clean_region_non_fao_continent %>%
@@ -195,8 +197,8 @@ apple_prod_clean_region_non_fao_continent %>%
   ) +
   labs(x = "Year",
        y = "Share of Apple Production (%)",
-       title = "Regional Share of Global Apple Production (1960–2020)",
-       caption = "Data Source: Our World in Data | FAO | World Bank") +
+       title = "",
+       caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
                      labels = c("1960", "1980", "2000", "2020")) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
@@ -214,3 +216,6 @@ apple_prod_clean_region_non_fao_continent %>%
     panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
     legend.position = "none"
   )
+
+
+ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_apple_1.png", width = 12, height = 12, dpi = 72)

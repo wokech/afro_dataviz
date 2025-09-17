@@ -156,9 +156,9 @@ wild_fish_clean_region_wb %>%
 # Stacked Percentage Area Chart
 ################################################################################
 
-label_df_wild_fish_percent <- wild_fish_prod_clean_region_non_fao_continent %>%
+label_df_wild_fish_percent <- wild_fish_clean_region_wb %>%
   group_by(year) %>%
-  mutate(share = wild_fish_production_tonnes / sum(wild_fish_production_tonnes, na.rm = TRUE)) %>%
+  mutate(share = wild_fish_tonnes / sum(wild_fish_tonnes, na.rm = TRUE)) %>%
   ungroup() %>%
   filter(year == max(year)) %>%
   mutate(region = factor(region, levels = rev(desired_order))) %>%
@@ -172,29 +172,30 @@ label_df_wild_fish_percent <- wild_fish_prod_clean_region_non_fao_continent %>%
   select(region, year, x_label, y_top, y_mid)
 
 
-wild_fish_prod_clean_region_non_fao_continent %>% 
-  ggplot(aes(year, wild_fish_production_tonnes, fill = region, color = region)) +
+wild_fish_clean_region_wb %>% 
+  ggplot(aes(year, wild_fish_tonnes, fill = region, color = region)) +
   geom_area(position = "fill") +
   geom_text_repel(
     data = label_df_wild_fish_percent,
     aes(x = x_label, y = y_mid, label = region, color = region),
-    hjust = 0,
+    hjust = 0.2,
     fontface = "bold",
     size = 8,
     inherit.aes = FALSE,
     direction = "y",
-    nudge_x = 15,
+    nudge_x = 45,
     segment.curvature = 0.1,
     segment.size = 0.5,
     segment.ncp = 1,
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Share of Bean Production (%)",
-       title = "Regional Share of Global Bean Production (1960–2020)",
-       caption = "Data Source: Our World in Data | FAO | World Bank") +
+       y = "Share of Wild Fish Production (%)",
+       title = "",
+       caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
-                     labels = c("1960", "1980", "2000", "2020")) +
+                     labels = c("1960", "1980", "2000", "2020"),
+                     expand = expansion(mult = c(0.05, 0.05))) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
   scale_fill_manual(values = afro_stack_palette) +
   scale_color_manual(values = afro_stack_palette) +
@@ -210,3 +211,5 @@ wild_fish_prod_clean_region_non_fao_continent %>%
     panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
     legend.position = "none"
   )
+
+ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_wild_fish_1.png", width = 12, height = 12, dpi = 72)

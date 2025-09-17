@@ -72,7 +72,7 @@ orange_prod_clean_africa_rnaturalearth <- orange_prod_clean_africa %>%
     country == "Congo"  ~ "Republic of the Congo",
     TRUE ~ country  # Retain original name if none of the conditions are met
   )) |>
-  rename(orange_production = "oranges_dry_00000176_production_005510_tonnes")
+  rename(orange_production = "oranges_00000490_production_005510_tonnes")
 
 # 2) Map of countries showing global meat production between 1965 and 2020
 

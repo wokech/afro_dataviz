@@ -27,9 +27,13 @@ tea_leaves_prod_clean <- tea_leaves_prod %>%
 
 # Only include African Countries
 
+#####
+# With FAOSTAT - Watch out for DRC / Tanzania / Don't include Reunion
+#####
+
 african_countries <- c("Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", 
                        "Burundi", "Cape Verde", "Cameroon", "Central African Republic", 
-                       "Chad", "Comoros", "Congo", "Democratic Republic of Congo", 
+                       "Chad", "Comoros", "Congo", "Democratic Republic of the Congo", 
                        "Djibouti", "Egypt", "Equatorial Guinea", "Eritrea", 
                        "Eswatini", "Ethiopia", "Gabon", "Gambia", "Ghana", 
                        "Guinea", "Guinea-Bissau", "Ivory Coast", "Kenya", 
@@ -37,7 +41,7 @@ african_countries <- c("Algeria", "Angola", "Benin", "Botswana", "Burkina Faso",
                        "Mali", "Mauritania", "Mauritius", "Morocco", "Mozambique", 
                        "Namibia", "Niger", "Nigeria", "Rwanda", "Sao Tome and Principe", 
                        "Senegal", "Seychelles", "Sierra Leone", "Somalia", "South Africa", 
-                       "South Sudan", "Sudan", "Tanzania", "Togo", "Tunisia", 
+                       "South Sudan", "Sudan", "United Republic of Tanzania", "Togo", "Tunisia", 
                        "Uganda", "Zambia", "Zimbabwe")
 
 #############
@@ -72,7 +76,8 @@ tea_leaves_prod_clean_africa_rnaturalearth <- tea_leaves_prod_clean_africa %>%
     country == "Congo"  ~ "Republic of the Congo",
     TRUE ~ country  # Retain original name if none of the conditions are met
   )) |>
-  rename(tea_leaves_production = "tea_leavess_dry_00000176_production_005510_tonnes")
+  rename(tea_leaves_production = "value") |>
+  select(country, year, tea_leaves_production)
 
 # 2) Map of countries showing global meat production between 1965 and 2020
 
@@ -121,7 +126,7 @@ p1 <- ggplot(data = africa) +
   geom_sf(data = tea_leaves_prod_clean_africa_1965_full_join, aes(fill = tea_leaves_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 3250000),
+                       limits = c(0, 3200000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -188,7 +193,7 @@ p2 <- ggplot(data = africa) +
   geom_sf(data = tea_leaves_prod_clean_africa_1970_full_join, aes(fill = tea_leaves_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 3250000),
+                       limits = c(0, 3200000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -255,7 +260,7 @@ p3 <- ggplot(data = africa) +
   geom_sf(data = tea_leaves_prod_clean_africa_1975_full_join, aes(fill = tea_leaves_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 3250000),
+                       limits = c(0, 3200000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -322,7 +327,7 @@ p4 <- ggplot(data = africa) +
   geom_sf(data = tea_leaves_prod_clean_africa_1980_full_join, aes(fill = tea_leaves_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 3250000),
+                       limits = c(0, 3200000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -389,7 +394,7 @@ p5 <- ggplot(data = africa) +
   geom_sf(data = tea_leaves_prod_clean_africa_1985_full_join, aes(fill = tea_leaves_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 3250000),
+                       limits = c(0, 3200000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -456,7 +461,7 @@ p6 <- ggplot(data = africa) +
   geom_sf(data = tea_leaves_prod_clean_africa_1990_full_join, aes(fill = tea_leaves_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 3250000),
+                       limits = c(0, 3200000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -523,7 +528,7 @@ p7 <- ggplot(data = africa) +
   geom_sf(data = tea_leaves_prod_clean_africa_1995_full_join, aes(fill = tea_leaves_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 3250000),
+                       limits = c(0, 3200000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -590,7 +595,7 @@ p8 <- ggplot(data = africa) +
   geom_sf(data = tea_leaves_prod_clean_africa_2000_full_join, aes(fill = tea_leaves_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 3250000),
+                       limits = c(0, 3200000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -657,7 +662,7 @@ p9 <- ggplot(data = africa) +
   geom_sf(data = tea_leaves_prod_clean_africa_2005_full_join, aes(fill = tea_leaves_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 3250000),
+                       limits = c(0, 3200000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -724,7 +729,7 @@ p10 <- ggplot(data = africa) +
   geom_sf(data = tea_leaves_prod_clean_africa_2010_full_join, aes(fill = tea_leaves_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 3250000),
+                       limits = c(0, 3200000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -791,7 +796,7 @@ p11 <- ggplot(data = africa) +
   geom_sf(data = tea_leaves_prod_clean_africa_2015_full_join, aes(fill = tea_leaves_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 3250000),
+                       limits = c(0, 3200000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -858,7 +863,7 @@ p12 <- ggplot(data = africa) +
   geom_sf(data = tea_leaves_prod_clean_africa_2020_full_join, aes(fill = tea_leaves_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 3250000),
+                       limits = c(0, 3200000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales

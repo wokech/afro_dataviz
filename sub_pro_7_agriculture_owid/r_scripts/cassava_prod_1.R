@@ -123,9 +123,9 @@ cassava_prod_clean_region_non_fao_continent %>%
   ) +
   labs(x = "Year",
        y = "Cassava Production\n(Millions of Tonnes)",
-       title = "More than 6 out of 10 cassavas produced in 2020\nwere from Africa",
+       title = "",
        subtitle = "",
-       caption = "Data Source: Our World in Data | FAO | World Bank") +
+       caption = "") +
   theme_classic() +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
   scale_y_continuous(limits = c(0, 350000000), labels  = 
@@ -148,7 +148,7 @@ cassava_prod_clean_region_non_fao_continent %>%
         legend.position = "none"
   )
 
-# ggsave("sub_pro_7_agriculture_owid/images/continental/continent_cassava_1.png", width = 12, height = 12, dpi = 72)
+ggsave("sub_pro_7_agriculture_owid/images/continental/continent_cassava_1.png", width = 12, height = 12, dpi = 72)
 
 
 cassava_prod_clean_region_non_fao_continent %>%
@@ -195,8 +195,8 @@ cassava_prod_clean_region_non_fao_continent %>%
   ) +
   labs(x = "Year",
        y = "Share of Cassava Production (%)",
-       title = "Regional Share of Global Cassava Production (1960–2020)",
-       caption = "Data Source: Our World in Data | FAO | World Bank") +
+       title = "",
+       caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
                      labels = c("1960", "1980", "2000", "2020")) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
@@ -216,3 +216,4 @@ cassava_prod_clean_region_non_fao_continent %>%
   )
 
 
+ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_cassava_1.png", width = 12, height = 12, dpi = 72)
