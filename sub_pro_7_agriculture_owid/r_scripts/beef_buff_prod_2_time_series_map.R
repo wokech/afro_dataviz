@@ -74,6 +74,36 @@ beef_buff_prod_clean_africa_rnaturalearth <- beef_buff_prod_clean_africa %>%
   )) |>
   rename(beef_buff_production = "meat_beef_and_buffalo_00001806_production_005510_tonnes")
 
+
+################################################################################
+# QC to check for missing countries!
+################################################################################
+
+# Countries that have data
+unique(beef_buff_prod_clean_africa$country)
+
+# Countries that don't have data
+setdiff(african_countries, unique(beef_buff_prod_clean_africa$country))
+
+# Check whether any countries in the dataset are not in the list of African countries
+setdiff(unique(beef_buff_prod_clean_africa$country), african_countries)
+
+## Then check the original dataset manually to see if countries are actually missing 
+
+################################################################################
+
+################################################################################
+# Highest production in 2020
+
+beef_buff_prod_clean_africa_rnaturalearth |>
+  arrange(desc(beef_buff_production)) |>
+  filter(year == 2020) |>
+  top_n(1)
+
+
+################################################################################
+
+
 # 2) Map of countries showing global meat production between 1965 and 2020
 
 # Fetch high-resolution country data

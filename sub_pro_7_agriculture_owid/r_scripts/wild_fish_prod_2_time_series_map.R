@@ -43,12 +43,12 @@ african_countries <- c("Algeria", "Angola", "Benin", "Botswana", "Burkina Faso",
 #############
 # Check if the values in the african_countries dataset are present in new dataframes
 
-# african_countries[!(african_countries %in% unique(global_meat_clean_africa$country))]
+# african_countries[!(african_countries %in% unique(global_wild_fish_clean_africa$country))]
 
 # african_countries[!(african_countries %in% unique(share_net_clean_africa$country))]
 #############
 
-# Global Meat Production in Africa
+# Global wild_fish Production in Africa
 
 wild_fish_prod_clean_africa <- wild_fish_prod_clean |>
   rename("country" = "entity") |>
@@ -75,6 +75,33 @@ wild_fish_prod_clean_africa_rnaturalearth <- wild_fish_prod_clean_africa %>%
   rename(wild_fish_production = "er_fsh_capt_mt")
 
 
+################################################################################
+# QC to check for missing countries!
+################################################################################
+
+# Countries that have data
+unique(wild_fish_prod_clean_africa$country)
+
+# Countries that don't have data
+setdiff(african_countries, unique(wild_fish_prod_clean_africa$country))
+
+# Check whether any countries in the dataset are not in the list of African countries
+setdiff(unique(wild_fish_prod_clean_africa$country), african_countries)
+
+## Then check the original dataset manually to see if countries are actually missing 
+
+################################################################################
+
+################################################################################
+# Highest production in 2020
+
+wild_fish_prod_clean_africa_rnaturalearth |>
+  arrange(desc(wild_fish_production)) |>
+  filter(year == 2020) |>
+  top_n(1)
+  
+
+################################################################################
 
 # 2) Map of countries showing global fish production between 1965 and 2020
 
@@ -90,6 +117,8 @@ africa <- world %>%
 wild_fish_prod_clean_africa_1965 <- wild_fish_prod_clean_africa_rnaturalearth |> 
   filter(year == 1965) |>
   arrange(desc(wild_fish_production))
+
+
 
 # Now we have the 1965 dataset and the africa dataset.
 # These two need to be joined together.
@@ -108,7 +137,7 @@ wild_fish_prod_clean_africa_1965_anti_join_1 <- anti_join(africa,
                                                      wild_fish_prod_clean_africa_1965, 
                                                      by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1965
+# Find rows only in global_wild_fish_clean_africa_1965
 
 wild_fish_prod_clean_africa_1965_anti_join_2 <- anti_join(wild_fish_prod_clean_africa_1965, 
                                                      africa, 
@@ -175,7 +204,7 @@ wild_fish_prod_clean_africa_1970_anti_join_1 <- anti_join(africa,
                                                      wild_fish_prod_clean_africa_1970, 
                                                      by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1970
+# Find rows only in global_wild_fish_clean_africa_1970
 
 wild_fish_prod_clean_africa_1970_anti_join_2 <- anti_join(wild_fish_prod_clean_africa_1970, 
                                                      africa, 
@@ -242,7 +271,7 @@ wild_fish_prod_clean_africa_1975_anti_join_1 <- anti_join(africa,
                                                      wild_fish_prod_clean_africa_1975, 
                                                      by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1975
+# Find rows only in global_wild_fish_clean_africa_1975
 
 wild_fish_prod_clean_africa_1975_anti_join_2 <- anti_join(wild_fish_prod_clean_africa_1975, 
                                                      africa, 
@@ -309,7 +338,7 @@ wild_fish_prod_clean_africa_1980_anti_join_1 <- anti_join(africa,
                                                      wild_fish_prod_clean_africa_1980, 
                                                      by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1980
+# Find rows only in global_wild_fish_clean_africa_1980
 
 wild_fish_prod_clean_africa_1980_anti_join_2 <- anti_join(wild_fish_prod_clean_africa_1980, 
                                                      africa, 
@@ -376,7 +405,7 @@ wild_fish_prod_clean_africa_1985_anti_join_1 <- anti_join(africa,
                                                      wild_fish_prod_clean_africa_1985, 
                                                      by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1985
+# Find rows only in global_wild_fish_clean_africa_1985
 
 wild_fish_prod_clean_africa_1985_anti_join_2 <- anti_join(wild_fish_prod_clean_africa_1985, 
                                                      africa, 
@@ -443,7 +472,7 @@ wild_fish_prod_clean_africa_1990_anti_join_1 <- anti_join(africa,
                                                      wild_fish_prod_clean_africa_1990, 
                                                      by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1990
+# Find rows only in global_wild_fish_clean_africa_1990
 
 wild_fish_prod_clean_africa_1990_anti_join_2 <- anti_join(wild_fish_prod_clean_africa_1990, 
                                                      africa, 
@@ -510,7 +539,7 @@ wild_fish_prod_clean_africa_1995_anti_join_1 <- anti_join(africa,
                                                      wild_fish_prod_clean_africa_1995, 
                                                      by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1995
+# Find rows only in global_wild_fish_clean_africa_1995
 
 wild_fish_prod_clean_africa_1995_anti_join_2 <- anti_join(wild_fish_prod_clean_africa_1995, 
                                                      africa, 
@@ -577,7 +606,7 @@ wild_fish_prod_clean_africa_2000_anti_join_1 <- anti_join(africa,
                                                      wild_fish_prod_clean_africa_2000, 
                                                      by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_2000
+# Find rows only in global_wild_fish_clean_africa_2000
 
 wild_fish_prod_clean_africa_2000_anti_join_2 <- anti_join(wild_fish_prod_clean_africa_2000, 
                                                      africa, 
@@ -644,7 +673,7 @@ wild_fish_prod_clean_africa_2005_anti_join_1 <- anti_join(africa,
                                                      wild_fish_prod_clean_africa_2005, 
                                                      by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_2005
+# Find rows only in global_wild_fish_clean_africa_2005
 
 wild_fish_prod_clean_africa_2005_anti_join_2 <- anti_join(wild_fish_prod_clean_africa_2005, 
                                                      africa, 
@@ -711,7 +740,7 @@ wild_fish_prod_clean_africa_2010_anti_join_1 <- anti_join(africa,
                                                      wild_fish_prod_clean_africa_2010, 
                                                      by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_2010
+# Find rows only in global_wild_fish_clean_africa_2010
 
 wild_fish_prod_clean_africa_2010_anti_join_2 <- anti_join(wild_fish_prod_clean_africa_2010, 
                                                      africa, 
@@ -778,7 +807,7 @@ wild_fish_prod_clean_africa_2015_anti_join_1 <- anti_join(africa,
                                                      wild_fish_prod_clean_africa_2015, 
                                                      by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_2015
+# Find rows only in global_wild_fish_clean_africa_2015
 
 wild_fish_prod_clean_africa_2015_anti_join_2 <- anti_join(wild_fish_prod_clean_africa_2015, 
                                                      africa, 
@@ -845,7 +874,7 @@ wild_fish_prod_clean_africa_2020_anti_join_1 <- anti_join(africa,
                                                      wild_fish_prod_clean_africa_2020, 
                                                      by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_2020
+# Find rows only in global_wild_fish_clean_africa_2020
 
 wild_fish_prod_clean_africa_2020_anti_join_2 <- anti_join(wild_fish_prod_clean_africa_2020, 
                                                      africa, 

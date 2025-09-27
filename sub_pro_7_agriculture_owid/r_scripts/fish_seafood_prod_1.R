@@ -285,6 +285,7 @@ fish_seafood_1_clean_region_fao_africa_segment %>%
        subtitle = "",
        caption = "") +
   theme_classic() +
+  scale_x_continuous(breaks = c(1960, 1980, 2000, 2020), labels = c("1960", "1980", "2000", "2020")) +
   scale_y_continuous(limits = c(0, 14000000), labels  = 
                        label_number(scale = 1e-6)) +
   scale_fill_manual(values = afro_stack_palette) +
@@ -366,4 +367,5 @@ fish_seafood_1_clean_region_fao_africa_segment %>%
   )
 
 ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only_stack_perc/continent_fish_1.png", width = 12, height = 12, dpi = 300)
+
 

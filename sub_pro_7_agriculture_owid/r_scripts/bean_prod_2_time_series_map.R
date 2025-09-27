@@ -43,12 +43,12 @@ african_countries <- c("Algeria", "Angola", "Benin", "Botswana", "Burkina Faso",
 #############
 # Check if the values in the african_countries dataset are present in new dataframes
 
-# african_countries[!(african_countries %in% unique(global_meat_clean_africa$country))]
+# african_countries[!(african_countries %in% unique(global_bean_clean_africa$country))]
 
 # african_countries[!(african_countries %in% unique(share_net_clean_africa$country))]
 #############
 
-# Global Meat Production in Africa
+# Global bean Production in Africa
 
 bean_prod_clean_africa <- bean_prod_clean |>
   rename("country" = "entity") |>
@@ -74,7 +74,46 @@ bean_prod_clean_africa_rnaturalearth <- bean_prod_clean_africa %>%
   )) |>
   rename(bean_production = "beans_dry_00000176_production_005510_tonnes")
 
-# 2) Map of countries showing global meat production between 1965 and 2020
+
+################################################################################
+# QC to check for missing countries!
+################################################################################
+
+# Countries that have data
+unique(bean_prod_clean_africa$country)
+
+# Countries that don't have data
+setdiff(african_countries, unique(bean_prod_clean_africa$country))
+
+# Check whether any countries in the dataset are not in the list of African countries
+setdiff(unique(bean_prod_clean_africa$country), african_countries)
+
+## Then check the original dataset manually to see if countries are actually missing 
+
+################################################################################
+
+################################################################################
+# Highest production in 2020
+
+bean_prod_clean_africa_rnaturalearth |>
+  arrange(desc(bean_production)) |>
+  filter(year == 2020) |>
+  top_n(1)
+
+top_3 <- bean_prod_clean_africa_rnaturalearth |>
+  arrange(desc(bean_production)) |>
+  filter(year == 2020) |>
+  top_n(3)
+
+bottom_3 <- bean_prod_clean_africa_rnaturalearth |>
+  arrange(desc(bean_production)) |>
+  filter(year == 2020) |>
+  top_n(-3)
+################################################################################
+
+
+
+# 2) Map of countries showing global bean production between 1965 and 2020
 
 # Fetch high-resolution country data
 world <- ne_countries(scale = "large", returnclass = "sf")
@@ -106,7 +145,7 @@ bean_prod_clean_africa_1965_anti_join_1 <- anti_join(africa,
                                                       bean_prod_clean_africa_1965, 
                                                       by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1965
+# Find rows only in global_bean_clean_africa_1965
 
 bean_prod_clean_africa_1965_anti_join_2 <- anti_join(bean_prod_clean_africa_1965, 
                                                       africa, 
@@ -173,7 +212,7 @@ bean_prod_clean_africa_1970_anti_join_1 <- anti_join(africa,
                                                       bean_prod_clean_africa_1970, 
                                                       by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1970
+# Find rows only in global_bean_clean_africa_1970
 
 bean_prod_clean_africa_1970_anti_join_2 <- anti_join(bean_prod_clean_africa_1970, 
                                                       africa, 
@@ -240,7 +279,7 @@ bean_prod_clean_africa_1975_anti_join_1 <- anti_join(africa,
                                                       bean_prod_clean_africa_1975, 
                                                       by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1975
+# Find rows only in global_bean_clean_africa_1975
 
 bean_prod_clean_africa_1975_anti_join_2 <- anti_join(bean_prod_clean_africa_1975, 
                                                       africa, 
@@ -307,7 +346,7 @@ bean_prod_clean_africa_1980_anti_join_1 <- anti_join(africa,
                                                       bean_prod_clean_africa_1980, 
                                                       by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1980
+# Find rows only in global_bean_clean_africa_1980
 
 bean_prod_clean_africa_1980_anti_join_2 <- anti_join(bean_prod_clean_africa_1980, 
                                                       africa, 
@@ -374,7 +413,7 @@ bean_prod_clean_africa_1985_anti_join_1 <- anti_join(africa,
                                                       bean_prod_clean_africa_1985, 
                                                       by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1985
+# Find rows only in global_bean_clean_africa_1985
 
 bean_prod_clean_africa_1985_anti_join_2 <- anti_join(bean_prod_clean_africa_1985, 
                                                       africa, 
@@ -441,7 +480,7 @@ bean_prod_clean_africa_1990_anti_join_1 <- anti_join(africa,
                                                       bean_prod_clean_africa_1990, 
                                                       by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1990
+# Find rows only in global_bean_clean_africa_1990
 
 bean_prod_clean_africa_1990_anti_join_2 <- anti_join(bean_prod_clean_africa_1990, 
                                                       africa, 
@@ -508,7 +547,7 @@ bean_prod_clean_africa_1995_anti_join_1 <- anti_join(africa,
                                                       bean_prod_clean_africa_1995, 
                                                       by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1995
+# Find rows only in global_bean_clean_africa_1995
 
 bean_prod_clean_africa_1995_anti_join_2 <- anti_join(bean_prod_clean_africa_1995, 
                                                       africa, 
@@ -575,7 +614,7 @@ bean_prod_clean_africa_2000_anti_join_1 <- anti_join(africa,
                                                       bean_prod_clean_africa_2000, 
                                                       by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_2000
+# Find rows only in global_bean_clean_africa_2000
 
 bean_prod_clean_africa_2000_anti_join_2 <- anti_join(bean_prod_clean_africa_2000, 
                                                       africa, 
@@ -642,7 +681,7 @@ bean_prod_clean_africa_2005_anti_join_1 <- anti_join(africa,
                                                       bean_prod_clean_africa_2005, 
                                                       by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_2005
+# Find rows only in global_bean_clean_africa_2005
 
 bean_prod_clean_africa_2005_anti_join_2 <- anti_join(bean_prod_clean_africa_2005, 
                                                       africa, 
@@ -709,7 +748,7 @@ bean_prod_clean_africa_2010_anti_join_1 <- anti_join(africa,
                                                       bean_prod_clean_africa_2010, 
                                                       by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_2010
+# Find rows only in global_bean_clean_africa_2010
 
 bean_prod_clean_africa_2010_anti_join_2 <- anti_join(bean_prod_clean_africa_2010, 
                                                       africa, 
@@ -776,7 +815,7 @@ bean_prod_clean_africa_2015_anti_join_1 <- anti_join(africa,
                                                       bean_prod_clean_africa_2015, 
                                                       by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_2015
+# Find rows only in global_bean_clean_africa_2015
 
 bean_prod_clean_africa_2015_anti_join_2 <- anti_join(bean_prod_clean_africa_2015, 
                                                       africa, 
@@ -843,7 +882,7 @@ bean_prod_clean_africa_2020_anti_join_1 <- anti_join(africa,
                                                       bean_prod_clean_africa_2020, 
                                                       by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_2020
+# Find rows only in global_bean_clean_africa_2020
 
 bean_prod_clean_africa_2020_anti_join_2 <- anti_join(bean_prod_clean_africa_2020, 
                                                       africa, 

@@ -43,12 +43,12 @@ african_countries <- c("Algeria", "Angola", "Benin", "Botswana", "Burkina Faso",
 #############
 # Check if the values in the african_countries dataset are present in new dataframes
 
-# african_countries[!(african_countries %in% unique(global_meat_clean_africa$country))]
+# african_countries[!(african_countries %in% unique(global_sesame_seed_clean_africa$country))]
 
 # african_countries[!(african_countries %in% unique(share_net_clean_africa$country))]
 #############
 
-# Global Meat Production in Africa
+# Global sesame_seed Production in Africa
 
 sesame_seed_prod_clean_africa <- sesame_seed_prod_clean |>
   rename("country" = "entity") |>
@@ -74,7 +74,45 @@ sesame_seed_prod_clean_africa_rnaturalearth <- sesame_seed_prod_clean_africa %>%
   )) |>
   rename(sesame_seed_production = "sesame_seed_00000289_production_005510_tonnes")
 
-# 2) Map of countries showing global meat production between 1965 and 2020
+
+################################################################################
+# QC to check for missing countries!
+################################################################################
+
+# Countries that have data
+unique(sesame_seed_prod_clean_africa$country)
+
+# Countries that don't have data
+setdiff(african_countries, unique(sesame_seed_prod_clean_africa$country))
+
+# Check whether any countries in the dataset are not in the list of African countries
+setdiff(unique(sesame_seed_prod_clean_africa$country), african_countries)
+
+## Then check the original dataset manually to see if countries are actually missing 
+
+################################################################################
+
+################################################################################
+# Highest production in 2020
+
+sesame_seed_prod_clean_africa_rnaturalearth |>
+  arrange(desc(sesame_seed_production)) |>
+  filter(year == 2020) |>
+  top_n(1)
+
+top_3 <- sesame_seed_prod_clean_africa_rnaturalearth |>
+  arrange(desc(sesame_seed_production)) |>
+  filter(year == 2020) |>
+  top_n(3)
+
+bottom_3 <- sesame_seed_prod_clean_africa_rnaturalearth |>
+  arrange(desc(sesame_seed_production)) |>
+  filter(year == 2020) |>
+  top_n(-3)
+################################################################################
+
+
+# 2) Map of countries showing global sesame_seed production between 1965 and 2020
 
 # Fetch high-resolution country data
 world <- ne_countries(scale = "large", returnclass = "sf")
@@ -106,7 +144,7 @@ sesame_seed_prod_clean_africa_1965_anti_join_1 <- anti_join(africa,
                                                      sesame_seed_prod_clean_africa_1965, 
                                                      by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1965
+# Find rows only in global_sesame_seed_clean_africa_1965
 
 sesame_seed_prod_clean_africa_1965_anti_join_2 <- anti_join(sesame_seed_prod_clean_africa_1965, 
                                                      africa, 
@@ -173,7 +211,7 @@ sesame_seed_prod_clean_africa_1970_anti_join_1 <- anti_join(africa,
                                                      sesame_seed_prod_clean_africa_1970, 
                                                      by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1970
+# Find rows only in global_sesame_seed_clean_africa_1970
 
 sesame_seed_prod_clean_africa_1970_anti_join_2 <- anti_join(sesame_seed_prod_clean_africa_1970, 
                                                      africa, 
@@ -240,7 +278,7 @@ sesame_seed_prod_clean_africa_1975_anti_join_1 <- anti_join(africa,
                                                      sesame_seed_prod_clean_africa_1975, 
                                                      by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1975
+# Find rows only in global_sesame_seed_clean_africa_1975
 
 sesame_seed_prod_clean_africa_1975_anti_join_2 <- anti_join(sesame_seed_prod_clean_africa_1975, 
                                                      africa, 
@@ -307,7 +345,7 @@ sesame_seed_prod_clean_africa_1980_anti_join_1 <- anti_join(africa,
                                                      sesame_seed_prod_clean_africa_1980, 
                                                      by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1980
+# Find rows only in global_sesame_seed_clean_africa_1980
 
 sesame_seed_prod_clean_africa_1980_anti_join_2 <- anti_join(sesame_seed_prod_clean_africa_1980, 
                                                      africa, 
@@ -374,7 +412,7 @@ sesame_seed_prod_clean_africa_1985_anti_join_1 <- anti_join(africa,
                                                      sesame_seed_prod_clean_africa_1985, 
                                                      by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1985
+# Find rows only in global_sesame_seed_clean_africa_1985
 
 sesame_seed_prod_clean_africa_1985_anti_join_2 <- anti_join(sesame_seed_prod_clean_africa_1985, 
                                                      africa, 
@@ -441,7 +479,7 @@ sesame_seed_prod_clean_africa_1990_anti_join_1 <- anti_join(africa,
                                                      sesame_seed_prod_clean_africa_1990, 
                                                      by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1990
+# Find rows only in global_sesame_seed_clean_africa_1990
 
 sesame_seed_prod_clean_africa_1990_anti_join_2 <- anti_join(sesame_seed_prod_clean_africa_1990, 
                                                      africa, 
@@ -508,7 +546,7 @@ sesame_seed_prod_clean_africa_1995_anti_join_1 <- anti_join(africa,
                                                      sesame_seed_prod_clean_africa_1995, 
                                                      by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1995
+# Find rows only in global_sesame_seed_clean_africa_1995
 
 sesame_seed_prod_clean_africa_1995_anti_join_2 <- anti_join(sesame_seed_prod_clean_africa_1995, 
                                                      africa, 
@@ -575,7 +613,7 @@ sesame_seed_prod_clean_africa_2000_anti_join_1 <- anti_join(africa,
                                                      sesame_seed_prod_clean_africa_2000, 
                                                      by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_2000
+# Find rows only in global_sesame_seed_clean_africa_2000
 
 sesame_seed_prod_clean_africa_2000_anti_join_2 <- anti_join(sesame_seed_prod_clean_africa_2000, 
                                                      africa, 
@@ -642,7 +680,7 @@ sesame_seed_prod_clean_africa_2005_anti_join_1 <- anti_join(africa,
                                                      sesame_seed_prod_clean_africa_2005, 
                                                      by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_2005
+# Find rows only in global_sesame_seed_clean_africa_2005
 
 sesame_seed_prod_clean_africa_2005_anti_join_2 <- anti_join(sesame_seed_prod_clean_africa_2005, 
                                                      africa, 
@@ -709,7 +747,7 @@ sesame_seed_prod_clean_africa_2010_anti_join_1 <- anti_join(africa,
                                                      sesame_seed_prod_clean_africa_2010, 
                                                      by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_2010
+# Find rows only in global_sesame_seed_clean_africa_2010
 
 sesame_seed_prod_clean_africa_2010_anti_join_2 <- anti_join(sesame_seed_prod_clean_africa_2010, 
                                                      africa, 
@@ -776,7 +814,7 @@ sesame_seed_prod_clean_africa_2015_anti_join_1 <- anti_join(africa,
                                                      sesame_seed_prod_clean_africa_2015, 
                                                      by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_2015
+# Find rows only in global_sesame_seed_clean_africa_2015
 
 sesame_seed_prod_clean_africa_2015_anti_join_2 <- anti_join(sesame_seed_prod_clean_africa_2015, 
                                                      africa, 
@@ -843,7 +881,7 @@ sesame_seed_prod_clean_africa_2020_anti_join_1 <- anti_join(africa,
                                                      sesame_seed_prod_clean_africa_2020, 
                                                      by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_2020
+# Find rows only in global_sesame_seed_clean_africa_2020
 
 sesame_seed_prod_clean_africa_2020_anti_join_2 <- anti_join(sesame_seed_prod_clean_africa_2020, 
                                                      africa, 

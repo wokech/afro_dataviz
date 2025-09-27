@@ -48,7 +48,7 @@ african_countries <- c("Algeria", "Angola", "Benin", "Botswana", "Burkina Faso",
 # african_countries[!(african_countries %in% unique(share_net_clean_africa$country))]
 #############
 
-# Global Meat Production in Africa
+# Global Pig Meat Production in Africa
 
 pig_prod_clean_africa <- pig_prod_clean |>
   rename("country" = "entity") |>
@@ -73,6 +73,44 @@ pig_prod_clean_africa_rnaturalearth <- pig_prod_clean_africa %>%
     TRUE ~ country  # Retain original name if none of the conditions are met
   )) |>
   rename(pig_production = "meat_pig_00001035_production_005510_tonnes")
+
+
+################################################################################
+# QC to check for missing countries!
+################################################################################
+
+# Countries that have data
+unique(pig_prod_clean_africa$country)
+
+# Countries that don't have data
+setdiff(african_countries, unique(pig_prod_clean_africa$country))
+
+# Check whether any countries in the dataset are not in the list of African countries
+setdiff(unique(pig_prod_clean_africa$country), african_countries)
+
+## Then check the original dataset manually to see if countries are actually missing 
+
+################################################################################
+
+################################################################################
+# Highest production in 2020
+
+pig_prod_clean_africa_rnaturalearth |>
+  arrange(desc(pig_production)) |>
+  filter(year == 2020) |>
+  top_n(1)
+
+top_3 <- pig_prod_clean_africa_rnaturalearth |>
+  arrange(desc(pig_production)) |>
+  filter(year == 2020) |>
+  top_n(3)
+
+bottom_3 <- pig_prod_clean_africa_rnaturalearth |>
+  arrange(desc(pig_production)) |>
+  filter(year == 2020) |>
+  top_n(-3)
+################################################################################
+
 
 # 2) Map of countries showing global meat production between 1965 and 2020
 

@@ -43,12 +43,12 @@ african_countries <- c("Algeria", "Angola", "Benin", "Botswana", "Burkina Faso",
 #############
 # Check if the values in the african_countries dataset are present in new dataframes
 
-# african_countries[!(african_countries %in% unique(global_meat_clean_africa$country))]
+# african_countries[!(african_countries %in% unique(global_aquaculture_clean_africa$country))]
 
 # african_countries[!(african_countries %in% unique(share_net_clean_africa$country))]
 #############
 
-# Global Meat Production in Africa
+# Global aquaculture Production in Africa
 
 aqua_prod_clean_africa <- aqua_prod_clean |>
   rename("country" = "entity") |>
@@ -74,9 +74,38 @@ aqua_prod_clean_africa_rnaturalearth <- aqua_prod_clean_africa %>%
   )) |>
   rename(aqua_production = "er_fsh_aqua_mt")
 
+################################################################################
+# QC to check for missing countries!
+################################################################################
+
+# Countries that have data
+unique(aqua_prod_clean_africa$country)
+
+# Countries that don't have data
+setdiff(african_countries, unique(aqua_prod_clean_africa$country))
+
+# Check whether any countries in the dataset are not in the list of African countries
+setdiff(unique(aqua_prod_clean_africa$country), african_countries)
+
+## Then check the original dataset manually to see if countries are actually missing 
+
+################################################################################
 
 
-# 2) Map of countries showing global meat production between 1965 and 2020
+################################################################################
+# Highest production in 2020
+
+aqua_prod_clean_africa_rnaturalearth |>
+  arrange(desc(aqua_production)) |>
+  filter(year == 2020) |>
+  top_n(1)
+
+
+################################################################################
+
+
+
+# 2) Map of countries showing global aquaculture production between 1965 and 2020
 
 # Fetch high-resolution country data
 world <- ne_countries(scale = "large", returnclass = "sf")
@@ -108,7 +137,7 @@ aqua_prod_clean_africa_1965_anti_join_1 <- anti_join(africa,
                                                           aqua_prod_clean_africa_1965, 
                                                           by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1965
+# Find rows only in global_aquaculture_clean_africa_1965
 
 aqua_prod_clean_africa_1965_anti_join_2 <- anti_join(aqua_prod_clean_africa_1965, 
                                                           africa, 
@@ -175,7 +204,7 @@ aqua_prod_clean_africa_1970_anti_join_1 <- anti_join(africa,
                                                           aqua_prod_clean_africa_1970, 
                                                           by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1970
+# Find rows only in global_aquaculture_clean_africa_1970
 
 aqua_prod_clean_africa_1970_anti_join_2 <- anti_join(aqua_prod_clean_africa_1970, 
                                                           africa, 
@@ -242,7 +271,7 @@ aqua_prod_clean_africa_1975_anti_join_1 <- anti_join(africa,
                                                           aqua_prod_clean_africa_1975, 
                                                           by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1975
+# Find rows only in global_aquaculture_clean_africa_1975
 
 aqua_prod_clean_africa_1975_anti_join_2 <- anti_join(aqua_prod_clean_africa_1975, 
                                                           africa, 
@@ -309,7 +338,7 @@ aqua_prod_clean_africa_1980_anti_join_1 <- anti_join(africa,
                                                           aqua_prod_clean_africa_1980, 
                                                           by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1980
+# Find rows only in global_aquaculture_clean_africa_1980
 
 aqua_prod_clean_africa_1980_anti_join_2 <- anti_join(aqua_prod_clean_africa_1980, 
                                                           africa, 
@@ -376,7 +405,7 @@ aqua_prod_clean_africa_1985_anti_join_1 <- anti_join(africa,
                                                           aqua_prod_clean_africa_1985, 
                                                           by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1985
+# Find rows only in global_aquaculture_clean_africa_1985
 
 aqua_prod_clean_africa_1985_anti_join_2 <- anti_join(aqua_prod_clean_africa_1985, 
                                                           africa, 
@@ -443,7 +472,7 @@ aqua_prod_clean_africa_1990_anti_join_1 <- anti_join(africa,
                                                           aqua_prod_clean_africa_1990, 
                                                           by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1990
+# Find rows only in global_aquaculture_clean_africa_1990
 
 aqua_prod_clean_africa_1990_anti_join_2 <- anti_join(aqua_prod_clean_africa_1990, 
                                                           africa, 
@@ -510,7 +539,7 @@ aqua_prod_clean_africa_1995_anti_join_1 <- anti_join(africa,
                                                           aqua_prod_clean_africa_1995, 
                                                           by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1995
+# Find rows only in global_aquaculture_clean_africa_1995
 
 aqua_prod_clean_africa_1995_anti_join_2 <- anti_join(aqua_prod_clean_africa_1995, 
                                                           africa, 
@@ -577,7 +606,7 @@ aqua_prod_clean_africa_2000_anti_join_1 <- anti_join(africa,
                                                           aqua_prod_clean_africa_2000, 
                                                           by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_2000
+# Find rows only in global_aquaculture_clean_africa_2000
 
 aqua_prod_clean_africa_2000_anti_join_2 <- anti_join(aqua_prod_clean_africa_2000, 
                                                           africa, 
@@ -644,7 +673,7 @@ aqua_prod_clean_africa_2005_anti_join_1 <- anti_join(africa,
                                                           aqua_prod_clean_africa_2005, 
                                                           by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_2005
+# Find rows only in global_aquaculture_clean_africa_2005
 
 aqua_prod_clean_africa_2005_anti_join_2 <- anti_join(aqua_prod_clean_africa_2005, 
                                                           africa, 
@@ -711,7 +740,7 @@ aqua_prod_clean_africa_2010_anti_join_1 <- anti_join(africa,
                                                           aqua_prod_clean_africa_2010, 
                                                           by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_2010
+# Find rows only in global_aquaculture_clean_africa_2010
 
 aqua_prod_clean_africa_2010_anti_join_2 <- anti_join(aqua_prod_clean_africa_2010, 
                                                           africa, 
@@ -778,7 +807,7 @@ aqua_prod_clean_africa_2015_anti_join_1 <- anti_join(africa,
                                                           aqua_prod_clean_africa_2015, 
                                                           by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_2015
+# Find rows only in global_aquaculture_clean_africa_2015
 
 aqua_prod_clean_africa_2015_anti_join_2 <- anti_join(aqua_prod_clean_africa_2015, 
                                                           africa, 
@@ -845,7 +874,7 @@ aqua_prod_clean_africa_2020_anti_join_1 <- anti_join(africa,
                                                           aqua_prod_clean_africa_2020, 
                                                           by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_2020
+# Find rows only in global_aquaculture_clean_africa_2020
 
 aqua_prod_clean_africa_2020_anti_join_2 <- anti_join(aqua_prod_clean_africa_2020, 
                                                           africa, 

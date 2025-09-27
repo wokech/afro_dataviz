@@ -61,16 +61,19 @@
 "QCL","Crops and livestock products","108","Burundi","5510","Production","01620","Tea leaves","2020","2020","t","51043","A","Official figure",""
 "QCL","Crops and livestock products","108","Burundi","5510","Production","01620","Tea leaves","2021","2021","t","50123","A","Official figure",""
 "QCL","Crops and livestock products","108","Burundi","5510","Production","01620","Tea leaves","2022","2022","t","63700","E","Estimated value",""
-"QCL","Crops and livestock products","108","Burundi","5510","Production","01620","Tea leaves","2023","2023","t","62914.02","I","Imputed value",""
-"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","1961","1961","t","83","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","1962","1962","t","136","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","1963","1963","t","242","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","1964","1964","t","341","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","1965","1965","t","517","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","1966","1966","t","650","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","1967","1967","t","750","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","1968","1968","t","1071","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","1969","1969","t","978","X","Figure from international organizations","Unofficial figure"
+"QCL","Crops and livestock products","108","Burundi","5510","Production","01620","Tea leaves","2023","2023","t","62914.02","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","1961","1961","t","83","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","1962","1962","t","136","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","1963","1963","t","242","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","1964","1964","t","341","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","1965","1965","t","517","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","1966","1966","t","650","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","1967","1967","t","750","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","1968","1968","t","1071","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","1969","1969","t","978","X","Figure from external organization","Unofficial figure"
 "QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","1970","1970","t","1028","A","Official figure",""
 "QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","1971","1971","t","1110","A","Official figure",""
 "QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","1972","1972","t","1296","A","Official figure",""
@@ -102,25 +105,67 @@
 "QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","1998","1998","t","3944","A","Official figure",""
 "QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","1999","1999","t","4597","A","Official figure",""
 "QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2000","2000","t","4004","A","Official figure",""
-"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2001","2001","t","4200","X","Figure from international organizations","Unofficial figure"
+"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2001","2001","t","4200","X","Figure from external organization","Unofficial figure"
 "QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2002","2002","t","4000","A","Official figure",""
 "QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2003","2003","t","3401","A","Official figure",""
 "QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2004","2004","t","4000","E","Estimated value",""
-"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2005","2005","t","4354.35","I","Imputed value",""
-"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2006","2006","t","4678.03","I","Imputed value",""
-"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2007","2007","t","4903.19","I","Imputed value",""
-"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2008","2008","t","5127.65","I","Imputed value",""
-"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2009","2009","t","6000","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2010","2010","t","5532.5","I","Imputed value",""
-"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2011","2011","t","5052.37","I","Imputed value",""
-"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2012","2012","t","5082.08","I","Imputed value",""
-"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2013","2013","t","5160.97","I","Imputed value",""
-"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2014","2014","t","5239.86","I","Imputed value",""
-"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2015","2015","t","5318.74","I","Imputed value",""
-"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2016","2016","t","5397.63","I","Imputed value",""
-"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2017","2017","t","5484.91","I","Imputed value",""
-"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2018","2018","t","5568.54","I","Imputed value",""
-"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2019","2019","t","5654","I","Imputed value",""
+"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2005","2005","t","4354.35","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2006","2006","t","4678.03","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2007","2007","t","4903.19","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2008","2008","t","5127.65","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2009","2009","t","6000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2010","2010","t","5532.5","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2011","2011","t","5052.37","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2012","2012","t","5082.08","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2013","2013","t","5160.97","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2014","2014","t","5239.86","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2015","2015","t","5318.74","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2016","2016","t","5397.63","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2017","2017","t","5484.91","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2018","2018","t","5568.54","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2019","2019","t","5654","I","Value 
+imputed by a
+receiving 
+agency",""
 "QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2020","2020","t","5569.15","E","Estimated value",""
 "QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2021","2021","t","5597.23","E","Estimated value",""
 "QCL","Crops and livestock products","120","Cameroon","5510","Production","01620","Tea leaves","2022","2022","t","5606.79","E","Estimated value",""
@@ -176,49 +221,151 @@
 "QCL","Crops and livestock products","180","Democratic Republic of the Congo","5510","Production","01620","Tea leaves","2009","2009","t","2489","A","Official figure",""
 "QCL","Crops and livestock products","180","Democratic Republic of the Congo","5510","Production","01620","Tea leaves","2010","2010","t","2479","A","Official figure",""
 "QCL","Crops and livestock products","180","Democratic Republic of the Congo","5510","Production","01620","Tea leaves","2011","2011","t","3129","A","Official figure",""
-"QCL","Crops and livestock products","180","Democratic Republic of the Congo","5510","Production","01620","Tea leaves","2012","2012","t","2889.01","I","Imputed value",""
-"QCL","Crops and livestock products","180","Democratic Republic of the Congo","5510","Production","01620","Tea leaves","2013","2013","t","1910.56","I","Imputed value",""
-"QCL","Crops and livestock products","180","Democratic Republic of the Congo","5510","Production","01620","Tea leaves","2014","2014","t","1656.14","I","Imputed value",""
-"QCL","Crops and livestock products","180","Democratic Republic of the Congo","5510","Production","01620","Tea leaves","2015","2015","t","1446.78","I","Imputed value",""
-"QCL","Crops and livestock products","180","Democratic Republic of the Congo","5510","Production","01620","Tea leaves","2016","2016","t","1272.09","I","Imputed value",""
-"QCL","Crops and livestock products","180","Democratic Republic of the Congo","5510","Production","01620","Tea leaves","2017","2017","t","1152.03","I","Imputed value",""
+"QCL","Crops and livestock products","180","Democratic Republic of the Congo","5510","Production","01620","Tea leaves","2012","2012","t","2889.01","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","180","Democratic Republic of the Congo","5510","Production","01620","Tea leaves","2013","2013","t","1910.56","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","180","Democratic Republic of the Congo","5510","Production","01620","Tea leaves","2014","2014","t","1656.14","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","180","Democratic Republic of the Congo","5510","Production","01620","Tea leaves","2015","2015","t","1446.78","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","180","Democratic Republic of the Congo","5510","Production","01620","Tea leaves","2016","2016","t","1272.09","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","180","Democratic Republic of the Congo","5510","Production","01620","Tea leaves","2017","2017","t","1152.03","I","Value 
+imputed by a
+receiving 
+agency",""
 "QCL","Crops and livestock products","180","Democratic Republic of the Congo","5510","Production","01620","Tea leaves","2018","2018","t","4407","A","Official figure",""
 "QCL","Crops and livestock products","180","Democratic Republic of the Congo","5510","Production","01620","Tea leaves","2019","2019","t","4427","A","Official figure",""
 "QCL","Crops and livestock products","180","Democratic Republic of the Congo","5510","Production","01620","Tea leaves","2020","2020","t","4446","A","Official figure",""
-"QCL","Crops and livestock products","180","Democratic Republic of the Congo","5510","Production","01620","Tea leaves","2021","2021","t","3932.59","I","Imputed value",""
-"QCL","Crops and livestock products","180","Democratic Republic of the Congo","5510","Production","01620","Tea leaves","2022","2022","t","3070.96","I","Imputed value",""
-"QCL","Crops and livestock products","180","Democratic Republic of the Congo","5510","Production","01620","Tea leaves","2023","2023","t","2907.2","I","Imputed value",""
+"QCL","Crops and livestock products","180","Democratic Republic of the Congo","5510","Production","01620","Tea leaves","2021","2021","t","3932.59","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","180","Democratic Republic of the Congo","5510","Production","01620","Tea leaves","2022","2022","t","3070.96","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","180","Democratic Republic of the Congo","5510","Production","01620","Tea leaves","2023","2023","t","2907.2","I","Value 
+imputed by a
+receiving 
+agency",""
 "QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","1993","1993","t","30000","E","Estimated value",""
-"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","1994","1994","t","36033","I","Imputed value",""
-"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","1995","1995","t","36348.04","I","Imputed value",""
-"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","1996","1996","t","36683.02","I","Imputed value",""
-"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","1997","1997","t","37047.07","I","Imputed value",""
-"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","1998","1998","t","37449.31","I","Imputed value",""
-"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","1999","1999","t","38207.41","I","Imputed value",""
-"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2000","2000","t","39194.19","I","Imputed value",""
-"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2001","2001","t","40179.5","I","Imputed value",""
-"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2002","2002","t","41162.94","I","Imputed value",""
-"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2003","2003","t","42144.07","I","Imputed value",""
-"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2004","2004","t","43121.92","I","Imputed value",""
-"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2005","2005","t","44073.5","I","Imputed value",""
-"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2006","2006","t","38649.79","I","Imputed value",""
-"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2007","2007","t","39425.07","I","Imputed value",""
-"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2008","2008","t","40196.47","I","Imputed value",""
-"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2009","2009","t","41864.41","I","Imputed value",""
-"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2010","2010","t","43743.98","I","Imputed value",""
-"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2011","2011","t","46070.37","I","Imputed value",""
-"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2012","2012","t","48883.34","I","Imputed value",""
-"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2013","2013","t","51861.22","I","Imputed value",""
-"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2014","2014","t","55006.05","I","Imputed value",""
-"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2015","2015","t","58312.94","I","Imputed value",""
+"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","1994","1994","t","36033","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","1995","1995","t","36348.04","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","1996","1996","t","36683.02","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","1997","1997","t","37047.07","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","1998","1998","t","37449.31","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","1999","1999","t","38207.41","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2000","2000","t","39194.19","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2001","2001","t","40179.5","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2002","2002","t","41162.94","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2003","2003","t","42144.07","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2004","2004","t","43121.92","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2005","2005","t","44073.5","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2006","2006","t","38649.79","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2007","2007","t","39425.07","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2008","2008","t","40196.47","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2009","2009","t","41864.41","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2010","2010","t","43743.98","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2011","2011","t","46070.37","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2012","2012","t","48883.34","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2013","2013","t","51861.22","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2014","2014","t","55006.05","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2015","2015","t","58312.94","I","Value 
+imputed by a
+receiving 
+agency",""
 "QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2016","2016","t","62261.85","A","Official figure",""
 "QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2017","2017","t","74981.36","A","Official figure",""
 "QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2018","2018","t","74842.38","A","Official figure",""
-"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2019","2019","t","68944.87","I","Imputed value",""
+"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2019","2019","t","68944.87","I","Value 
+imputed by a
+receiving 
+agency",""
 "QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2020","2020","t","75948.15","A","Official figure",""
 "QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2021","2021","t","44023.75","A","Official figure",""
-"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2022","2022","t","51662.34","I","Imputed value",""
-"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2023","2023","t","61449.28","I","Imputed value",""
+"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2022","2022","t","51662.34","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","231","Ethiopia","5510","Production","01620","Tea leaves","2023","2023","t","61449.28","I","Value 
+imputed by a
+receiving 
+agency",""
 "QCL","Crops and livestock products","230","Ethiopia PDR","5510","Production","01620","Tea leaves","1961","1961","t","0","A","Official figure",""
 "QCL","Crops and livestock products","230","Ethiopia PDR","5510","Production","01620","Tea leaves","1962","1962","t","0","A","Official figure",""
 "QCL","Crops and livestock products","230","Ethiopia PDR","5510","Production","01620","Tea leaves","1963","1963","t","0","A","Official figure",""
@@ -344,12 +491,21 @@
 "QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","1988","1988","t","260","E","Estimated value",""
 "QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","1989","1989","t","270","E","Estimated value",""
 "QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","1990","1990","t","280","E","Estimated value",""
-"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","1991","1991","t","332.53","I","Imputed value",""
+"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","1991","1991","t","332.53","I","Value 
+imputed by a
+receiving 
+agency",""
 "QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","1992","1992","t","290","E","Estimated value",""
 "QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","1993","1993","t","400","E","Estimated value",""
 "QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","1994","1994","t","300","E","Estimated value",""
-"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","1995","1995","t","336.87","I","Imputed value",""
-"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","1996","1996","t","339.7","I","Imputed value",""
+"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","1995","1995","t","336.87","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","1996","1996","t","339.7","I","Value 
+imputed by a
+receiving 
+agency",""
 "QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","1997","1997","t","320","E","Estimated value",""
 "QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","1998","1998","t","312","A","Official figure",""
 "QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","1999","1999","t","400","E","Estimated value",""
@@ -362,21 +518,66 @@
 "QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2006","2006","t","353","A","Official figure",""
 "QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2007","2007","t","374","A","Official figure",""
 "QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2008","2008","t","246","A","Official figure",""
-"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2009","2009","t","309.12","I","Imputed value",""
-"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2010","2010","t","380.69","I","Imputed value",""
-"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2011","2011","t","380.41","I","Imputed value",""
-"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2012","2012","t","381.52","I","Imputed value",""
-"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2013","2013","t","382.64","I","Imputed value",""
-"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2014","2014","t","383.76","I","Imputed value",""
-"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2015","2015","t","384.87","I","Imputed value",""
-"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2016","2016","t","385.99","I","Imputed value",""
-"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2017","2017","t","390.14","I","Imputed value",""
-"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2018","2018","t","391.51","I","Imputed value",""
-"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2019","2019","t","392.99","I","Imputed value",""
-"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2020","2020","t","394.49","I","Imputed value",""
-"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2021","2021","t","396.79","I","Imputed value",""
-"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2022","2022","t","398.69","I","Imputed value",""
-"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2023","2023","t","400.59","I","Imputed value",""
+"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2009","2009","t","309.12","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2010","2010","t","380.69","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2011","2011","t","380.41","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2012","2012","t","381.52","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2013","2013","t","382.64","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2014","2014","t","383.76","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2015","2015","t","384.87","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2016","2016","t","385.99","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2017","2017","t","390.14","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2018","2018","t","391.51","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2019","2019","t","392.99","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2020","2020","t","394.49","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2021","2021","t","396.79","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2022","2022","t","398.69","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","450","Madagascar","5510","Production","01620","Tea leaves","2023","2023","t","400.59","I","Value 
+imputed by a
+receiving 
+agency",""
 "QCL","Crops and livestock products","454","Malawi","5510","Production","01620","Tea leaves","1961","1961","t","14288","A","Official figure",""
 "QCL","Crops and livestock products","454","Malawi","5510","Production","01620","Tea leaves","1962","1962","t","13336","A","Official figure",""
 "QCL","Crops and livestock products","454","Malawi","5510","Production","01620","Tea leaves","1963","1963","t","11929","A","Official figure",""
@@ -439,7 +640,10 @@
 "QCL","Crops and livestock products","454","Malawi","5510","Production","01620","Tea leaves","2020","2020","t","253800","E","Estimated value",""
 "QCL","Crops and livestock products","454","Malawi","5510","Production","01620","Tea leaves","2021","2021","t","242500","E","Estimated value",""
 "QCL","Crops and livestock products","454","Malawi","5510","Production","01620","Tea leaves","2022","2022","t","266500","E","Estimated value",""
-"QCL","Crops and livestock products","454","Malawi","5510","Production","01620","Tea leaves","2023","2023","t","246220.87","I","Imputed value",""
+"QCL","Crops and livestock products","454","Malawi","5510","Production","01620","Tea leaves","2023","2023","t","246220.87","I","Value 
+imputed by a
+receiving 
+agency",""
 "QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","1961","1961","t","0","A","Official figure",""
 "QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","1962","1962","t","0","A","Official figure",""
 "QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","1963","1963","t","0","A","Official figure",""
@@ -478,8 +682,14 @@
 "QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","1996","1996","t","69","A","Official figure",""
 "QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","1997","1997","t","50","A","Official figure",""
 "QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","1998","1998","t","60","A","Official figure",""
-"QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","1999","1999","t","76.39","I","Imputed value",""
-"QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2000","2000","t","74.94","I","Imputed value",""
+"QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","1999","1999","t","76.39","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2000","2000","t","74.94","I","Value 
+imputed by a
+receiving 
+agency",""
 "QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2001","2001","t","50","E","Estimated value",""
 "QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2002","2002","t","70","E","Estimated value",""
 "QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2003","2003","t","90","E","Estimated value",""
@@ -487,16 +697,40 @@
 "QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2005","2005","t","135","A","Official figure",""
 "QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2006","2006","t","135","A","Official figure",""
 "QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2007","2007","t","135","A","Official figure",""
-"QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2008","2008","t","121.6","I","Imputed value",""
-"QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2009","2009","t","118.57","I","Imputed value",""
-"QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2010","2010","t","108.86","I","Imputed value",""
-"QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2011","2011","t","103.75","I","Imputed value",""
-"QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2012","2012","t","98.71","I","Imputed value",""
+"QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2008","2008","t","121.6","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2009","2009","t","118.57","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2010","2010","t","108.86","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2011","2011","t","103.75","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2012","2012","t","98.71","I","Value 
+imputed by a
+receiving 
+agency",""
 "QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2013","2013","t","89","A","Official figure",""
 "QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2014","2014","t","89","A","Official figure",""
-"QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2015","2015","t","89.1","I","Imputed value",""
-"QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2016","2016","t","95.66","I","Imputed value",""
-"QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2017","2017","t","91.39","I","Imputed value",""
+"QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2015","2015","t","89.1","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2016","2016","t","95.66","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2017","2017","t","91.39","I","Value 
+imputed by a
+receiving 
+agency",""
 "QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2018","2018","t","92.05","E","Estimated value",""
 "QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2019","2019","t","93.04","E","Estimated value",""
 "QCL","Crops and livestock products","466","Mali","5510","Production","01620","Tea leaves","2020","2020","t","92.16","E","Estimated value",""
@@ -576,24 +810,24 @@
 "QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1968","1968","t","14250","A","Official figure",""
 "QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1969","1969","t","16054","A","Official figure",""
 "QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1970","1970","t","16972","A","Official figure",""
-"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1971","1971","t","16536","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1972","1972","t","18678","X","Figure from international organizations","Unofficial figure"
+"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1971","1971","t","16536","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1972","1972","t","18678","X","Figure from external organization","Unofficial figure"
 "QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1973","1973","t","18795","A","Official figure",""
 "QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1974","1974","t","17639","A","Official figure",""
 "QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1975","1975","t","13143","A","Official figure",""
-"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1976","1976","t","13825","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1977","1977","t","17000","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1978","1978","t","18069","X","Figure from international organizations","Unofficial figure"
+"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1976","1976","t","13825","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1977","1977","t","17000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1978","1978","t","18069","X","Figure from external organization","Unofficial figure"
 "QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1979","1979","t","18900","A","Official figure",""
-"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1980","1980","t","19500","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1981","1981","t","22190","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1982","1982","t","21000","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1983","1983","t","15000","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1984","1984","t","11000","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1985","1985","t","7000","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1986","1986","t","5000","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1987","1987","t","3000","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1988","1988","t","1500","X","Figure from international organizations","Unofficial figure"
+"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1980","1980","t","19500","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1981","1981","t","22190","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1982","1982","t","21000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1983","1983","t","15000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1984","1984","t","11000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1985","1985","t","7000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1986","1986","t","5000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1987","1987","t","3000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1988","1988","t","1500","X","Figure from external organization","Unofficial figure"
 "QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1989","1989","t","2500","E","Estimated value",""
 "QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1990","1990","t","4000","A","Official figure",""
 "QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","1991","1991","t","4941","A","Official figure",""
@@ -622,7 +856,7 @@
 "QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","2014","2014","t","28840","A","Official figure",""
 "QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","2015","2015","t","32000","A","Official figure",""
 "QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","2016","2016","t","32000","A","Official figure",""
-"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","2017","2017","t","32000","X","Figure from international organizations","Unofficial figure"
+"QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","2017","2017","t","32000","X","Figure from external organization","Unofficial figure"
 "QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","2018","2018","t","31000","A","Official figure",""
 "QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","2019","2019","t","32000","A","Official figure",""
 "QCL","Crops and livestock products","508","Mozambique","5510","Production","01620","Tea leaves","2020","2020","t","4876","A","Official figure",""
@@ -661,20 +895,62 @@
 "QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","1990","1990","t","359","E","Estimated value",""
 "QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","1991","1991","t","360","E","Estimated value",""
 "QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","1992","1992","t","370","E","Estimated value",""
-"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","1993","1993","t","389","I","Imputed value",""
-"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","1994","1994","t","403","I","Imputed value",""
-"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","1995","1995","t","417","I","Imputed value",""
-"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","1996","1996","t","431","I","Imputed value",""
-"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","1997","1997","t","445","I","Imputed value",""
-"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","1998","1998","t","460","I","Imputed value",""
-"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","1999","1999","t","475","I","Imputed value",""
-"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","2000","2000","t","491","I","Imputed value",""
-"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","2001","2001","t","507","I","Imputed value",""
-"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","2002","2002","t","524","I","Imputed value",""
-"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","2003","2003","t","541","I","Imputed value",""
-"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","2004","2004","t","560","I","Imputed value",""
-"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","2005","2005","t","580","I","Imputed value",""
-"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","2006","2006","t","601","I","Imputed value",""
+"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","1993","1993","t","389","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","1994","1994","t","403","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","1995","1995","t","417","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","1996","1996","t","431","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","1997","1997","t","445","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","1998","1998","t","460","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","1999","1999","t","475","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","2000","2000","t","491","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","2001","2001","t","507","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","2002","2002","t","524","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","2003","2003","t","541","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","2004","2004","t","560","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","2005","2005","t","580","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","638","Réunion","5510","Production","01620","Tea leaves","2006","2006","t","601","I","Value 
+imputed by a
+receiving 
+agency",""
 "QCL","Crops and livestock products","646","Rwanda","5510","Production","01620","Tea leaves","1961","1961","t","160","A","Official figure",""
 "QCL","Crops and livestock products","646","Rwanda","5510","Production","01620","Tea leaves","1962","1962","t","210","A","Official figure",""
 "QCL","Crops and livestock products","646","Rwanda","5510","Production","01620","Tea leaves","1963","1963","t","300","A","Official figure",""
@@ -737,7 +1013,10 @@
 "QCL","Crops and livestock products","646","Rwanda","5510","Production","01620","Tea leaves","2020","2020","t","140004.94","A","Official figure",""
 "QCL","Crops and livestock products","646","Rwanda","5510","Production","01620","Tea leaves","2021","2021","t","149627.41","A","Official figure",""
 "QCL","Crops and livestock products","646","Rwanda","5510","Production","01620","Tea leaves","2022","2022","t","160419.78","A","Official figure",""
-"QCL","Crops and livestock products","646","Rwanda","5510","Production","01620","Tea leaves","2023","2023","t","165003.49","I","Imputed value",""
+"QCL","Crops and livestock products","646","Rwanda","5510","Production","01620","Tea leaves","2023","2023","t","165003.49","I","Value 
+imputed by a
+receiving 
+agency",""
 "QCL","Crops and livestock products","690","Seychelles","5510","Production","01620","Tea leaves","1961","1961","t","10","E","Estimated value",""
 "QCL","Crops and livestock products","690","Seychelles","5510","Production","01620","Tea leaves","1962","1962","t","10","E","Estimated value",""
 "QCL","Crops and livestock products","690","Seychelles","5510","Production","01620","Tea leaves","1963","1963","t","13","E","Estimated value",""
@@ -806,16 +1085,16 @@
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1963","1963","t","2000","E","Estimated value",""
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1964","1964","t","2000","E","Estimated value",""
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1965","1965","t","2000","E","Estimated value",""
-"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1966","1966","t","2000","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1967","1967","t","2000","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1968","1968","t","2000","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1969","1969","t","2000","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1970","1970","t","800","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1971","1971","t","1500","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1972","1972","t","2000","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1973","1973","t","2500","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1974","1974","t","3000","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1975","1975","t","2836","X","Figure from international organizations","Unofficial figure"
+"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1966","1966","t","2000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1967","1967","t","2000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1968","1968","t","2000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1969","1969","t","2000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1970","1970","t","800","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1971","1971","t","1500","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1972","1972","t","2000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1973","1973","t","2500","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1974","1974","t","3000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1975","1975","t","2836","X","Figure from external organization","Unofficial figure"
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1976","1976","t","3459","A","Official figure",""
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1977","1977","t","3459","A","Official figure",""
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1978","1978","t","4561","A","Official figure",""
@@ -826,9 +1105,9 @@
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1983","1983","t","7097","A","Official figure",""
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1984","1984","t","8301","A","Official figure",""
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1985","1985","t","9218","A","Official figure",""
-"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1986","1986","t","10663","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1987","1987","t","11507","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1988","1988","t","11967","X","Figure from international organizations","Unofficial figure"
+"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1986","1986","t","10663","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1987","1987","t","11507","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1988","1988","t","11967","X","Figure from external organization","Unofficial figure"
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1989","1989","t","13000","A","Official figure",""
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1990","1990","t","12441","A","Official figure",""
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1991","1991","t","11128","A","Official figure",""
@@ -836,8 +1115,8 @@
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1993","1993","t","10532","A","Official figure",""
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1994","1994","t","11316","A","Official figure",""
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1995","1995","t","11975","A","Official figure",""
-"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1996","1996","t","9062","X","Figure from international organizations","Unofficial figure"
-"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1997","1997","t","8207","X","Figure from international organizations","Unofficial figure"
+"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1996","1996","t","9062","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1997","1997","t","8207","X","Figure from external organization","Unofficial figure"
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1998","1998","t","13010","A","Official figure",""
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","1999","1999","t","12077","A","Official figure",""
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","2000","2000","t","12514","A","Official figure",""
@@ -847,16 +1126,31 @@
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","2004","2004","t","4279","A","Official figure",""
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","2005","2005","t","21780","A","Official figure",""
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","2006","2006","t","3328","A","Official figure",""
-"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","2007","2007","t","6333.43","I","Imputed value",""
+"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","2007","2007","t","6333.43","I","Value 
+imputed by a
+receiving 
+agency",""
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","2008","2008","t","3290","A","Official figure",""
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","2009","2009","t","1743","A","Official figure",""
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","2010","2010","t","1647","A","Official figure",""
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","2011","2011","t","1795","A","Official figure",""
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","2012","2012","t","870","A","Official figure",""
-"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","2013","2013","t","2171.37","I","Imputed value",""
-"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","2014","2014","t","1989.53","I","Imputed value",""
-"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","2015","2015","t","1858.07","I","Imputed value",""
-"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","2016","2016","t","1715.62","I","Imputed value",""
+"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","2013","2013","t","2171.37","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","2014","2014","t","1989.53","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","2015","2015","t","1858.07","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","2016","2016","t","1715.62","I","Value 
+imputed by a
+receiving 
+agency",""
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","2017","2017","t","1854.41","E","Estimated value",""
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","2018","2018","t","1809.37","E","Estimated value",""
 "QCL","Crops and livestock products","710","South Africa","5510","Production","01620","Tea leaves","2019","2019","t","1793.13","E","Estimated value",""
@@ -926,7 +1220,10 @@
 "QCL","Crops and livestock products","800","Uganda","5510","Production","01620","Tea leaves","2020","2020","t","390000","E","Estimated value",""
 "QCL","Crops and livestock products","800","Uganda","5510","Production","01620","Tea leaves","2021","2021","t","437000","E","Estimated value",""
 "QCL","Crops and livestock products","800","Uganda","5510","Production","01620","Tea leaves","2022","2022","t","406000","E","Estimated value",""
-"QCL","Crops and livestock products","800","Uganda","5510","Production","01620","Tea leaves","2023","2023","t","390493.99","I","Imputed value",""
+"QCL","Crops and livestock products","800","Uganda","5510","Production","01620","Tea leaves","2023","2023","t","390493.99","I","Value 
+imputed by a
+receiving 
+agency",""
 "QCL","Crops and livestock products","834","United Republic of Tanzania","5510","Production","01620","Tea leaves","1961","1961","t","4459","A","Official figure",""
 "QCL","Crops and livestock products","834","United Republic of Tanzania","5510","Production","01620","Tea leaves","1962","1962","t","4310","A","Official figure",""
 "QCL","Crops and livestock products","834","United Republic of Tanzania","5510","Production","01620","Tea leaves","1963","1963","t","5019","A","Official figure",""
@@ -1018,7 +1315,7 @@
 "QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","1986","1986","t","468","A","Official figure",""
 "QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","1987","1987","t","373","A","Official figure",""
 "QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","1988","1988","t","546","A","Official figure",""
-"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","1989","1989","t","550","X","Figure from international organizations","Unofficial figure"
+"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","1989","1989","t","550","X","Figure from external organization","Unofficial figure"
 "QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","1990","1990","t","560","E","Estimated value",""
 "QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","1991","1991","t","570","E","Estimated value",""
 "QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","1992","1992","t","500","E","Estimated value",""
@@ -1032,23 +1329,62 @@
 "QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2000","2000","t","850","E","Estimated value",""
 "QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2001","2001","t","550","E","Estimated value",""
 "QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2002","2002","t","750","E","Estimated value",""
-"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2003","2003","t","659.39","I","Imputed value",""
+"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2003","2003","t","659.39","I","Value 
+imputed by a
+receiving 
+agency",""
 "QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2004","2004","t","800","E","Estimated value",""
-"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2005","2005","t","774.15","I","Imputed value",""
+"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2005","2005","t","774.15","I","Value 
+imputed by a
+receiving 
+agency",""
 "QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2006","2006","t","750","E","Estimated value",""
-"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2007","2007","t","780.87","I","Imputed value",""
-"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2008","2008","t","802.16","I","Imputed value",""
-"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2009","2009","t","821.63","I","Imputed value",""
-"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2010","2010","t","841.79","I","Imputed value",""
-"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2011","2011","t","861.73","I","Imputed value",""
+"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2007","2007","t","780.87","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2008","2008","t","802.16","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2009","2009","t","821.63","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2010","2010","t","841.79","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2011","2011","t","861.73","I","Value 
+imputed by a
+receiving 
+agency",""
 "QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2012","2012","t","900","E","Estimated value",""
 "QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2013","2013","t","900","E","Estimated value",""
-"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2014","2014","t","910.63","I","Imputed value",""
-"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2015","2015","t","931.05","I","Imputed value",""
-"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2016","2016","t","921.2","I","Imputed value",""
-"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2017","2017","t","941.03","I","Imputed value",""
-"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2018","2018","t","964.93","I","Imputed value",""
-"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2019","2019","t","985.36","I","Imputed value",""
+"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2014","2014","t","910.63","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2015","2015","t","931.05","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2016","2016","t","921.2","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2017","2017","t","941.03","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2018","2018","t","964.93","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2019","2019","t","985.36","I","Value 
+imputed by a
+receiving 
+agency",""
 "QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2020","2020","t","963.77","E","Estimated value",""
 "QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2021","2021","t","971.35","E","Estimated value",""
 "QCL","Crops and livestock products","894","Zambia","5510","Production","01620","Tea leaves","2022","2022","t","973.49","E","Estimated value",""
@@ -1059,9 +1395,9 @@
 "QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","1964","1964","t","1392","A","Official figure",""
 "QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","1965","1965","t","1608","A","Official figure",""
 "QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","1966","1966","t","2268","A","Official figure",""
-"QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","1967","1967","t","2896","X","Figure from international organizations","Unofficial figure"
+"QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","1967","1967","t","2896","X","Figure from external organization","Unofficial figure"
 "QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","1968","1968","t","3008","A","Official figure",""
-"QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","1969","1969","t","3630","X","Figure from international organizations","Unofficial figure"
+"QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","1969","1969","t","3630","X","Figure from external organization","Unofficial figure"
 "QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","1970","1970","t","3945","A","Official figure",""
 "QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","1971","1971","t","4269","A","Official figure",""
 "QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","1972","1972","t","5202","A","Official figure",""
@@ -1078,9 +1414,9 @@
 "QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","1983","1983","t","10551","A","Official figure",""
 "QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","1984","1984","t","11807","A","Official figure",""
 "QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","1985","1985","t","14085","A","Official figure",""
-"QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","1986","1986","t","15679","X","Figure from international organizations","Unofficial figure"
+"QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","1986","1986","t","15679","X","Figure from external organization","Unofficial figure"
 "QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","1987","1987","t","14999","A","Official figure",""
-"QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","1988","1988","t","16612","X","Figure from international organizations","Unofficial figure"
+"QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","1988","1988","t","16612","X","Figure from external organization","Unofficial figure"
 "QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","1989","1989","t","17948","A","Official figure",""
 "QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","1990","1990","t","17000","A","Official figure",""
 "QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","1991","1991","t","63000","E","Estimated value",""
@@ -1115,7 +1451,10 @@
 "QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","2020","2020","t","80000","E","Estimated value",""
 "QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","2021","2021","t","74000","E","Estimated value",""
 "QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","2022","2022","t","71000","E","Estimated value",""
-"QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","2023","2023","t","66219.27","I","Imputed value",""
+"QCL","Crops and livestock products","716","Zimbabwe","5510","Production","01620","Tea leaves","2023","2023","t","66219.27","I","Value 
+imputed by a
+receiving 
+agency",""
 "QCL","Crops and livestock products","002","Africa","5510","Production","01620","Tea leaves","1961","1961","t","56315","A","Official figure",""
 "QCL","Crops and livestock products","002","Africa","5510","Production","01620","Tea leaves","1962","1962","t","61519","A","Official figure",""
 "QCL","Crops and livestock products","002","Africa","5510","Production","01620","Tea leaves","1963","1963","t","63596","A","Official figure",""
@@ -1179,6 +1518,258 @@
 "QCL","Crops and livestock products","002","Africa","5510","Production","01620","Tea leaves","2021","2021","t","3590859.69","E","Estimated value",""
 "QCL","Crops and livestock products","002","Africa","5510","Production","01620","Tea leaves","2022","2022","t","3605908.02","E","Estimated value",""
 "QCL","Crops and livestock products","002","Africa","5510","Production","01620","Tea leaves","2023","2023","t","3698435.54","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1961","1961","t","47232","A","Official figure",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1962","1962","t","51383","A","Official figure",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1963","1963","t","52854","A","Official figure",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1964","1964","t","57263","A","Official figure",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1965","1965","t","61401","A","Official figure",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1966","1966","t","77622","A","Official figure",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1967","1967","t","78361","A","Official figure",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1968","1968","t","89665","A","Official figure",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1969","1969","t","103526","A","Official figure",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1970","1970","t","112269","A","Official figure",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1971","1971","t","109327","A","Official figure",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1972","1972","t","140682","A","Official figure",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1973","1973","t","146596","A","Official figure",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1974","1974","t","143170","A","Official figure",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1975","1975","t","143604","A","Official figure",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1976","1976","t","149496","A","Official figure",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1977","1977","t","186752","A","Official figure",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1978","1978","t","192195","A","Official figure",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1979","1979","t","192790","A","Official figure",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1980","1980","t","180261","A","Official figure",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1981","1981","t","187449","A","Official figure",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1982","1982","t","201493","A","Official figure",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1983","1983","t","211561","A","Official figure",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1984","1984","t","219462","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1985","1985","t","253849","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1986","1986","t","243725","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1987","1987","t","251084","A","Official figure",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1988","1988","t","266265","A","Official figure",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1989","1989","t","289464","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1990","1990","t","306278","A","Official figure",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1991","1991","t","1368244.53","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1992","1992","t","1238754","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1993","1993","t","1443785","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1994","1994","t","1410272","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1995","1995","t","1554097.91","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1996","1996","t","1643816.72","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1997","1997","t","1497032.07","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1998","1998","t","1885951.31","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","1999","1999","t","1688068.41","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","2000","2000","t","1692697.19","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","2001","2001","t","1972327.5","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","2002","2002","t","1956257.94","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","2003","2003","t","2002650.46","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","2004","2004","t","2180510.92","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","2005","2005","t","2167632.65","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","2006","2006","t","2065884.79","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","2007","2007","t","2397963.93","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","2008","2008","t","2267814.64","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","2009","2009","t","2218686.17","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","2010","2010","t","2594605.46","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","2011","2011","t","2430603.51","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","2012","2012","t","2470639.86","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","2013","2013","t","2777639.86","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","2014","2014","t","2876980.43","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","2015","2015","t","2640266.85","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","2016","2016","t","2953588.03","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","2017","2017","t","2797914.53","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","2018","2018","t","3205861.83","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","2019","2019","t","2994083.34","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","2020","2020","t","4177144.35","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","2021","2021","t","3579430.3","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","2022","2022","t","3595331.3","E","Estimated value",""
+"QCL","Crops and livestock products","014","Eastern Africa","5510","Production","01620","Tea leaves","2023","2023","t","3688034.06","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1961","1961","t","7083","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1962","1962","t","8136","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1963","1963","t","8742","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1964","1964","t","7341","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1965","1965","t","9017","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1966","1966","t","10650","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1967","1967","t","5750","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1968","1968","t","9071","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1969","1969","t","8837","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1970","1970","t","8329","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1971","1971","t","8610","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1972","1972","t","8896","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1973","1973","t","8571","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1974","1974","t","7635","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1975","1975","t","8272","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1976","1976","t","7803","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1977","1977","t","8430","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1978","1978","t","8500","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1979","1979","t","8107","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1980","1980","t","7982","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1981","1981","t","6941","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1982","1982","t","6281","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1983","1983","t","6852","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1984","1984","t","7234","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1985","1985","t","6954","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1986","1986","t","5896","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1987","1987","t","4594","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1988","1988","t","5600","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1989","1989","t","5552","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1990","1990","t","6014","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1991","1991","t","6250","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1992","1992","t","6536","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1993","1993","t","7254","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1994","1994","t","6972","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1995","1995","t","7291","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1996","1996","t","7012","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1997","1997","t","7623","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1998","1998","t","7272","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","1999","1999","t","6780","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","2000","2000","t","5883","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","2001","2001","t","5815","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","2002","2002","t","5389","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","2003","2003","t","4961","A","Official figure",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","2004","2004","t","5560","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","2005","2005","t","5924.35","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","2006","2006","t","6438.03","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","2007","2007","t","6663.19","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","2008","2008","t","7347.65","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","2009","2009","t","8489","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","2010","2010","t","8011.5","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","2011","2011","t","8181.37","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","2012","2012","t","7971.09","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","2013","2013","t","7071.53","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","2014","2014","t","6896","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","2015","2015","t","6765.52","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","2016","2016","t","6669.72","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","2017","2017","t","6636.94","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","2018","2018","t","9975.54","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","2019","2019","t","10081","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","2020","2020","t","10015.15","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","2021","2021","t","9529.82","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","2022","2022","t","8677.75","E","Estimated value",""
+"QCL","Crops and livestock products","017","Middle Africa","5510","Production","01620","Tea leaves","2023","2023","t","8498.26","E","Estimated value",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1961","1961","t","2000","E","Estimated value",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1962","1962","t","2000","E","Estimated value",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1963","1963","t","2000","E","Estimated value",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1964","1964","t","2000","E","Estimated value",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1965","1965","t","2000","E","Estimated value",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1966","1966","t","2000","X","Figure from external organization",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1967","1967","t","2000","X","Figure from external organization",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1968","1968","t","2000","X","Figure from external organization",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1969","1969","t","2000","X","Figure from external organization",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1970","1970","t","800","X","Figure from external organization",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1971","1971","t","1500","X","Figure from external organization",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1972","1972","t","2000","X","Figure from external organization",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1973","1973","t","2500","X","Figure from external organization",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1974","1974","t","3000","X","Figure from external organization",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1975","1975","t","2836","X","Figure from external organization",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1976","1976","t","3459","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1977","1977","t","3459","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1978","1978","t","4561","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1979","1979","t","5025","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1980","1980","t","12000","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1981","1981","t","5500","E","Estimated value",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1982","1982","t","6631","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1983","1983","t","7097","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1984","1984","t","8301","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1985","1985","t","9218","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1986","1986","t","10663","X","Figure from external organization",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1987","1987","t","11507","X","Figure from external organization",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1988","1988","t","11967","X","Figure from external organization",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1989","1989","t","13000","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1990","1990","t","12441","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1991","1991","t","11128","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1992","1992","t","9801","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1993","1993","t","10532","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1994","1994","t","11316","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1995","1995","t","11975","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1996","1996","t","9062","X","Figure from external organization",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1997","1997","t","8207","X","Figure from external organization",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1998","1998","t","13010","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","1999","1999","t","12077","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","2000","2000","t","12514","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","2001","2001","t","12671","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","2002","2002","t","12500","E","Estimated value",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","2003","2003","t","12143","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","2004","2004","t","4279","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","2005","2005","t","21780","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","2006","2006","t","3328","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","2007","2007","t","6333.43","E","Estimated value",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","2008","2008","t","3290","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","2009","2009","t","1743","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","2010","2010","t","1647","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","2011","2011","t","1795","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","2012","2012","t","870","A","Official figure",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","2013","2013","t","2171.37","E","Estimated value",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","2014","2014","t","1989.53","E","Estimated value",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","2015","2015","t","1858.07","E","Estimated value",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","2016","2016","t","1715.62","E","Estimated value",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","2017","2017","t","1854.41","E","Estimated value",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","2018","2018","t","1809.37","E","Estimated value",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","2019","2019","t","1793.13","E","Estimated value",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","2020","2020","t","1818.97","E","Estimated value",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","2021","2021","t","1807.16","E","Estimated value",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","2022","2022","t","1806.42","E","Estimated value",""
+"QCL","Crops and livestock products","018","Southern Africa","5510","Production","01620","Tea leaves","2023","2023","t","1810.85","E","Estimated value",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1961","1961","t","0","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1962","1962","t","0","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1963","1963","t","0","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1964","1964","t","0","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1965","1965","t","0","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1966","1966","t","0","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1967","1967","t","0","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1968","1968","t","0","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1969","1969","t","0","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1970","1970","t","0","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1971","1971","t","0","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1972","1972","t","0","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1973","1973","t","0","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1974","1974","t","60","E","Estimated value",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1975","1975","t","80","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1976","1976","t","80","E","Estimated value",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1977","1977","t","90","E","Estimated value",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1978","1978","t","100","E","Estimated value",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1979","1979","t","110","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1980","1980","t","64","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1981","1981","t","98","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1982","1982","t","76","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1983","1983","t","80","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1984","1984","t","83","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1985","1985","t","87","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1986","1986","t","89","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1987","1987","t","55","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1988","1988","t","83","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1989","1989","t","317","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1990","1990","t","159","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1991","1991","t","92","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1992","1992","t","115","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1993","1993","t","277","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1994","1994","t","196","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1995","1995","t","202","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1996","1996","t","69","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1997","1997","t","50","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1998","1998","t","60","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","1999","1999","t","76.39","E","Estimated value",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","2000","2000","t","74.94","E","Estimated value",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","2001","2001","t","50","E","Estimated value",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","2002","2002","t","70","E","Estimated value",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","2003","2003","t","90","E","Estimated value",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","2004","2004","t","110","E","Estimated value",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","2005","2005","t","135","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","2006","2006","t","135","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","2007","2007","t","135","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","2008","2008","t","121.6","E","Estimated value",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","2009","2009","t","118.57","E","Estimated value",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","2010","2010","t","108.86","E","Estimated value",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","2011","2011","t","103.75","E","Estimated value",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","2012","2012","t","98.71","E","Estimated value",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","2013","2013","t","89","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","2014","2014","t","89","A","Official figure",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","2015","2015","t","89.1","E","Estimated value",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","2016","2016","t","95.66","E","Estimated value",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","2017","2017","t","91.39","E","Estimated value",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","2018","2018","t","92.05","E","Estimated value",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","2019","2019","t","93.04","E","Estimated value",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","2020","2020","t","92.16","E","Estimated value",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","2021","2021","t","92.42","E","Estimated value",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","2022","2022","t","92.54","E","Estimated value",""
+"QCL","Crops and livestock products","011","Western Africa","5510","Production","01620","Tea leaves","2023","2023","t","92.37","E","Estimated value",""
 "QCL","Crops and livestock products","019","Americas","5510","Production","01620","Tea leaves","1961","1961","t","12865","E","Estimated value",""
 "QCL","Crops and livestock products","019","Americas","5510","Production","01620","Tea leaves","1962","1962","t","12224","E","Estimated value",""
 "QCL","Crops and livestock products","019","Americas","5510","Production","01620","Tea leaves","1963","1963","t","18708","E","Estimated value",""
@@ -1469,13 +2060,13 @@
 "QCL","Crops and livestock products","009","Oceania","5510","Production","01620","Tea leaves","1996","1996","t","5113","A","Official figure",""
 "QCL","Crops and livestock products","009","Oceania","5510","Production","01620","Tea leaves","1997","1997","t","5156","A","Official figure",""
 "QCL","Crops and livestock products","009","Oceania","5510","Production","01620","Tea leaves","1998","1998","t","7260","A","Official figure",""
-"QCL","Crops and livestock products","009","Oceania","5510","Production","01620","Tea leaves","1999","1999","t","6200","X","Figure from international organizations",""
-"QCL","Crops and livestock products","009","Oceania","5510","Production","01620","Tea leaves","2000","2000","t","6200","X","Figure from international organizations",""
-"QCL","Crops and livestock products","009","Oceania","5510","Production","01620","Tea leaves","2001","2001","t","6100","X","Figure from international organizations",""
-"QCL","Crops and livestock products","009","Oceania","5510","Production","01620","Tea leaves","2002","2002","t","6200","X","Figure from international organizations",""
-"QCL","Crops and livestock products","009","Oceania","5510","Production","01620","Tea leaves","2003","2003","t","6400","X","Figure from international organizations",""
-"QCL","Crops and livestock products","009","Oceania","5510","Production","01620","Tea leaves","2004","2004","t","6500","X","Figure from international organizations",""
-"QCL","Crops and livestock products","009","Oceania","5510","Production","01620","Tea leaves","2005","2005","t","6600","X","Figure from international organizations",""
+"QCL","Crops and livestock products","009","Oceania","5510","Production","01620","Tea leaves","1999","1999","t","6200","X","Figure from external organization",""
+"QCL","Crops and livestock products","009","Oceania","5510","Production","01620","Tea leaves","2000","2000","t","6200","X","Figure from external organization",""
+"QCL","Crops and livestock products","009","Oceania","5510","Production","01620","Tea leaves","2001","2001","t","6100","X","Figure from external organization",""
+"QCL","Crops and livestock products","009","Oceania","5510","Production","01620","Tea leaves","2002","2002","t","6200","X","Figure from external organization",""
+"QCL","Crops and livestock products","009","Oceania","5510","Production","01620","Tea leaves","2003","2003","t","6400","X","Figure from external organization",""
+"QCL","Crops and livestock products","009","Oceania","5510","Production","01620","Tea leaves","2004","2004","t","6500","X","Figure from external organization",""
+"QCL","Crops and livestock products","009","Oceania","5510","Production","01620","Tea leaves","2005","2005","t","6600","X","Figure from external organization",""
 "QCL","Crops and livestock products","009","Oceania","5510","Production","01620","Tea leaves","2006","2006","t","6600","E","Estimated value",""
 "QCL","Crops and livestock products","009","Oceania","5510","Production","01620","Tea leaves","2007","2007","t","6500","E","Estimated value",""
 "QCL","Crops and livestock products","009","Oceania","5510","Production","01620","Tea leaves","2008","2008","t","6000","E","Estimated value",""

@@ -47,12 +47,12 @@ african_countries <- c("Algeria", "Angola", "Benin", "Botswana", "Burkina Faso",
 #############
 # Check if the values in the african_countries dataset are present in new dataframes
 
-# african_countries[!(african_countries %in% unique(global_meat_clean_africa$country))]
+# african_countries[!(african_countries %in% unique(global_mushroom_clean_africa$country))]
 
 # african_countries[!(african_countries %in% unique(share_net_clean_africa$country))]
 #############
 
-# Global Meat Production in Africa
+# Global mushroom Production in Africa
 
 mushroom_prod_clean_africa <- mushroom_prod_clean |>
   rename("country" = "area") |>
@@ -79,7 +79,45 @@ mushroom_prod_clean_africa_rnaturalearth <- mushroom_prod_clean_africa %>%
   rename(mushroom_production = "value") |>
   select(country, year, mushroom_production)
 
-# 2) Map of countries showing global meat production between 1965 and 2020
+
+################################################################################
+# QC to check for missing countries!
+################################################################################
+
+# Countries that have data
+unique(mushroom_prod_clean_africa$country)
+
+# Countries that don't have data
+setdiff(african_countries, unique(mushroom_prod_clean_africa$country))
+
+# Check whether any countries in the dataset are not in the list of African countries
+setdiff(unique(mushroom_prod_clean_africa$country), african_countries)
+
+## Then check the original dataset manually to see if countries are actually missing 
+
+################################################################################
+
+################################################################################
+# Highest production in 2020
+
+mushroom_prod_clean_africa_rnaturalearth |>
+  arrange(desc(mushroom_production)) |>
+  filter(year == 2020) |>
+  top_n(1)
+
+top_3 <- mushroom_prod_clean_africa_rnaturalearth |>
+  arrange(desc(mushroom_production)) |>
+  filter(year == 2020) |>
+  top_n(3)
+
+bottom_3 <- mushroom_prod_clean_africa_rnaturalearth |>
+  arrange(desc(mushroom_production)) |>
+  filter(year == 2020) |>
+  top_n(-3)
+################################################################################
+
+
+# 2) Map of countries showing global mushroom production between 1965 and 2020
 
 # Fetch high-resolution country data
 world <- ne_countries(scale = "large", returnclass = "sf")
@@ -111,7 +149,7 @@ mushroom_prod_clean_africa_1965_anti_join_1 <- anti_join(africa,
                                                            mushroom_prod_clean_africa_1965, 
                                                            by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1965
+# Find rows only in global_mushroom_clean_africa_1965
 
 mushroom_prod_clean_africa_1965_anti_join_2 <- anti_join(mushroom_prod_clean_africa_1965, 
                                                            africa, 
@@ -126,7 +164,7 @@ p1 <- ggplot(data = africa) +
   geom_sf(data = mushroom_prod_clean_africa_1965_full_join, aes(fill = mushroom_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 40000),
+                       limits = c(0, 30000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -178,7 +216,7 @@ mushroom_prod_clean_africa_1970_anti_join_1 <- anti_join(africa,
                                                            mushroom_prod_clean_africa_1970, 
                                                            by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1970
+# Find rows only in global_mushroom_clean_africa_1970
 
 mushroom_prod_clean_africa_1970_anti_join_2 <- anti_join(mushroom_prod_clean_africa_1970, 
                                                            africa, 
@@ -193,7 +231,7 @@ p2 <- ggplot(data = africa) +
   geom_sf(data = mushroom_prod_clean_africa_1970_full_join, aes(fill = mushroom_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 40000),
+                       limits = c(0, 30000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -245,7 +283,7 @@ mushroom_prod_clean_africa_1975_anti_join_1 <- anti_join(africa,
                                                            mushroom_prod_clean_africa_1975, 
                                                            by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1975
+# Find rows only in global_mushroom_clean_africa_1975
 
 mushroom_prod_clean_africa_1975_anti_join_2 <- anti_join(mushroom_prod_clean_africa_1975, 
                                                            africa, 
@@ -260,7 +298,7 @@ p3 <- ggplot(data = africa) +
   geom_sf(data = mushroom_prod_clean_africa_1975_full_join, aes(fill = mushroom_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 40000),
+                       limits = c(0, 30000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -312,7 +350,7 @@ mushroom_prod_clean_africa_1980_anti_join_1 <- anti_join(africa,
                                                            mushroom_prod_clean_africa_1980, 
                                                            by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1980
+# Find rows only in global_mushroom_clean_africa_1980
 
 mushroom_prod_clean_africa_1980_anti_join_2 <- anti_join(mushroom_prod_clean_africa_1980, 
                                                            africa, 
@@ -327,7 +365,7 @@ p4 <- ggplot(data = africa) +
   geom_sf(data = mushroom_prod_clean_africa_1980_full_join, aes(fill = mushroom_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 40000),
+                       limits = c(0, 30000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -379,7 +417,7 @@ mushroom_prod_clean_africa_1985_anti_join_1 <- anti_join(africa,
                                                            mushroom_prod_clean_africa_1985, 
                                                            by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1985
+# Find rows only in global_mushroom_clean_africa_1985
 
 mushroom_prod_clean_africa_1985_anti_join_2 <- anti_join(mushroom_prod_clean_africa_1985, 
                                                            africa, 
@@ -394,7 +432,7 @@ p5 <- ggplot(data = africa) +
   geom_sf(data = mushroom_prod_clean_africa_1985_full_join, aes(fill = mushroom_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 40000),
+                       limits = c(0, 30000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -446,7 +484,7 @@ mushroom_prod_clean_africa_1990_anti_join_1 <- anti_join(africa,
                                                            mushroom_prod_clean_africa_1990, 
                                                            by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1990
+# Find rows only in global_mushroom_clean_africa_1990
 
 mushroom_prod_clean_africa_1990_anti_join_2 <- anti_join(mushroom_prod_clean_africa_1990, 
                                                            africa, 
@@ -461,7 +499,7 @@ p6 <- ggplot(data = africa) +
   geom_sf(data = mushroom_prod_clean_africa_1990_full_join, aes(fill = mushroom_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 40000),
+                       limits = c(0, 30000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -513,7 +551,7 @@ mushroom_prod_clean_africa_1995_anti_join_1 <- anti_join(africa,
                                                            mushroom_prod_clean_africa_1995, 
                                                            by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_1995
+# Find rows only in global_mushroom_clean_africa_1995
 
 mushroom_prod_clean_africa_1995_anti_join_2 <- anti_join(mushroom_prod_clean_africa_1995, 
                                                            africa, 
@@ -528,7 +566,7 @@ p7 <- ggplot(data = africa) +
   geom_sf(data = mushroom_prod_clean_africa_1995_full_join, aes(fill = mushroom_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 40000),
+                       limits = c(0, 30000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -580,7 +618,7 @@ mushroom_prod_clean_africa_2000_anti_join_1 <- anti_join(africa,
                                                            mushroom_prod_clean_africa_2000, 
                                                            by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_2000
+# Find rows only in global_mushroom_clean_africa_2000
 
 mushroom_prod_clean_africa_2000_anti_join_2 <- anti_join(mushroom_prod_clean_africa_2000, 
                                                            africa, 
@@ -595,7 +633,7 @@ p8 <- ggplot(data = africa) +
   geom_sf(data = mushroom_prod_clean_africa_2000_full_join, aes(fill = mushroom_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 40000),
+                       limits = c(0, 30000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -647,7 +685,7 @@ mushroom_prod_clean_africa_2005_anti_join_1 <- anti_join(africa,
                                                            mushroom_prod_clean_africa_2005, 
                                                            by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_2005
+# Find rows only in global_mushroom_clean_africa_2005
 
 mushroom_prod_clean_africa_2005_anti_join_2 <- anti_join(mushroom_prod_clean_africa_2005, 
                                                            africa, 
@@ -662,7 +700,7 @@ p9 <- ggplot(data = africa) +
   geom_sf(data = mushroom_prod_clean_africa_2005_full_join, aes(fill = mushroom_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 40000),
+                       limits = c(0, 30000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -714,7 +752,7 @@ mushroom_prod_clean_africa_2010_anti_join_1 <- anti_join(africa,
                                                            mushroom_prod_clean_africa_2010, 
                                                            by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_2010
+# Find rows only in global_mushroom_clean_africa_2010
 
 mushroom_prod_clean_africa_2010_anti_join_2 <- anti_join(mushroom_prod_clean_africa_2010, 
                                                            africa, 
@@ -729,7 +767,7 @@ p10 <- ggplot(data = africa) +
   geom_sf(data = mushroom_prod_clean_africa_2010_full_join, aes(fill = mushroom_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 40000),
+                       limits = c(0, 30000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -781,7 +819,7 @@ mushroom_prod_clean_africa_2015_anti_join_1 <- anti_join(africa,
                                                            mushroom_prod_clean_africa_2015, 
                                                            by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_2015
+# Find rows only in global_mushroom_clean_africa_2015
 
 mushroom_prod_clean_africa_2015_anti_join_2 <- anti_join(mushroom_prod_clean_africa_2015, 
                                                            africa, 
@@ -796,7 +834,7 @@ p11 <- ggplot(data = africa) +
   geom_sf(data = mushroom_prod_clean_africa_2015_full_join, aes(fill = mushroom_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 40000),
+                       limits = c(0, 30000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
@@ -848,7 +886,7 @@ mushroom_prod_clean_africa_2020_anti_join_1 <- anti_join(africa,
                                                            mushroom_prod_clean_africa_2020, 
                                                            by = c("admin" = "country"))
 
-# Find rows only in global_meat_clean_africa_2020
+# Find rows only in global_mushroom_clean_africa_2020
 
 mushroom_prod_clean_africa_2020_anti_join_2 <- anti_join(mushroom_prod_clean_africa_2020, 
                                                            africa, 
@@ -863,7 +901,7 @@ p12 <- ggplot(data = africa) +
   geom_sf(data = mushroom_prod_clean_africa_2020_full_join, aes(fill = mushroom_production), linewidth = 1) +
   scale_fill_distiller(palette = "YlGnBu", 
                        direction = 1,
-                       limits = c(0, 40000),
+                       limits = c(0, 30000),
                        labels  = label_number(scale = 1e-6),
                        name = "Millions of Tonnes",
                        guide = guide_colorbar(     # Adjustments specific to continuous scales
