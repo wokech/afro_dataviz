@@ -40,36 +40,36 @@ banana_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/banana-production-t
 
 # Clean the column headings
 
-banana_prod_clean <- banana_prod %>%
+banana_prod_clean <- banana_prod |>
   clean_names() 
 
 # Change the column title names
 
-banana_prod_clean <- banana_prod_clean %>%
+banana_prod_clean <- banana_prod_clean |>
   rename("region" = "entity",
          "banana_production_tonnes" = "bananas_00000486_production_005510_tonnes") 
 
 # Filter by region
 
-banana_prod_clean_region <- banana_prod_clean %>%
-  filter(is.na(code)) %>%
+banana_prod_clean_region <- banana_prod_clean |>
+  filter(is.na(code)) |>
   select(c(1,3,4)) 
 
 # Filter by FAO region
 
-banana_prod_clean_region_fao <- banana_prod_clean_region %>%
+banana_prod_clean_region_fao <- banana_prod_clean_region |>
   filter(grepl('(FAO)', region))
 
 # Filter by non-FAO region
 
-banana_prod_clean_region_non_fao <- banana_prod_clean_region %>%
+banana_prod_clean_region_non_fao <- banana_prod_clean_region |>
   filter(!grepl('(FAO)', region))
 
 # 3) Continental (Non-FAO) banana production
 
 # a) Stacked area chart
 
-banana_prod_clean_region_non_fao_continent <- banana_prod_clean_region_non_fao %>%
+banana_prod_clean_region_non_fao_continent <- banana_prod_clean_region_non_fao |>
   filter(region %in% c("Africa", "Asia", "Europe", 
                        "North America", "South America", 
                        "Oceania"))
@@ -85,25 +85,25 @@ afro_stack_palette <- c(
 
 desired_order <- c("Oceania", "Africa", "Europe", "North America", "South America", "Asia")
 
-banana_prod_clean_region_non_fao_continent <- banana_prod_clean_region_non_fao_continent %>%
-  mutate(region = factor(region, levels = desired_order)) %>%
+banana_prod_clean_region_non_fao_continent <- banana_prod_clean_region_non_fao_continent |>
+  mutate(region = factor(region, levels = desired_order)) |>
   arrange(desc(region))
 
 #  calculate cumulative positions for label placement
 
-label_df_banana <- banana_prod_clean_region_non_fao_continent %>%
-  filter(year == max(year)) %>%
-  mutate(region = factor(region, levels = rev(desired_order))) %>%
-  arrange(region) %>%
+label_df_banana <- banana_prod_clean_region_non_fao_continent |>
+  filter(year == max(year)) |>
+  mutate(region = factor(region, levels = rev(desired_order))) |>
+  arrange(region) |>
   mutate(x_label = max(year),
          y_top = cumsum(banana_production_tonnes),
          y_bottom = y_top - banana_production_tonnes,
-         y_mid = (y_bottom + y_top) / 2) %>%
+         y_mid = (y_bottom + y_top) / 2) |>
   select(region, year, x_label, y_top, y_mid) 
 
 # plot the stack area chart
 
-banana_prod_clean_region_non_fao_continent %>% 
+p1 <- banana_prod_clean_region_non_fao_continent |> 
   ggplot(aes(year, banana_production_tonnes, fill = region, label = region, color = region)) +
   geom_area() +
   geom_text_repel(
@@ -122,7 +122,7 @@ banana_prod_clean_region_non_fao_continent %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Banana Production\n(Millions of Tonnes)",
+       y = "Millions of Tonnes",
        title = "",
        subtitle = "",
        caption = "") +
@@ -148,11 +148,11 @@ banana_prod_clean_region_non_fao_continent %>%
         legend.position = "none"
   )
 
-ggsave("sub_pro_7_agriculture_owid/images/continental/continent_banana_1.png", width = 12, height = 12, dpi = 72)
+#ggsave("sub_pro_7_agriculture_owid/images/continental/continent_banana_1.png", width = 12, height = 12, dpi = 72)
 
 
-banana_prod_clean_region_non_fao_continent %>%
-  filter(year == 2020) %>%
+banana_prod_clean_region_non_fao_continent |>
+  filter(year == 2020) |>
   mutate(percent = 100 * banana_production_tonnes/sum(banana_production_tonnes))
 
 
@@ -161,23 +161,23 @@ banana_prod_clean_region_non_fao_continent %>%
 # Stacked Percentage Area Chart
 ################################################################################
 
-label_df_banana_percent <- banana_prod_clean_region_non_fao_continent %>%
-  group_by(year) %>%
-  mutate(share = banana_production_tonnes / sum(banana_production_tonnes, na.rm = TRUE)) %>%
-  ungroup() %>%
-  filter(year == max(year)) %>%
-  mutate(region = factor(region, levels = rev(desired_order))) %>%
-  arrange(region) %>%
+label_df_banana_percent <- banana_prod_clean_region_non_fao_continent |>
+  group_by(year) |>
+  mutate(share = banana_production_tonnes / sum(banana_production_tonnes, na.rm = TRUE)) |>
+  ungroup() |>
+  filter(year == max(year)) |>
+  mutate(region = factor(region, levels = rev(desired_order))) |>
+  arrange(region) |>
   mutate(
     x_label = max(year),
     y_top = cumsum(share),
     y_bottom = y_top - share,
     y_mid = (y_bottom + y_top) / 2
-  ) %>%
+  ) |>
   select(region, year, x_label, y_top, y_mid)
 
 
-banana_prod_clean_region_non_fao_continent %>% 
+p2 <- banana_prod_clean_region_non_fao_continent |> 
   ggplot(aes(year, banana_production_tonnes, fill = region, color = region)) +
   geom_area(position = "fill") +
   geom_text_repel(
@@ -195,7 +195,7 @@ banana_prod_clean_region_non_fao_continent %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Share of Banana Production (%)",
+       y = "",
        title = "",
        caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
@@ -217,7 +217,10 @@ banana_prod_clean_region_non_fao_continent %>%
   )
 
 
-ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_banana_1.png", width = 12, height = 12, dpi = 72)
+#ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_banana_1.png", width = 12, height = 12, dpi = 72)
+
+(p1/p2) + plot_annotation() & theme(plot.margin = margin(0,0,0,0))
+ggsave("sub_pro_7_agriculture_owid/images/continental_combi/banana.png", width = 12, height = 16, dpi = 300)
 
 
 ################################################################################
@@ -229,15 +232,15 @@ ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_banan
 # Organize data
 
 # Africa total combined with regions data
-banana_prod_clean_region_fao_africa <- banana_prod_clean_region_fao %>%
+banana_prod_clean_region_fao_africa <- banana_prod_clean_region_fao |>
   filter(str_detect(region, "frica"))
 
 # Africa data alone
-banana_prod_clean_region_fao_africa_only <- banana_prod_clean_region_fao_africa %>%
+banana_prod_clean_region_fao_africa_only <- banana_prod_clean_region_fao_africa |>
   filter(region %in% c("Africa (FAO)"))
 
 # Africa regions alone
-banana_prod_clean_region_fao_africa_segment <- banana_prod_clean_region_fao_africa %>%
+banana_prod_clean_region_fao_africa_segment <- banana_prod_clean_region_fao_africa |>
   filter(region %in% c("Eastern Africa (FAO)", "Middle Africa (FAO)", 
                        "Northern Africa (FAO)", "Southern Africa (FAO)",
                        "Western Africa (FAO)")) |>
@@ -256,23 +259,23 @@ desired_order <- c("Eastern Africa", "Middle Africa", "Northern Africa", "Southe
 
 # order of the colored regions
 
-banana_prod_clean_region_fao_africa_segment <- banana_prod_clean_region_fao_africa_segment %>%
-  mutate(region = factor(region, levels = desired_order)) %>%
+banana_prod_clean_region_fao_africa_segment <- banana_prod_clean_region_fao_africa_segment |>
+  mutate(region = factor(region, levels = desired_order)) |>
   arrange(desc(region))
 
-label_df_banana_africa <- banana_prod_clean_region_fao_africa_segment %>%
-  filter(year == max(year)) %>%
-  mutate(region = factor(region, levels = rev(desired_order))) %>%
-  arrange(region) %>%
+label_df_banana_africa <- banana_prod_clean_region_fao_africa_segment |>
+  filter(year == max(year)) |>
+  mutate(region = factor(region, levels = rev(desired_order))) |>
+  arrange(region) |>
   mutate(x_label = max(year),
          y_top = cumsum(banana_production_tonnes),
          y_bottom = y_top - banana_production_tonnes,
-         y_mid = (y_bottom + y_top) / 2) %>%
+         y_mid = (y_bottom + y_top) / 2) |>
   select(region, year, x_label, y_top, y_mid) 
 
 # b) Stacked Area chart for Africa regions
 
-banana_prod_clean_region_fao_africa_segment %>% 
+p3 <- banana_prod_clean_region_fao_africa_segment |> 
   ggplot(aes(year, banana_production_tonnes, fill = region, label = region, color = region)) +
   geom_area() +
   geom_text_repel(
@@ -291,7 +294,7 @@ banana_prod_clean_region_fao_africa_segment %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Banana Production\n(Millions of Tonnes)",
+       y = "Millions of Tonnes",
        title = "",
        subtitle = "",
        caption = "") +
@@ -316,29 +319,29 @@ banana_prod_clean_region_fao_africa_segment %>%
         plot.margin = margin(5, 5, 5, 5),
         legend.position = "none")
 
-ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only/continent_banana_1.png", width = 12, height = 12, dpi = 300)
+#ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only/continent_banana_1.png", width = 12, height = 12, dpi = 300)
 
 ################################################################################
 # Stacked Percentage Area Chart
 ################################################################################
 
-label_df_banana_percent_africa <- banana_prod_clean_region_fao_africa_segment %>%
-  group_by(year) %>%
-  mutate(share = banana_production_tonnes / sum(banana_production_tonnes, na.rm = TRUE)) %>%
-  ungroup() %>%
-  filter(year == max(year)) %>%
-  mutate(region = factor(region, levels = rev(desired_order))) %>%
-  arrange(region) %>%
+label_df_banana_percent_africa <- banana_prod_clean_region_fao_africa_segment |>
+  group_by(year) |>
+  mutate(share = banana_production_tonnes / sum(banana_production_tonnes, na.rm = TRUE)) |>
+  ungroup() |>
+  filter(year == max(year)) |>
+  mutate(region = factor(region, levels = rev(desired_order))) |>
+  arrange(region) |>
   mutate(
     x_label = max(year),
     y_top = cumsum(share),
     y_bottom = y_top - share,
     y_mid = (y_bottom + y_top) / 2
-  ) %>%
+  ) |>
   select(region, year, x_label, y_top, y_mid)
 
 
-banana_prod_clean_region_fao_africa_segment %>% 
+p4 <- banana_prod_clean_region_fao_africa_segment |> 
   ggplot(aes(year, banana_production_tonnes, fill = region, color = region)) +
   geom_area(position = "fill") +
   geom_text_repel(
@@ -356,7 +359,7 @@ banana_prod_clean_region_fao_africa_segment %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Share of Banana Production (%)",
+       y = "",
        title = "",
        caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
@@ -377,4 +380,7 @@ banana_prod_clean_region_fao_africa_segment %>%
     legend.position = "none"
   )
 
-ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only_stack_perc/continent_banana_1.png", width = 12, height = 12, dpi = 300)
+#ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only_stack_perc/continent_banana_1.png", width = 12, height = 12, dpi = 300)
+
+(p3/p4) + plot_annotation() & theme(plot.margin = margin(0,0,0,0))
+ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only_combi/banana.png", width = 12, height = 16, dpi = 300)

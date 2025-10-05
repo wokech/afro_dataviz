@@ -40,36 +40,36 @@ yams_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/yams-production-tonne
 
 # Clean the column headings
 
-yams_prod_clean <- yams_prod %>%
+yams_prod_clean <- yams_prod |>
   clean_names() 
 
 # Change the column title names
 
-yams_prod_clean <- yams_prod_clean %>%
+yams_prod_clean <- yams_prod_clean |>
   rename("region" = "entity",
          "yams_production_tonnes" = "yams_00000137_production_005510_tonnes") 
 
 # Filter by region
 
-yams_prod_clean_region <- yams_prod_clean %>%
-  filter(is.na(code)) %>%
+yams_prod_clean_region <- yams_prod_clean |>
+  filter(is.na(code)) |>
   select(c(1,3,4)) 
 
 # Filter by FAO region
 
-yams_prod_clean_region_fao <- yams_prod_clean_region %>%
+yams_prod_clean_region_fao <- yams_prod_clean_region |>
   filter(grepl('(FAO)', region))
 
 # Filter by non-FAO region
 
-yams_prod_clean_region_non_fao <- yams_prod_clean_region %>%
+yams_prod_clean_region_non_fao <- yams_prod_clean_region |>
   filter(!grepl('(FAO)', region))
 
 # 3) Continental (Non-FAO) yams production
 
 # a) Stacked area chart
 
-yams_prod_clean_region_non_fao_continent <- yams_prod_clean_region_non_fao %>%
+yams_prod_clean_region_non_fao_continent <- yams_prod_clean_region_non_fao |>
   filter(region %in% c("Africa", "Asia", "Europe", 
                        "North America", "South America", 
                        "Oceania"))
@@ -85,25 +85,25 @@ afro_stack_palette <- c(
 
 desired_order <- c("Oceania", "Africa", "Europe", "North America", "South America", "Asia")
 
-yams_prod_clean_region_non_fao_continent <- yams_prod_clean_region_non_fao_continent %>%
-  mutate(region = factor(region, levels = desired_order)) %>%
+yams_prod_clean_region_non_fao_continent <- yams_prod_clean_region_non_fao_continent |>
+  mutate(region = factor(region, levels = desired_order)) |>
   arrange(desc(region))
 
 #  calculate cumulative positions for label placement
 
-label_df_yams <- yams_prod_clean_region_non_fao_continent %>%
-  filter(year == max(year)) %>%
-  mutate(region = factor(region, levels = rev(desired_order))) %>%
-  arrange(region) %>%
+label_df_yams <- yams_prod_clean_region_non_fao_continent |>
+  filter(year == max(year)) |>
+  mutate(region = factor(region, levels = rev(desired_order))) |>
+  arrange(region) |>
   mutate(x_label = max(year),
          y_top = cumsum(yams_production_tonnes),
          y_bottom = y_top - yams_production_tonnes,
-         y_mid = (y_bottom + y_top) / 2) %>%
+         y_mid = (y_bottom + y_top) / 2) |>
   select(region, year, x_label, y_top, y_mid) 
 
 # plot the stack area chart
 
-yams_prod_clean_region_non_fao_continent %>% 
+p1 <- yams_prod_clean_region_non_fao_continent |> 
   ggplot(aes(year, yams_production_tonnes, fill = region, label = region, color = region)) +
   geom_area() +
   geom_text_repel(
@@ -116,13 +116,14 @@ yams_prod_clean_region_non_fao_continent %>%
     direction = "y",
     hjust = 0,
     nudge_x = 15,
-    segment.curvature = 0.1,
+    segment.curvature = -0.03,
     segment.size = 0.5,
     segment.ncp = 1,
-    min.segment.length = 0
+    min.segment.length = 0,
+    box.padding = 1
   ) +
   labs(x = "Year",
-       y = "Yam Production\n(Millions of Tonnes)",
+       y = "Millions of Tonnes",
        title = "",
        subtitle = "",
        caption = "") +
@@ -148,11 +149,11 @@ yams_prod_clean_region_non_fao_continent %>%
         legend.position = "none"
   )
 
-ggsave("sub_pro_7_agriculture_owid/images/continental/continent_yams_1.png", width = 12, height = 12, dpi = 72)
+#ggsave("sub_pro_7_agriculture_owid/images/continental/continent_yams_1.png", width = 12, height = 12, dpi = 72)
 
 
-yams_prod_clean_region_non_fao_continent %>%
-  filter(year == 2020) %>%
+yams_prod_clean_region_non_fao_continent |>
+  filter(year == 2020) |>
   mutate(percent = 100 * yams_production_tonnes/sum(yams_production_tonnes))
 
 
@@ -160,23 +161,23 @@ yams_prod_clean_region_non_fao_continent %>%
 # Stacked Percentage Area Chart
 ################################################################################
 
-label_df_yams_percent <- yams_prod_clean_region_non_fao_continent %>%
-  group_by(year) %>%
-  mutate(share = yams_production_tonnes / sum(yams_production_tonnes, na.rm = TRUE)) %>%
-  ungroup() %>%
-  filter(year == max(year)) %>%
-  mutate(region = factor(region, levels = rev(desired_order))) %>%
-  arrange(region) %>%
+label_df_yams_percent <- yams_prod_clean_region_non_fao_continent |>
+  group_by(year) |>
+  mutate(share = yams_production_tonnes / sum(yams_production_tonnes, na.rm = TRUE)) |>
+  ungroup() |>
+  filter(year == max(year)) |>
+  mutate(region = factor(region, levels = rev(desired_order))) |>
+  arrange(region) |>
   mutate(
     x_label = max(year),
     y_top = cumsum(share),
     y_bottom = y_top - share,
     y_mid = (y_bottom + y_top) / 2
-  ) %>%
+  ) |>
   select(region, year, x_label, y_top, y_mid)
 
 
-yams_prod_clean_region_non_fao_continent %>% 
+p2 <- yams_prod_clean_region_non_fao_continent |> 
   ggplot(aes(year, yams_production_tonnes, fill = region, color = region)) +
   geom_area(position = "fill") +
   geom_text_repel(
@@ -188,13 +189,14 @@ yams_prod_clean_region_non_fao_continent %>%
     inherit.aes = FALSE,
     direction = "y",
     nudge_x = 15,
-    segment.curvature = 0.1,
+    segment.curvature = -0.03,
     segment.size = 0.5,
     segment.ncp = 1,
-    min.segment.length = 0
+    min.segment.length = 0,
+    box.padding = 1
   ) +
   labs(x = "Year",
-       y = "Share of Yam Production (%)",
+       y = "",
        title = "",
        caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
@@ -216,8 +218,10 @@ yams_prod_clean_region_non_fao_continent %>%
   )
 
 
-ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_yams_1.png", width = 12, height = 12, dpi = 72)
+#ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_yams_1.png", width = 12, height = 12, dpi = 72)
 
+(p1/p2) + plot_annotation() & theme(plot.margin = margin(0,0,0,0))
+ggsave("sub_pro_7_agriculture_owid/images/continental_combi/yams.png", width = 12, height = 16, dpi = 300)
 
 ################################################################################
 # AFRICA ONLY CHARTS
@@ -228,15 +232,15 @@ ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_yams_
 # Organize data
 
 # Africa total combined with regions data
-yams_prod_clean_region_fao_africa <- yams_prod_clean_region_fao %>%
+yams_prod_clean_region_fao_africa <- yams_prod_clean_region_fao |>
   filter(str_detect(region, "frica"))
 
 # Africa data alone
-yams_prod_clean_region_fao_africa_only <- yams_prod_clean_region_fao_africa %>%
+yams_prod_clean_region_fao_africa_only <- yams_prod_clean_region_fao_africa |>
   filter(region %in% c("Africa (FAO)"))
 
 # Africa regions alone
-yams_prod_clean_region_fao_africa_segment <- yams_prod_clean_region_fao_africa %>%
+yams_prod_clean_region_fao_africa_segment <- yams_prod_clean_region_fao_africa |>
   filter(region %in% c("Eastern Africa (FAO)", "Middle Africa (FAO)", 
                        "Northern Africa (FAO)", "Southern Africa (FAO)",
                        "Western Africa (FAO)")) |>
@@ -255,23 +259,23 @@ desired_order <- c("Eastern Africa", "Middle Africa", "Northern Africa", "Southe
 
 # order of the colored regions
 
-yams_prod_clean_region_fao_africa_segment <- yams_prod_clean_region_fao_africa_segment %>%
-  mutate(region = factor(region, levels = desired_order)) %>%
+yams_prod_clean_region_fao_africa_segment <- yams_prod_clean_region_fao_africa_segment |>
+  mutate(region = factor(region, levels = desired_order)) |>
   arrange(desc(region))
 
-label_df_yams_africa <- yams_prod_clean_region_fao_africa_segment %>%
-  filter(year == max(year)) %>%
-  mutate(region = factor(region, levels = rev(desired_order))) %>%
-  arrange(region) %>%
+label_df_yams_africa <- yams_prod_clean_region_fao_africa_segment |>
+  filter(year == max(year)) |>
+  mutate(region = factor(region, levels = rev(desired_order))) |>
+  arrange(region) |>
   mutate(x_label = max(year),
          y_top = cumsum(yams_production_tonnes),
          y_bottom = y_top - yams_production_tonnes,
-         y_mid = (y_bottom + y_top) / 2) %>%
+         y_mid = (y_bottom + y_top) / 2) |>
   select(region, year, x_label, y_top, y_mid) 
 
 # b) Stacked Area chart for Africa regions
 
-yams_prod_clean_region_fao_africa_segment %>% 
+p3 <- yams_prod_clean_region_fao_africa_segment |> 
   ggplot(aes(year, yams_production_tonnes, fill = region, label = region, color = region)) +
   geom_area() +
   geom_text_repel(
@@ -290,7 +294,7 @@ yams_prod_clean_region_fao_africa_segment %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Yams Production\n(Millions of Tonnes)",
+       y = "Millions of Tonnes",
        title = "",
        subtitle = "",
        caption = "") +
@@ -315,29 +319,29 @@ yams_prod_clean_region_fao_africa_segment %>%
         plot.margin = margin(5, 5, 5, 5),
         legend.position = "none")
 
-ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only/continent_yams_1.png", width = 12, height = 12, dpi = 300)
+#ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only/continent_yams_1.png", width = 12, height = 12, dpi = 300)
 
 ################################################################################
 # Stacked Percentage Area Chart
 ################################################################################
 
-label_df_yams_percent_africa <- yams_prod_clean_region_fao_africa_segment %>%
-  group_by(year) %>%
-  mutate(share = yams_production_tonnes / sum(yams_production_tonnes, na.rm = TRUE)) %>%
-  ungroup() %>%
-  filter(year == max(year)) %>%
-  mutate(region = factor(region, levels = rev(desired_order))) %>%
-  arrange(region) %>%
+label_df_yams_percent_africa <- yams_prod_clean_region_fao_africa_segment |>
+  group_by(year) |>
+  mutate(share = yams_production_tonnes / sum(yams_production_tonnes, na.rm = TRUE)) |>
+  ungroup() |>
+  filter(year == max(year)) |>
+  mutate(region = factor(region, levels = rev(desired_order))) |>
+  arrange(region) |>
   mutate(
     x_label = max(year),
     y_top = cumsum(share),
     y_bottom = y_top - share,
     y_mid = (y_bottom + y_top) / 2
-  ) %>%
+  ) |>
   select(region, year, x_label, y_top, y_mid)
 
 
-yams_prod_clean_region_fao_africa_segment %>% 
+p4 <- yams_prod_clean_region_fao_africa_segment |> 
   ggplot(aes(year, yams_production_tonnes, fill = region, color = region)) +
   geom_area(position = "fill") +
   geom_text_repel(
@@ -355,7 +359,7 @@ yams_prod_clean_region_fao_africa_segment %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Share of Yams Production (%)",
+       y = "",
        title = "",
        caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
@@ -376,4 +380,8 @@ yams_prod_clean_region_fao_africa_segment %>%
     legend.position = "none"
   )
 
-ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only_stack_perc/continent_yams_1.png", width = 12, height = 12, dpi = 300)
+#ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only_stack_perc/continent_yams_1.png", width = 12, height = 12, dpi = 300)
+
+
+(p3/p4) + plot_annotation() & theme(plot.margin = margin(0,0,0,0))
+ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only_combi/yams.png", width = 12, height = 16, dpi = 300)

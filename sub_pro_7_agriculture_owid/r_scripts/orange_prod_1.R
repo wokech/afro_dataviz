@@ -40,36 +40,36 @@ orange_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/orange-production-t
 
 # Clean the column headings
 
-orange_prod_clean <- orange_prod %>%
+orange_prod_clean <- orange_prod |>
   clean_names() 
 
 # Change the column title names
 
-orange_prod_clean <- orange_prod_clean %>%
+orange_prod_clean <- orange_prod_clean |>
   rename("region" = "entity",
          "orange_production_tonnes" = "oranges_00000490_production_005510_tonnes") 
 
 # Filter by region
 
-orange_prod_clean_region <- orange_prod_clean %>%
-  filter(is.na(code)) %>%
+orange_prod_clean_region <- orange_prod_clean |>
+  filter(is.na(code)) |>
   select(c(1,3,4)) 
 
 # Filter by FAO region
 
-orange_prod_clean_region_fao <- orange_prod_clean_region %>%
+orange_prod_clean_region_fao <- orange_prod_clean_region |>
   filter(grepl('(FAO)', region))
 
 # Filter by non-FAO region
 
-orange_prod_clean_region_non_fao <- orange_prod_clean_region %>%
+orange_prod_clean_region_non_fao <- orange_prod_clean_region |>
   filter(!grepl('(FAO)', region))
 
 # 3) Continental (Non-FAO) orange production
 
 # a) Stacked area chart
 
-orange_prod_clean_region_non_fao_continent <- orange_prod_clean_region_non_fao %>%
+orange_prod_clean_region_non_fao_continent <- orange_prod_clean_region_non_fao |>
   filter(region %in% c("Africa", "Asia", "Europe", 
                        "North America", "South America", 
                        "Oceania"))
@@ -85,25 +85,25 @@ afro_stack_palette <- c(
 
 desired_order <- c("Oceania", "Africa", "Europe", "North America", "South America", "Asia")
 
-orange_prod_clean_region_non_fao_continent <- orange_prod_clean_region_non_fao_continent %>%
-  mutate(region = factor(region, levels = desired_order)) %>%
+orange_prod_clean_region_non_fao_continent <- orange_prod_clean_region_non_fao_continent |>
+  mutate(region = factor(region, levels = desired_order)) |>
   arrange(desc(region))
 
 #  calculate cumulative positions for label placement
 
-label_df_orange <- orange_prod_clean_region_non_fao_continent %>%
-  filter(year == max(year)) %>%
-  mutate(region = factor(region, levels = rev(desired_order))) %>%
-  arrange(region) %>%
+label_df_orange <- orange_prod_clean_region_non_fao_continent |>
+  filter(year == max(year)) |>
+  mutate(region = factor(region, levels = rev(desired_order))) |>
+  arrange(region) |>
   mutate(x_label = max(year),
          y_top = cumsum(orange_production_tonnes),
          y_bottom = y_top - orange_production_tonnes,
-         y_mid = (y_bottom + y_top) / 2) %>%
+         y_mid = (y_bottom + y_top) / 2) |>
   select(region, year, x_label, y_top, y_mid) 
 
 # plot the stack area chart
 
-orange_prod_clean_region_non_fao_continent %>% 
+p1 <- orange_prod_clean_region_non_fao_continent |> 
   ggplot(aes(year, orange_production_tonnes, fill = region, label = region, color = region)) +
   geom_area() +
   geom_text_repel(
@@ -122,7 +122,7 @@ orange_prod_clean_region_non_fao_continent %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Orange Production\n(Millions of Tonnes)",
+       y = "Millions of Tonnes",
        title = "",
        subtitle = "",
        caption = "") +
@@ -148,11 +148,11 @@ orange_prod_clean_region_non_fao_continent %>%
         legend.position = "none"
   )
 
-ggsave("sub_pro_7_agriculture_owid/images/continental/continent_orange_1.png", width = 12, height = 12, dpi = 72)
+#ggsave("sub_pro_7_agriculture_owid/images/continental/continent_orange_1.png", width = 12, height = 12, dpi = 72)
 
 
-orange_prod_clean_region_non_fao_continent %>%
-  filter(year == 2020) %>%
+orange_prod_clean_region_non_fao_continent |>
+  filter(year == 2020) |>
   mutate(percent = 100 * orange_production_tonnes/sum(orange_production_tonnes)) 
 
 
@@ -161,23 +161,23 @@ orange_prod_clean_region_non_fao_continent %>%
 # Stacked Percentage Area Chart
 ################################################################################
 
-label_df_orange_percent <- orange_prod_clean_region_non_fao_continent %>%
-  group_by(year) %>%
-  mutate(share = orange_production_tonnes / sum(orange_production_tonnes, na.rm = TRUE)) %>%
-  ungroup() %>%
-  filter(year == max(year)) %>%
-  mutate(region = factor(region, levels = rev(desired_order))) %>%
-  arrange(region) %>%
+label_df_orange_percent <- orange_prod_clean_region_non_fao_continent |>
+  group_by(year) |>
+  mutate(share = orange_production_tonnes / sum(orange_production_tonnes, na.rm = TRUE)) |>
+  ungroup() |>
+  filter(year == max(year)) |>
+  mutate(region = factor(region, levels = rev(desired_order))) |>
+  arrange(region) |>
   mutate(
     x_label = max(year),
     y_top = cumsum(share),
     y_bottom = y_top - share,
     y_mid = (y_bottom + y_top) / 2
-  ) %>%
+  ) |>
   select(region, year, x_label, y_top, y_mid)
 
 
-orange_prod_clean_region_non_fao_continent %>% 
+p2 <- orange_prod_clean_region_non_fao_continent |> 
   ggplot(aes(year, orange_production_tonnes, fill = region, color = region)) +
   geom_area(position = "fill") +
   geom_text_repel(
@@ -195,7 +195,7 @@ orange_prod_clean_region_non_fao_continent %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Share of Orange Production (%)",
+       y = "",
        title = "",
        caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
@@ -217,8 +217,10 @@ orange_prod_clean_region_non_fao_continent %>%
   )
 
 
-ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_orange_1.png", width = 12, height = 12, dpi = 72)
+#ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_orange_1.png", width = 12, height = 12, dpi = 72)
 
+(p1/p2) + plot_annotation() & theme(plot.margin = margin(0,0,0,0))
+ggsave("sub_pro_7_agriculture_owid/images/continental_combi/orange.png", width = 12, height = 16, dpi = 300)
 
 ################################################################################
 # AFRICA ONLY CHARTS
@@ -229,15 +231,15 @@ ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_orang
 # Organize data
 
 # Africa total combined with regions data
-orange_prod_clean_region_fao_africa <- orange_prod_clean_region_fao %>%
+orange_prod_clean_region_fao_africa <- orange_prod_clean_region_fao |>
   filter(str_detect(region, "frica"))
 
 # Africa data alone
-orange_prod_clean_region_fao_africa_only <- orange_prod_clean_region_fao_africa %>%
+orange_prod_clean_region_fao_africa_only <- orange_prod_clean_region_fao_africa |>
   filter(region %in% c("Africa (FAO)"))
 
 # Africa regions alone
-orange_prod_clean_region_fao_africa_segment <- orange_prod_clean_region_fao_africa %>%
+orange_prod_clean_region_fao_africa_segment <- orange_prod_clean_region_fao_africa |>
   filter(region %in% c("Eastern Africa (FAO)", "Middle Africa (FAO)", 
                        "Northern Africa (FAO)", "Southern Africa (FAO)",
                        "Western Africa (FAO)")) |>
@@ -256,23 +258,23 @@ desired_order <- c("Eastern Africa", "Middle Africa", "Northern Africa", "Southe
 
 # order of the colored regions
 
-orange_prod_clean_region_fao_africa_segment <- orange_prod_clean_region_fao_africa_segment %>%
-  mutate(region = factor(region, levels = desired_order)) %>%
+orange_prod_clean_region_fao_africa_segment <- orange_prod_clean_region_fao_africa_segment |>
+  mutate(region = factor(region, levels = desired_order)) |>
   arrange(desc(region))
 
-label_df_orange_africa <- orange_prod_clean_region_fao_africa_segment %>%
-  filter(year == max(year)) %>%
-  mutate(region = factor(region, levels = rev(desired_order))) %>%
-  arrange(region) %>%
+label_df_orange_africa <- orange_prod_clean_region_fao_africa_segment |>
+  filter(year == max(year)) |>
+  mutate(region = factor(region, levels = rev(desired_order))) |>
+  arrange(region) |>
   mutate(x_label = max(year),
          y_top = cumsum(orange_production_tonnes),
          y_bottom = y_top - orange_production_tonnes,
-         y_mid = (y_bottom + y_top) / 2) %>%
+         y_mid = (y_bottom + y_top) / 2) |>
   select(region, year, x_label, y_top, y_mid) 
 
 # b) Stacked Area chart for Africa regions
 
-orange_prod_clean_region_fao_africa_segment %>% 
+p3 <- orange_prod_clean_region_fao_africa_segment |> 
   ggplot(aes(year, orange_production_tonnes, fill = region, label = region, color = region)) +
   geom_area() +
   geom_text_repel(
@@ -291,7 +293,7 @@ orange_prod_clean_region_fao_africa_segment %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Orange Production\n(Millions of Tonnes)",
+       y = "Millions of Tonnes",
        title = "",
        subtitle = "",
        caption = "") +
@@ -316,29 +318,29 @@ orange_prod_clean_region_fao_africa_segment %>%
         plot.margin = margin(5, 5, 5, 5),
         legend.position = "none")
 
-ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only/continent_orange_1.png", width = 12, height = 12, dpi = 300)
+#ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only/continent_orange_1.png", width = 12, height = 12, dpi = 300)
 
 ################################################################################
 # Stacked Percentage Area Chart
 ################################################################################
 
-label_df_orange_percent_africa <- orange_prod_clean_region_fao_africa_segment %>%
-  group_by(year) %>%
-  mutate(share = orange_production_tonnes / sum(orange_production_tonnes, na.rm = TRUE)) %>%
-  ungroup() %>%
-  filter(year == max(year)) %>%
-  mutate(region = factor(region, levels = rev(desired_order))) %>%
-  arrange(region) %>%
+label_df_orange_percent_africa <- orange_prod_clean_region_fao_africa_segment |>
+  group_by(year) |>
+  mutate(share = orange_production_tonnes / sum(orange_production_tonnes, na.rm = TRUE)) |>
+  ungroup() |>
+  filter(year == max(year)) |>
+  mutate(region = factor(region, levels = rev(desired_order))) |>
+  arrange(region) |>
   mutate(
     x_label = max(year),
     y_top = cumsum(share),
     y_bottom = y_top - share,
     y_mid = (y_bottom + y_top) / 2
-  ) %>%
+  ) |>
   select(region, year, x_label, y_top, y_mid)
 
 
-orange_prod_clean_region_fao_africa_segment %>% 
+p4 <- orange_prod_clean_region_fao_africa_segment |> 
   ggplot(aes(year, orange_production_tonnes, fill = region, color = region)) +
   geom_area(position = "fill") +
   geom_text_repel(
@@ -356,7 +358,7 @@ orange_prod_clean_region_fao_africa_segment %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Share of Orange Production (%)",
+       y = "",
        title = "",
        caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
@@ -377,4 +379,8 @@ orange_prod_clean_region_fao_africa_segment %>%
     legend.position = "none"
   )
 
-ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only_stack_perc/continent_orange_1.png", width = 12, height = 12, dpi = 300)
+#ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only_stack_perc/continent_orange_1.png", width = 12, height = 12, dpi = 300)
+
+
+(p3/p4) + plot_annotation() & theme(plot.margin = margin(0,0,0,0))
+ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only_combi/orange.png", width = 12, height = 16, dpi = 300)

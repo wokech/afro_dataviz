@@ -40,36 +40,36 @@ cocoa_bean_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/cocoa-bean-prod
 
 # Clean the column headings
 
-cocoa_bean_prod_clean <- cocoa_bean_prod %>%
+cocoa_bean_prod_clean <- cocoa_bean_prod |>
   clean_names() 
 
 # Change the column title names
 
-cocoa_bean_prod_clean <- cocoa_bean_prod_clean %>%
+cocoa_bean_prod_clean <- cocoa_bean_prod_clean |>
   rename("region" = "entity",
          "cocoa_bean_production_tonnes" = "cocoa_beans_00000661_production_005510_tonnes") 
 
 # Filter by region
 
-cocoa_bean_prod_clean_region <- cocoa_bean_prod_clean %>%
-  filter(is.na(code)) %>%
+cocoa_bean_prod_clean_region <- cocoa_bean_prod_clean |>
+  filter(is.na(code)) |>
   select(c(1,3,4)) 
 
 # Filter by FAO region
 
-cocoa_bean_prod_clean_region_fao <- cocoa_bean_prod_clean_region %>%
+cocoa_bean_prod_clean_region_fao <- cocoa_bean_prod_clean_region |>
   filter(grepl('(FAO)', region))
 
 # Filter by non-FAO region
 
-cocoa_bean_prod_clean_region_non_fao <- cocoa_bean_prod_clean_region %>%
+cocoa_bean_prod_clean_region_non_fao <- cocoa_bean_prod_clean_region |>
   filter(!grepl('(FAO)', region))
 
 # 3) Continental (Non-FAO) cocoa_bean production
 
 # a) Stacked area chart
 
-cocoa_bean_prod_clean_region_non_fao_continent <- cocoa_bean_prod_clean_region_non_fao %>%
+cocoa_bean_prod_clean_region_non_fao_continent <- cocoa_bean_prod_clean_region_non_fao |>
   filter(region %in% c("Africa", "Asia", "Europe", 
                        "North America", "South America", 
                        "Oceania"))
@@ -85,25 +85,25 @@ afro_stack_palette <- c(
 
 desired_order <- c("Oceania", "Africa", "Europe", "North America", "South America", "Asia")
 
-cocoa_bean_prod_clean_region_non_fao_continent <- cocoa_bean_prod_clean_region_non_fao_continent %>%
-  mutate(region = factor(region, levels = desired_order)) %>%
+cocoa_bean_prod_clean_region_non_fao_continent <- cocoa_bean_prod_clean_region_non_fao_continent |>
+  mutate(region = factor(region, levels = desired_order)) |>
   arrange(desc(region))
 
 #  calculate cumulative positions for label placement
 
-label_df_cocoa_bean <- cocoa_bean_prod_clean_region_non_fao_continent %>%
-  filter(year == max(year)) %>%
-  mutate(region = factor(region, levels = rev(desired_order))) %>%
-  arrange(region) %>%
+label_df_cocoa_bean <- cocoa_bean_prod_clean_region_non_fao_continent |>
+  filter(year == max(year)) |>
+  mutate(region = factor(region, levels = rev(desired_order))) |>
+  arrange(region) |>
   mutate(x_label = max(year),
          y_top = cumsum(cocoa_bean_production_tonnes),
          y_bottom = y_top - cocoa_bean_production_tonnes,
-         y_mid = (y_bottom + y_top) / 2) %>%
+         y_mid = (y_bottom + y_top) / 2) |>
   select(region, year, x_label, y_top, y_mid) 
 
 # plot the stack area chart
 
-cocoa_bean_prod_clean_region_non_fao_continent %>% 
+p1 <- cocoa_bean_prod_clean_region_non_fao_continent |> 
   ggplot(aes(year, cocoa_bean_production_tonnes, fill = region, label = region, color = region)) +
   geom_area() +
   geom_text_repel(
@@ -122,7 +122,7 @@ cocoa_bean_prod_clean_region_non_fao_continent %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Cocoa Bean Production\n(Millions of Tonnes)",
+       y = "Millions of Tonnes",
        title = "",
        subtitle = "",
        caption = "") +
@@ -148,11 +148,11 @@ cocoa_bean_prod_clean_region_non_fao_continent %>%
         legend.position = "none"
   )
 
-ggsave("sub_pro_7_agriculture_owid/images/continental/continent_cocoa_bean_1.png", width = 12, height = 12, dpi = 72)
+#ggsave("sub_pro_7_agriculture_owid/images/continental/continent_cocoa_bean_1.png", width = 12, height = 12, dpi = 72)
 
 
-cocoa_bean_prod_clean_region_non_fao_continent %>%
-  filter(year == 2020) %>%
+cocoa_bean_prod_clean_region_non_fao_continent |>
+  filter(year == 2020) |>
   mutate(percent = 100 * cocoa_bean_production_tonnes/sum(cocoa_bean_production_tonnes)) 
 
 
@@ -162,23 +162,23 @@ cocoa_bean_prod_clean_region_non_fao_continent %>%
 # Stacked Percentage Area Chart
 ################################################################################
 
-label_df_cocoa_bean_percent <- cocoa_bean_prod_clean_region_non_fao_continent %>%
-  group_by(year) %>%
-  mutate(share = cocoa_bean_production_tonnes / sum(cocoa_bean_production_tonnes, na.rm = TRUE)) %>%
-  ungroup() %>%
-  filter(year == max(year)) %>%
-  mutate(region = factor(region, levels = rev(desired_order))) %>%
-  arrange(region) %>%
+label_df_cocoa_bean_percent <- cocoa_bean_prod_clean_region_non_fao_continent |>
+  group_by(year) |>
+  mutate(share = cocoa_bean_production_tonnes / sum(cocoa_bean_production_tonnes, na.rm = TRUE)) |>
+  ungroup() |>
+  filter(year == max(year)) |>
+  mutate(region = factor(region, levels = rev(desired_order))) |>
+  arrange(region) |>
   mutate(
     x_label = max(year),
     y_top = cumsum(share),
     y_bottom = y_top - share,
     y_mid = (y_bottom + y_top) / 2
-  ) %>%
+  ) |>
   select(region, year, x_label, y_top, y_mid)
 
 
-cocoa_bean_prod_clean_region_non_fao_continent %>% 
+p2 <- cocoa_bean_prod_clean_region_non_fao_continent |> 
   ggplot(aes(year, cocoa_bean_production_tonnes, fill = region, color = region)) +
   geom_area(position = "fill") +
   geom_text_repel(
@@ -196,7 +196,7 @@ cocoa_bean_prod_clean_region_non_fao_continent %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Share of Cocoa Bean Production (%)",
+       y = "",
        title = "",
        caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
@@ -218,8 +218,10 @@ cocoa_bean_prod_clean_region_non_fao_continent %>%
   )
 
 
-ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_cocoa_bean_1.png", width = 12, height = 12, dpi = 72)
+#ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_cocoa_bean_1.png", width = 12, height = 12, dpi = 72)
 
+(p1/p2) + plot_annotation() & theme(plot.margin = margin(0,0,0,0))
+ggsave("sub_pro_7_agriculture_owid/images/continental_combi/cocoa_bean.png", width = 12, height = 16, dpi = 300)
 
 
 ################################################################################
@@ -231,15 +233,15 @@ ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_cocoa
 # Organize data
 
 # Africa total combined with regions data
-cocoa_bean_prod_clean_region_fao_africa <- cocoa_bean_prod_clean_region_fao %>%
+cocoa_bean_prod_clean_region_fao_africa <- cocoa_bean_prod_clean_region_fao |>
   filter(str_detect(region, "frica"))
 
 # Africa data alone
-cocoa_bean_prod_clean_region_fao_africa_only <- cocoa_bean_prod_clean_region_fao_africa %>%
+cocoa_bean_prod_clean_region_fao_africa_only <- cocoa_bean_prod_clean_region_fao_africa |>
   filter(region %in% c("Africa (FAO)"))
 
 # Africa regions alone
-cocoa_bean_prod_clean_region_fao_africa_segment <- cocoa_bean_prod_clean_region_fao_africa %>%
+cocoa_bean_prod_clean_region_fao_africa_segment <- cocoa_bean_prod_clean_region_fao_africa |>
   filter(region %in% c("Eastern Africa (FAO)", "Middle Africa (FAO)", 
                        "Northern Africa (FAO)", "Southern Africa (FAO)",
                        "Western Africa (FAO)")) |>
@@ -258,23 +260,23 @@ desired_order <- c("Eastern Africa", "Middle Africa", "Northern Africa", "Southe
 
 # order of the colored regions
 
-cocoa_bean_prod_clean_region_fao_africa_segment <- cocoa_bean_prod_clean_region_fao_africa_segment %>%
-  mutate(region = factor(region, levels = desired_order)) %>%
+cocoa_bean_prod_clean_region_fao_africa_segment <- cocoa_bean_prod_clean_region_fao_africa_segment |>
+  mutate(region = factor(region, levels = desired_order)) |>
   arrange(desc(region))
 
-label_df_cocoa_bean_africa <- cocoa_bean_prod_clean_region_fao_africa_segment %>%
-  filter(year == max(year)) %>%
-  mutate(region = factor(region, levels = rev(desired_order))) %>%
-  arrange(region) %>%
+label_df_cocoa_bean_africa <- cocoa_bean_prod_clean_region_fao_africa_segment |>
+  filter(year == max(year)) |>
+  mutate(region = factor(region, levels = rev(desired_order))) |>
+  arrange(region) |>
   mutate(x_label = max(year),
          y_top = cumsum(cocoa_bean_production_tonnes),
          y_bottom = y_top - cocoa_bean_production_tonnes,
-         y_mid = (y_bottom + y_top) / 2) %>%
+         y_mid = (y_bottom + y_top) / 2) |>
   select(region, year, x_label, y_top, y_mid) 
 
 # b) Stacked Area chart for Africa regions
 
-cocoa_bean_prod_clean_region_fao_africa_segment %>% 
+p3 <- cocoa_bean_prod_clean_region_fao_africa_segment |> 
   ggplot(aes(year, cocoa_bean_production_tonnes, fill = region, label = region, color = region)) +
   geom_area() +
   geom_text_repel(
@@ -293,7 +295,7 @@ cocoa_bean_prod_clean_region_fao_africa_segment %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Cocoa Bean Production\n(Millions of Tonnes)",
+       y = "Millions of Tonnes",
        title = "",
        subtitle = "",
        caption = "") +
@@ -318,29 +320,29 @@ cocoa_bean_prod_clean_region_fao_africa_segment %>%
         plot.margin = margin(5, 5, 5, 5),
         legend.position = "none")
 
-ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only/continent_cocoa_bean_1.png", width = 12, height = 12, dpi = 300)
+#ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only/continent_cocoa_bean_1.png", width = 12, height = 12, dpi = 300)
 
 ################################################################################
 # Stacked Percentage Area Chart
 ################################################################################
 
-label_df_cocoa_bean_percent_africa <- cocoa_bean_prod_clean_region_fao_africa_segment %>%
-  group_by(year) %>%
-  mutate(share = cocoa_bean_production_tonnes / sum(cocoa_bean_production_tonnes, na.rm = TRUE)) %>%
-  ungroup() %>%
-  filter(year == max(year)) %>%
-  mutate(region = factor(region, levels = rev(desired_order))) %>%
-  arrange(region) %>%
+label_df_cocoa_bean_percent_africa <- cocoa_bean_prod_clean_region_fao_africa_segment |>
+  group_by(year) |>
+  mutate(share = cocoa_bean_production_tonnes / sum(cocoa_bean_production_tonnes, na.rm = TRUE)) |>
+  ungroup() |>
+  filter(year == max(year)) |>
+  mutate(region = factor(region, levels = rev(desired_order))) |>
+  arrange(region) |>
   mutate(
     x_label = max(year),
     y_top = cumsum(share),
     y_bottom = y_top - share,
     y_mid = (y_bottom + y_top) / 2
-  ) %>%
+  ) |>
   select(region, year, x_label, y_top, y_mid)
 
 
-cocoa_bean_prod_clean_region_fao_africa_segment %>% 
+p4 <- cocoa_bean_prod_clean_region_fao_africa_segment |> 
   ggplot(aes(year, cocoa_bean_production_tonnes, fill = region, color = region)) +
   geom_area(position = "fill") +
   geom_text_repel(
@@ -358,7 +360,7 @@ cocoa_bean_prod_clean_region_fao_africa_segment %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Share of Cocoa Bean Production (%)",
+       y = "",
        title = "",
        caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
@@ -379,5 +381,8 @@ cocoa_bean_prod_clean_region_fao_africa_segment %>%
     legend.position = "none"
   )
 
-ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only_stack_perc/continent_cocoa_bean_1.png", width = 12, height = 12, dpi = 300)
- 
+#ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only_stack_perc/continent_cocoa_bean_1.png", width = 12, height = 12, dpi = 300)
+
+
+(p3/p4) + plot_annotation() & theme(plot.margin = margin(0,0,0,0))
+ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only_combi/cocoa_bean.png", width = 12, height = 16, dpi = 300)

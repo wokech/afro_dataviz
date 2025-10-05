@@ -35,22 +35,22 @@ mushroom_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/mushroom-truffle-
 
 # Clean the column headings
 
-mushroom_prod_clean <- mushroom_prod %>%
+mushroom_prod_clean <- mushroom_prod |>
   clean_names() 
 
 # Change the column title names
 
-mushroom_prod_clean <- mushroom_prod_clean %>%
+mushroom_prod_clean <- mushroom_prod_clean |>
   select(area, year, value)
 
 # Filter by region
 
-mushroom_prod_clean_region <- mushroom_prod_clean %>%
+mushroom_prod_clean_region <- mushroom_prod_clean |>
   filter(area %in% c("Africa", "Americas", "Asia", "Europe", "Oceania"))
 
 # Filter by Continent (No South America) - Rename Americas to North America
 
-mushroom_prod_clean_region <- mushroom_prod_clean_region %>%
+mushroom_prod_clean_region <- mushroom_prod_clean_region |>
   mutate(area = if_else(area == "Americas", "North America", area))
 
 # 3) Continental mushroom production
@@ -66,25 +66,25 @@ afro_stack_palette <- c(
 
 desired_order <- c("Oceania", "Africa", "Europe", "North America", "Asia")
 
-mushroom_prod_clean_region_complete <- mushroom_prod_clean_region %>%
-  mutate(area = factor(area, levels = desired_order)) %>%
+mushroom_prod_clean_region_complete <- mushroom_prod_clean_region |>
+  mutate(area = factor(area, levels = desired_order)) |>
   arrange(desc(area))
 
 #  calculate cumulative positions for label placement
 
-label_df_mushroom <- mushroom_prod_clean_region_complete %>%
-  filter(year == max(year)) %>%
-  mutate(area = factor(area, levels = rev(desired_order))) %>%
-  arrange(area) %>%
+label_df_mushroom <- mushroom_prod_clean_region_complete |>
+  filter(year == max(year)) |>
+  mutate(area = factor(area, levels = rev(desired_order))) |>
+  arrange(area) |>
   mutate(x_label = max(year),
          y_top = cumsum(value),
          y_bottom = y_top - value,
-         y_mid = (y_bottom + y_top) / 2) %>%
+         y_mid = (y_bottom + y_top) / 2) |>
   select(area, year, x_label, y_top, y_mid) 
 
 # plot the stack area chart
 
-mushroom_prod_clean_region_complete %>% 
+p1 <- mushroom_prod_clean_region_complete |> 
   ggplot(aes(year, value, fill = area, label = area, color = area)) +
   geom_area() +
   geom_text_repel(
@@ -103,7 +103,7 @@ mushroom_prod_clean_region_complete %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Mushroom Production\n(Millions of Tonnes)",
+       y = "Millions of Tonnes",
        title = "",
        subtitle = "",
        caption = "") +
@@ -129,11 +129,11 @@ mushroom_prod_clean_region_complete %>%
         legend.position = "none"
   ) 
 
-#ggsave("sub_pro_7_agriculture_owid/images/continental/continent_mushroom_1.png", width = 12, height = 12, dpi = 72)
+##ggsave("sub_pro_7_agriculture_owid/images/continental/continent_mushroom_1.png", width = 12, height = 12, dpi = 72)
 
 
-mushroom_prod_clean_region_complete %>%
-  filter(year == 2020) %>%
+mushroom_prod_clean_region_complete |>
+  filter(year == 2020) |>
   mutate(percent = 100 * value/sum(value))
 
 
@@ -143,23 +143,23 @@ mushroom_prod_clean_region_complete %>%
 # Stacked Percentage Area Chart
 ################################################################################
 
-label_df_mushroom_percent <- mushroom_prod_clean_region_complete %>%
-  group_by(year) %>%
-  mutate(share = value / sum(value, na.rm = TRUE)) %>%
-  ungroup() %>%
-  filter(year == max(year)) %>%
-  mutate(area = factor(area, levels = rev(desired_order))) %>%
-  arrange(area) %>%
+label_df_mushroom_percent <- mushroom_prod_clean_region_complete |>
+  group_by(year) |>
+  mutate(share = value / sum(value, na.rm = TRUE)) |>
+  ungroup() |>
+  filter(year == max(year)) |>
+  mutate(area = factor(area, levels = rev(desired_order))) |>
+  arrange(area) |>
   mutate(
     x_label = max(year),
     y_top = cumsum(share),
     y_bottom = y_top - share,
     y_mid = (y_bottom + y_top) / 2
-  ) %>%
+  ) |>
   select(area, year, x_label, y_top, y_mid)
 
 
-mushroom_prod_clean_region_complete %>% 
+p2 <- mushroom_prod_clean_region_complete |> 
   ggplot(aes(year, value, fill = area, color = area)) +
   geom_area(position = "fill") +
   geom_text_repel(
@@ -177,7 +177,7 @@ mushroom_prod_clean_region_complete %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Share of Mushroom Production (%)",
+       y = "",
        title = "",
        caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
@@ -198,8 +198,10 @@ mushroom_prod_clean_region_complete %>%
     legend.position = "none"
   )
 
-#ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_mushroom_1.png", width = 12, height = 12, dpi = 72)
+##ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_mushroom_1.png", width = 12, height = 12, dpi = 72)
 
+(p1/p2) + plot_annotation() & theme(plot.margin = margin(0,0,0,0))
+ggsave("sub_pro_7_agriculture_owid/images/continental_combi/mushroom.png", width = 12, height = 16, dpi = 300)
 
 
 ################################################################################
@@ -211,11 +213,11 @@ mushroom_prod_clean_region_complete %>%
 # Organize data
 
 # Africa total combined with regions data
-mushroom_prod_clean_africa <- mushroom_prod_clean %>%
+mushroom_prod_clean_africa <- mushroom_prod_clean |>
   filter(str_detect(area, "frica"))
 
 # Africa regions alone
-mushroom_prod_clean_region_fao_africa_segment <- mushroom_prod_clean_africa %>%
+mushroom_prod_clean_region_fao_africa_segment <- mushroom_prod_clean_africa |>
   filter(area %in% c("Eastern Africa", "Middle Africa", "Northern Africa", 
                        "Southern Africa", "Western Africa"))
 
@@ -232,23 +234,23 @@ desired_order <- c("Eastern Africa", "Middle Africa", "Northern Africa", "Southe
 
 # order of the colored regions
 
-mushroom_prod_clean_region_fao_africa_segment <- mushroom_prod_clean_region_fao_africa_segment %>%
-  mutate(area = factor(area, levels = desired_order)) %>%
+mushroom_prod_clean_region_fao_africa_segment <- mushroom_prod_clean_region_fao_africa_segment |>
+  mutate(area = factor(area, levels = desired_order)) |>
   arrange(desc(area))
 
-label_df_mushroom_africa <- mushroom_prod_clean_region_fao_africa_segment %>%
-  filter(year == max(year)) %>%
-  mutate(area = factor(area, levels = rev(desired_order))) %>%
-  arrange(area) %>%
+label_df_mushroom_africa <- mushroom_prod_clean_region_fao_africa_segment |>
+  filter(year == max(year)) |>
+  mutate(area = factor(area, levels = rev(desired_order))) |>
+  arrange(area) |>
   mutate(x_label = max(year),
          y_top = cumsum(value),
          y_bottom = y_top - value,
-         y_mid = (y_bottom + y_top) / 2) %>%
+         y_mid = (y_bottom + y_top) / 2) |>
   select(area, year, x_label, y_top, y_mid) 
 
 # b) Stacked Area chart for Africa regions
 
-mushroom_prod_clean_region_fao_africa_segment %>% 
+p3 <- mushroom_prod_clean_region_fao_africa_segment |> 
   ggplot(aes(year, value, fill = area, label = area, color = area)) +
   geom_area() +
   geom_text_repel(
@@ -267,7 +269,7 @@ mushroom_prod_clean_region_fao_africa_segment %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Mushroom Production\n(Millions of Tonnes)",
+       y = "Millions of Tonnes",
        title = "",
        subtitle = "",
        caption = "") +
@@ -292,29 +294,29 @@ mushroom_prod_clean_region_fao_africa_segment %>%
         plot.margin = margin(5, 5, 5, 5),
         legend.position = "none")
 
-ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only/continent_mushroom_1.png", width = 12, height = 12, dpi = 300)
+#ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only/continent_mushroom_1.png", width = 12, height = 12, dpi = 300)
 
 ################################################################################
 # Stacked Percentage Area Chart
 ################################################################################
 
-label_df_mushroom_percent_africa <- mushroom_prod_clean_region_fao_africa_segment %>%
-  group_by(year) %>%
-  mutate(share = value / sum(value, na.rm = TRUE)) %>%
-  ungroup() %>%
-  filter(year == max(year)) %>%
-  mutate(area = factor(area, levels = rev(desired_order))) %>%
-  arrange(area) %>%
+label_df_mushroom_percent_africa <- mushroom_prod_clean_region_fao_africa_segment |>
+  group_by(year) |>
+  mutate(share = value / sum(value, na.rm = TRUE)) |>
+  ungroup() |>
+  filter(year == max(year)) |>
+  mutate(area = factor(area, levels = rev(desired_order))) |>
+  arrange(area) |>
   mutate(
     x_label = max(year),
     y_top = cumsum(share),
     y_bottom = y_top - share,
     y_mid = (y_bottom + y_top) / 2
-  ) %>%
+  ) |>
   select(area, year, x_label, y_top, y_mid)
 
 
-mushroom_prod_clean_region_fao_africa_segment %>% 
+p4 <- mushroom_prod_clean_region_fao_africa_segment |> 
   ggplot(aes(year, value, fill = area, color = area)) +
   geom_area(position = "fill") +
   geom_text_repel(
@@ -332,7 +334,7 @@ mushroom_prod_clean_region_fao_africa_segment %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Share of Mushroom Production (%)",
+       y = "",
        title = "",
        caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
@@ -353,4 +355,8 @@ mushroom_prod_clean_region_fao_africa_segment %>%
     legend.position = "none"
   )
 
-ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only_stack_perc/continent_mushroom_1.png", width = 12, height = 12, dpi = 300)
+#ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only_stack_perc/continent_mushroom_1.png", width = 12, height = 12, dpi = 300)
+
+
+(p3/p4) + plot_annotation() & theme(plot.margin = margin(0,0,0,0))
+ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only_combi/mushroom.png", width = 12, height = 16, dpi = 300)

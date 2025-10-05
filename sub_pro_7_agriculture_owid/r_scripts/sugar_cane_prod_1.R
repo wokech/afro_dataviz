@@ -103,7 +103,7 @@ label_df_sugar_cane <- sugar_cane_prod_clean_region_non_fao_continent |>
 
 # plot the stack area chart
 
-sugar_cane_prod_clean_region_non_fao_continent |> 
+p1 <- sugar_cane_prod_clean_region_non_fao_continent |> 
   ggplot(aes(year, sugar_cane_production_tonnes, fill = region, label = region, color = region)) +
   geom_area() +
   geom_text_repel(
@@ -122,7 +122,7 @@ sugar_cane_prod_clean_region_non_fao_continent |>
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Sugar Cane Production\n(Millions of Tonnes)",
+       y = "Millions of Tonnes",
        title = "",
        subtitle = "",
        caption = "") +
@@ -148,7 +148,7 @@ sugar_cane_prod_clean_region_non_fao_continent |>
         legend.position = "none"
   )
 
-ggsave("sub_pro_7_agriculture_owid/images/continental/continent_sugar_cane_1.png", width = 12, height = 12, dpi = 72)
+#ggsave("sub_pro_7_agriculture_owid/images/continental/continent_sugar_cane_1.png", width = 12, height = 12, dpi = 72)
 
 
 sugar_cane_prod_clean_region_non_fao_continent |>
@@ -176,7 +176,7 @@ label_df_sugar_cane_percent <- sugar_cane_prod_clean_region_non_fao_continent |>
   select(region, year, x_label, y_top, y_mid)
 
 
-sugar_cane_prod_clean_region_non_fao_continent |> 
+p2 <- sugar_cane_prod_clean_region_non_fao_continent |> 
   ggplot(aes(year, sugar_cane_production_tonnes, fill = region, color = region)) +
   geom_area(position = "fill") +
   geom_text_repel(
@@ -194,7 +194,7 @@ sugar_cane_prod_clean_region_non_fao_continent |>
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Share of Sugar Cane Production (%)",
+       y = "",
        title = "",
        caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
@@ -216,8 +216,10 @@ sugar_cane_prod_clean_region_non_fao_continent |>
   )
 
 
-ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_sugar_cane_1.png", width = 12, height = 12, dpi = 72)
+#ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_sugar_cane_1.png", width = 12, height = 12, dpi = 72)
 
+(p1/p2) + plot_annotation() & theme(plot.margin = margin(0,0,0,0))
+ggsave("sub_pro_7_agriculture_owid/images/continental_combi/sugar_cane.png", width = 12, height = 16, dpi = 300)
 
 ################################################################################
 # AFRICA ONLY CHARTS
@@ -228,15 +230,15 @@ ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_sugar
 # Organize data
 
 # Africa total combined with regions data
-sugar_cane_prod_clean_region_fao_africa <- sugar_cane_prod_clean_region_fao %>%
+sugar_cane_prod_clean_region_fao_africa <- sugar_cane_prod_clean_region_fao |>
   filter(str_detect(region, "frica"))
 
 # Africa data alone
-sugar_cane_prod_clean_region_fao_africa_only <- sugar_cane_prod_clean_region_fao_africa %>%
+sugar_cane_prod_clean_region_fao_africa_only <- sugar_cane_prod_clean_region_fao_africa |>
   filter(region %in% c("Africa (FAO)"))
 
 # Africa regions alone
-sugar_cane_prod_clean_region_fao_africa_segment <- sugar_cane_prod_clean_region_fao_africa %>%
+sugar_cane_prod_clean_region_fao_africa_segment <- sugar_cane_prod_clean_region_fao_africa |>
   filter(region %in% c("Eastern Africa (FAO)", "Middle Africa (FAO)", 
                        "Northern Africa (FAO)", "Southern Africa (FAO)",
                        "Western Africa (FAO)")) |>
@@ -255,23 +257,23 @@ desired_order <- c("Eastern Africa", "Middle Africa", "Northern Africa", "Southe
 
 # order of the colored regions
 
-sugar_cane_prod_clean_region_fao_africa_segment <- sugar_cane_prod_clean_region_fao_africa_segment %>%
-  mutate(region = factor(region, levels = desired_order)) %>%
+sugar_cane_prod_clean_region_fao_africa_segment <- sugar_cane_prod_clean_region_fao_africa_segment |>
+  mutate(region = factor(region, levels = desired_order)) |>
   arrange(desc(region))
 
-label_df_sugar_cane_africa <- sugar_cane_prod_clean_region_fao_africa_segment %>%
-  filter(year == max(year)) %>%
-  mutate(region = factor(region, levels = rev(desired_order))) %>%
-  arrange(region) %>%
+label_df_sugar_cane_africa <- sugar_cane_prod_clean_region_fao_africa_segment |>
+  filter(year == max(year)) |>
+  mutate(region = factor(region, levels = rev(desired_order))) |>
+  arrange(region) |>
   mutate(x_label = max(year),
          y_top = cumsum(sugar_cane_production_tonnes),
          y_bottom = y_top - sugar_cane_production_tonnes,
-         y_mid = (y_bottom + y_top) / 2) %>%
+         y_mid = (y_bottom + y_top) / 2) |>
   select(region, year, x_label, y_top, y_mid) 
 
 # b) Stacked Area chart for Africa regions
 
-sugar_cane_prod_clean_region_fao_africa_segment %>% 
+p3 <- sugar_cane_prod_clean_region_fao_africa_segment |> 
   ggplot(aes(year, sugar_cane_production_tonnes, fill = region, label = region, color = region)) +
   geom_area() +
   geom_text_repel(
@@ -290,7 +292,7 @@ sugar_cane_prod_clean_region_fao_africa_segment %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Sugar Cane Production\n(Millions of Tonnes)",
+       y = "Millions of Tonnes",
        title = "",
        subtitle = "",
        caption = "") +
@@ -315,29 +317,29 @@ sugar_cane_prod_clean_region_fao_africa_segment %>%
         plot.margin = margin(5, 5, 5, 5),
         legend.position = "none")
 
-ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only/continent_sugar_cane_1.png", width = 12, height = 12, dpi = 300)
+#ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only/continent_sugar_cane_1.png", width = 12, height = 12, dpi = 300)
 
 ################################################################################
 # Stacked Percentage Area Chart
 ################################################################################
 
-label_df_sugar_cane_percent_africa <- sugar_cane_prod_clean_region_fao_africa_segment %>%
-  group_by(year) %>%
-  mutate(share = sugar_cane_production_tonnes / sum(sugar_cane_production_tonnes, na.rm = TRUE)) %>%
-  ungroup() %>%
-  filter(year == max(year)) %>%
-  mutate(region = factor(region, levels = rev(desired_order))) %>%
-  arrange(region) %>%
+label_df_sugar_cane_percent_africa <- sugar_cane_prod_clean_region_fao_africa_segment |>
+  group_by(year) |>
+  mutate(share = sugar_cane_production_tonnes / sum(sugar_cane_production_tonnes, na.rm = TRUE)) |>
+  ungroup() |>
+  filter(year == max(year)) |>
+  mutate(region = factor(region, levels = rev(desired_order))) |>
+  arrange(region) |>
   mutate(
     x_label = max(year),
     y_top = cumsum(share),
     y_bottom = y_top - share,
     y_mid = (y_bottom + y_top) / 2
-  ) %>%
+  ) |>
   select(region, year, x_label, y_top, y_mid)
 
 
-sugar_cane_prod_clean_region_fao_africa_segment %>% 
+p4 <- sugar_cane_prod_clean_region_fao_africa_segment |> 
   ggplot(aes(year, sugar_cane_production_tonnes, fill = region, color = region)) +
   geom_area(position = "fill") +
   geom_text_repel(
@@ -355,7 +357,7 @@ sugar_cane_prod_clean_region_fao_africa_segment %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Share of Sugar Cane Production (%)",
+       y = "",
        title = "",
        caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
@@ -376,4 +378,8 @@ sugar_cane_prod_clean_region_fao_africa_segment %>%
     legend.position = "none"
   )
 
-ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only_stack_perc/continent_sugar_cane_1.png", width = 12, height = 12, dpi = 300)
+#ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only_stack_perc/continent_sugar_cane_1.png", width = 12, height = 12, dpi = 300)
+
+
+(p3/p4) + plot_annotation() & theme(plot.margin = margin(0,0,0,0))
+ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only_combi/sugar_cane.png", width = 12, height = 16, dpi = 300)

@@ -35,17 +35,17 @@ tea_leaves_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/tea-production-
 
 # Clean the column headings
 
-tea_leaves_prod_clean <- tea_leaves_prod %>%
+tea_leaves_prod_clean <- tea_leaves_prod |>
   clean_names() 
 
 # Change the column title names
 
-tea_leaves_prod_clean <- tea_leaves_prod_clean %>%
+tea_leaves_prod_clean <- tea_leaves_prod_clean |>
   select(area, year, value)
 
 # Filter by region
 
-tea_leaves_prod_clean_region <- tea_leaves_prod_clean %>%
+tea_leaves_prod_clean_region <- tea_leaves_prod_clean |>
   filter(area %in% c("Africa", "Americas", "South America", "Asia", "Europe", "Oceania"))
 
 # Filter by Country
@@ -88,25 +88,25 @@ afro_stack_palette <- c(
 
 desired_order <- c("Oceania", "Africa", "Europe", "North America", "South America", "Asia")
 
-tea_leaves_prod_clean_region_complete <- tea_leaves_prod_clean_region_complete %>%
-  mutate(area = factor(area, levels = desired_order)) %>%
+tea_leaves_prod_clean_region_complete <- tea_leaves_prod_clean_region_complete |>
+  mutate(area = factor(area, levels = desired_order)) |>
   arrange(desc(area))
 
 #  calculate cumulative positions for label placement
 
-label_df_tea_leaves <- tea_leaves_prod_clean_region_complete %>%
-  filter(year == max(year)) %>%
-  mutate(area = factor(area, levels = rev(desired_order))) %>%
-  arrange(area) %>%
+label_df_tea_leaves <- tea_leaves_prod_clean_region_complete |>
+  filter(year == max(year)) |>
+  mutate(area = factor(area, levels = rev(desired_order))) |>
+  arrange(area) |>
   mutate(x_label = max(year),
          y_top = cumsum(value),
          y_bottom = y_top - value,
-         y_mid = (y_bottom + y_top) / 2) %>%
+         y_mid = (y_bottom + y_top) / 2) |>
   select(area, year, x_label, y_top, y_mid) 
 
 # plot the stack area chart
 
-tea_leaves_prod_clean_region_complete %>% 
+p1 <- tea_leaves_prod_clean_region_complete |> 
   ggplot(aes(year, value, fill = area, label = area, color = area)) +
   geom_area() +
   geom_text_repel(
@@ -118,14 +118,15 @@ tea_leaves_prod_clean_region_complete %>%
     inherit.aes = FALSE,
     direction = "y",
     hjust = 0,
-    nudge_x = 15,
-    segment.curvature = 0.1,
+    nudge_x = 20,
+    segment.curvature = 0.15,
     segment.size = 0.5,
     segment.ncp = 1,
-    min.segment.length = 0
+    min.segment.length = 0,
+    box.padding = 1.5
   ) +
   labs(x = "Year",
-       y = "Tea Leaves Production\n(Millions of Tonnes)",
+       y = "Millions of Tonnes",
        title = "",
        subtitle = "",
        caption = "") +
@@ -151,15 +152,15 @@ tea_leaves_prod_clean_region_complete %>%
         legend.position = "none"
   ) +
   geom_vline(xintercept = 1991, linetype = "dashed", color = "black") +
-  annotate("text", x = 1990, y = 20000000, size = 8, 
+  annotate("text", x = 1993.5, y = 20000000, size = 8, 
            label = "Switch from Official Figure\nto Estimated Value",
            color = "black", vjust = 0, angle = 90)
 
-ggsave("sub_pro_7_agriculture_owid/images/continental/continent_tea_leaves_1.png", width = 12, height = 12, dpi = 72)
+#ggsave("sub_pro_7_agriculture_owid/images/continental/continent_tea_leaves_1.png", width = 12, height = 12, dpi = 72)
 
 
-tea_leaves_prod_clean_region_complete %>%
-  filter(year == 2020) %>%
+tea_leaves_prod_clean_region_complete |>
+  filter(year == 2020) |>
   mutate(percent = 100 * value/sum(value))
 
 
@@ -169,23 +170,23 @@ tea_leaves_prod_clean_region_complete %>%
 # Stacked Percentage Area Chart
 ################################################################################
 
-label_df_tea_leaves_percent <- tea_leaves_prod_clean_region_complete %>%
-  group_by(year) %>%
-  mutate(share = value / sum(value, na.rm = TRUE)) %>%
-  ungroup() %>%
-  filter(year == max(year)) %>%
-  mutate(area = factor(area, levels = rev(desired_order))) %>%
-  arrange(area) %>%
+label_df_tea_leaves_percent <- tea_leaves_prod_clean_region_complete |>
+  group_by(year) |>
+  mutate(share = value / sum(value, na.rm = TRUE)) |>
+  ungroup() |>
+  filter(year == max(year)) |>
+  mutate(area = factor(area, levels = rev(desired_order))) |>
+  arrange(area) |>
   mutate(
     x_label = max(year),
     y_top = cumsum(share),
     y_bottom = y_top - share,
     y_mid = (y_bottom + y_top) / 2
-  ) %>%
+  ) |>
   select(area, year, x_label, y_top, y_mid)
 
 
-tea_leaves_prod_clean_region_complete %>% 
+p2 <- tea_leaves_prod_clean_region_complete |> 
   ggplot(aes(year, value, fill = area, color = area)) +
   geom_area(position = "fill") +
   geom_text_repel(
@@ -196,14 +197,15 @@ tea_leaves_prod_clean_region_complete %>%
     size = 8,
     inherit.aes = FALSE,
     direction = "y",
-    nudge_x = 15,
-    segment.curvature = 0.1,
+    nudge_x = 20,
+    segment.curvature = 0.15,
     segment.size = 0.5,
     segment.ncp = 1,
-    min.segment.length = 0
+    min.segment.length = 0,
+    box.padding = 1.5
   ) +
   labs(x = "Year",
-       y = "Share of Tea Leaves Production (%)",
+       y = "",
        title = "",
        caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
@@ -228,8 +230,10 @@ tea_leaves_prod_clean_region_complete %>%
            label = "Switch from Official Figure\nto Estimated Value",
            color = "black", vjust = 0, angle = 90)
 
-ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_tea_leaves_1.png", width = 12, height = 12, dpi = 72)
+#ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_tea_leaves_1.png", width = 12, height = 12, dpi = 72)
 
+(p1/p2) + plot_annotation() & theme(plot.margin = margin(0,0,0,0))
+ggsave("sub_pro_7_agriculture_owid/images/continental_combi/tea_leaves.png", width = 12, height = 16, dpi = 300)
 
 
 ################################################################################
@@ -241,11 +245,11 @@ ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_tea_l
 # Organize data
 
 # Africa total combined with regions data
-tea_leaves_prod_clean_africa <- tea_leaves_prod_clean %>%
+tea_leaves_prod_clean_africa <- tea_leaves_prod_clean |>
   filter(str_detect(area, "frica"))
 
 # Africa regions alone
-tea_leaves_prod_clean_region_fao_africa_segment <- tea_leaves_prod_clean_africa %>%
+tea_leaves_prod_clean_region_fao_africa_segment <- tea_leaves_prod_clean_africa |>
   filter(area %in% c("Eastern Africa", "Middle Africa", "Northern Africa", 
                      "Southern Africa", "Western Africa"))
 
@@ -262,23 +266,23 @@ desired_order <- c("Eastern Africa", "Middle Africa", "Northern Africa", "Southe
 
 # order of the colored regions
 
-tea_leaves_prod_clean_region_fao_africa_segment <- tea_leaves_prod_clean_region_fao_africa_segment %>%
-  mutate(area = factor(area, levels = desired_order)) %>%
+tea_leaves_prod_clean_region_fao_africa_segment <- tea_leaves_prod_clean_region_fao_africa_segment |>
+  mutate(area = factor(area, levels = desired_order)) |>
   arrange(desc(area))
 
-label_df_tea_leaves_africa <- tea_leaves_prod_clean_region_fao_africa_segment %>%
-  filter(year == max(year)) %>%
-  mutate(area = factor(area, levels = rev(desired_order))) %>%
-  arrange(area) %>%
+label_df_tea_leaves_africa <- tea_leaves_prod_clean_region_fao_africa_segment |>
+  filter(year == max(year)) |>
+  mutate(area = factor(area, levels = rev(desired_order))) |>
+  arrange(area) |>
   mutate(x_label = max(year),
          y_top = cumsum(value),
          y_bottom = y_top - value,
-         y_mid = (y_bottom + y_top) / 2) %>%
+         y_mid = (y_bottom + y_top) / 2) |>
   select(area, year, x_label, y_top, y_mid) 
 
 # b) Stacked Area chart for Africa regions
 
-tea_leaves_prod_clean_region_fao_africa_segment %>% 
+p3 <- tea_leaves_prod_clean_region_fao_africa_segment |> 
   ggplot(aes(year, value, fill = area, label = area, color = area)) +
   geom_area() +
   geom_text_repel(
@@ -297,7 +301,7 @@ tea_leaves_prod_clean_region_fao_africa_segment %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Tea Leaves Production\n(Millions of Tonnes)",
+       y = "Millions of Tonnes",
        title = "",
        subtitle = "",
        caption = "") +
@@ -320,31 +324,36 @@ tea_leaves_prod_clean_region_fao_africa_segment %>%
         plot.subtitle.position = 'plot',
         plot.caption.position = 'plot',
         plot.margin = margin(5, 5, 5, 5),
-        legend.position = "none")
+        legend.position = "none") +
+  geom_vline(xintercept = 1991, linetype = "dashed", color = "black") +
+  annotate("text", x = 1993.5, y = 2000000, size = 8, 
+           label = "Switch from Official Figure\nto Estimated Value",
+           color = "black", vjust = 0, angle = 90)
 
-ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only/continent_tea_leaves_1.png", width = 12, height = 12, dpi = 300)
+
+#ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only/continent_tea_leaves_1.png", width = 12, height = 12, dpi = 300)
 
 ################################################################################
 # Stacked Percentage Area Chart
 ################################################################################
 
-label_df_tea_leaves_percent_africa <- tea_leaves_prod_clean_region_fao_africa_segment %>%
-  group_by(year) %>%
-  mutate(share = value / sum(value, na.rm = TRUE)) %>%
-  ungroup() %>%
-  filter(year == max(year)) %>%
-  mutate(area = factor(area, levels = rev(desired_order))) %>%
-  arrange(area) %>%
+label_df_tea_leaves_percent_africa <- tea_leaves_prod_clean_region_fao_africa_segment |>
+  group_by(year) |>
+  mutate(share = value / sum(value, na.rm = TRUE)) |>
+  ungroup() |>
+  filter(year == max(year)) |>
+  mutate(area = factor(area, levels = rev(desired_order))) |>
+  arrange(area) |>
   mutate(
     x_label = max(year),
     y_top = cumsum(share),
     y_bottom = y_top - share,
     y_mid = (y_bottom + y_top) / 2
-  ) %>%
+  ) |>
   select(area, year, x_label, y_top, y_mid)
 
 
-tea_leaves_prod_clean_region_fao_africa_segment %>% 
+p4 <- tea_leaves_prod_clean_region_fao_africa_segment |> 
   ggplot(aes(year, value, fill = area, color = area)) +
   geom_area(position = "fill") +
   geom_text_repel(
@@ -362,7 +371,7 @@ tea_leaves_prod_clean_region_fao_africa_segment %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Share of Tea Leaves Production (%)",
+       y = "",
        title = "",
        caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
@@ -381,6 +390,15 @@ tea_leaves_prod_clean_region_fao_africa_segment %>%
     plot.background = element_rect(fill = "bisque1", colour = "bisque1"),
     panel.background = element_rect(fill = "bisque1", colour = "bisque1"),
     legend.position = "none"
-  )
+  ) +
+  geom_vline(xintercept = 1991, linetype = "dashed", color = "black") +
+  annotate("text", x = 1993.5, y = 0.5, size = 8, 
+           label = "Switch from Official Figure\nto Estimated Value",
+           color = "black", vjust = 0, angle = 90)
 
-ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only_stack_perc/continent_tea_leaves_1.png", width = 12, height = 12, dpi = 300)
+
+#ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only_stack_perc/continent_tea_leaves_1.png", width = 12, height = 12, dpi = 300)
+
+
+(p3/p4) + plot_annotation() & theme(plot.margin = margin(0,0,0,0))
+ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only_combi/tea_leaves.png", width = 12, height = 16, dpi = 300)

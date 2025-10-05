@@ -40,36 +40,36 @@ barley_prod <- read.csv("sub_pro_7_agriculture_owid/datasets/barley-production-t
 
 # Clean the column headings
 
-barley_prod_clean <- barley_prod %>%
+barley_prod_clean <- barley_prod |>
   clean_names() 
 
 # Change the column title names
 
-barley_prod_clean <- barley_prod_clean %>%
+barley_prod_clean <- barley_prod_clean |>
   rename("region" = "entity",
          "barley_production_tonnes" = "barley_00000044_production_005510_tonnes") 
 
 # Filter by region
 
-barley_prod_clean_region <- barley_prod_clean %>%
-  filter(is.na(code)) %>%
+barley_prod_clean_region <- barley_prod_clean |>
+  filter(is.na(code)) |>
   select(c(1,3,4)) 
 
 # Filter by FAO region
 
-barley_prod_clean_region_fao <- barley_prod_clean_region %>%
+barley_prod_clean_region_fao <- barley_prod_clean_region |>
   filter(grepl('(FAO)', region))
 
 # Filter by non-FAO region
 
-barley_prod_clean_region_non_fao <- barley_prod_clean_region %>%
+barley_prod_clean_region_non_fao <- barley_prod_clean_region |>
   filter(!grepl('(FAO)', region))
 
 # 3) Continental (Non-FAO) barley production
 
 # a) Stacked area chart
 
-barley_prod_clean_region_non_fao_continent <- barley_prod_clean_region_non_fao %>%
+barley_prod_clean_region_non_fao_continent <- barley_prod_clean_region_non_fao |>
   filter(region %in% c("Africa", "Asia", "Europe", 
                        "North America", "South America", 
                        "Oceania"))
@@ -85,25 +85,25 @@ afro_stack_palette <- c(
 
 desired_order <- c("Oceania", "Africa", "Europe", "North America", "South America", "Asia")
 
-barley_prod_clean_region_non_fao_continent <- barley_prod_clean_region_non_fao_continent %>%
-  mutate(region = factor(region, levels = desired_order)) %>%
+barley_prod_clean_region_non_fao_continent <- barley_prod_clean_region_non_fao_continent |>
+  mutate(region = factor(region, levels = desired_order)) |>
   arrange(desc(region))
 
 #  calculate cumulative positions for label placement
 
-label_df_barley <- barley_prod_clean_region_non_fao_continent %>%
-  filter(year == max(year)) %>%
-  mutate(region = factor(region, levels = rev(desired_order))) %>%
-  arrange(region) %>%
+label_df_barley <- barley_prod_clean_region_non_fao_continent |>
+  filter(year == max(year)) |>
+  mutate(region = factor(region, levels = rev(desired_order))) |>
+  arrange(region) |>
   mutate(x_label = max(year),
          y_top = cumsum(barley_production_tonnes),
          y_bottom = y_top - barley_production_tonnes,
-         y_mid = (y_bottom + y_top) / 2) %>%
+         y_mid = (y_bottom + y_top) / 2) |>
   select(region, year, x_label, y_top, y_mid) 
 
 # plot the stack area chart
 
-barley_prod_clean_region_non_fao_continent %>% 
+p1 <- barley_prod_clean_region_non_fao_continent |> 
   ggplot(aes(year, barley_production_tonnes, fill = region, label = region, color = region)) +
   geom_area() +
   geom_text_repel(
@@ -122,7 +122,7 @@ barley_prod_clean_region_non_fao_continent %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Barley Production\n(Millions of Tonnes)",
+       y = "Millions of Tonnes",
        title = "",
        subtitle = "",
        caption = "") +
@@ -148,11 +148,11 @@ barley_prod_clean_region_non_fao_continent %>%
         legend.position = "none"
   )
 
-ggsave("sub_pro_7_agriculture_owid/images/continental/continent_barley_1.png", width = 12, height = 12, dpi = 72)
+#ggsave("sub_pro_7_agriculture_owid/images/continental/continent_barley_1.png", width = 12, height = 12, dpi = 72)
 
 
-barley_prod_clean_region_non_fao_continent %>%
-  filter(year == 2020) %>%
+barley_prod_clean_region_non_fao_continent |>
+  filter(year == 2020) |>
   mutate(percent = 100 * barley_production_tonnes/sum(barley_production_tonnes))
 
 
@@ -160,23 +160,23 @@ barley_prod_clean_region_non_fao_continent %>%
 # Stacked Percentage Area Chart
 ################################################################################
 
-label_df_barley_percent <- barley_prod_clean_region_non_fao_continent %>%
-  group_by(year) %>%
-  mutate(share = barley_production_tonnes / sum(barley_production_tonnes, na.rm = TRUE)) %>%
-  ungroup() %>%
-  filter(year == max(year)) %>%
-  mutate(region = factor(region, levels = rev(desired_order))) %>%
-  arrange(region) %>%
+label_df_barley_percent <- barley_prod_clean_region_non_fao_continent |>
+  group_by(year) |>
+  mutate(share = barley_production_tonnes / sum(barley_production_tonnes, na.rm = TRUE)) |>
+  ungroup() |>
+  filter(year == max(year)) |>
+  mutate(region = factor(region, levels = rev(desired_order))) |>
+  arrange(region) |>
   mutate(
     x_label = max(year),
     y_top = cumsum(share),
     y_bottom = y_top - share,
     y_mid = (y_bottom + y_top) / 2
-  ) %>%
+  ) |>
   select(region, year, x_label, y_top, y_mid)
 
 
-barley_prod_clean_region_non_fao_continent %>% 
+p2 <- barley_prod_clean_region_non_fao_continent |> 
   ggplot(aes(year, barley_production_tonnes, fill = region, color = region)) +
   geom_area(position = "fill") +
   geom_text_repel(
@@ -194,7 +194,7 @@ barley_prod_clean_region_non_fao_continent %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Share of Barley Production (%)",
+       y = "",
        title = "",
        caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
@@ -216,7 +216,10 @@ barley_prod_clean_region_non_fao_continent %>%
   )
 
 
-ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_barley_1.png", width = 12, height = 12, dpi = 72)
+#ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_barley_1.png", width = 12, height = 12, dpi = 72)
+
+(p1/p2) + plot_annotation() & theme(plot.margin = margin(0,0,0,0))
+ggsave("sub_pro_7_agriculture_owid/images/continental_combi/barley.png", width = 12, height = 16, dpi = 300)
 
 
 ################################################################################
@@ -228,15 +231,15 @@ ggsave("sub_pro_7_agriculture_owid/images/continental_stack_perc/continent_barle
 # Organize data
 
 # Africa total combined with regions data
-barley_prod_clean_region_fao_africa <- barley_prod_clean_region_fao %>%
+barley_prod_clean_region_fao_africa <- barley_prod_clean_region_fao |>
   filter(str_detect(region, "frica"))
 
 # Africa data alone
-barley_prod_clean_region_fao_africa_only <- barley_prod_clean_region_fao_africa %>%
+barley_prod_clean_region_fao_africa_only <- barley_prod_clean_region_fao_africa |>
   filter(region %in% c("Africa (FAO)"))
 
 # Africa regions alone
-barley_prod_clean_region_fao_africa_segment <- barley_prod_clean_region_fao_africa %>%
+barley_prod_clean_region_fao_africa_segment <- barley_prod_clean_region_fao_africa |>
   filter(region %in% c("Eastern Africa (FAO)", "Middle Africa (FAO)", 
                        "Northern Africa (FAO)", "Southern Africa (FAO)",
                        "Western Africa (FAO)")) |>
@@ -255,23 +258,23 @@ desired_order <- c("Eastern Africa", "Middle Africa", "Northern Africa", "Southe
 
 # order of the colored regions
 
-barley_prod_clean_region_fao_africa_segment <- barley_prod_clean_region_fao_africa_segment %>%
-  mutate(region = factor(region, levels = desired_order)) %>%
+barley_prod_clean_region_fao_africa_segment <- barley_prod_clean_region_fao_africa_segment |>
+  mutate(region = factor(region, levels = desired_order)) |>
   arrange(desc(region))
 
-label_df_barley_africa <- barley_prod_clean_region_fao_africa_segment %>%
-  filter(year == max(year)) %>%
-  mutate(region = factor(region, levels = rev(desired_order))) %>%
-  arrange(region) %>%
+label_df_barley_africa <- barley_prod_clean_region_fao_africa_segment |>
+  filter(year == max(year)) |>
+  mutate(region = factor(region, levels = rev(desired_order))) |>
+  arrange(region) |>
   mutate(x_label = max(year),
          y_top = cumsum(barley_production_tonnes),
          y_bottom = y_top - barley_production_tonnes,
-         y_mid = (y_bottom + y_top) / 2) %>%
+         y_mid = (y_bottom + y_top) / 2) |>
   select(region, year, x_label, y_top, y_mid) 
 
 # b) Stacked Area chart for Africa regions
 
-barley_prod_clean_region_fao_africa_segment %>% 
+p3 <- barley_prod_clean_region_fao_africa_segment |> 
   ggplot(aes(year, barley_production_tonnes, fill = region, label = region, color = region)) +
   geom_area() +
   geom_text_repel(
@@ -290,7 +293,7 @@ barley_prod_clean_region_fao_africa_segment %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Barley Production\n(Millions of Tonnes)",
+       y = "Millions of Tonnes",
        title = "",
        subtitle = "",
        caption = "") +
@@ -315,29 +318,29 @@ barley_prod_clean_region_fao_africa_segment %>%
         plot.margin = margin(5, 5, 5, 5),
         legend.position = "none")
 
-ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only/continent_barley_1.png", width = 12, height = 12, dpi = 300)
+#ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only/continent_barley_1.png", width = 12, height = 12, dpi = 300)
 
 ################################################################################
 # Stacked Percentage Area Chart
 ################################################################################
 
-label_df_barley_percent_africa <- barley_prod_clean_region_fao_africa_segment %>%
-  group_by(year) %>%
-  mutate(share = barley_production_tonnes / sum(barley_production_tonnes, na.rm = TRUE)) %>%
-  ungroup() %>%
-  filter(year == max(year)) %>%
-  mutate(region = factor(region, levels = rev(desired_order))) %>%
-  arrange(region) %>%
+label_df_barley_percent_africa <- barley_prod_clean_region_fao_africa_segment |>
+  group_by(year) |>
+  mutate(share = barley_production_tonnes / sum(barley_production_tonnes, na.rm = TRUE)) |>
+  ungroup() |>
+  filter(year == max(year)) |>
+  mutate(region = factor(region, levels = rev(desired_order))) |>
+  arrange(region) |>
   mutate(
     x_label = max(year),
     y_top = cumsum(share),
     y_bottom = y_top - share,
     y_mid = (y_bottom + y_top) / 2
-  ) %>%
+  ) |>
   select(region, year, x_label, y_top, y_mid)
 
 
-barley_prod_clean_region_fao_africa_segment %>% 
+p4 <- barley_prod_clean_region_fao_africa_segment |> 
   ggplot(aes(year, barley_production_tonnes, fill = region, color = region)) +
   geom_area(position = "fill") +
   geom_text_repel(
@@ -355,7 +358,7 @@ barley_prod_clean_region_fao_africa_segment %>%
     min.segment.length = 0
   ) +
   labs(x = "Year",
-       y = "Share of Barley Production (%)",
+       y = "",
        title = "",
        caption = "") +
   scale_x_continuous(breaks = c(1960, 1980, 2000, 2020),
@@ -376,4 +379,7 @@ barley_prod_clean_region_fao_africa_segment %>%
     legend.position = "none"
   )
 
-ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only_stack_perc/continent_barley_1.png", width = 12, height = 12, dpi = 300)
+#ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only_stack_perc/continent_barley_1.png", width = 12, height = 12, dpi = 300)
+
+(p3/p4) + plot_annotation() & theme(plot.margin = margin(0,0,0,0))
+ggsave("sub_pro_7_agriculture_owid/images/continental_africa_only_combi/barley.png", width = 12, height = 16, dpi = 300)
