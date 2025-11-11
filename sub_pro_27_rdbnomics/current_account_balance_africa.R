@@ -16,26 +16,37 @@ library(thematic) #For styling plots: https://rstudio.github.io/thematic/index.h
 #    Imports of goods and services + Payments of income on foreign-owned assets in the 
 #    United States + Unilateral current transfers
 
-bop_imf <- rdb("IMF", "BOP", mask = "A.TZ.BCA_BP6_USD") 
+# EAC 
 
-bop_imf <- as_tibble(bop_imf)
+bop_imf_eac <- rdb("IMF", "BOP", mask = "A.TZ+KE+UG+SS+RW+BI+CD.BCA_BP6_USD") 
 
-bop_imf |> 
-  select(7, 12, 14, 15, 18)
+bop_imf_eac <- as_tibble(bop_imf_eac) |>
+  clean_names()
 
-
-bop_imf <- clean_names(bop_imf)
-
-#Inspect variable names again
-bop_imf |> 
-  select(7, 12, 14, 15, 18)
-
+# EAC Plot 
 
 ggplot(
-  data = bop_imf,
+  data = bop_imf_eac,
   aes(x = period, 
-      y = value)
-) +
+      y = value)) +
   geom_col() +
-  labs(title = 'CA balance ...')
+  labs(title = 'CA balance ...') + 
+  facet_wrap("ref_area")
 
+# Top Economies Plot
+
+bop_imf_top_econ_africa <- rdb("IMF", "BOP", mask = "A.ZA+EG+DZ+NG+MA+KE+AO+GH+ET.BCA_BP6_USD") 
+
+bop_imf_top_econ_africa <- as_tibble(bop_imf_top_econ) |>
+  clean_names() |>
+  filter(period > 1980)
+
+# EAC Plot 
+
+ggplot(
+  data = bop_imf_top_econ_africa,
+  aes(x = period, 
+      y = value)) +
+  geom_col() +
+  labs(title = 'CA balance ...') + 
+  facet_wrap("ref_area")
