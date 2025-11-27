@@ -105,6 +105,26 @@ map_amu_zoom
 ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/amu_map_zoom.png", width = 12, height = 12, dpi = 300)
 
 
+map_amu_zoom_no_label <- ggplot(data = amu_df)+
+  geom_sf(aes(fill = admin), linewidth = 0.5)+
+  scale_fill_d3(palette = 'category20') +
+  theme_void()+
+  labs(title = "",
+       caption = "",
+       fill = "")+
+  theme(plot.title = element_text(family = "Helvetica",size = 16, hjust = 0.5),
+        legend.title = element_blank(),
+        legend.position = "none",
+        plot.caption = element_text(family = "Helvetica",size = 12),
+        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
+        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+
+map_amu_zoom_no_label
+
+# Save the plot
+ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/amu_map_zoom_no_label.png", width = 12, height = 12, dpi = 300)
+
+
 
 
 # Common Market for Eastern and Southern Africa (COMESA)
@@ -160,6 +180,26 @@ map_comesa_zoom
 
 # Save the plot
 ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/comesa_map_zoom.png", width = 12, height = 12, dpi = 300)
+
+
+map_comesa_zoom_no_label <- ggplot(data = comesa_df)+
+  geom_sf(aes(fill = admin), linewidth = 0.5)+
+  scale_fill_d3(palette = 'category20') +
+  theme_void()+
+  labs(title = "",
+       caption = "",
+       fill = "")+
+  theme(plot.title = element_text(family = "Helvetica",size = 16, hjust = 0.5),
+        legend.title = element_blank(),
+        legend.position = "none",
+        plot.caption = element_text(family = "Helvetica",size = 12),
+        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
+        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+
+map_comesa_zoom_no_label
+
+# Save the plot
+ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/comesa_map_zoom_no_label.png", width = 12, height = 12, dpi = 300)
 
 
 
@@ -218,6 +258,26 @@ map_cen_sad_zoom
 ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/cen_sad_map_zoom.png", width = 12, height = 12, dpi = 300)
 
 
+map_cen_sad_zoom_no_label <- ggplot(data = cen_sad_df)+
+  geom_sf(aes(fill = admin), linewidth = 0.5)+
+  scale_fill_d3(palette = 'category20') +
+  theme_void()+
+  labs(title = "",
+       caption = "",
+       fill = "")+
+  theme(plot.title = element_text(family = "Helvetica",size = 16, hjust = 0.5),
+        legend.title = element_blank(),
+        legend.position = "none",
+        plot.caption = element_text(family = "Helvetica",size = 12),
+        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
+        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+
+map_cen_sad_zoom_no_label
+
+# Save the plot
+ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/cen_sad_map_zoom_no_label.png", width = 12, height = 12, dpi = 300)
+
+
 # East African Community (EAC)
 eac <- c("Burundi", "Democratic Republic of the Congo", "Kenya", 
          "Rwanda", "South Sudan", "United Republic of Tanzania", "Uganda")
@@ -269,6 +329,26 @@ map_eac_zoom
 
 # Save the plot
 ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/eac_map_zoom.png", width = 12, height = 12, dpi = 300)
+
+
+map_eac_zoom_no_label <- ggplot(data = eac_df)+
+  geom_sf(aes(fill = admin), linewidth = 0.5)+
+  scale_fill_d3(palette = 'category20') +
+  theme_void()+
+  labs(title = "",
+       caption = "",
+       fill = "")+
+  theme(plot.title = element_text(family = "Helvetica",size = 16, hjust = 0.5),
+        legend.title = element_blank(),
+        legend.position = "none",
+        plot.caption = element_text(family = "Helvetica",size = 12),
+        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
+        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+
+map_eac_zoom_no_label
+
+# Save the plot
+ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/eac_map_zoom_no_label.png", width = 12, height = 12, dpi = 300)
 
 
 
@@ -326,6 +406,26 @@ map_eccas_zoom
 ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/eccas_map_zoom.png", width = 12, height = 12, dpi = 300)
 
 
+map_eccas_zoom_no_label <- ggplot(data = eccas_df)+
+  geom_sf(aes(fill = admin), linewidth = 0.5)+
+  scale_fill_d3(palette = 'category20') +
+  theme_void()+
+  labs(title = "",
+       caption = "",
+       fill = "")+
+  theme(plot.title = element_text(family = "Helvetica",size = 16, hjust = 0.5),
+        legend.title = element_blank(),
+        legend.position = "none",
+        plot.caption = element_text(family = "Helvetica",size = 12),
+        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
+        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+
+map_eccas_zoom_no_label
+
+# Save the plot
+ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/eccas_map_zoom_no_label.png", width = 12, height = 12, dpi = 300)
+
+
 
 # Economic Community of West African States (ECOWAS) - All (2025)
 ecowas <- c("Benin", "Cape Verde", "Ivory Coast", "The Gambia", 
@@ -381,6 +481,27 @@ map_ecowas_zoom
 ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/ecowas_map_zoom.png", width = 12, height = 12, dpi = 300)
 
 
+map_ecowas_zoom_no_label <- ggplot(data = ecowas_df)+
+  geom_sf(aes(fill = admin), linewidth = 0.5)+
+  scale_fill_d3(palette = 'category20') +
+  theme_void()+
+  labs(title = "",
+       caption = "",
+       fill = "")+
+  theme(plot.title = element_text(family = "Helvetica",size = 16, hjust = 0.5),
+        legend.title = element_blank(),
+        legend.position = "none",
+        plot.caption = element_text(family = "Helvetica",size = 12),
+        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
+        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+
+map_ecowas_zoom_no_label
+
+# Save the plot
+ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/ecowas_map_zoom_no_label.png", width = 12, height = 12, dpi = 300)
+
+
+
 
 # Economic Community of West African States (ECOWAS) - Francophone (2025)
 ecowas_francophone <- c("Benin", "Ivory Coast", "Guinea", 
@@ -432,6 +553,28 @@ map_ecowas_francophone_zoom
 
 # Save the plot
 ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/ecowas_francophone_map_zoom.png", width = 12, height = 12, dpi = 300)
+
+
+map_ecowas_francophone_zoom_no_label <- ggplot(data = ecowas_francophone_df)+
+  geom_sf(aes(fill = admin), linewidth = 0.5)+
+  scale_fill_d3(palette = 'category20') +
+  theme_void()+
+  labs(title = "",
+       caption = "",
+       fill = "")+
+  theme(plot.title = element_text(family = "Helvetica",size = 16, hjust = 0.5),
+        legend.title = element_blank(),
+        legend.position = "none",
+        plot.caption = element_text(family = "Helvetica",size = 12),
+        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
+        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+
+map_ecowas_francophone_zoom_no_label
+
+# Save the plot
+ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/ecowas_francophone_map_zoom_no_label.png", width = 12, height = 12, dpi = 300)
+
+
 
 
 # Economic Community of West African States (ECOWAS) - Anglophone (2025)
@@ -486,6 +629,27 @@ map_ecowas_anglophone_zoom
 ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/ecowas_anglophone_map_zoom.png", width = 12, height = 12, dpi = 300)
 
 
+map_ecowas_anglophone_zoom_no_label <- ggplot(data = ecowas_anglophone_df)+
+  geom_sf(aes(fill = admin), linewidth = 0.5)+
+  scale_fill_d3(palette = 'category20') +
+  theme_void()+
+  labs(title = "",
+       caption = "",
+       fill = "")+
+  theme(plot.title = element_text(family = "Helvetica",size = 16, hjust = 0.5),
+        legend.title = element_blank(),
+        legend.position = "none",
+        plot.caption = element_text(family = "Helvetica",size = 12),
+        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
+        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+
+map_ecowas_anglophone_zoom_no_label
+
+# Save the plot
+ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/ecowas_anglophone_map_zoom_no_label.png", width = 12, height = 12, dpi = 300)
+
+
+
 # Economic Community of West African States (ECOWAS) - Lusophone (2025)
 ecowas_lusophone <- c("Cabo Verde", "Guinea-Bissau")
 ecowas_lusophone_df <- africa |> filter(admin %in% ecowas_lusophone)
@@ -535,6 +699,27 @@ map_ecowas_lusophone_zoom
 
 # Save the plot
 ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/ecowas_lusophone_map_zoom.png", width = 12, height = 12, dpi = 300)
+
+
+map_ecowas_lusophone_zoom_no_label <- ggplot(data = ecowas_lusophone_df)+
+  geom_sf(aes(fill = admin), linewidth = 0.5)+
+  scale_fill_d3(palette = 'category20') +
+  theme_void()+
+  labs(title = "",
+       caption = "",
+       fill = "")+
+  theme(plot.title = element_text(family = "Helvetica",size = 16, hjust = 0.5),
+        legend.title = element_blank(),
+        legend.position = "none",
+        plot.caption = element_text(family = "Helvetica",size = 12),
+        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
+        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+
+map_ecowas_lusophone_zoom_no_label
+
+# Save the plot
+ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/ecowas_lusophone_map_zoom_no_label.png", width = 12, height = 12, dpi = 300)
+
 
 
 # The Alliance of Sahel States (AES)
@@ -587,6 +772,27 @@ map_aes_zoom
 
 # Save the plot
 ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/aes_map_zoom.png", width = 12, height = 12, dpi = 300)
+
+
+
+map_aes_zoom_no_label <- ggplot(data = aes_df)+
+  geom_sf(aes(fill = admin), linewidth = 0.5)+
+  scale_fill_d3(palette = 'category20') +
+  theme_void()+
+  labs(title = "",
+       caption = "",
+       fill = "")+
+  theme(plot.title = element_text(family = "Helvetica",size = 16, hjust = 0.5),
+        legend.title = element_blank(),
+        legend.position = "none",
+        plot.caption = element_text(family = "Helvetica",size = 12),
+        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
+        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+
+map_aes_zoom_no_label
+
+# Save the plot
+ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/aes_map_zoom_no_label.png", width = 12, height = 12, dpi = 300)
 
 
 
@@ -643,6 +849,27 @@ map_igad_zoom
 ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/igad_map_zoom.png", width = 12, height = 12, dpi = 300)
 
 
+map_igad_zoom_no_label <- ggplot(data = igad_df)+
+  geom_sf(aes(fill = admin), linewidth = 0.5)+
+  scale_fill_d3(palette = 'category20') +
+  theme_void()+
+  labs(title = "",
+       caption = "",
+       fill = "")+
+  theme(plot.title = element_text(family = "Helvetica",size = 16, hjust = 0.5),
+        legend.title = element_blank(),
+        legend.position = "none",
+        plot.caption = element_text(family = "Helvetica",size = 12),
+        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
+        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+
+map_igad_zoom_no_label
+
+# Save the plot
+ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/igad_map_zoom_no_label.png", width = 12, height = 12, dpi = 300)
+
+
+
 
 # Southern African Development Community (SADC)
 sadc <- c("Angola", "Botswana", "Comoros", "Democratic Republic of the Congo", "Eswatini", 
@@ -697,3 +924,23 @@ map_sadc_zoom
 # Save the plot
 ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/sadc_map_zoom.png", width = 12, height = 12, dpi = 300)
 
+
+
+map_sadc_zoom_no_label <- ggplot(data = sadc_df)+
+  geom_sf(aes(fill = admin), linewidth = 0.5)+
+  scale_fill_d3(palette = 'category20') +
+  theme_void()+
+  labs(title = "",
+       caption = "",
+       fill = "")+
+  theme(plot.title = element_text(family = "Helvetica",size = 16, hjust = 0.5),
+        legend.title = element_blank(),
+        legend.position = "none",
+        plot.caption = element_text(family = "Helvetica",size = 12),
+        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
+        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+
+map_sadc_zoom_no_label
+
+# Save the plot
+ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/sadc_map_zoom_no_label.png", width = 12, height = 12, dpi = 300)
