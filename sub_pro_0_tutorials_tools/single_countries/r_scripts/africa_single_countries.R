@@ -103,7 +103,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/algeria_map.png", widt
 
 map_algeria_zoom <- ggplot(data = algeria_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_algeria_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_algeria_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -149,7 +149,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/angola_map.png", width
 
 map_angola_zoom <- ggplot(data = angola_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_angola_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_angola_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -195,7 +195,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/benin_map.png", width 
 
 map_benin_zoom <- ggplot(data = benin_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_benin_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_benin_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -241,7 +241,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/botswana_map.png", wid
 
 map_botswana_zoom <- ggplot(data = botswana_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_botswana_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_botswana_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -287,7 +287,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/burkina_faso_map.png",
 
 map_burkina_faso_zoom <- ggplot(data = burkina_faso_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_burkina_faso_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_burkina_faso_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -333,7 +333,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/burundi_map.png", widt
 
 map_burundi_zoom <- ggplot(data = burundi_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_burundi_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_burundi_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -379,7 +379,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/cabo_verde_map.png", w
 
 map_cabo_verde_zoom <- ggplot(data = cabo_verde_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_cabo_verde_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_cabo_verde_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -426,7 +426,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/cameroon_map.png", wid
 
 map_cameroon_zoom <- ggplot(data = cameroon_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_cameroon_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_cameroon_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -473,7 +473,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/car_map.png", width = 
 
 map_car_zoom <- ggplot(data = car_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_car_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_car_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -520,7 +520,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/chad_map.png", width =
 
 map_chad_zoom <- ggplot(data = chad_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_chad_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_chad_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -567,7 +567,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/comoros_map.png", widt
 
 map_comoros_zoom <- ggplot(data = comoros_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_comoros_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_comoros_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -614,7 +614,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/drc_map.png", width = 
 
 map_drc_zoom <- ggplot(data = drc_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_drc_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_drc_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -660,7 +660,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/djibouti_map.png", wid
 
 map_djibouti_zoom <- ggplot(data = djibouti_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_djibouti_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_djibouti_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -707,7 +707,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/egypt_map.png", width 
 
 map_egypt_zoom <- ggplot(data = egypt_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_egypt_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_egypt_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -754,7 +754,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/eq_gui_map.png", width
 
 map_eq_gui_zoom <- ggplot(data = eq_gui_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_eq_gui_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_eq_gui_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -800,7 +800,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/eritrea_map.png", widt
 
 map_eritrea_zoom <- ggplot(data = eritrea_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_eritrea_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_eritrea_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -846,7 +846,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/eswatini_map.png", wid
 
 map_eswatini_zoom <- ggplot(data = eswatini_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_eswatini_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_eswatini_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -892,7 +892,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/ethiopia_map.png", wid
 
 map_ethiopia_zoom <- ggplot(data = ethiopia_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_ethiopia_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_ethiopia_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -938,7 +938,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/gabon_map.png", width 
 
 map_gabon_zoom <- ggplot(data = gabon_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_gabon_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_gabon_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -958,7 +958,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/gabon_map_zoom.png", w
 
 # 20) Gambia
 
-gambia <- c("Gambia")
+gambia <- c("The Gambia")
 gambia_df <- africa |> filter(admin == "Gambia")
 capital_cities_gambia_sf <- capital_cities_sf |> filter(country %in% gambia)
 
@@ -984,7 +984,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/gambia_map.png", width
 
 map_gambia_zoom <- ggplot(data = gambia_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_gambia_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_gambia_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -1030,7 +1030,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/ghana_map.png", width 
 
 map_ghana_zoom <- ggplot(data = ghana_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_ghana_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_ghana_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -1076,7 +1076,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/guinea_map.png", width
 
 map_guinea_zoom <- ggplot(data = guinea_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_guinea_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_guinea_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -1122,7 +1122,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/guinea_bissau_map.png"
 
 map_guinea_bissau_zoom <- ggplot(data = guinea_bissau_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_guinea_bissau_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_guinea_bissau_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -1142,7 +1142,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/guinea_bissau_map_zoom
 
 # 24) Ivory Coast
 
-ivory_coast <- c("Ivory Coast")
+ivory_coast <- c("Côte d’Ivoire")
 ivory_coast_df <- africa |> filter(admin == "Ivory Coast")
 capital_cities_ivory_coast_sf <- capital_cities_sf |> filter(country %in% ivory_coast)
 
@@ -1168,7 +1168,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/ivory_coast_map.png", 
 
 map_ivory_coast_zoom <- ggplot(data = ivory_coast_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_ivory_coast_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_ivory_coast_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -1214,7 +1214,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/kenya_map.png", width 
 
 map_kenya_zoom <- ggplot(data = kenya_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_kenya_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_kenya_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -1260,7 +1260,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/lesotho_map.png", widt
 
 map_lesotho_zoom <- ggplot(data = lesotho_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_lesotho_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_lesotho_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -1306,7 +1306,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/liberia_map.png", widt
 
 map_liberia_zoom <- ggplot(data = liberia_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_liberia_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_liberia_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -1352,7 +1352,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/libya_map.png", width 
 
 map_libya_zoom <- ggplot(data = libya_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_libya_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_libya_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -1398,7 +1398,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/madagascar_map.png", w
 
 map_madagascar_zoom <- ggplot(data = madagascar_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_madagascar_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_madagascar_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -1444,7 +1444,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/malawi_map.png", width
 
 map_malawi_zoom <- ggplot(data = malawi_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_malawi_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_malawi_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -1490,7 +1490,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/mali_map.png", width =
 
 map_mali_zoom <- ggplot(data = mali_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_mali_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_mali_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -1536,7 +1536,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/mauritania_map.png", w
 
 map_mauritania_zoom <- ggplot(data = mauritania_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_mauritania_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_mauritania_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -1582,7 +1582,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/mauritius_map.png", wi
 
 map_mauritius_zoom <- ggplot(data = mauritius_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_mauritius_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_mauritius_sf, color = "purple", size = 6, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -1628,7 +1628,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/morocco_map.png", widt
 
 map_morocco_zoom <- ggplot(data = morocco_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_morocco_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_morocco_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -1674,7 +1674,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/mozambique_map.png", w
 
 map_mozambique_zoom <- ggplot(data = mozambique_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_mozambique_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_mozambique_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -1720,7 +1720,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/namibia_map.png", widt
 
 map_namibia_zoom <- ggplot(data = namibia_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_namibia_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_namibia_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -1766,7 +1766,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/niger_map.png", width 
 
 map_niger_zoom <- ggplot(data = niger_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_niger_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_niger_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -1812,7 +1812,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/nigeria_map.png", widt
 
 map_nigeria_zoom <- ggplot(data = nigeria_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_nigeria_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_nigeria_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -1858,7 +1858,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/congo_rep_map.png", wi
 
 map_congo_rep_zoom <- ggplot(data = congo_rep_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_congo_rep_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_congo_rep_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -1904,7 +1904,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/rwanda_map.png", width
 
 map_rwanda_zoom <- ggplot(data = rwanda_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_rwanda_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_rwanda_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -1950,7 +1950,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/stp_map.png", width = 
 
 map_stp_zoom <- ggplot(data = stp_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_stp_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_stp_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -1996,7 +1996,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/senegal_map.png", widt
 
 map_senegal_zoom <- ggplot(data = senegal_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_senegal_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_senegal_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -2042,7 +2042,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/seychelles_map.png", w
 
 map_seychelles_zoom <- ggplot(data = seychelles_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_seychelles_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_seychelles_sf, color = "purple", size = 4, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -2089,7 +2089,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/sierra_leone_map.png",
 
 map_sierra_leone_zoom <- ggplot(data = sierra_leone_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_sierra_leone_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_sierra_leone_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -2135,7 +2135,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/somalia_map.png", widt
 
 map_somalia_zoom <- ggplot(data = somalia_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_somalia_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_somalia_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -2181,7 +2181,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/south_africa_map.png",
 
 map_south_africa_zoom <- ggplot(data = south_africa_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_south_africa_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_south_africa_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -2227,7 +2227,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/south_sudan_map.png", 
 
 map_south_sudan_zoom <- ggplot(data = south_sudan_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_south_sudan_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_south_sudan_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -2273,7 +2273,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/sudan_map.png", width 
 
 map_sudan_zoom <- ggplot(data = sudan_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_sudan_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_sudan_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -2319,7 +2319,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/togo_map.png", width =
 
 map_togo_zoom <- ggplot(data = togo_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_togo_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_togo_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -2339,7 +2339,9 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/togo_map_zoom.png", wi
 
 # 50) Tunisia 
 
+tunisia <- c("Tunisia")
 tunisia_df <- africa |> filter(admin == "Tunisia")
+capital_cities_tunisia_sf <- capital_cities_sf |> filter(country %in% tunisia)
 
 map_tunisia <- ggplot(data = africa)+
   geom_sf(aes(fill = admin), linewidth = 0.5)+
@@ -2362,7 +2364,8 @@ map_tunisia
 ggsave("sub_pro_0_tutorials_tools/single_countries/images/tunisia_map.png", width = 12, height = 12, dpi = 300)
 
 map_tunisia_zoom <- ggplot(data = tunisia_df)+
-  geom_sf(aes(fill = admin), linewidth = 1)+
+  geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
+  geom_sf(data = capital_cities_tunisia_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -2410,7 +2413,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/uganda_map.png", width
 
 map_uganda_zoom <- ggplot(data = uganda_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_uganda_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_uganda_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -2430,7 +2433,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/uganda_map_zoom.png", 
 
 # 52) United Republic of Tanzania
 
-ur_tanzania <- c("United Republic of Tanzania")
+ur_tanzania <- c("Tanzania")
 ur_tanzania_df <- africa |> filter(admin == "United Republic of Tanzania")
 capital_cities_ur_tanzania_sf <- capital_cities_sf |> filter(country %in% ur_tanzania)
 
@@ -2456,7 +2459,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/ur_tanzania_map.png", 
 
 map_ur_tanzania_zoom <- ggplot(data = ur_tanzania_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_ur_tanzania_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_ur_tanzania_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -2502,7 +2505,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/zambia_map.png", width
 
 map_zambia_zoom <- ggplot(data = zambia_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_zambia_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_zambia_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
@@ -2548,7 +2551,7 @@ ggsave("sub_pro_0_tutorials_tools/single_countries/images/zimbabwe_map.png", wid
 
 map_zimbabwe_zoom <- ggplot(data = zimbabwe_df)+
   geom_sf(aes(fill = admin), linewidth = 0.25, color = "salmon1")+
-  geom_sf(data = capital_cities_zimbabwe_sf, color = "#6488EA", size = 4) +
+  geom_sf(data = capital_cities_zimbabwe_sf, color = "purple", size = 8, shape = 18) +
   scale_fill_manual(values = "salmon1") +
   theme_void()+
   labs(title = "",
