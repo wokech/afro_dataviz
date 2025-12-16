@@ -70,8 +70,8 @@ map_amu <- ggplot(data = africa)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_amu
 
@@ -96,8 +96,8 @@ map_amu_zoom <- ggplot(data = amu_df)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_amu_zoom
 
@@ -116,8 +116,8 @@ map_amu_zoom_no_label <- ggplot(data = amu_df)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_amu_zoom_no_label
 
@@ -128,10 +128,11 @@ ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/amu_map_zoom_no_labe
 
 
 # Common Market for Eastern and Southern Africa (COMESA)
-comesa <- c("Burundi", "Comoros", "Democratic Republic of the Congo", "Djibouti", 
-            "Egypt", "Eritrea", "Eswatini", "Ethiopia", "Kenya", "Libya", "Madagascar", 
-            "Malawi", "Mauritius", "Rwanda", "Seychelles", "Somalia", "Sudan", 
-            "Tunisia", "Uganda", "Zambia", "Zimbabwe")
+comesa <- c("Burundi", "Comoros", "Democratic Republic of the Congo", 
+            "Djibouti", "Egypt", "Eritrea", "Eswatini", "Ethiopia", 
+            "Kenya", "Libya", "Madagascar", "Malawi", "Mauritius", 
+            "Rwanda", "Seychelles", "Somalia", "Sudan", "Tunisia", 
+            "Uganda", "Zambia", "Zimbabwe")
 comesa_df <- africa |> filter(admin %in% comesa)
 
 
@@ -147,8 +148,8 @@ map_comesa <- ggplot(data = africa)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_comesa
 
@@ -173,8 +174,8 @@ map_comesa_zoom <- ggplot(data = comesa_df)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_comesa_zoom
 
@@ -193,8 +194,8 @@ map_comesa_zoom_no_label <- ggplot(data = comesa_df)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_comesa_zoom_no_label
 
@@ -204,11 +205,11 @@ ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/comesa_map_zoom_no_l
 
 
 # Community of Sahel-Saharan States (CEN-SAD)
-cen_sad <- c("Benin", "Burkina Faso", "Cape Verde", "Central African Republic", "Chad", 
-             "Comoros", "Djibouti", "Egypt", "Eritrea", "Gambia", "Ghana", "Guinea", 
-             "Guinea-Bissau", "Ivory Coast", "Kenya", "Liberia", "Libya", "Mali", 
-             "Mauritania", "Morocco", "Niger", "Nigeria", "Sao Tome and Principe", 
-             "Senegal", "Sierra Leone", "Somalia", "Sudan", "Togo", "Tunisia")
+cen_sad <- c("Benin", "Burkina Faso", "Central African Republic", "Chad", 
+             "Comoros", "Djibouti", "Egypt", "Eritrea", "Gambia", "Ghana", 
+             "Guinea", "Guinea-Bissau", "Ivory Coast", "Libya", "Mali", 
+             "Mauritania", "Morocco", "Niger", "Nigeria", "Senegal", 
+             "Sierra Leone", "Somalia", "Sudan", "Togo", "Tunisia")
 cen_sad_df <- africa |> filter(admin %in% cen_sad)
 
 map_cen_sad <- ggplot(data = africa)+
@@ -223,8 +224,8 @@ map_cen_sad <- ggplot(data = africa)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_cen_sad
 
@@ -249,8 +250,8 @@ map_cen_sad_zoom <- ggplot(data = cen_sad_df)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_cen_sad_zoom
 
@@ -269,8 +270,8 @@ map_cen_sad_zoom_no_label <- ggplot(data = cen_sad_df)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_cen_sad_zoom_no_label
 
@@ -278,9 +279,229 @@ map_cen_sad_zoom_no_label
 ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/cen_sad_map_zoom_no_label.png", width = 12, height = 12, dpi = 300)
 
 
+# Community of Sahel-Saharan States (CEN-SAD) - East
+cen_sad_east <- c("Comoros", "Djibouti", "Eritrea", "Somalia", "Sudan")
+cen_sad_east_df <- africa |> filter(admin %in% cen_sad_east)
+
+map_cen_sad_east <- ggplot(data = africa)+
+  geom_sf(aes(fill = admin), linewidth = 0.5)+
+  scale_fill_d3(palette = 'category20') +
+  gghighlight(admin %in% cen_sad_east) +
+  theme_void()+
+  labs(title = "",
+       caption = "",
+       fill = "")+
+  theme(plot.title = element_text(family = "Helvetica",size = 16, hjust = 0.5),
+        legend.title = element_blank(),
+        legend.position = "none",
+        plot.caption = element_text(family = "Helvetica",size = 12),
+        plot.background = element_blank(), 
+        panel.background = element_blank())
+
+map_cen_sad_east
+
+# Save the plot
+ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/cen_sad_east_map.png", width = 12, height = 12, dpi = 300)
+
+map_cen_sad_east_zoom <- ggplot(data = cen_sad_east_df)+
+  geom_sf(aes(fill = admin), linewidth = 0.5)+
+  geom_sf_text_repel(aes(label = admin), size = 10,
+                     force = 10, nudge_x = -1, seed = 10,
+                     min.segment.length = 0.25,
+                     force_pull = 0.1,
+                     max.overlaps = Inf,  # allow as many as possible
+                     box.padding = 0.5, 
+                     point.padding = 0.3) +
+  scale_fill_d3(palette = 'category20') +
+  theme_void()+
+  labs(title = "",
+       caption = "",
+       fill = "")+
+  theme(plot.title = element_text(family = "Helvetica",size = 16, hjust = 0.5),
+        legend.title = element_blank(),
+        legend.position = "none",
+        plot.caption = element_text(family = "Helvetica",size = 12),
+        plot.background = element_blank(), 
+        panel.background = element_blank())
+
+map_cen_sad_east_zoom
+
+# Save the plot
+ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/cen_sad_east_map_zoom.png", width = 12, height = 12, dpi = 300)
+
+
+map_cen_sad_east_zoom_no_label <- ggplot(data = cen_sad_east_df)+
+  geom_sf(aes(fill = admin), linewidth = 0.5)+
+  scale_fill_d3(palette = 'category20') +
+  theme_void()+
+  labs(title = "",
+       caption = "",
+       fill = "")+
+  theme(plot.title = element_text(family = "Helvetica",size = 16, hjust = 0.5),
+        legend.title = element_blank(),
+        legend.position = "none",
+        plot.caption = element_text(family = "Helvetica",size = 12),
+        plot.background = element_blank(), 
+        panel.background = element_blank())
+
+map_cen_sad_east_zoom_no_label
+
+# Save the plot
+ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/cen_sad_east_map_zoom_no_label.png", width = 12, height = 12, dpi = 300)
+
+
+
+# Community of Sahel-Saharan States (CEN-SAD) - West
+cen_sad_west <- c("Benin", "Burkina Faso", "Central African Republic", 
+                  "Chad", "Gambia", "Ghana", "Guinea", "Guinea-Bissau", 
+                  "Ivory Coast", "Mali", "Morocco", "Niger", "Nigeria", 
+                  "Senegal", "Sierra Leone")
+cen_sad_west_df <- africa |> filter(admin %in% cen_sad_west)
+
+map_cen_sad_west <- ggplot(data = africa)+
+  geom_sf(aes(fill = admin), linewidth = 0.5)+
+  scale_fill_d3(palette = 'category20') +
+  gghighlight(admin %in% cen_sad_west) +
+  theme_void()+
+  labs(title = "",
+       caption = "",
+       fill = "")+
+  theme(plot.title = element_text(family = "Helvetica",size = 16, hjust = 0.5),
+        legend.title = element_blank(),
+        legend.position = "none",
+        plot.caption = element_text(family = "Helvetica",size = 12),
+        plot.background = element_blank(), 
+        panel.background = element_blank())
+
+map_cen_sad_west
+
+# Save the plot
+ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/cen_sad_west_map.png", width = 12, height = 12, dpi = 300)
+
+map_cen_sad_west_zoom <- ggplot(data = cen_sad_west_df)+
+  geom_sf(aes(fill = admin), linewidth = 0.5)+
+  geom_sf_text_repel(aes(label = admin), size = 10,
+                     force = 10, nudge_x = -1, seed = 10,
+                     min.segment.length = 0.25,
+                     force_pull = 0.1,
+                     max.overlaps = Inf,  # allow as many as possible
+                     box.padding = 0.5, 
+                     point.padding = 0.3) +
+  scale_fill_d3(palette = 'category20') +
+  theme_void()+
+  labs(title = "",
+       caption = "",
+       fill = "")+
+  theme(plot.title = element_text(family = "Helvetica",size = 16, hjust = 0.5),
+        legend.title = element_blank(),
+        legend.position = "none",
+        plot.caption = element_text(family = "Helvetica",size = 12),
+        plot.background = element_blank(), 
+        panel.background = element_blank())
+
+map_cen_sad_west_zoom
+
+# Save the plot
+ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/cen_sad_west_map_zoom.png", width = 12, height = 12, dpi = 300)
+
+
+map_cen_sad_west_zoom_no_label <- ggplot(data = cen_sad_west_df)+
+  geom_sf(aes(fill = admin), linewidth = 0.5)+
+  scale_fill_d3(palette = 'category20') +
+  theme_void()+
+  labs(title = "",
+       caption = "",
+       fill = "")+
+  theme(plot.title = element_text(family = "Helvetica",size = 16, hjust = 0.5),
+        legend.title = element_blank(),
+        legend.position = "none",
+        plot.caption = element_text(family = "Helvetica",size = 12),
+        plot.background = element_blank(), 
+        panel.background = element_blank())
+
+map_cen_sad_west_zoom_no_label
+
+# Save the plot
+ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/cen_sad_west_map_zoom_no_label.png", width = 12, height = 12, dpi = 300)
+
+
+# Community of Sahel-Saharan States (CEN-SAD) - North
+cen_sad_north <- c("Libya", "Morocco", "Tunisia", "Egypt", "Mauritania")
+cen_sad_north_df <- africa |> filter(admin %in% cen_sad_north)
+
+map_cen_sad_north <- ggplot(data = africa)+
+  geom_sf(aes(fill = admin), linewidth = 0.5)+
+  scale_fill_d3(palette = 'category20') +
+  gghighlight(admin %in% cen_sad_north) +
+  theme_void()+
+  labs(title = "",
+       caption = "",
+       fill = "")+
+  theme(plot.title = element_text(family = "Helvetica",size = 16, hjust = 0.5),
+        legend.title = element_blank(),
+        legend.position = "none",
+        plot.caption = element_text(family = "Helvetica",size = 12),
+        plot.background = element_blank(), 
+        panel.background = element_blank())
+
+map_cen_sad_north
+
+# Save the plot
+ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/cen_sad_north_map.png", width = 12, height = 12, dpi = 300)
+
+map_cen_sad_north_zoom <- ggplot(data = cen_sad_north_df)+
+  geom_sf(aes(fill = admin), linewidth = 0.5)+
+  geom_sf_text_repel(aes(label = admin), size = 10,
+                     force = 10, nudge_x = -1, seed = 10,
+                     min.segment.length = 0.25,
+                     force_pull = 0.1,
+                     max.overlaps = Inf,  # allow as many as possible
+                     box.padding = 0.5, 
+                     point.padding = 0.3) +
+  scale_fill_d3(palette = 'category20') +
+  theme_void()+
+  labs(title = "",
+       caption = "",
+       fill = "")+
+  theme(plot.title = element_text(family = "Helvetica",size = 16, hjust = 0.5),
+        legend.title = element_blank(),
+        legend.position = "none",
+        plot.caption = element_text(family = "Helvetica",size = 12),
+        plot.background = element_blank(), 
+        panel.background = element_blank())
+
+map_cen_sad_north_zoom
+
+# Save the plot
+ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/cen_sad_north_map_zoom.png", width = 12, height = 12, dpi = 300)
+
+
+map_cen_sad_north_zoom_no_label <- ggplot(data = cen_sad_north_df)+
+  geom_sf(aes(fill = admin), linewidth = 0.5)+
+  scale_fill_d3(palette = 'category20') +
+  theme_void()+
+  labs(title = "",
+       caption = "",
+       fill = "")+
+  theme(plot.title = element_text(family = "Helvetica",size = 16, hjust = 0.5),
+        legend.title = element_blank(),
+        legend.position = "none",
+        plot.caption = element_text(family = "Helvetica",size = 12),
+        plot.background = element_blank(), 
+        panel.background = element_blank())
+
+map_cen_sad_north_zoom_no_label
+
+# Save the plot
+ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/cen_sad_north_map_zoom_no_label.png", width = 12, height = 12, dpi = 300)
+
+
+
+
+
 # East African Community (EAC)
 eac <- c("Burundi", "Democratic Republic of the Congo", "Kenya", 
-         "Rwanda", "South Sudan", "United Republic of Tanzania", "Uganda")
+         "Rwanda", "Somalia", "South Sudan", "Tanzania", "Uganda")
 eac_df <- africa |> filter(admin %in% eac)
 
 
@@ -296,8 +517,8 @@ map_eac <- ggplot(data = africa)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_eac
 
@@ -322,8 +543,8 @@ map_eac_zoom <- ggplot(data = eac_df)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_eac_zoom
 
@@ -342,8 +563,8 @@ map_eac_zoom_no_label <- ggplot(data = eac_df)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_eac_zoom_no_label
 
@@ -355,7 +576,7 @@ ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/eac_map_zoom_no_labe
 # Economic Community of Central African States (ECCAS/CEEAC)
 eccas <- c("Angola", "Burundi", "Cameroon", "Central African Republic", "Chad", 
            "Democratic Republic of the Congo", "Equatorial Guinea", "Gabon", 
-           "Republic of Congo", "Rwanda", "Sao Tome and Principe")
+           "Republic of Congo", "Sao Tome and Principe")
 eccas_df <- africa |> filter(admin %in% eccas)
 
 
@@ -371,8 +592,8 @@ map_eccas <- ggplot(data = africa)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_eccas
 
@@ -397,8 +618,8 @@ map_eccas_zoom <- ggplot(data = eccas_df)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_eccas_zoom
 
@@ -417,8 +638,8 @@ map_eccas_zoom_no_label <- ggplot(data = eccas_df)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_eccas_zoom_no_label
 
@@ -446,8 +667,8 @@ map_ecowas <- ggplot(data = africa)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_ecowas
 
@@ -472,8 +693,8 @@ map_ecowas_zoom <- ggplot(data = ecowas_df)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_ecowas_zoom
 
@@ -492,8 +713,8 @@ map_ecowas_zoom_no_label <- ggplot(data = ecowas_df)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_ecowas_zoom_no_label
 
@@ -520,8 +741,8 @@ map_ecowas_francophone <- ggplot(data = africa)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_ecowas_francophone
 
@@ -546,8 +767,8 @@ map_ecowas_francophone_zoom <- ggplot(data = ecowas_francophone_df)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_ecowas_francophone_zoom
 
@@ -566,8 +787,8 @@ map_ecowas_francophone_zoom_no_label <- ggplot(data = ecowas_francophone_df)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_ecowas_francophone_zoom_no_label
 
@@ -594,8 +815,8 @@ map_ecowas_anglophone <- ggplot(data = africa)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_ecowas_anglophone
 
@@ -620,8 +841,8 @@ map_ecowas_anglophone_zoom <- ggplot(data = ecowas_anglophone_df)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_ecowas_anglophone_zoom
 
@@ -640,8 +861,8 @@ map_ecowas_anglophone_zoom_no_label <- ggplot(data = ecowas_anglophone_df)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_ecowas_anglophone_zoom_no_label
 
@@ -666,8 +887,8 @@ map_ecowas_lusophone <- ggplot(data = africa)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_ecowas_lusophone
 
@@ -692,8 +913,8 @@ map_ecowas_lusophone_zoom <- ggplot(data = ecowas_lusophone_df)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_ecowas_lusophone_zoom
 
@@ -712,8 +933,8 @@ map_ecowas_lusophone_zoom_no_label <- ggplot(data = ecowas_lusophone_df)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_ecowas_lusophone_zoom_no_label
 
@@ -739,8 +960,8 @@ map_aes <- ggplot(data = africa)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_aes
 
@@ -765,8 +986,8 @@ map_aes_zoom <- ggplot(data = aes_df)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_aes_zoom
 
@@ -786,8 +1007,8 @@ map_aes_zoom_no_label <- ggplot(data = aes_df)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_aes_zoom_no_label
 
@@ -797,7 +1018,7 @@ ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/aes_map_zoom_no_labe
 
 
 # Intergovernmental Authority on Development (IGAD)
-igad <- c("Djibouti", "Eritrea", "Ethiopia", "Kenya", 
+igad <- c("Djibouti", "Ethiopia", "Kenya", 
           "Somalia", "South Sudan", "Sudan", "Uganda")
 igad_df <- africa |> filter(admin %in% igad)
 
@@ -814,8 +1035,8 @@ map_igad <- ggplot(data = africa)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_igad
 
@@ -840,8 +1061,8 @@ map_igad_zoom <- ggplot(data = igad_df)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_igad_zoom
 
@@ -860,8 +1081,8 @@ map_igad_zoom_no_label <- ggplot(data = igad_df)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_igad_zoom_no_label
 
@@ -872,9 +1093,10 @@ ggsave("sub_pro_0_tutorials_tools/regional_groupings/images/igad_map_zoom_no_lab
 
 
 # Southern African Development Community (SADC)
-sadc <- c("Angola", "Botswana", "Comoros", "Democratic Republic of the Congo", "Eswatini", 
-          "Lesotho", "Madagascar", "Malawi", "Mauritius", "Mozambique", "Namibia", 
-          "Seychelles", "South Africa", "United Republic of Tanzania", "Zambia", "Zimbabwe")
+sadc <- c("Angola", "Botswana", "Comoros", "Democratic Republic of the Congo", 
+          "Eswatini", "Lesotho", "Madagascar", "Malawi", "Mauritius", 
+          "Mozambique", "Namibia", "Seychelles", "South Africa", "Tanzania", 
+          "Zambia", "Zimbabwe")
 sadc_df <- africa |> filter(admin %in% sadc)
 
 
@@ -890,8 +1112,8 @@ map_sadc <- ggplot(data = africa)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_sadc
 
@@ -916,8 +1138,8 @@ map_sadc_zoom <- ggplot(data = sadc_df)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_sadc_zoom
 
@@ -937,8 +1159,8 @@ map_sadc_zoom_no_label <- ggplot(data = sadc_df)+
         legend.title = element_blank(),
         legend.position = "none",
         plot.caption = element_text(family = "Helvetica",size = 12),
-        plot.background = element_rect(fill = "bisque1", color = "bisque1"), 
-        panel.background = element_rect(fill = "bisque1", color = "bisque1"))
+        plot.background = element_blank(), 
+        panel.background = element_blank())
 
 map_sadc_zoom_no_label
 
