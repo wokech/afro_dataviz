@@ -18,7 +18,7 @@ olympic_data <- read_excel("sub_pro_9_olympics/datasets/olympic_medal_country.xl
 
 # (C) Clean the data, fix columns and county labels
 
-olympic_data_clean <- olympic_data %>%
+olympic_data_clean <- olympic_data |>
   clean_names() 
 
 str(olympic_data_clean)
