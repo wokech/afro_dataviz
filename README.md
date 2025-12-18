@@ -9,18 +9,18 @@ Visualizations can be seen [here](https://linktr.ee/afro_dataviz) and [here](htt
 
 ## Example visualizations
 
-### 1) African Olympic Medals 
+### 1) Relative Wealth Index (Kenya)
+[Code]()
+![](sub_pro_2_rel_wealth_index_meta/images/kenya.png)
 
-![](https://github.com/wokech/afrodataviz/blob/master/sub_pro_9_olympics_wpr_ioc/images/africa_olympic_medals_square.png)
+### 2) Tea Production in Africa
+[Code]()
+![](sub_pro_1_agriculture_fao/images/tea_map.png) ![](sub_pro_1_agriculture_fao/images/tea_production_1.png)
 
-### 2) Undernourishment
+### 3) Africa's Fastest Growing Companies (2025)
+[Code]()
+![](sub_pro_11_africa_fast_grow_ft/images/2025/origin_2025_treemap_match_2.png) ![](sub_pro_11_africa_fast_grow_ft/images/2025/origin_2025_map_match_2.png)
 
-![](https://github.com/wokech/afrodataviz/blob/master/sub_pro_7_agriculture_owid/images/undernourished_region.png)
-
-### 3) Meat Production (Worldwide)
-
-![](https://github.com/wokech/afrodataviz/blob/master/sub_pro_7_agriculture_owid/images/continent_meat_1.png)
-
-### 4) Fish Production (Africa)
-
-![](https://github.com/wokech/afrodataviz/blob/master/sub_pro_7_agriculture_owid/images/africa_segment_fish.png)
+### 4) Olympic Medals in Africa
+[Code]()
+![](sub_pro_9_olympics_wpr_ioc/images/africa_olympic_medals_square.png)
