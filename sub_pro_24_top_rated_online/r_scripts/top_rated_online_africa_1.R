@@ -16,7 +16,7 @@ font_add_google("Roboto Slab", "roboto_slab")
 showtext_auto()
 
 # Import data
-africa_top_rated <- read_excel("sub_pro_24_top_rated_online/top_rated_online_feb_2025.xlsx", sheet = 1)
+africa_top_rated <- read_excel("sub_pro_24_top_rated_online/top_rated_online_africa_feb_2025.xlsx", sheet = 1)
 
 africa_top_rated_clean <- africa_top_rated %>%
   clean_names()
