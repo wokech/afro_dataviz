@@ -22,7 +22,7 @@ showtext_auto()
 # Import data
 africa_top_rated_feb_2025 <- read_excel("sub_pro_24_top_rated_online/datasets/top_rated_online_africa_feb_2025.xlsx", sheet = 1)
 
-africa_top_rated_clean_feb_2025 <- africa_top_rated %>%
+africa_top_rated_clean_feb_2025 <- africa_top_rated_feb_2025 %>%
   clean_names()
 
 str(africa_top_rated_clean_feb_2025)
@@ -529,7 +529,7 @@ p <- ggplot(africa_top_rated_clean_feb_2025_central_africa, aes(x = number_of_re
     limits = c(-10000, 10000),
     breaks = seq(5000, 10000, 5000),
     labels = c("5K", "10K"),
-    expand = expansion(mult = c(0, 1)),
+    expand = expansion(mult = c(0, 1.4)),
     position = "bottom"
   ) +
   # Title and caption
@@ -558,7 +558,7 @@ p <- ggplot(africa_top_rated_clean_feb_2025_central_africa, aes(x = number_of_re
     # Grid elements
     panel.grid = element_blank(),
     # Axis elements
-    axis.text.y = element_text(family = "roboto", size = 50),
+    axis.text.y = element_text(family = "roboto", size = 60),
     axis.title.y = element_blank(),
     axis.text.x = element_text(family = "roboto", size = 80),
     # Plot margins
